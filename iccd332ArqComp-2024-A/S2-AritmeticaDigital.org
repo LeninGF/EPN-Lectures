@@ -1,0 +1,97 @@
+
+#+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: S2 Aritmética Digital
+#+date: 2024-04-28
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+# to enable beamer mode M-x org-beamer-mode
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+
+* Aritmética Digital
+** Unidad Aritmética Lógica (ALU)
+*** Texto                                                             :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.4
+    :END:
+- Está encargada de realizar las operaciones **lógicas** y
+  **aritméticas** sobre los datos
+- Está conformada de dispositivos electrónicos que permiten el
+  almacenamiento de dígitos binarios y ejecutar operaciones Booleanas
+- La ALU se interconecta por señales de control, utiliza 2 registros y emite flags
+*** Imagen                                                     :BMCOL:Imagen:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :END:
+
+[[./images/ALU.png]]
+
+** Representación de Números Enteros
+- No se dispone de signos +/- para representar los números
+- No se dispone de un punto decimal
+- Un número entero queda representado por un conjunto de 0s y 1s
+- Por tanto, un dígito ha de ser usado para representar el signo
+- Una secuencia de $n$ dígitos binarios se interpreta como un entero $A$
+  **sin signo**
+
+$$A = \sum_{i=0}^{n-1}2^ia_i$$
+
+** Representación Signo - Magnitud
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+- El bit más significativo de la izquierda (LMSB) se considera el signo
+- 0 $\rightarrow$ positivo
+- 1 $\rightarrow$ negativo
+- Si la palabra tiene $n$ dígitos:
+  - El $n$ - simo bit es el signo
+  - Los $n-1$ bits son la magnitud
+
+$$A = \begin{cases}
+\sum_{i=0}^{n-2}2^ia_i & \text{if $a_{n-1} = 0$} \\
+-\sum_{i=0}^{n-2}2^ia_i & \text{if $a_{n-1} = 1$}
+\end{cases}$$
+
+- El 0 tiene una representación doble como $0^+$ y $0^-$
+
+$$+18 = 00010010$$
+$$-18 = 10010010$$
+
+*** Tarea                                                   :B_definition:Tarea:
+    :PROPERTIES:
+    :BEAMER_env: definition
+    :END:
+
+Escribir una función en python que permita dado un número binario de 8
+bits obtener su negativo usando el criterio de signo magnitud
+
+** Complemento a $r-1$
+
+Consiste en la inversión de los bits de la palabra i.e.
+
+
+$1010110110 \rightarrow 0101001001$
+
+** Representación en Complemento a $r$
+
+
+
+
