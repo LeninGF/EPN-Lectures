@@ -83,14 +83,59 @@ $$-18 = 10010010$$
 Escribir una función en python que permita dado un número binario de 8
 bits obtener su negativo usando el criterio de signo magnitud
 
-** Complemento a $r-1$
+** Complemento a base disminuída $r-1$
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
 
-Consiste en la inversión de los bits de la palabra i.e.
+Dado un número $A$ en base $r$ de $n$ dígitos, el complemento a $r-1$
+de $A$ es:
 
+$$(r^n-1)-A$$
 
-$1010110110 \rightarrow 0101001001$
+- Caso Decimal $r=10$ y $r-1=9$. Para un número de $n$ digítios se
+  tiene: $(10^n-1)-A$. Donde $(10^n-1)=999 \dots 9 \rightarrow$ n 9s
+
+  Ejemplo: El compleneto a nueve de 546700 es $999999-546700=453299$
+
+- Caso Binario $r=2$ y $r-1=1$, entonces $1111 \dots11 - A$. El
+  resultado es la inversión del número
+
+  Ejemplo: Sea $A = 1011000$, el complemento a 1 es
+  $1111111-1011000=0100111$
+
 
 ** Representación en Complemento a $r$
+
+El complemento a $r$ de un número $A_r$ de $n$ dígitos es el
+complemento a $r^n-A$ i.e.
+
+$r^n-A=(r^n-1)-A+1$
+
+- Caso Binario: Consiste en obtener el complemento a 1 o inversión del
+  número binario y sumar 1
+
+** Sistema de complemento con Signo
+
+- Los números negativos se representan por su **complemento**
+- En un sistema de numeración binaria (e.g. ALU) se usa el
+  **complemento a 2**
+- Se asume que el $0$ en la MSB es **positivo**
+
+Por ejemplo $-9$ en una máquina de 8 bits puede representarse como:
+
+
++---------------+----------+
+|Sistema        |   -9     |
++---------------+----------+
+|Magnitud Signo | 10001001 |
++---------------+----------+
+|Complemento 1  | 11110110 |
++---------------+----------+
+|Complemento 2  | 11110111 |
++---------------+----------+
+
+
 
 
 
