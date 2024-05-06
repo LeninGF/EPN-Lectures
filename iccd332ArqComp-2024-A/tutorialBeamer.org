@@ -36,14 +36,22 @@
 
 Se requiere realizar los siguientes ajustes para que Emacs opere:
 
+1. Instalar WSL o un distro de Linux: Se pueden seguir los pasos de la
+   [[https://learn.microsoft.com/es-es/windows/wsl/install][Guía de Instalación]]
+
 1. Instalar Emacs:
-   #+begin_src shell
-     sudo apt update
-     sudo apt install emacs
-   #+end_src
+      #+begin_src shell
+        sudo apt-get update
+        sudo apt install emacs
+      #+end_src
 2. Instalar LaTeX (básica o completa):
       #+begin_src shell
 	sudo apt install texlive-full
+      #+end_src
+   Existen otras opciones para Latex que consumen menos recursos (ver
+   [[https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux][enlace]]):
+      #+begin_src shell
+        sudo apt install texlive-latex-extra
       #+end_src
 3. Instalar Python
 4. Configurar el archivo en ~/.emacs.d/init.el
@@ -56,12 +64,9 @@ Se requiere realizar los siguientes ajustes para que Emacs opere:
 Para instalar python se utilizará el entorno de anaconda o
 mamba. Existen recomendaciones en favor de mamba.
 
-1. Abra el subsistema de Linux para Windows:[[https://learn.microsoft.com/es-es/windows/wsl/install][guía de instalación]]
-2. Instale el paquete bzip2
-    #+begin_src shell
-      sudo apt-get install bzip2
-    #+end_src
-3. Descargue e instale Mamba:[[https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh][Descargar de github]]
+1. Abra el subsistema  de Linux para Windows: [[https://learn.microsoft.com/es-es/windows/wsl/install][guía de instalación]]
+
+3. Descargue e instale Mamba: [[https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh][Descargar ejecutable desde github]]
    #+begin_src shell
      wget colocar/direccion/archivo_sh_Linux_x86_64
      sudo chmod +x Miniforge3-Linux-x86_64
@@ -73,9 +78,20 @@ mamba. Existen recomendaciones en favor de mamba.
    #+begin_src shell
      mamba create --name iccd332
      mamba activate iccd332
-     mamba install python
+     mamba install python=3.11
      python --version
    #+end_src
+
+** Paquetes recomendados de Instalación Python
+Instalar los siguientes paquetes para ha disponer del shell avanzado
+de Ipython y el complemento *rise* para convertir un jupyter-notebook
+en una presentación tipo reveal.js
+
+#+begin_src shell
+mamba install ipython
+mamba install jupyter
+pip install jupyterlab-rise
+#+end_src
 ** Configuración Emacs
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -83,7 +99,7 @@ mamba. Existen recomendaciones en favor de mamba.
 :END:
 
 - El comportamiento de Emacs es completamente configurable por el
-usuario a través del archivo ~/.emacs.d/init.el
+  usuario a través del archivo ~/.emacs.d/init.el
 - El archivo init.el puede generar instalaciones y activaciones para
   emacs por lo que se sugiere reiniciar emacs para que las
   configuraciones surtan efecto
@@ -98,9 +114,26 @@ usuario a través del archivo ~/.emacs.d/init.el
 
   #+end_src
 * Emacs
-** Lista de Commandos comunes de Emacs
-
-Poner una lista o una imagen
+#+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
+#+NAME: tabla-emacs
+#+CAPTION: Comandos de Emacs
++--------------------+--------------------+--------------------+--------------------+
+| Comando            | Acción             | Comando            | Acción             |
++--------------------+--------------------+--------------------+--------------------+
+|  C-x C-s           |  guardar           |  C-x C-c           | Salir Emacs        |
++--------------------+--------------------+--------------------+--------------------+
+|  C-n               |  siguiente renglón |  C-p               | anterior renglón   |
++--------------------+--------------------+--------------------+--------------------+
+|  C-f               | avanza un carácter | C-b                | atrás un carácter  |
++--------------------+--------------------+--------------------+--------------------+
+|  M-f               | avanza una palabra | M-b                | atrás una palabra  |
++--------------------+--------------------+--------------------+--------------------+
+| C-a                | ir a inicio        | C-e                | ir al fin          |
++--------------------+--------------------+--------------------+--------------------+
+|  C-SPC             | selecciona región  | C-g                | cancelar comando   |
++--------------------+--------------------+--------------------+--------------------+
+|C-d                 | Borrar un carácter | M-d                | borrar palabra     |
++--------------------+--------------------+--------------------+--------------------+
 
 
 ** Hacer una presentación en Emacs
@@ -112,13 +145,21 @@ Poner una lista o una imagen
 2. Genere un archivo de extensión .org
    - C-x C-f
    - presentacion.org
-3. Active el modo org: M-x org-mode
+3. Active el modo org para beamer: M-x org-beamer-mode
 4. Coloque el encabezado por defecto y el de beamer
    - C-c C-e # default
    - C-c C-e # beamer
      **Observar:** el encabezado de beamer sólo se
-     activa si el **modo org** está habilitado
-5. Instale el diccionario de español para la correción ortográfica
+     activa si el **modo org-beamer** está habilitado
+5. En opciones, cambiar H:1 a H:2 para que los títulos se interpreten
+   como Secciones de la presentación y las Subsecciones como título de
+   la presentación
+5. Utilice el sistema de marcas de Emacs para escribir la presentación
+- * Sección/Título
+- ** Título Presentación/Subtítulo
+- Una palabra encerrada entre ** equivale a `**negrita**`
+- Una palabra encerrada entre / equivale a `/cursiva/` 
+5. En el shell, instale el diccionario de español para la corrección ortográfica
    #+begin_src shell
      sudo apt install aspell aspell-es
    #+end_src
@@ -126,10 +167,16 @@ Poner una lista o una imagen
 7. Puede activar un modo de revisión al vuelo: M-x flyspell-mode
 
 ** Algunos Hacks
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
 
 - Para insertar propiedades: C-c C-x p
 - Para insertar código: C-c C-,
+- Para insertar código: M-x org-insert-template-structures y escoge la opción s
 - Para insertar un tag: C-c C-c
+- Para insertar un link: M-x org-insert-link
+- Para generar el archivo pdf: org-beamer-export-to-pdf
 
 * Arquitectura de Computadores ICCD332
 ** El Computador

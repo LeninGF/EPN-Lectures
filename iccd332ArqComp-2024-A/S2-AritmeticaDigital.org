@@ -115,7 +115,51 @@ $r^n-A=(r^n-1)-A+1$
 - Caso Binario: Consiste en obtener el complemento a 1 o inversión del
   número binario y sumar 1
 
-** Sistema de complemento con Signo
+** Sistema de Complemento a 2
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+- Utiliza el bit más significativo como signo
+- Dispone de una sola representación para el 0
+- Si se define un número de $n$ bits como la secuencia
+  $A=a_{n-1}a_{n-2} \dots a_2a_1a_0$, entonces el bit del signo es el
+  dígito $a_{n-1}$ y el número $A$ en complemento a 2 se representa
+  por:
+
+$$A=-2^{n-1}a_{n-1}+\sum_{i=0}^{n-2}2^ia_i$$
+
+- El rango: $-2^{n-1}$ hasta $2^{n-1}-1$
+- Se obtiene de invertir cada bit the la cadena $A$ y luego sumar 1
+- **Extensión de la longitud en bits:** Si el numéro $A$ de $n$
+  dígitos se ha de representar en $m$ dígitos, donde $m \ge n$
+  entonces, se añade las posiciones faltantes a la izquierda y se
+  rellenan con el valor del bit del signo original.
+- **Overflow:** se produce cuando al sumar dos números $A$ y $B$ en
+  complemento a 2, el resultado tiene signo opuesto.
+- **Resta:** dados $A$ y $B$ y se desea obtener $A-B$, entonces
+
+$$A-B = A+(-B)$$
+
+** Conversión de binario a decimal en complemento a 2
+Consiste en aplicar la ecuación de un número en complemento a 2:
+
+#+ATTR_LATEX: :mode inline-math
+#+ATTR_LATEX: :environment tabular :font \scriptsize
+
++----------+----------+----------+----------+----------+----------+----------+----------+
+|$-2^7$    |$-2^6$    |  $2^5$   |  $2^4$   |  $2^3$   |  $2^2$   | $2^1$    | $2^0$    |
++----------+----------+----------+----------+----------+----------+----------+----------+
+| 1        |0         |0         |0         |0         |0         |1         |1         |
++----------+----------+----------+----------+----------+----------+----------+----------+
+|-128      |0         |0         |0         |0         |0         |+2        | +1       |
++----------+----------+----------+----------+----------+----------+----------+----------+
+
+$$A=-2^{n-1}a_{n-1}+\sum_{i=0}^{n-2}2^ia_i$$
+
+$A=1000\,0011_2=-128+2+1=-125$
+
+** Representaciones con Signo
 
 - Los números negativos se representan por su **complemento**
 - En un sistema de numeración binaria (e.g. ALU) se usa el
@@ -134,9 +178,4 @@ Por ejemplo $-9$ en una máquina de 8 bits puede representarse como:
 +---------------+----------+
 |Complemento 2  | 11110111 |
 +---------------+----------+
-
-
-
-
-
 
