@@ -62,7 +62,8 @@ Se requiere realizar los siguientes ajustes para que Emacs opere:
 :END:
 
 Para instalar python se utilizará el entorno de anaconda o
-mamba. Existen recomendaciones en favor de mamba.
+mamba. Existen recomendaciones en favor de mamba. La dirección del
+repositorio de Github se encuentra en el enlace [[https://github.com/conda-forge/miniforge/][miniforge]]
 
 1. Abra el subsistema  de Linux para Windows: [[https://learn.microsoft.com/es-es/windows/wsl/install][guía de instalación]]
 
