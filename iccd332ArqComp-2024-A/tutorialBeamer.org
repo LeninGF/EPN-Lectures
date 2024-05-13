@@ -84,7 +84,7 @@ repositorio de Github se encuentra en el enlace [[https://github.com/conda-forge
    #+end_src
 
 ** Paquetes recomendados de Instalación Python
-Instalar los siguientes paquetes para ha disponer del shell avanzado
+Instalar los siguientes paquetes para disponer del shell avanzado
 de Ipython y el complemento *rise* para convertir un jupyter-notebook
 en una presentación tipo reveal.js
 

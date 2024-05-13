@@ -250,7 +250,7 @@ como signo.
    :BEAMER_opt: allowframebreaks
    :END:
    
-- El complemento a 2 permite resolver la suma de enteros como una suma
+- El complemento a 2 permite resolver la resta de enteros como una suma
 - Obtener el complemento a 2 del sustraendo y sumar al minuendo
 - **Regla de Desbordamiento:** Si el resultado de una suma de dos
   números de igual signo produce un signo opuesto
@@ -420,6 +420,11 @@ $$(-1)^s \times 1.m \times 2^{e-127}$$
 2. Consultar cómo se representa 0^{+}, 0^{-}, $+\infty$, $-\infty$ en
    IEEE754
 3. ¿Cuál es la condición **NaN**?
+
+** Límites de representación en coma flotante 32 bits
+
+#+CAPTION: Comparación de números representables con 32 bits. Parte superior enteros en complemento a 2. Parte inferior Notación de Coma flotante
+[[./images/floatingPointNumbers.png]]
 
 ** Ejercicios varios:
 
