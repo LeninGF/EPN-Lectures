@@ -46,11 +46,161 @@
 - Realizar el circuito como una combinación de suma de productos
   (i.e. SOP) o productos de sumas (i.e. POS)
 
+** Ejemplo Circuito Multiplexor
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+Un multiplexor es un circuito digital que conecta varias entradas a
+una única salida. Dadas $n$ líneas de control, el circuito puede
+direccionar hasta $2^n$ señales. La Tabla [[tab-multiplexor]] representa la lógica
+para el caso de $n=2$. Obtenga el circuito digital en compuertas.
+
+#+Caption: Tabla de Verdad de un Multiplexor
+#+NAME: tab-multiplexor
++--+--+--+
+|S2|S1|F |
++--+--+--+
+|0 |0 |D0|
++--+--+--+
+|0 |1 |D1|
++--+--+--+
+|1 |0 |D2|
++--+--+--+
+|1 |1 |D3|
++--+--+--+
+
+** Solución Circuito Multiplexor
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+Dado que nos interesa que el valor de cada entrada digital $D_i$ se
+obtenga en la salida, no sería factible hacer una reducción booleana o
+de mapa de K. Por tanto, la ecuación booleana sería:
+
+$$F=\bar{S_2}\bar{S_1}D_0+\bar{S_2}S_1D_1+S_2\bar{S_1}D_2+S_2S_1D_3$$
+
+** Ejemplo Sistema de Alarma Básico
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+Considere la Figura [[fig-maq-estado-alarma]] que representa una máquina
+de estado para un sistema de alarma básico de un cuarto o bodega. El
+sistema está conformado de un sensor de apertura de puerta $S_p$, un
+sensor de apertura de ventana $S_v$, un sensor de movimiento $S_m$ y
+un interruptor $I$ que enciende o activa la alarma.
+
+#+NAME: fig-maq-estado-alarma
+#+CAPTION: Máquina de Estado Finito de Alarma
+[[./images/maquinaEstadoFinitoAlarma.png]]
+
+1. Infiera el comportamiento del sistema a partir de la máquina de estado
+2. Deduzca la tabla de verdad del sistema, pues se pretende obtener
+   una solución a través de compuertas lógicas al problema.
+3. Obtenga una función simplificada booleana usando Mapas K.
+4. Implemente el Circuito.
+
+Asuma que:
+- Abierto = 0
+- Cerrado = 1
+- Switch en ON = 1
+- Switch en OFF = 0
+- Sensor de Movimiento ON = 1
+- Sensor de Movimiento OFF = 0
+
+** Solución Sistema de Alarma Básico
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+A partir de la máquina de estado se puede inferir que:
+
+1. El sistema no funciona cuando el switch de activación de la alarma
+   esta en OFF.
+2. Cuando el sistema se activa (i.e. $I=1$), se monitorea los sensores
+   $S_p$ y $S_v$.
+3. Si uno de los sensores se activa se pasa al estado $q_2$
+4. En el estado $q_2$ se espera la activación del sensor de
+   movimiento. Si éste pasa a 1, entonces detecta movimiento y se pasa
+   al estado final $q_3$, activando la alarma.
+
+Dado que el sistema depende de las señales $I$, $S_p$, $S_v$ y $S_m$,
+se tiene un total de $2^4$ posibles combinaciones o estados. Sin
+embargo, los estados donde $I=0$ (OFF) conlleva a la no activación del
+sistema y por tanto de la alarma. En consecuencia, la Tabla
+\ref{tab-circAlarma} presenta el comportamiento lógico esperado del
+sistema
+
+\scriptsize
+\begin{table}
+  \caption{Tabla de Verdad Circuito de Alarma}
+  \label{tab-circAlarma}
+  \begin{tabular}{|cccc|c|}
+    \hline
+    I & $S_p$ & $S_v$ & $S_m$ & F \\ \hline
+    1 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 1 & 0 & 0 \\
+    1 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 1 \\
+    1 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 0 \\ \hline
+    
+  \end{tabular}
+\end{table}
+
+Para simplificar se usa el Mapa de Karnaugh como se muestra en la
+Tabla \ref{tab-mapak}
+
+\begin{table}
+  \label{tab-mapak}
+  \caption{Mapa de Karnaugh}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    {} & \multicolumn{4}{c|}{$S_v$, $S_m$}\\\hline  
+    I,$S_p$ & 00 & 01 & 11 &10 \\ \hline
+    00 & {} & {} & {} & {} \\ \hline
+    01 & {} & {} & {} & {} \\ \hline
+    11 & {} & 1 & {} & {} \\ \hline
+    10 & {} & 1 & 1 & {} \\ \hline
+  \end{tabular}
+\end{table}
+
+En el Mapa se puede formar dos grupos de 2 (contando filas y columnas
+en el contenido):
+
+- El formado en la segunda columna con los 1 de la tercera y
+cuarta fila
+- El formado en la 4 fila y las columnas 2 y 3.
+
+De ahí que realizando las reducciones de Karnaugh se obtiene:
+
+$$F=I\overline{S_p}S_m+I\overline{S_v}S_m$$
+
+que puede escribirse como:
+
+$$F=IS_m(\overline{S_p}+\overline{S_v})$$
+
+La Figura [[fig_alarma]] muestra el circuito a implementar
+
+#+NAME: fig_alarma
+#+CAPTION: Circuito Alarma Digital Básica
+[[./images/Alarma.png]]
+
+Sin embargo, ¿puede este circuito ser práctico en la realidad?
+¿Existen opciones de mejora?
+
 ** Taller
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
 Dada la siguiente tabla de verdad, simplificar utilizando Mapa de
 Karnaugh y obtener el respectivo circuito combinacional. Simular el
 resultado.
-#+ATTR_LATEX: :font 
+#+ATTR_LATEX: :fontsize \scriptsize
 +--+--+--+--+
 |A |B |C |F |
 +--+--+--+--+
@@ -71,10 +221,7 @@ resultado.
 |1 |1 |1 |1 |
 +--+--+--+--+
 
-** Taller
-   :PROPERTIES:
-   :BEAMER_opt: allowframebreaks
-   :END:
+\newpage
 
 Obtener un circuito combinacional que realice la suma binaria. Para
 esto, considere que el sumador se resuelve integrado en cascada
@@ -84,6 +231,29 @@ que inicia en 0.
 1. Obtenga la Tabla de Verdad
 2. Deduzca las expresiones booleanas reducidas
 3. Implemente el circuito en Matlab y realice la simulación
+
+# ** Taller 3 
+#    :PROPERTIES:
+#    :BEAMER_opt: allowframebreaks
+#    :END:
+
+# Un sistema de control de presión de agua dispone de sensores que
+# devuelven una señal de tipo Booleana cuando la Presión es menor de un
+# límite inferior $L_1$ y mayor a un Límite superior $H_1$. Diseñe un
+# circuito digital tal que genere una señal digital Booleana que
+# controle una bomba con las siguientes condiciones:
+
+# 1. Si la Presión es mayor que $H_1$, apagar la bomba
+# 2. Si la Presión es menor que $L_1$, encender la bomba
+# 3. Si la Presión está en un rango de operación, el operador puede
+#    encender la bomba si acciona un switch $I_1$.
+# 4. El operador no podrá arrancar la bomba si la presión es superior al
+#    nivel $H_1$
+# 5. Si el sensor térmico del motor se activa, debe apagarse la bomba
+#    para evitar sobrecarga.
+
+# Escriba la Tabla de verdad, simplifique usando Mapa de Karnaugh y
+# obtenga el circuito digital correspondiente.
 
 
 # ** Estructura Superior del Computador
