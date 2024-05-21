@@ -50,14 +50,13 @@
    :BEAMER_opt: allowframebreaks
    :END:
 
-- En una manera reduccionista, un computador puede ser entendido como un
-sistema integrado de dispositivos electrónicos que interactúa con el
-entorno a través de dispositivos periféricos o líneas de comunicación
-y que procesa información.
+- sistema integrado de dispositivos electrónicos que interactúa con
+  el entorno a través de dispositivos periféricos o líneas de
+  comunicación y que procesa información.
 
-- Un computador puede entenderse como la integración de distintos
-componentes o subsistemas de manera jerárquica. Este conjunto de
-sistemas busca realizar las siguientes funciones básicas:
+- La integración de distintos componentes o subsistemas de manera
+  jerárquica. Este conjunto de sistemas busca realizar las siguientes
+  funciones básicas:
 
   - Procesamiento de Datos
   - Almacenamiento de Datos
@@ -370,7 +369,6 @@ $$A \, NOR\, B = \lnot(A \lor B) = \overline{A \lor B}$$
   AND, OR y NOT se pueden implementar directamente sólo con compuertas
   NAND o NOR. Condición favorable para procesos de fabricación.
 
-
 ** Circuitos Combinacionales 
 - Conjunto de compuertas lógicas interconectadas cuya salida, en un
 momento dado, es función únicamente de las entradas en ese instante.
@@ -383,6 +381,108 @@ momento dado, es función únicamente de las entradas en ese instante.
   (POS)
 - El Teorema de Morgan permite hacer la conmutación de las dos
   representaciones.
+** Representación de Min-Terms o Sumas de Productos (SOP)
+Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
+combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
+1. Localizar los casos de la /Tabla de Verdad/ donde la Función $F=1$
+2. Para cada uno de los casos identificados escribir **el producto** de
+   las entradas considerando que si la entrada en la tabla vale 1, se
+   mantiene el símbolo. Si vale 0, se escribe el complemento.
+3. Sume los productos obtenidos
+
+** Representación de Max-Terms o Productos de Sumas (POS)
+Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
+combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
+1. Localizar los casos de la /Tabla de Verdad/ donde la Función $F=0$
+2. Para cada uno de los casos identificados escribir **la suma** de
+   las entradas considerando que si la entrada en la tabla vale 0, se
+   mantiene el símbolo. Si vale 1, se escribe el complemento.
+3. Sume los productos obtenidos
+** Ejemplo de Representación como SOP
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+Considera la Siguiente Tabla de Verdad:
+*** Tabla                                                       :TABLA:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
++-+-+-+-+
+|A|B|C|F|
++-+-+-+-+
+|0|0|0|1|
++-+-+-+-+
+|0|0|1|0|
++-+-+-+-+
+|0|1|0|1|
++-+-+-+-+
+|0|1|1|1|
++-+-+-+-+
+|1|0|0|0|
++-+-+-+-+
+|1|0|1|0|
++-+-+-+-+
+|1|1|0|1|
++-+-+-+-+
+|1|1|1|0|
++-+-+-+-+
+
+*** Representación SOP:                                         :TEXTO:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.7
+    :END:
+- Los casos que interesan son: 000, 010, 011, y 110, porque $F=1$.
+- En consecuencia, existen 4 Sumas de Productos. En cada producto, si
+  la variable está con 0 se complementa. Si está con 1 se deja:
+
+$$F = \bar{A}\bar{B}\bar{C}+\bar{A}B\bar{C}+\bar{A}BC+AB\bar{C}$$
+
+- Una vez obtenida se debe reducir por medio de Mapa K. o postulados
+  del álgebra booleana.
+
+** Ejemplo de Representación como POS
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+Considera la Siguiente Tabla de Verdad:
+*** Tabla                                                       :TABLA:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
++-+-+-+-+
+|A|B|C|F|
++-+-+-+-+
+|0|0|0|1|
++-+-+-+-+
+|0|0|1|0|
++-+-+-+-+
+|0|1|0|1|
++-+-+-+-+
+|0|1|1|1|
++-+-+-+-+
+|1|0|0|0|
++-+-+-+-+
+|1|0|1|0|
++-+-+-+-+
+|1|1|0|1|
++-+-+-+-+
+|1|1|1|0|
++-+-+-+-+
+
+*** Representación POS:                                         :TEXTO:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.7
+    :END:
+- Los casos que interesan son: 001, 100, 101, y 111, porque $F=0$
+- En consecuencia, existen 4 Productos de Sumas. En cada producto, si
+  la variable está con 1 se complementa. Si está con 0 se deja:
+
+$$F =
+(A+B+\bar{C})(\bar{A}+B+C)(\bar{A}+B+\bar{C})(\bar{A}+\bar{B}+\bar{C})$$
+
+- Una vez obtenida se debe reducir por medio de Mapa K. o postulados
+  del álgebra booleana.
+
 
 ** Circuitos Secuenciales
 La salida actual de estos circuitos depende de la entrada actual y de
@@ -392,19 +492,18 @@ señal de reloj, generalmente. Ejemplos son:
 - Biestables o latch SR
 - Biestable D
 - Registros
-- Contadores Síncronos
-
+- Contadores 
 ** Ejercicios
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
-1. A partir de la tabla de verdad de la compuerta OR exclusiva obtenga
-   la función booleana como SOP (min-términos).
+1. A partir de la tabla de verdad de la compuerta OR exclusiva de dos
+   entradas obtenga la función booleana como SOP (min-términos).
 2. Para el ejercicio anterior obtenga la representación en POS
    (max-términos).
 3. ¿Puede representar el circuito sólo con compuertas NAND?
 4. Simplificar $F = ACD+\bar{A}BCD$. Resp:$CD(A+B)$ 
-5. Simplificar $F=ABC+A\bar{B}\overline{\bar{A}\bar{C}}$ R: $A(\bar{B}C)$
+5. Simplificar $F=ABC+A\bar{B}\overline{\bar{A}\bar{C}}$ R: $A(\bar{B}+C)$
 6. A partir de la Tabla [[tab-ejercicio]]  de verdad obtener la representación
    en SOP.
 7. Usando Mapas de Karnaugh obtenga la simplificación del circuito de
