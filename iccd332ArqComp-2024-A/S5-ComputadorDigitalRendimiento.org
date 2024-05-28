@@ -22,7 +22,15 @@
 
 * Evolución Computador Digital
 ** Estructura Multi-Núcleo
-*** Estructura Multi-Núcleo
+*** Estructura Multi-Núcleo                                     
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+**** Texto                                                            :Texto:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :END:
+
 - Los computadores actuales disponen de /múltiples procesadores/
 - Una unidad de procesamiento tiene su unidad de control, ALU,
   registros y tal vez /cache/
@@ -32,8 +40,22 @@
   **ejecutar** instrucciones. Contiene la ALU, registros, unidad de
   control
 
+**** Imagen                                                    :Imagen:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.4
+     :END:
+#+ATTR_LATEX: :width \textwidth
+[[./images/computadorMultiNucleo.png]]
+
 ** Computador IAS
-*** Computador IAS
+*** Computador IAS(Institute for Advanced Study)
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+**** Texto                                                      :Texto:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
 - La idea de diseño: /stored-program concept/
 - Idea de diseño de Von Neuman
 - Consiste de una estructura conformada por:
@@ -41,9 +63,48 @@
   - ALU: operaciones binarias sobre los datos
   - Unidad de control: interpreta las instrucciones de la memoria y las ejecuta
   - E/S: interfaz de entradas y salidas
+  - Bus de datos para comunicar CPU y Memoria
+**** Imagen                                                    :Imagen:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+#+ATTR_LATEX: :width \textwidth
+[[./images/ias_structure.png]]
+*** Memoria del Computador IAS
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+
+- 4096 localidades denominadas /words/
+- Cada /word/ es de 40 bits
+- Contiene tanto os datos como las instrucciones
+- Los números usan 1 bit para el signo
+- Cada /word/ se subdivide en 2 instrucciones de 20 bits
+- La instrucción se divide en 8 bits de /operation code/(opcode):
+  especifica la operación
+- La instrucción se divide en 12 bits que contiene la dirección en
+  donde se aloja la instrucción o el dato
+
+*** Memoria del Computador IAS
+[[./images/ias_memory.png]]
 
 ** Instruction Set Architecture
-*** Instruction Set Architecture
+*** Instruction Set Architecture (ISA)
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+Define:
+- Formato de Instrucciones
+- Opcodes
+- Registros
+- Memoria e instrucciones
+- El efecto de la ejecución de instrucciones sobre los registros
+- El algoritmo que controla la ejecución de las instrucciones
+- Se propende a que el ISA sea compatible con versiones anteriores
+  (i.e. un programa escrito en versiones anteriores debe ser
+  ejecutable en versiones nuevas)
+- El incremento de la densidad de transistores permite ISA más
+  complejos
 ** Evolución del Computador y Ley de Moore
 *** Evolución del Computador y Ley de Moore
 
