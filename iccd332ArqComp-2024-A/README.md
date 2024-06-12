@@ -20,3 +20,5 @@ configuración de Emacs desde GNU realizar:
 
 	M-x set-variable RET package-check-signature RET allow-unsigned RET
 
+## Instalación de Paquetes Ortográficos
+
