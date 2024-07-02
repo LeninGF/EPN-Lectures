@@ -1,0 +1,98 @@
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+
+#+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Memoria Ram y Buses
+#+date: 2024-07-02
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+* Flip Flops
+** Compuertas Lógicas de Memoria (Latch)
+*** Texto                                                             :Texto:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+- Compuerta lógica que almacena un 1 bit de memoria.
+- Se caracteriza por una señal de retroalimentación de la salida de la
+  compuerta AND a la entrada de la compuerta OR
+- Cuando $S=1 \rightarrow Q=1$
+- Cuando $R=1 \rightarrow Q=0$
+- El valor inicial de $Q$ al encender no es determinado.
+
++--------+--------+--------+--------+
+|*S*     |*R*     |*Acción*|*Q*     |
++--------+--------+--------+--------+
+|0       |0       |Hold    |Qprev   |
++--------+--------+--------+--------+
+|1       |0       |Set     |1       |
++--------+--------+--------+--------+
+|X       |1       |Reset   |0       |
++--------+--------+--------+--------+
+
+
+*** Imagen Latch                                                     :Imagen:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+CAPTION: Circuito SR Latch
+[[./images/Latch.png]]
+
+** Latch D                                                          
+
+*** Texto                                                       :Texto:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+- Utiliza una señal de habilitación $E$
+- Cuando $E=0$, $Q$ mantiene el valor anterior
+- Cuando $E=1$, $Q = D$
+- Dispone de una salida complementada
+
+\begin{table}
+  \caption{Tabla de verdad de Latch D}
+  
+  \begin{tabular}{|rrrr|}
+    \hline
+    \textbf{D} & \textbf{E} & \textbf{Q} & $\bar{Q}$  \\ \hline
+    0 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 1 \\
+    X & 0 & $Q_{prev}$ & $\overline{Q}_{prev}$\\ \hline
+  \end{tabular}
+\end{table}
+*** Imagen                                                     :Imagen:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+#+CAPTION: D Latch
+[[./images/D-Latch.png]]
+** Flip Flops
+- Dispositivo que cambia su estado de salida de acuerdo a la
+  transición de la señal del reloj.
+- El Flip Flop tipo D usa una señal de reloj para conmutar estados.
+- Adicionalmente dispone de entradas $S$ y $R$ que permiten
+  sobrescribir los estados de salida.
+- Para la conmutación se utiliza la transición positiva del reloj.
+- Se pueden conectar en serie para realizar la transferencia de bits
+  de datos de un flip-flop a otro de manera secuencial (i.e. **shift
+  register**)
+
+
+* Sistema de Memoria
+* Buses
