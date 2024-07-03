@@ -1,4 +1,4 @@
-#+options: H:2
+#+options: H:2 num:t toc:t num:t |:t
 #+latex_class: beamer
 #+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
 #+beamer_theme: Madrid
@@ -9,11 +9,6 @@
 #+beamer_header:
 
 
-#+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
-#+options: author:t broken-links:nil c:nil creator:nil
-#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
-#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
-#+options: timestamp:t title:t toc:t todo:t |:t
 #+title: Memoria Ram y Buses
 #+date: 2024-07-02
 #+author: Lenin G. Falconí
@@ -94,5 +89,180 @@
   register**)
 
 
-* Sistema de Memoria
+| *S* | *R* | *D* | *CLK*        |          *Q* |      *\(\bar{Q}\)* |
+|-----+-----+-----+--------------+--------------+--------------------|
+|   0 |   0 | 1   | \(\uparrow\) |            1 |                  0 |
+|   0 |   0 | 0   | \(\uparrow\) |            0 |                  1 |
+|   0 |   0 | X   | Estable      | \(Q_{prev}\) | \(\bar{Q}_{prev}\) |
+|   1 |   0 | X   | X            |            1 |                  0 |
+|   0 |   1 | X   | X            |            0 |                  1 |
+
+** Ring Counter
+- Conecta la salida del último D-Latch al inicio
+- Se utiliza para construir *máquinas de estado finito*
+
+[[./images/ringCounter.png]]
+
+** Registros
+- Se utilizan por el procesador para almacenaje temporal de datos
+- Sirven como entrada y salida de una variedad de instrucciones como
+  el movimiento de datos desde y hacia la memoria, operaciones
+  aritméticas y manipulaciones a nivel de bit
+- Operaciones típicas son la rotación a derecha o izquierda
+- Los Registros se escriben y leen usualmente en paralelo de manera
+  simultánea en una transición de reloj.
+
+#+ATTR_LATEX: :scale 0.6
+#+CAPTION: Registro de 4 bits
+[[./images/registro4bits.png]]
+
+
+
+
+* Memoria Semiconductora
+** Evolución de la Memoria
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Es una secuencia de ubicaciones de almacenamiento direccionables que
+  contiene instrucciones y datos para ser utilizados por el procesador
+  mientras ejecuta un programa.
+- 1950 a 1970: Se utiliza matrices de núcleos ferromagnéticos
+  toroidales. Se caracterizan por ser no volátiles y el grabado de 1 o
+  0 se controla según la polarización obtenida por la circulación de
+  la corriente eléctrica a través de la bobina.
+- 1970 a actualidad: Memorias estáticas y dinámicas a base de
+  semiconductores como el
+  MOSFET(Metal-Oxide-Semiconductor-Field-Effect-Transistor)
+
+*** Memoria Ferromagnética                                       :imagenCol1:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+#+CAPTION: Acercamiento de núcleos ferromagnéticos
+[[./images/memoriaFerroMagnetica.png]]
+
+*** Operación Memoria Ferromagnética                             :imagenCol2:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+CAPTION: Operación de núcleos magnéticos
+#+ATTR_LATEX: :scale 0.6
+[[./images/operacionMemoriaNuceloFerroMag.png]]
+
+*** Memoria IBM                                            :imagenCol3:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+#+CAPTION: IBM 360 memoria de 8KB
+[[./images/memoriaIBM8k.png]]
+
+** Memoria Semiconductora
+*** imagen1                                                :imagencol1:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+#+CAPTION: 64 bits, 1969
+[[./images/ram1969.png]]
+
+*** imagen2                                                :imagencol2:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+
+#+CAPTION: 1MiB, 1989
+[[./images/ram1989.png]]
+
+*** imagen3                                                :imagencol3:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+
+#+CAPTION: 128 GiB, 2019
+[[./images/ram2019.png]]
+
+
+** MOSFET
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+- Operación similar a un transistor NPN[fn:1].
+- Es un dispositivo controlado por voltaje.
+- La operación del MOSFET depende de la tensión entre /Gate/ y /Source/
+- Se estima que existen 13 sextillones[fn:2] de transistores han sido
+  manufacturados, siendo el 99.9% de tipo MOSFET.
+- Existen dos tipos de MOSFET: 1) de canal N y 2) de canal P
+- Las compuertas lógicas se forman de pares de MOSFET tipo N y P.
+- Un dispositivo formado por pares de transistores /MOS/ se denomina
+  /Complementary MOS/ (i.e. CMOS)
+
+** MOSFET
+#+CAPTION: Compuerta NOT
+[[./images/CMOS-NOT.png]]
+
+** Celda DRAM
+
+- Una memoria de acceso aleatorio dinámico está formada por un MOSFET
+  y un capacitor.
+- Una celda DRAM es una localidad que permite escribir y leer un bit
+- La celda se replica en una matriz para rectangular para formar un
+  banco de memoria DRAM.
+- El estado de la memoria se guarda en el capacitor
+- O lógico es 0V
+- 1 lógico es alrededor de 1.1V
+
+** Celda DRAM
+*** Imagen 1                                                  :imagen1:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+ATTR_LATEX: :scale 0.6
+#+CAPTION: Celda de 1 bit
+[[./images/DRAM-bit-cell.png]]
+
+*** Imagen 2                                                  :imagen2:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+ATTR_LATEX: :scale 0.6
+#+CAPTION: DRAM de 16 bits (4 words de 4 bits)
+[[./images/bancoDRAM.png]]
+
+** Proceso de Lectura/Escritura                                     :B_frame:
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+- Las líneas de dirección (i.e. wordlines) se mantienen a nivel bajo
+  la mayoría del tiempo para mantener al MOSFET apagado.
+- Para leer, le circuito de control selecciona la /wordline/ apropiada
+  y la coloca en nivel alto, mientras que las restantes se mantienen
+  en bajo. Esto permite que encender los MOSFETs de la wordline y que
+  los capacitores pasen sus niveles de voltaje a las /bitlines/
+  (i.e. bus de datos)
+- El proceso de lectura funciona similar, sólo que la circuitería se
+  encarga de cargar los capacitores de la /wordline/ respectiva.
+
+** Etimología DDR5 SDRAM
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Intel introdujo la memoria DRAM en 1970
+- Las siglas DDR hacen referencia a *double data rate* que indica que
+  el dispositivo realiza dos transferencias por ciclo de reloj.
+- El número luego de DDR indica la generación de la tecnología
+  (i.e. DDR5 quinta)
+- SDRAM significa DRAM sincrónica: usa una señal de reloj para
+  sincronizar la memoria y el procesador.
+- Recuerde que 1 G equivale a $2^{30}$
+- Para 2021, el estándard de memoria es la DDR5 SDRAM empacada en
+  *dual inline memory module (DIMM)*.
+- Un DIMM tiene 288 pines.
+- Para laptops está disponible la **SODIM** de 262 pines
+  
 * Buses
+
+* Footnotes
+[fn:2]Un sextillón es un 1 seguido de 21 ceros 
+
+[fn:1]controlado por corriente 
