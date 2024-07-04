@@ -32,7 +32,7 @@
 - El valor inicial de $Q$ al encender no es determinado.
 
 +--------+--------+--------+--------+
-|*S*     |*R*     |*Acción*|*Q*     |
+|S       |R       |Acción  |Q       |
 +--------+--------+--------+--------+
 |0       |0       |Hold    |Qprev   |
 +--------+--------+--------+--------+
@@ -67,7 +67,7 @@
     \hline
     \textbf{D} & \textbf{E} & \textbf{Q} & $\bar{Q}$  \\ \hline
     0 & 1 & 0 & 1 \\
-    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 0 \\
     X & 0 & $Q_{prev}$ & $\overline{Q}_{prev}$\\ \hline
   \end{tabular}
 \end{table}
