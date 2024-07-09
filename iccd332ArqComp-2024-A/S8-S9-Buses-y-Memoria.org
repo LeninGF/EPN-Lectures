@@ -261,8 +261,70 @@
 - Para laptops está disponible la **SODIM** de 262 pines
   
 * Buses
+** Sistema I/O
+- Los procesadores de 32 y 64 bits utilizan el mapeado de las
+  interfaces de entrada/salida a memoria.
+- Arquitecturas actuales usan un conjunto de circuitos integrados
+  (**chipset**) para manejar y comunicar con las interfaces de entrada
+  salida.
+- El chipset permite conectar con un amplio rango de periféricos
+  (e.g. discos, interfaces de red, teclado, mouse, USB)
+** Buses de datos Paralelos y Seriales
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+*** Bus Paralelo                                                     
+:PROPERTIES:
+:BEAMER_env: block
+:END:
 
+- Un bus paralelo comunica múltiples bits de datos de manera *simultánea*
+- Se utilizaba para conectar el computador a impresoras
+- Requiere de varios cables o conductores lo que incrementa el costo y
+  la probabilidad de fallo.
+- Existe un límite superior para la velocidad de transferencia de
+  datos en un bus paralelo (los bits no llegan al mismo tiempo al
+  incrementar la velocidad de transmisión)
+- Transmiten datos en una sola dirección (*half duplex*)
+** Buses de datos Paralelos y Seriales
+*** Bus Serie                                                        
+:PROPERTIES:
+:BEAMER_env: block
+:BEAMER_opt: allowframebreaks
+:END:
+
+- Transmite un bit a la vez entre dos terminales de comunicación.
+- Puede desarrollar comunicación bidireccional (i.e. **full-duplex**)
+- Utiliza un par de conductores para transmitir los datos.
+- Utiliza señales diferenciales[fn:3] para mitigar la susceptibilidad al ruido.
+- Físicamente, el cableado serial usa pares trenzados. 
+- La mayoría de comunicaciones de alta velocidad entre un procesador y
+  un periférico, en computadores actuales, es a través del bus serial.
+- Puede alcanzar a realizar billones de transferencias por segundo.
+- La conexión entre un procesador y el chipset de la tarjeta madre usa
+  varios buses seriales denominados **high-speed input output lanes (HSIO)**
+- HSIO se usa en PCI-Express, SATA, M.2, USB, Thunderbolt.
+
+** Buses de datos Paralelos y Seriales
+#+ATTR_LATEX: :height 0.3\textheight
+#+caption: Puerto Serial y Paralelo
+[[./images/oldportsBIG.jpg]]
+
+*** imagen1                                                   :imagen1:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+caption: Comunicación serial
+[[./images/serial-com.png]]
+*** imagen2                                                         :imagen2:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+caption: Par Trenzado
+[[./images/twisted-pair.jpg]]
 * Footnotes
+
+[fn:3]Se transmite la diferencia de voltaje 
 [fn:2]Un sextillón es un 1 seguido de 21 ceros 
 
 [fn:1]controlado por corriente 
