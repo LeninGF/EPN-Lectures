@@ -322,6 +322,24 @@
 :END:
 #+caption: Par Trenzado
 [[./images/twisted-pair.jpg]]
+
+** SATA (Serial AT Attachment)
+
+
+- Interfaz serial bi-direccional standard para conectar /motherboards/
+  a dispositivos de almacenamiento.
+- Contiene dos conductores diferenciales. Cada para lleva datos en una
+  dirección.
+- Diseñado para operaciones sobre cables antes que sobre pistas de
+  metal.
+- Utilizado para comunicar el procesador con discos magnéticos, discos
+  ópticos, o discos de estado sólido.
+- Soporta transferencias full-duplex.
+
+** SATA
+#+ATTR_LATEX: :height 0.8\textheight
+[[./images/sata1.jpg]]
+
 * Footnotes
 
 [fn:3]Se transmite la diferencia de voltaje 
