@@ -112,3 +112,12 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
 
    #+end_src
    
+10. Se desea realizar un registro climatológico de la ciudad de
+    Quito. Para esto escriba un script de Python que permita obtener
+    desde el API de [[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud
+    de Quito como (-0.2299, -78.5249), respectivamente. Los resultados
+    obtenidos de la consulta al API se escriben en un archivo
+    /CSV/. Cada ejecución del script debe almacenar nuevos datos en el
+    archivo /clima-quito-hoy.csv/. Investigue sobre *crontab* y
+    utilícelo para obtener datos del API de /openweathermap/ cada 5
+    minutos. Verifique los resultados.
