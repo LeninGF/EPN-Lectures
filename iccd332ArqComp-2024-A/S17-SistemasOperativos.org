@@ -21,6 +21,93 @@
 
 
 * Sistema Operativo
+** Objetivos:
+- Conocer las funciones de un Sistema Operativo (SO)
+- Comprender las razones para la partición de la memoria y las técnicas usadas
+- Comprender en qué consiste el sistema de paginación y segmentación
+- Definir la memoria virtual
+** Conceptos
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+*** texto                                                       :texto:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+- Un SO controla la ejecución de programas/aplicaciones.
+- Es un interfaz entre los programas/aplicaciones y el hardware
+- El propósito de un SO es facilitar el uso de la computadora usando
+  los recursos del sistema de manera eficiente
+- El usuario final del sistema no le concierne comprender la
+  arquitectura del computador para usarlo
+*** imagen                                                     :imagen:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+#+caption: Jerarquía Software/Hardware del Computador
+[[file:images/SOhardwareSoftwareArchitecture.png]]
+** Conceptos II
+- Para manejar el complejo sistema se dispone de programas menores llamados **utilidades**
+- Las utilidades implementan funciones usadas frecuentemente como:
+  - Administración de archivos
+  - Creación de programas
+  - Control de dispositivos E/S
+- El SO oculta los detalles del hardware al programador y le dota de
+  una interfaz conveniente para usar el sistema
+** Utilidades del SO
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- **Creación de Programas:** editores, debuggers.
+- **Ejecución de Programas:** El SO maneja las diferentes operaciones
+  requeridas por el programa como el acceso a dispositivos y la carga
+  de datos en la memoria principal.
+- **Acceso a dispositivos E/S:** El SO se encarga de las instrucciones
+  y señales de control requeridas para operar sobre los dispositivos.
+- **Control de acceso a los archivos:** SO provee de mecanismos de
+  control para el acceso y manipulación de archivos.
+- **Acceso al sistema:** SO define control de acceso al sistema
+  garantizando protección a recursos y datos del sistema de usuarios
+  no permitidos
+- **Detección de Errores y Respuesta:** Manejo de respuestas sobre
+  errores en ejecución del sistema (errores de hardware, overflow). El
+  SO trata de levantar el error con el menor impacto posible (terminar
+  el programa, reportar el error, reintentar)
+- **Gestión de Cuentas:** estadística de uso de los recursos y
+  monitoreo del desempeño. 
+** Definiciones
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- **ISA (Instruction Set Architecture):** repertorio de instrucciones
+  de la máquina (i.e. lenguaje ensamblador). Existe un ISA para
+  usuario y otro para el sistema.
+- **ABI (Aplication binary interface):** define un estándar para la
+  portabilidad binaria entre programas. i.e. establece la interfaz de
+  llamada al SO y los recursos y servicios de hardware.
+- **API (Application Programming Interface):** dota a un programa de
+  acceso a los recursos de hardware por medio del ISA a través de un
+  lenguaje de alto nivel (HLL). Asegura la portabilidad del programa a
+  otros computadores compatibles con el mismo API.
+** SO como Administrador de recursos
+:PROPERTIES:
+:BEAMER_opt: fragile
+:END:
+#+attr_latex: :fontsize=\small 
+- El **SO** guía al **procesador** en el uso de los
+  recursos del sistema y la ejecución de otros programas.
+- Para que el procesador realice tareas adicionales, debe **dejar de
+  ejecutar** el programa del SO y atender otros programas.
+- El SO **cede el control** temporalmente para que el
+  procesador realice trabajos "útiles".
+- El SO retoma el control para **preparar al procesador** para la
+  ejecución de la siguiente tarea.
+- La memoria principal tiene una porción del SO (kernel[fn:2])
+
+** SO como Administrador de recursos
+#+attr_latex: :height .8\textheight 
+[[./images/SOresourcemanager.png]]
+
 * Linux
 ** Linux
 :PROPERTIES:
@@ -155,6 +242,8 @@ ls -l /home/leningfe/PythonProjects/Example/main.py
 (7) Nombre/Path del archivo
 
 * Footnotes
+
+[fn:2]funciones más frecuentes usadas por el SO 
 [fn:1]Puede ser un grupo de usuarios 
 [fn:5]Lista de directorios que almacenan comandos 
 [fn:4]Proceso de buscar vulnerabilidades en una red o computadora
