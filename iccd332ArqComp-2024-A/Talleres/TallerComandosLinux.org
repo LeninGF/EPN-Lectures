@@ -40,14 +40,10 @@ ARQUITECTURA DE COMPUTADORES}
 #+end_export
 
 
-
-
-
-
 * Objetivos
 
 - Conocer el funcionamiento del terminal de /Linux/
-- Aprender a manejar comandos del termianl de /Linux/
+- Aprender a manejar comandos del terminal de /Linux/
 
 * Instrucciones
 Este taller/tutorial de comandos de Linux tiene por objetivo ejercitar
@@ -74,10 +70,18 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
 3. Investigue sobre el comando ~wget~ y utilícelo para descargar en
    ~/FashionData los datos de train y test del /Fashion-Mnist desde el
    siguiente enlace: [[https://github.com/zalandoresearch/fashion-mnist][fashion-mnist]]
-   1. Imágenes de entrenamiento:  http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz
-   2. Etiquetas de entrenamiento: http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-labels-idx1-ubyte.gz 
-   3. Imágenes de prueba: http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz
-   4. Etiquetas de prueba: http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz
+   1. Imágenes de entrenamiento:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz
+   2. Etiquetas de entrenamiento:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-labels-idx1-ubyte.gz 
+   3. Imágenes de prueba:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz
+   4. Etiquetas de prueba:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz
    #+begin_src shell :exports both
 
    #+end_src
@@ -113,11 +117,29 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
    #+end_src
    
 10. Se desea realizar un registro climatológico de la ciudad de
-    Quito. Para esto escriba un script de Python que permita obtener
-    desde el API de [[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud
-    de Quito como (-0.2299, -78.5249), respectivamente. Los resultados
-    obtenidos de la consulta al API se escriben en un archivo
-    /CSV/. Cada ejecución del script debe almacenar nuevos datos en el
-    archivo /clima-quito-hoy.csv/. Investigue sobre *crontab* y
-    utilícelo para obtener datos del API de /openweathermap/ cada 5
-    minutos. Verifique los resultados.
+    Quito. Para esto, escriba un script de Python/Java que permita
+    obtener datos climatológicos desde el API de
+    [[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud de Quito como
+    (-0.2299, -78.5249), respectivamente. Los resultados obtenidos de
+    la consulta al API se escriben en un archivo
+    /clima-quito-hoy.csv/. Cada ejecución del script debe almacenar
+    nuevos datos en el archivo. Investigue sobre *crontab* y utilícelo
+    para obtener datos del API de /openweathermap/ cada 5 minutos
+    mediante la ejecución de un archivo ejecutable denominado
+    /get-weather.sh/. Verifique los resultados. Todas las operaciones
+    se realizan en Linux o en el WSL. Las etapas del problema se
+    subdividen en:
+    1. Crear su API gratuito en [[https://openweathermap.org/current#one][openweathermap]]
+    2. Escribir un script en Python/Java que realice la consulta al API
+       y escriba los resultados en /clima-quito-hoy.csv/
+       
+       #+begin_src python :exports both
+
+       #+end_src
+    3. Desarrollar un ejecutable /get-weather.sh/ para ejecutar el
+       programa Python/Java.
+       #+begin_src shell :exports both
+       #+end_src
+    4. Configurar Crontab para la adquisición de datos. Escriba el
+       comando configurado.
+       
