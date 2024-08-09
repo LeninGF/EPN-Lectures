@@ -1,0 +1,139 @@
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header: \usepackage{tabularx}
+
+
+#+title: S13-ARM
+#+date: <2024-08-05 Mon>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+* Introducción ARM
+** Procesadores ARM
+- Advanced RISC Machine
+- Procesadores basados en una arquitectura RISC[fn:1]
+- Diseño simplificado, bajo consumo de energía
+- Smartphones, tablets, portátiles, servidores
+** Registros ARM
+- Las operaciones del CPU se realizan en los registros del CPU (no en
+  la memoria)
+- Formada por 16 registros de 32 bits.
+- $R_0$ a $R_{13}$ son de propósito general
+- $R_{13}$: stack pointer (llamada a funciones)
+- $R_{14}$: Link register (llamada a funciones)
+- $R_{25}$: Contador de Programa
+- CSPR: registro que contiene información sobre la última instrucción
+  ejecutada (e.g. overflow, negativo, 0, carry, etc.)
+** Formato Instrucción ARM
+
+#+ATTR_LATEX: :environment tabularx :placement [h] :center t :width \linewidth
+|-----------+--------------+--------+---------------------|
+|     31-28 |        27-25 |  24-21 |                  20 |
+|-----------+--------------+--------+---------------------|
+| Condition | Operand Type | OpCode | Set Condition Codes |
+|-----------+--------------+--------+---------------------|
+
+|------------------+----------------------+-------------------|
+|            19-16 |                15-12 |              11-0 |
+|------------------+----------------------+-------------------|
+| Operand Register | Destination Register | Inmediate Operand |
+|------------------+----------------------+-------------------|
+
+** Lenguaje Ensamblador
+- El código carga el valor de 30 en el registro $R_0$ y 1 en el
+  $R_7$. Luego usa SWI para terminar el programa generando una
+  interrupción que pone al controlador en modo supervisor.
+
+#+begin_src asm
+	.global _start
+	_start:
+	mov R0, #30 /*destino, origen */
+	mov R7, #1  /*terminar programa*/
+	swi 0
+#+end_src
+
+- Para ingresar valores Hexadecimales se usa e.g. #0x0A
+* Raspberry PI
+** Raspberry PI
+- La Raspberry Pi utiliza un system-on-chip (SoC) Broadcom BCM2835,
+  que incluye una CPU compatible con ARM y una unidad de procesamiento
+  gráfico (GPU) integrada.
+- Los modelos originales de Raspberry Pi tenían un procesador de un
+  solo núcleo que funcionaba a velocidades entre 700 MHz y 1.2 GHz.
+- El sistema operativo predeterminado para Raspberry Pi se llama
+  Raspberry Pi OS (anteriormente conocido como Raspbian)
+- Raspberry Pi OS es una distribución basada en Linux diseñada
+  específicamente para ejecutarse en todos los modelos de Raspberry Pi
+  de 32 o 64 bits
+- Alternativamente se pueden instalar otros Sistemas Operativos Linux
+  o diseñar un *kernel propio*
+** Raspberry PI
+#+ATTR_LATEX: :height 0.9\textheight
+[[./images/raspberrypi.jpg]]
+
+** Interfaces de Raspberry PI
+- Interfaz con pines para entradas/salidas digitales
+- Interfaz USB para conexión de dispositivos como teclados/mouse
+- Salida HDMI para conexión de monitores/pantallas
+- Jack de salida de sonido
+- Las versiones actuales disponen de bus PCIe
+- También dispone conectores para cámara web
+* Programación Assembler Raspberry Pi
+** Programación Assembler de Raspberry Pi
+1. Creación de un archivo con extensión *.s
+2. Compilación del archivo usando el GNU Assembler
+3. Creación de archivo ejecutable
+** Programa Adder en Assembler de Raspberry Pi
+Considere un programa denominado /adder.s/ que sume dos valores
+cargados directamente a los registros $w_1$ y $w_2$ y cuyo resultado
+se almacena en el registro $w_0$. Se usa $w$ en ve de $r$ para
+trabajar en 32 bits.
+
+#+begin_src asm
+	.global
+	.func main
+	main:
+	mov w1, #0x0A
+	mov w2, #0x05
+	add w0, w1, w2
+	ret
+#+end_src
+
+** Compilación y Ejecución
+Se ensambla el programa adder.s en adder.o:
+#+begin_src shell
+as -o adder.o adder.s
+#+end_src
+
+Se genera un ejecutable:
+#+begin_src shell
+gcc -o adder adder.o
+#+end_src
+
+Se ejecuta y se enruta la salida a pantalla
+#+begin_src shell
+./adder ; echo $?
+#+end_src
+
+* Referencias
+** Referencias:
+- [[https://rpi.science.ontariotechu.ca/lab/arm/][rpi.science]]
+- [[https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf][bcm2711-arm-peripherals]]
+- [[https://iitd-plos.github.io/col718/ref/arm-instructionset.pdf][arm-isa]]
+- [[https://www.youtube.com/watch?v=G64GegkxW84][video-intro-assembly-rp2040]]
+- [[https://www.youtube.com/watch?v=gfmRrPjnEw4&t=621s][tutorial-assembly-ARM]]
+- [[https://cpulator.01xz.net/?sys=arm-de1soc][simulador]]
+* Footnotes
+
+[fn:1]Reduced Instruction Set Computer 
