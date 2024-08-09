@@ -135,7 +135,7 @@ WSL. Las etapas del problema se subdividen en:
        #+end_src
 
        Instrucciones de sobre la creación del sitio web se tiene en el
-       vídeo de instrucciones y en el archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-A/Proyectos/Org-Website.org][Org-Website.org]] en el
+       vídeo de instrucciones y en el archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-A/Tutoriales/Org-Website/Org-Website.org][Org-Website.org]] en el
        GitHub del curso
 
     6. Su código debe estar respaldado en GitHub/BitBucket, la
