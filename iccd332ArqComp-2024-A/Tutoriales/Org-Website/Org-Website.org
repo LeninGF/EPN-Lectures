@@ -143,16 +143,30 @@ Liste los archivos en la ruta
 un archivo ejecutable.
 
 La ejecución de /build.sh/ se realiza desde la carpeta contenedora del
-proyecto haciendo `./build.sh` o alternativamente `sh build.sh`. La
+proyecto haciendo ~./build.sh~ o alternativamente ~sh build.sh~. La
 ejecución genera una carpeta /public/ que contiene los archivos
 .html. Para lo cual es **importante** que los archivos **.org** se
 encuentren en la carpeta
-`/home/<user>/Projects/Sites/arquitecturapc-site/content`. De esta
+~/home/<user>/Projects/Sites/arquitecturapc-site/content~. De esta
 manera el script va a convertir los archivos .org de la carpeta
 content en archivos .HTML.
 
-4. Para desplegar un servidor HTTP desde emacs usar el siguiente
-   código apuntando a la carpeta /public/ del proyecto
+* Servidor HTTP en Emacs
+Para presentar el sitio web se puede ejecutar un servidor httpd desde
+Emacs. Para esto es necesesario que instale en su Emacs el paquete
+~simple-httpd~. Esto lo puede hacer de dos maneras:
+
+1.~M-x package-install~ presionamos enter (i.e. RET) y escribimos el
+nombre del paquete: ~simple-httpd~
+2. Puede configurar su archivo init.el para que instale y arranque este componente:
    #+begin_src elisp
-    M-x httpd-serve-directory
+    (use-package simple-httpd
+            :ensure t)
    #+end_src
+
+Finalmente, para desplegar un servidor HTTP desde emacs usar el
+siguiente código apuntando a la carpeta /public/ del proyecto
+
+#+begin_src elisp
+   M-x httpd-serve-directory
+#+end_src
