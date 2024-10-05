@@ -1,0 +1,199 @@
+\documentclass[addpoints]{exam}
+\usepackage{comment}            
+% \begin{comment}                 
+% This commented-out block of code translates default words to Spanish. 
+% Remove \begin{comment} and \end{comment} to enable it.
+\usepackage[spanish]{babel}
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto extra}{puntos extra}
+\totalformat{Pregunta \thequestion: \totalpoints{} puntos}
+\chqword{Pregunta}
+\chpgword{Página}
+\chpword{Puntos}
+\chbpword{Puntos extra}
+\chsword{Puntos obtenidos}
+\chtword{Total}
+% \end{comment}
+\usepackage{datetime}
+\usepackage{graphicx}
+\boxedpoints
+\newdate{testdate}{05}{06}{2024}
+
+ \pagestyle{headandfoot}
+ \runningheadrule
+ \firstpageheader{\displaydate{testdate}}{\textbf{Escuela Politécnica Nacional}\\\textbf{Arquitectura de Computadores ICCD332-GR2}\\Taller}{\textbf{Prof:} Lenin G. Falconí}
+ \runningheader{Math 115}
+ {Prueba, Página \thepage\ de \numpages}
+ {\displaydate{testdate}}
+ \firstpagefooter{}{}{}
+ \runningfooter{}{}{}
+
+ \begin{document}
+% Quito, \displaydate{testdate} \hfill \textbf{Profesor:} Lenin
+% G. Falconí M.Sc.                %
+% -------------------------------------------------------------
+% This code creates the text before the first question
+% -------------------------------------------------------------
+\begin{center}
+  \fbox{\fbox{\parbox{5.5in}{ Conteste las siguientes preguntas en una
+        hoja en la que conste todo el procedimiento desarrollado para
+        la solución del problema. No olvide identificarse con sus
+        nombres completos}}}
+\end{center}
+
+\vspace{5mm}
+
+\vspace{5mm}
+\makebox[\textwidth]{Nombres Completos:\enspace\hrulefill}
+\vspace{5mm}
+
+% \makebox[\textwidth]{Instructor’s name:\enspace\hrulefill}
+
+
+% -------------------------------------------------------------
+
+%Here, the questions begin
+\begin{questions}
+
+%First question below
+  \question Un tanque de un proceso químico está monitoreado por un
+  sensor de presión $P$, un sensor de temperatura $T$ y un sensor de
+  nivel $L$. Diseñe un circuito de control combinacional que detecte
+  si el nivel $L$ o la presión $P$ son altas cuando la temperatura $T$
+  es baja. Considere que:
+  \begin{itemize}
+  \item $P=1$ si la presión excede el límite satisfactorio de
+    operación.
+  \item $L=1$ si el nivel excede el límite satisfactorio de operación.
+  \item $T=1$ si la temperatura es inferior al límite seguro de
+    operación.
+  \end{itemize}
+%This question has several parts
+\begin{parts}
+\part[2] Realice una tabla de verdad con las variables $P$, $T$ y $L$
+% \vspace*{\stretch{2}}         %Equally distributes the available space
+
+\part[2] Realice un mapa de Karnaugh para obtener el circuito
+combinacional más simple. Indique las agrupaciones realizadas y
+presente el resultado final como una suma de productos (SOP)
+% \vspace*{\stretch{2}}
+\part[1] Dibuje el circuito lógico utilizando compuertas lógicas.
+% \vspace*{\stretch{2}}
+\end{parts}
+
+\droptotalpoints %Prints the number of points in this question
+
+%The next two questions are multiple choice examples
+% -------------------------------------------------------------
+% \question Which of these famous physicists invented time?
+
+% \begin{oneparchoices}
+%  \choice Stephen Hawking 
+%  \choice Albert Einstein
+%  \choice Emmy Noether
+%  \choice This makes no sense
+% \end{oneparchoices}
+
+% \question Which of these famous physicists published a paper on Brownian Motion?
+
+% \begin{checkboxes}
+%  \choice Stephen Hawking 
+%  \choice Albert Einstein
+%  \choice Emmy Noether
+%  \choice I don't know
+% \end{checkboxes}
+% -------------------------------------------------------------
+
+\question  Exprese en formato IEEE de 32 bits el número
+$-123.25$. Escriba el resultado en notación hexadecimal
+
+\begin{parts}
+  \part[1] Realice el procedimiento de conversión decimal a
+  binario necesario
+  % \vspace*{\stretch{2}}
+
+  \part[1] Exprese el número en formato $(-1)^s1.m\times 2^e$
+  % \vspace*{\stretch{2}}
+  \part[1] Exprese el número en formato IEEE de 32 bits
+  \part[1] Exprese el resultado en Hexadecimal.
+
+\end{parts}
+\droptotalpoints %Prints the number of points in this question
+
+% \question[\half] El complemento en la base de un número $A$ en base $r$ se
+% define como $r^n-A$. Obtenga el complemento a 16 de AF3B
+
+% \vspace*{\stretch{2}}
+
+% \question Simplifique la siguiente expresión
+% $F=\bar{A}C+\bar{A}B+A\bar{B}C+BC$
+% \begin{parts}
+%   \part[\half] Usando postulados del álgebra de Boole
+%   \vspace*{\stretch{2}}
+%   \part[\half] Usando Mapa K
+%   \vspace*{\stretch{2}}
+% \end{parts}
+% \droptotalpoints
+
+% \question El complemento en la base de un número $A$ en base $r$ se
+% define como $r^n-A$. Obtenga:
+
+% \begin{parts}
+%   \part[\half] Complemento a 16 de AF3B
+%   \vspace*{\stretch{2}}
+%   \part[\half] Convierta AF3B a binario y obtenga el complemento a 2
+%   \vspace*{\stretch{2}}
+%   \part[\half] Convierta el resultado anterior a hexadecimal
+% \end{parts}
+% \droptotalpoints %Prints the number of points in this question
+
+% \clearpage                      %
+
+% \makebox[\textwidth]{Nombres Completos:\enspace\hrulefill}
+% \vspace*{\stretch{2}}
+
+\question[1] Reste $7F_{16}$ al exponente del ejercicio anterior utilizando complemento a 2, utilizando 8 bits.
+
+% \vspace*{\stretch{2}}
+
+
+% \question[2] Obtenga el valor decimal equivalente del número expresado en
+% formato  IEEE de 32 bits: $C3C00000$. %\answerline
+
+% \vspace*{\stretch{2}}
+
+
+% \question[2] La Figura \ref{fig:circuito} muestra un diagrama de un
+% circuito para la alarma de un automóvil. Los 3 sensores, representados
+% como interruptores, indican el estado de la puerta del conductor
+% $S_p$, el interruptor de encendido del coche $I$ y las luces frontales
+% $S_l$, respectivamente. Diseñe un circuito lógico
+% simplificado\footnote{Obtenga la tabla de verdad y simplifique usando
+%   Mapas K} con estos tres interruptores como
+% entradas de manera que la alarma se active cuando exista cualquiera de
+% las siguientes condiciones:
+
+% \begin{itemize}
+%   \item Las luces frontales están prendidas, mientras el interruptor del
+%   encendido está apagado.
+% \item La puerta está abierta mientras el interruptor de encendido está
+%   activado
+% \end{itemize}
+
+
+% \begin{figure}[h!]
+%   \centering
+%   \caption{Circuito de Alarma de Vehículo}
+%   \includegraphics[scale=0.6]{./images/Problema4-8.pdf}
+%   \label{fig:circuito}
+% \end{figure}
+
+
+\end{questions}
+
+\begin{center}
+  \scriptsize
+  \combinedgradetable[h][questions]
+\end{center}
+
+\end{document}

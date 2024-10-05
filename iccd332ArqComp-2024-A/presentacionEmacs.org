@@ -1,0 +1,35 @@
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+title: Presentaciones con ORG
+#+date: <2024-05-05 Sun>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+* Introducción
+
+** Comandos Emacs
+Existen varios comandos básicos de Emacs con los que nos debemos familiarizar
+- Comandos de Movimiento: C-n, C-p, C-a, C-e, M-f, M-b
+- Comandos de Edición: C-d, M-d
+- Comandos Espaciales
+
+** Comandos Especiales
+
+** Insertar Enlaces
+Para colocar un enlace usar M-org-insert-link. Ejemplo:
+[[https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf][Emacs Cheat Sheet]]
+
+* Programación
+** Ejecutar scripts
