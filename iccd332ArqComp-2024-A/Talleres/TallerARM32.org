@@ -1,0 +1,60 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Taller ARM 32
+#+date: <2024-08-04 Sun>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+* Objetivos
+
+- Conocer sobre la arquitectura de 32 bits en un sistema ARM como /RaspberryPI/
+- Escribir programas en Assembler para controlar el hardware de la /RaspberryPI/
+- Armar un circuito digital para control por medio de /RaspberryPI/
+* RaspberryPI
+** Instalación del Sistema Operativo:
+1. Descargar e instalar [[https://www.raspberrypi.com/software/][Raspberry Pi Imager]] para colocar el sistema
+   operativo (SO) en la Micro-SD. Alternativamente en Linux puede ejecutar:
+   #+begin_src shell
+    sudo apt install rpi-imager
+   #+end_src
+2. Utilice una Micro-SD de por lo menos 32GB para el sistema operativo
+   completo y de al menos 16 GB para Raspberry Pi OS Lite
+3. Los pasos para el arranque del sistema se describen en la [[https://www.raspberrypi.com/documentation/computers/getting-started.html][Guía de Inicio de Raspberry Pi]]
+** Configuración
+
+* Instrucciones

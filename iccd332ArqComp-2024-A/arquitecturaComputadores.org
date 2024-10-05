@@ -1,0 +1,180 @@
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header: \usepackage[margin=2cm]{geometry}
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: arquitecturaComputadores
+#+author: Lenin Falconi
+#+email: leningfe@LAPTOP-SLM64NI0
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+#+date: \today
+
+* Arquitectura de Computadores
+
+Profesor: Ing. Lenin G. Falconí. M.Sc.
+
+Espacio-Tiempo:
+- Martes 9-11 P5-005
+- Miércoles 9-11 
+
+
+** Organización y arquitectura de computadores
+Poner algo sobre la organización y la arquitectura de computadores
+
+*** Estructura y Funcionamiento
+- Los computadores son dispositivos complejos, formados por millones
+  de componentes electrónicos básicos.
+
+- Para comprender el funcionamiento de un computador se debe aproximar
+  a éste como un sistema jerárquico, conformado por subsistemas interrelacionados.
+
+- **Estructura**: es el modo en que los componentes están interrelacionados
+- **Funcionamiento:** consiste en la operación de cada componente
+  individual como parte de la estructura
+
+*** Funcionamiento Básico del computador
+
+- Procesamiento de datos
+- Almacenamiento de datos
+- Transferencia de datos
+- Control
+
+*** Estructura del computador
+
+En una manera reduccionista, un computador puede ser entendido como un
+sistema integrado de dispositivos electrónicos que interactúa con el
+entorno a través de dispositivos periféricos o líneas de comunicación.
+
+Existen cuatro componentes estructurales principales:
+
+1. **Unidad Central de Procesamiento CPU:** encargado de controlar el sistema y de procesar los datos.
+2. **Memoria Principal:** almacenamiento de datos
+3. **E/S:** transferencia de datos entre el computador y el entorno externo
+4. **Sistema de Interconexión:** realiza la comunicación entre el CPU,
+   la memoria principal y los E/S.
+
+*** CPU
+
+La CPU está compuesta, a su vez, de los siguientes componentes estructurales:
+
+- **Unidad de control:** controlar el funcionamiento del CPU/computador
+- **Unidad Aritmético - Lógica (ALU):** realizas las operaciones
+  aritméticas y lógicas sobre los datos
+- **Registros:** almacenamiento interno de la CPU
+- **Interconexiones CPU:** gestionan la comunicación entre las entidades antes mencionadas
+
+
+** Evolución de los computadores:
+Se caracteriza por:
+
+- Incremento de la velocidad de procesamiento
+- Reducción del tamaño de componentes: depende de la organización del
+  procesador y de técnicas de ejecución paralela
+- Aumento del tamaño de memoria
+- Aumento de la capacidad de E/S
+
+*** Evolución Histórica del Computador
+
+Solicitar tarea de resumen evolutivo
+1. ENIAC
+2. Máquina de Von Neumann /IAS/
+3. ...
+
+Turng vs Neuman ¿Por qué no se aceptó el diseño de Turing?
+
+*** Ley de Moore
+
+Gordon Moore observó que el número de transsitores que se podrían
+integrar en un sólo chip se duplicaba cada año. Tiene las siguientes
+consecuencias:
+
+- Invariabilidad del precio de los chips
+- Disminución de las interconexiones eléctricas
+- Incremento de la velocidad operativa
+- Disminución del tamaño del computador
+- Reducción de las necesidades de potencia y refrigeración
+
+**Opcional** video de Verisatum sobre porque la naturaleza odia a los computadores
+
+*** Perspectivas Futuras
+
+Revisar el tema de Computación Cuántica
+
+
+
+** Funcionamiento del computador y sus interconexiones
+
+Desde una perspectiva de alto nivel el computador consta de
+
+1. Procesador
+2. Memoria
+3. Unidades de E/S
+
+El sistema funciona mediante el intercambio de señales de datos y de
+control de sus componentes. Este funcionamiento orgánico permite
+ejecutar la tarea principal del computador que es la ejecución de
+programas.
+
+Los componentes lógicos básicos del computador almacenan datos
+binarios y realizan operaciones lógicas y aritméticas sobre esos datos
+
+Las señales de control evitan reconfigurar el hardware para cada nuevo
+programa. Pues, sólo se necesita un nuevo conjunto de señales de
+control
+
+De esta manera, programar un computador consiste en proporcionar
+nuevas secuencias de códigos.
+
+
+*** Registros de Memoria
+Para que el CPU pueda realizar el control se utilizan los siguientes
+registros:
+
+- Memory Buffer Register MBR: contiene el dato que se va a escribir en memoria
+- Memory Address Register MAR: contiene la dirección en memria de la pŕoxima operación (lectura o escritura)
+- E/S Address Register: registro de direcciones de E/S
+
+*** Ejecución de un programa
+
+Consiste en dos etapas o ciclos:
+
+1. **ciclo de captación**: Proceso de lectura de la instrucción desde
+   la memoria. La instrucción captada se almacena en el **Instruction
+   Register (IR)**
+2. **ciclo ejecución:** Proceso de ejecución de la instrucción obtenida
+3. Cada ciclo de instrucción incrementa el **PC** o **contador de programa**
+*** Estructuras de Interconexión
+- Conjunto de líneas que permiten conectar los diversos módulos o
+  unidades (i.e. procesador, memoria, E/S)
+- Las señales de control especifican si la operación a realizar es de
+  lectura o escritura
+- **Puerto** es la interfaz de conexión a un dispositivo externo E/S
+- Un periférico o E/S puede enviar **señales de interupción**
+  
+*** Interconexión con Buses  
+- Un bus es un camino de comunicación entre dos o más dispositivos
+- Es un medio compartido, donde se conectan varios dispositivos
+- Un bus está formado por líneas con funciones específicas: línea de
+  datos, de dirección o de control
+
+- A fin de evitar la congestión al conectar con muchos dispositivos,
+  se organiza los buses de manera jerárquica.
+- Las líneas de un bus son de dos tipos:
+  - dedicadas
+  - multiplexadas
+
+
+  
