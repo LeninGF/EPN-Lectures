@@ -23,7 +23,7 @@
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.3)
 
-* Conceptualizacion de Von Neumann
+* Conceptualización de Von Neumann
 ** Conceptos de Diseño
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -35,7 +35,7 @@
   almacenado
 - La ejecución ocurre de manera secuencial (aunque puede ser
   modificado explícitamente e.g. una instrucción de salto)
-- El mismo hardware puede desarrollar diferentesfuncines sobre los
+- El mismo hardware puede desarrollar diferentes funciones sobre los
   datos dependiendo de las señales de control aplicadas
 - El programa, conjunto de códigos de instrucciones y datos, indica
   las señales de control requeridas.
