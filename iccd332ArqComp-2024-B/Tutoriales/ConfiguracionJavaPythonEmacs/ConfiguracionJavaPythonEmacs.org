@@ -1,0 +1,223 @@
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Warsaw
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+title: Configuración Emacs para Java y Python
+#+date: <2024-06-11 Tue>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+
+* Configuración de Emacs para Python y Java
+
+- Para mejorar la experiencia al escribir programas en Python o Java
+  con Emacs, es necesario realizar crear o editar el archivo
+  ~/.emacs.d/init.el
+- En el caso de Python, adicionalmente se dispone de /ElPY/ para apoyo en
+  la escritura de programas
+- En ambos casos se requiere de que /BABEL/ cargue las librerías para
+  facilitar la programación
+- En ambos casos debe estar instalado y o configurado el interprete
+  respectivo
+
+* Configuración Python
+** Configuración Interprete Python
+- Instalar anaconda/mamba
+- Crear entorno de programación con librerías necesarias
+- Configurar archivo de Emacs
+
+** init.el para Python
+- Crear el archivo de configuración de emacs en ~/.emacs.d/init.el
+- Habilitar Elpy para completar código y configurar el interprete a usar por Emacs
+
+** insertar de código Python
+Para insertar un código Python dentro de Beamer
+1. Activar modo Beamer: M-x org-beamer-mode RET
+2. Insertar un bloque para escribir código python: 
+   - C-c C-,
+   - M-x org-insert-structure-template
+3. En ambos casos seleccionar s para src y colocar que el tipo es Python
+
+** Prueba código Python
+\scriptsize
+*** python code                                               :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.5
+    :BEAMER_env: block
+    :END:
+#+name: pyex
+#+begin_src python :results output exports both 
+def add2numbers(num1, num2):
+    return num1+num2
+def mul2numbers(num1, num2):
+    return num1*num2
+
+def main():
+    num1 = 8
+    num2 = 3
+    this_sum = add2numbers(num1,num2)
+    this_prod = mul2numbers(num1,num2)
+
+    return {'sum':this_sum, 
+            'prod':this_prod}
+print(main())
+#+end_src
+*** output                                                    :B_block:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.4
+    :BEAMER_env: block
+    :BEAMER_ENVARGS: <2->
+    :END:
+# eliminar los dos puntos para imprimier el resultado 
+#+RESULTS: pyex
+{'sum': 11, 'prod': 24}
+
+** Ejemplo Conversión de número decimal a binario
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+- La conversión de un número decimal $N_{10}$ a su equivalente binario
+se nota por $N_{10}\rightarrow X_2$.
+- El problema se puede dividir en obtener la conversión de la parte
+  entera y luego de la parte fraccionaria.
+*** Conversión parte entera                                   :B_block:BLOCK:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+\scriptsize
+#+begin_src python :session :results output exports both 
+# decimal a binario parte entera
+def decimal2bin_entera(numero:int):
+    lista = []
+    cociente = numero
+    while(cociente>0):
+        cociente, residuo = cociente//2, cociente%2
+        lista.append(residuo)
+        # print(cociente, residuo)
+    resp = ''
+    for digito in lista[::-1]:
+        resp+=str(digito)
+    print(resp)
+
+
+decimal2bin_entera(134)
+#+end_src
+*** resultado                                          :B_block:BLOCK:ANSWER:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+#+RESULTS:
+: 10000110
+
+*** Conversión parte fraccionaria                             :B_block:BLOCK:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+\scriptsize
+#+begin_src python :session :results output exports both
+
+def decimal2bin_frac(numero:float, precision:int):
+    lista = []    
+    while(len(lista)<precision):
+        producto = numero*2
+        digito = int(producto)
+        numero = producto - digito
+        # print(producto)
+        lista.append(digito)
+        # print(lista)
+        if producto == 0:
+            break
+    out_number = ''.join(str(digito) for digito in lista)
+    out_number = '0.'+out_number
+    return out_number
+
+print(decimal2bin_frac(0.78, 32))
+#+end_src
+*** respuesta                                          :B_block:BLOCK:ANSWER:
+    :PROPERTIES:
+    :BEAMER_env: block
+    :END:
+#+RESULTS:
+: 0.11000111101011100001010
+
+* Configuración Java
+** Configuración Interprete de Java 
+- Buscar repositorios de OpenJDK para Ubuntu:
+#+begin_src shell
+sudo apt-cache search openjdk
+#+end_src
+- Seleccionar el repositorio e instalar:
+#+begin_src shell
+sudo apt install openjdk-21-jdk -y
+#+end_src
+
+- Configurar el entorno de variables añadiendo la ubicación del
+  JDK.
+- La ubicación de los bin/java se obtiene de ejecutar:
+
+#+begin_src sh 
+sudo update-alternatives --config java
+#+end_src
+- Configure las  variables de entorno
+
+#+begin_src 
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+#+end_src
+- Actualice el terminal
+#+begin_src sh
+source /etc/profile
+#+end_src
+- Verifique la versión de java y javac
+#+begin_src sh
+java --version
+javac --version
+#+end_src
+
+#+RESULTS:
+| openjdk |  21.0.3 | 2024-04-16  |        |                                  |                                  |       |       |          |
+| OpenJDK | Runtime | Environment | (build | 21.0.3+9-Ubuntu-1ubuntu122.04.1) |                                  |       |       |          |
+| OpenJDK |  64-Bit | Server      | VM     | (build                           | 21.0.3+9-Ubuntu-1ubuntu122.04.1, | mixed | mode, | sharing) |
+| javac   |  21.0.3 |             |        |                                  |                                  |       |       |          |
+
+** Escribiendo código Java en Emacs 
+En Emacs se puede escribir tanto el texto como la ejecución del código
+por lo que es una herramienta interesante para proyectos de índole
+científica.
+
+Para insertar un bloque de código en Emacs-Org (i.e. el archivo
+termina en .org) se usa la combinación C-c C-, y se selecciona
+s. Luego colocar en el bloque la palabra java :results output
+
+** Prueba código java
+
+#+begin_src java :classname HelloWorld :var x='a'
+
+public class HelloWorld{
+    public static void main(String[] args){
+	String userName="Johan S. Bach";
+	System.out.println("Hello World "+userName);
+
+    }
+}
+
+#+end_src
+
+#+RESULTS:
+ Hello World Johan S. Bach
+    
+* Enlaces de interés
+- https://www.cherryservers.com/blog/how-to-install-java-on-ubuntu
+- https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-java.html
+- https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-python.html
+

@@ -1,0 +1,102 @@
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+#+date: \today
+
+
+#+title: TallerIAS
+#+date: <2024-06-11 Tue>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+* Taller Máquina de Von Neuman
+
+La máquina de Von Neuman realiza operaciones en un ciclo de captación
+y ejecución. Para esto, el computador IAS usa una memoria de 40
+bits. Cuando la memoria se usa numérica mente, se representa el número
+en complemento a 2, reservando el bit inicial para el signo. Cuando la
+memoria se usa para el registro de instrucciones, se debide en dos
+partes de 20 bits. Los 8 primeros bits de cada parte corresponden al
+/opcode/ y los restantes 12 bits de cada parte a la dirección desde la
+que se debe leer.
+
+** Conjunto de Instrucciones IAS
+Complete la tabla de instrucciones del computador IAS usando la
+notación RTL. Se suministra la Tabla de LaTeX para tal efecto. Edite
+el archivo en Emacs usando el modo principal ORG y el modo LaTeX, el
+cual puede activar usando M-x Latex-mode RET
+
+- M equivale a Alt
+- x es la letra x
+- RET es dar enter
+
+Una vez activado el modo latex el siguiente código recibe colores
+sobre las palabras clave.
+
+\begin{table}
+  \caption{Instrucciones Maquina IAS}
+  
+  \begin{tabular}{|cccc|}
+    \hline
+    Opcode   & Opcode Hex &  Simbolo          & RTL \\ \hline
+    00001010 & 0xA        &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
+    00001001 & 0x9        &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
+    00100001 & 0x21       &  STOR M(X)        & $[X]\leftarrow[AC]$\\
+    00000010 & 0x02       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
+    00000011 & 0x03       &  LOAD |M(X)|      & $[AC]\leftarrow|[X]|$\\
+    00000100 & 0x04       &  LOAD -|M(X)|     & $[AC]\leftarrow-|[X]|$\\
+    \hline
+    
+  \end{tabular}
+\end{table}
+
+
+** Ejercicio
+
+En la máquina IAS, las instrucciones se dividen en dos segmentos:
+izquierdo desde el bit 0 a 19 y derecho desde el bit 20 al 39. Primero
+se ejecuta el lado izquierdo (bits 0 a 19) y luego el derecho. El
+contador de programa inicia en la posición 300 ¿qué resultado se tiene
+en el registro del acumulador si se tiene el siguiente mapa de
+memoria? A fin de terminar el programa se agrega la instrucción 99
+para terminar le programa (HALT). El set de instrucciones originales
+del IAS no incluye esta instrucción.
+
++---------+-------+-----+-------+-----+
+|Dirección|opcode1| x1  |opcode2|x2   |
++---------+-------+-----+-------+-----+
+|300      |01     |940  |06     |941  |
++---------+-------+-----+-------+-----+
+|301      |21     |940  |99     |000  |
++---------+-------+-----+-------+-----+
+|...      |...    |...  |...    |...  |
++---------+-------+-----+-------+-----+
+|940      |00     |000  |00     |005  |
++---------+-------+-----+-------+-----+
+|941      |00     |000  |00     |002  |
++---------+-------+-----+-------+-----+
+
+- Resultado en registro de acumulador: ??  - ¿se sobrescribe algún
+registro como resultado de la ejecución? Si verdadero, indique qué
+registro y con qué valor.
+
+Escriba la notación RTL y el Programa Ensamblador:
+
+*** Código Assembler:
+#+begin_src
+LOAD M(940)
+
+#+end_src
+
+*** Código RTL
+$[AC] \leftarrow [940]$
+

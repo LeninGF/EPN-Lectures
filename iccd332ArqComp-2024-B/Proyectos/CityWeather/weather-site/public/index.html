@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<!-- 2024-08-08 Thu 02:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proyecto ICCD332 Arquitectura de Computadores</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Profesor: Lenin G. Falconí M.Sc." />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Proyecto ICCD332 Arquitectura de Computadores</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6d3faa4">1. City Weather APP</a>
+<ul>
+<li><a href="#org2154310">1.1. Estructura del proyecto</a></li>
+<li><a href="#org56ecbea">1.2. Formulación del Problema</a></li>
+<li><a href="#org720475e">1.3. Descripción del código</a></li>
+<li><a href="#org2770c7d">1.4. Script ejecutable sh</a></li>
+<li><a href="#org366eab7">1.5. Configuración de Crontab</a></li>
+</ul>
+</li>
+<li><a href="#orga750cb5">2. Presentación de resultados</a></li>
+<li><a href="#org03299c4">3. Referencias</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6d3faa4" class="outline-2">
+<h2 id="org6d3faa4"><span class="section-number-2">1</span> City Weather APP</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Este es el proyecto de fin de semestre en donde se pretende demostrar
+las destrezas obtenidas durante el transcurso de la asignatura de
+<b><b>Arquitectura de Computadores</b></b>.
+</p>
+
+<ol class="org-ol">
+<li>Conocimientos de sistema operativo Linux</li>
+<li>Conocimientos de Emacs/Jupyter</li>
+<li>Configuración de Entorno para Data Science con Mamba/Anaconda</li>
+<li>Literate Programming</li>
+</ol>
+</div>
+
+<div id="outline-container-org2154310" class="outline-3">
+<h3 id="org2154310"><span class="section-number-3">1.1</span> Estructura del proyecto</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Se recomienda que el proyecto se cree en el <i>home</i> del sistema
+operativo i.e. <i>home/&lt;user&gt;</i>. Allí se creará la carpeta <i>CityWeather</i>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">cd ..</span>
+<span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">cd ..</span>
+<span style="font-weight: bold;">pwd</span>
+</pre>
+</div>
+
+<pre class="example">
+/home/QuitoWeather
+</pre>
+
+
+<p>
+El proyecto ha de tener los siguientes archivos y
+subdirectorios. Adaptar los nombres de los archivos según las ciudades
+específicas del grupo.
+</p>
+
+<pre class="example">
+.
+├── CityTemperatureAnalysis.ipynb
+├── clima-quito-hoy.csv
+├── get-weather.sh
+├── main.py
+├── output.log
+└── weather-site
+    ├── build-site.el
+    ├── build.sh
+    ├── content
+    │   ├── images
+    │   │   ├── plot.png
+    │   │   └── temperature.png
+    │   ├── index.org
+    │   └── index.org_archive
+    └── public
+        ├── images
+        │   ├── plot.png
+        │   └── temperature.png
+        ├── index.html
+        
+
+5 directories, 18 files
+</pre>
+
+<p>
+Puede usar Emacs para la creación de la estructura de su proyecto
+usando comandos desde el bloque de shell. Recuerde ejecutar el bloque
+con <code>C-c C-c</code>. Para insertar un bloque nuevo utilice <code>C-c C-,</code> o <code>M-x
+org-insert-structure-template</code>. Seleccione la opción <i>s</i> para src y
+adapte el bloque según su código tenga un comandos de shell, código de
+Python o de Java. En este documento <code>.org</code> dispone de varios ejemplos
+funcionales para escribir y presentar el código.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'Aqu&#237; va sus comandos'</span>
+</pre>
+</div>
+
+<pre class="example">
+Aquí va sus comandos
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org56ecbea" class="outline-3">
+<h3 id="org56ecbea"><span class="section-number-3">1.2</span> Formulación del Problema</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Se desea realizar un registro climatológico de una ciudad
+\(\mathcal{C}\). Para esto, escriba un script de Python/Java que permita
+obtener datos climatológicos desde el API de <a href="https://openweathermap.org/current#one">openweathermap</a>. El API
+hace uso de los valores de latitud \(x\) y longitud \(y\) de la ciudad
+\(\mathcal{C}\) para devolver los valores actuales a un tiempo \(t\).
+</p>
+
+<p>
+Los resultados obtenidos de la consulta al API se escriben en un
+archivo <i>clima-&lt;ciudad&gt;-hoy.csv</i>. Cada ejecución del script debe
+almacenar nuevos datos en el archivo. Utilice <b>crontab</b> y sus
+conocimientos de Linux y Programación para obtener datos del API de
+<i>openweathermap</i> con una periodicidad de 15 minutos mediante la
+ejecución de un archivo ejecutable denominado
+<i>get-weather.sh</i>. Obtenga al menos 50 datos. Verifique los
+resultados. Todas las operaciones se realizan en Linux o en el
+WSL. Las etapas del problema se subdividen en:
+</p>
+
+<ol class="org-ol">
+<li>Conformar los grupos de 2 estudiantes y definir la ciudad
+objeto de estudio.</li>
+<li>Crear su API gratuito en <a href="https://openweathermap.org/current#one">openweathermap</a></li>
+<li>Escribir un script en Python/Java que realice la consulta al
+API y escriba los resultados en <i>clima-&lt;ciudad&gt;-hoy.csv</i>. El
+archivo ha de contener toda la información que se obtiene del
+API en columnas. Se debe observar que los datos sobre lluvia
+(rain) y nieve (snow) se dan a veces si existe el fenómeno.</li>
+<li><p>
+Desarrollar un ejecutable <i>get-weather.sh</i> para ejecutar el
+programa Python/Java.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">
+</pre>
+</div></li>
+<li>Configurar Crontab para la adquisición de datos. Escriba el
+comando configurado. Respalde la ejecución de crontab en un
+archivo output.log</li>
+<li><p>
+Realizar la presentación del Trabajo utilizando la generación
+del sitio web por medio de Emacs. Para esto es necesario crear
+la carpeta <b><b>weather-site</b></b> dentro del proyecto. Puede ajustar el
+<i>look and feel</i> según sus preferencias. El servidor a usar es
+el <b><b>simple-httpd</b></b> integrado en Emacs que debe ser instalado:
+</p>
+<ul class="org-ul">
+<li>Usando comandos Emacs: <code>M-x package-install</code> presionamos
+enter (i.e. RET) y escribimos el nombre del paquete:
+simple-httpd</li>
+<li>Configurando el archivo init.el</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package simple-httpd
+   <span style="font-weight: bold;">:ensure</span> t)
+</pre>
+</div>
+
+<p>
+Instrucciones de sobre la creación del sitio web se tiene en el
+vídeo de instrucciones y en el archivo <a href="https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-A/Proyectos/Org-Website.org">Org-Website.org</a> en el
+GitHub del curso
+</p></li>
+
+<li>Su código debe estar respaldado en GitHub/BitBucket, la
+dirección será remitida en la contestación de la tarea</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org720475e" class="outline-3">
+<h3 id="org720475e"><span class="section-number-3">1.3</span> Descripción del código</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+En esta sección se debe detallar segmentos importantes del código
+desarrollado así como la <b><b>estrategia de solución</b></b> adoptada por el
+grupo para resolver el problema. Divida su código en unidades
+funcionales para facilitar su presentación y exposición.
+</p>
+
+<p>
+Lectura del API
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">def</span> <span style="font-weight: bold;">adder</span>(a,b):
+    <span style="font-weight: bold;">return</span> a+b
+<span style="font-weight: bold;">print</span>(adder(5,3))
+</pre>
+</div>
+
+<p>
+Puede tener que borrar los dos puntos para que el resultado aparezca
+en el HTML. En mi caso no fue necesario. Pruebe.
+</p>
+<pre class="example">
+8
+</pre>
+
+
+<p>
+Convertir <i>Json</i> a <i>Diccionario</i> de Python
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">print</span>(adder(8,8))
+</pre>
+</div>
+
+
+<p>
+Guardar el archivo csv
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">print</span>(adder(8,-18))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2770c7d" class="outline-3">
+<h3 id="org2770c7d"><span class="section-number-3">1.4</span> Script ejecutable sh</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Se coloca el contenido del script ejecutable. Recuerde que se debe
+utilizar el entorno de <b><b>anaconda/mamba</b></b> denominado <b><b>iccd332</b></b> para
+la ejecución de Python; independientemente de que tenga una
+instalación nativa de Python
+</p>
+
+<p>
+En el caso de los shell script se puede usar `which sh` para conocer
+la ubicación del ejecutable
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">which sh
+</pre>
+</div>
+
+<pre class="example">
+/usr/bin/sh
+</pre>
+
+
+<p>
+De igual manera se requiere localizar el entorno de mamba <b>iccd332</b>
+que será utilizado
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">which mamba
+</pre>
+</div>
+
+<pre class="example">
+/home/leningfe/miniforge3/condabin/mamba
+</pre>
+
+
+<p>
+Con esto el archivo ejecutable a de tener (adapte el código según las
+condiciones de su máquina):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">!/usr/bin/</span><span style="font-weight: bold;">sh</span>
+<span style="font-weight: bold;">source</span> /home/&lt;user&gt;/miniforge3/etc/profile.d/conda.sh
+<span style="font-weight: bold;">eval</span> <span style="font-style: italic;">"$(</span><span style="font-weight: bold;">conda</span><span style="font-style: italic;"> shell.bash hook)"</span>
+conda activate iccd332
+Python main.py
+</pre>
+</div>
+
+<p>
+Finalmente convierta en ejecutable como se explicó en clases y laboratorio
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org366eab7" class="outline-3">
+<h3 id="org366eab7"><span class="section-number-3">1.5</span> Configuración de Crontab</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Se indica la configuración realizada en crontab para la adquisición de datos
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">*/t * * * * cd &lt;City&gt;Weather &amp;&amp; ./get-weather.sh &gt;&gt; output.log 2&gt;&amp;1
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Recuerde remplazar &lt;City&gt; por el nombre de la ciudad que analice</li>
+<li>Recuerde ajustar el tiempo para potenciar tomar datos nuevos</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga750cb5" class="outline-2">
+<h2 id="orga750cb5"><span class="section-number-2">2</span> Presentación de resultados</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>Realizar una gráfica de la Temperatura en el tiempo y presentar una
+muestra de 10 valores aleatorios de los datos obtenidos.</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">import</span> os
+<span style="font-weight: bold;">import</span> pandas <span style="font-weight: bold;">as</span> pd
+<span style="font-weight: bold; font-style: italic;">df</span> = pd.read_csv(<span style="font-style: italic;">'/home/leningfe/PythonProjects/QuitoWeather/clima-quito-hoy-etl.csv'</span>)
+<span style="font-weight: bold;">print</span>(df.shape)
+</pre>
+</div>
+
+<p>
+Resultado del número de filas y columnas leídos del archivo csv
+</p>
+<pre class="example">
+(57, 30)
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold; font-style: italic;">table1</span> = df.sample(10)
+<span style="font-weight: bold; font-style: italic;">table</span> = [<span style="font-weight: bold;">list</span>(table1)]+[<span style="font-weight: bold; text-decoration: underline;">None</span>]+table1.values.tolist()
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">dt</th>
+<th scope="col" class="org-right">coord<sub>lon</sub></th>
+<th scope="col" class="org-right">coord<sub>lat</sub></th>
+<th scope="col" class="org-right">weather<sub>0</sub><sub>id</sub></th>
+<th scope="col" class="org-left">weather<sub>0</sub><sub>main</sub></th>
+<th scope="col" class="org-left">weather<sub>0</sub><sub>description</sub></th>
+<th scope="col" class="org-left">weather<sub>0</sub><sub>icon</sub></th>
+<th scope="col" class="org-left">base</th>
+<th scope="col" class="org-right">main<sub>temp</sub></th>
+<th scope="col" class="org-right">main<sub>feels</sub><sub>like</sub></th>
+<th scope="col" class="org-right">main<sub>temp</sub><sub>min</sub></th>
+<th scope="col" class="org-right">main<sub>temp</sub><sub>max</sub></th>
+<th scope="col" class="org-right">main<sub>pressure</sub></th>
+<th scope="col" class="org-right">main<sub>humidity</sub></th>
+<th scope="col" class="org-right">main<sub>sea</sub><sub>level</sub></th>
+<th scope="col" class="org-right">main<sub>grnd</sub><sub>level</sub></th>
+<th scope="col" class="org-right">visibility</th>
+<th scope="col" class="org-right">wind<sub>speed</sub></th>
+<th scope="col" class="org-right">wind<sub>deg</sub></th>
+<th scope="col" class="org-right">wind<sub>gust</sub></th>
+<th scope="col" class="org-right">clouds<sub>all</sub></th>
+<th scope="col" class="org-right">sys<sub>type</sub></th>
+<th scope="col" class="org-right">sys<sub>id</sub></th>
+<th scope="col" class="org-left">sys<sub>country</sub></th>
+<th scope="col" class="org-left">sys<sub>sunrise</sub></th>
+<th scope="col" class="org-left">sys<sub>sunset</sub></th>
+<th scope="col" class="org-right">timezone</th>
+<th scope="col" class="org-right">id</th>
+<th scope="col" class="org-left">name</th>
+<th scope="col" class="org-right">cod</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">2024-08-03 21:57:57</td>
+<td class="org-right">-78.5249</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">804</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">overcast clouds</td>
+<td class="org-left">04n</td>
+<td class="org-left">stations</td>
+<td class="org-right">8.53</td>
+<td class="org-right">8.53</td>
+<td class="org-right">8.53</td>
+<td class="org-right">8.53</td>
+<td class="org-right">1019</td>
+<td class="org-right">90</td>
+<td class="org-right">1019</td>
+<td class="org-right">724</td>
+<td class="org-right">10000</td>
+<td class="org-right">0.78</td>
+<td class="org-right">75</td>
+<td class="org-right">1.58</td>
+<td class="org-right">97</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-03 06:17:01</td>
+<td class="org-left">2024-08-03 18:23:24</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-04 10:26:16</td>
+<td class="org-right">-78.525</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">804</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">overcast clouds</td>
+<td class="org-left">04d</td>
+<td class="org-left">stations</td>
+<td class="org-right">16.53</td>
+<td class="org-right">15.57</td>
+<td class="org-right">16.53</td>
+<td class="org-right">16.53</td>
+<td class="org-right">1016</td>
+<td class="org-right">51</td>
+<td class="org-right">1016</td>
+<td class="org-right">728</td>
+<td class="org-right">10000</td>
+<td class="org-right">1.11</td>
+<td class="org-right">6</td>
+<td class="org-right">2.1</td>
+<td class="org-right">90</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-04 06:16:56</td>
+<td class="org-left">2024-08-04 18:23:19</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-04 09:15:02</td>
+<td class="org-right">-78.5249</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">804</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">overcast clouds</td>
+<td class="org-left">04d</td>
+<td class="org-left">stations</td>
+<td class="org-right">14.53</td>
+<td class="org-right">13.61</td>
+<td class="org-right">14.53</td>
+<td class="org-right">14.53</td>
+<td class="org-right">1018</td>
+<td class="org-right">60</td>
+<td class="org-right">1018</td>
+<td class="org-right">726</td>
+<td class="org-right">10000</td>
+<td class="org-right">0.73</td>
+<td class="org-right">90</td>
+<td class="org-right">1.81</td>
+<td class="org-right">86</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-04 06:16:56</td>
+<td class="org-left">2024-08-04 18:23:19</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-06 10:05:50</td>
+<td class="org-right">-78.5211</td>
+<td class="org-right">-0.2309</td>
+<td class="org-right">801</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">few clouds</td>
+<td class="org-left">02d</td>
+<td class="org-left">stations</td>
+<td class="org-right">14.66</td>
+<td class="org-right">13.59</td>
+<td class="org-right">14.66</td>
+<td class="org-right">14.66</td>
+<td class="org-right">1017</td>
+<td class="org-right">54</td>
+<td class="org-right">1017</td>
+<td class="org-right">730</td>
+<td class="org-right">10000</td>
+<td class="org-right">1.01</td>
+<td class="org-right">25</td>
+<td class="org-right">1.74</td>
+<td class="org-right">15</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-06 06:16:44</td>
+<td class="org-left">2024-08-06 18:23:07</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-03 02:43:26</td>
+<td class="org-right">-78.5249</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">802</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">scattered clouds</td>
+<td class="org-left">03n</td>
+<td class="org-left">stations</td>
+<td class="org-right">7.53</td>
+<td class="org-right">6.77</td>
+<td class="org-right">7.53</td>
+<td class="org-right">7.53</td>
+<td class="org-right">1019</td>
+<td class="org-right">81</td>
+<td class="org-right">1019</td>
+<td class="org-right">722</td>
+<td class="org-right">10000</td>
+<td class="org-right">1.55</td>
+<td class="org-right">171</td>
+<td class="org-right">1.97</td>
+<td class="org-right">44</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-03 06:17:01</td>
+<td class="org-left">2024-08-03 18:23:24</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-04 22:50:26</td>
+<td class="org-right">-78.5249</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">802</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">scattered clouds</td>
+<td class="org-left">03n</td>
+<td class="org-left">stations</td>
+<td class="org-right">9.53</td>
+<td class="org-right">9.53</td>
+<td class="org-right">9.53</td>
+<td class="org-right">9.53</td>
+<td class="org-right">1020</td>
+<td class="org-right">93</td>
+<td class="org-right">1020</td>
+<td class="org-right">724</td>
+<td class="org-right">10000</td>
+<td class="org-right">1.18</td>
+<td class="org-right">117</td>
+<td class="org-right">1.4</td>
+<td class="org-right">38</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-04 06:16:56</td>
+<td class="org-left">2024-08-04 18:23:19</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-03 12:52:29</td>
+<td class="org-right">-78.5211</td>
+<td class="org-right">-0.2309</td>
+<td class="org-right">801</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">few clouds</td>
+<td class="org-left">02d</td>
+<td class="org-left">stations</td>
+<td class="org-right">20.66</td>
+<td class="org-right">19.72</td>
+<td class="org-right">20.66</td>
+<td class="org-right">20.66</td>
+<td class="org-right">1012</td>
+<td class="org-right">36</td>
+<td class="org-right">1012</td>
+<td class="org-right">729</td>
+<td class="org-right">10000</td>
+<td class="org-right">4.05</td>
+<td class="org-right">341</td>
+<td class="org-right">5.7</td>
+<td class="org-right">17</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-03 06:17:00</td>
+<td class="org-left">2024-08-03 18:23:23</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-03 10:54:26</td>
+<td class="org-right">-78.5211</td>
+<td class="org-right">-0.2309</td>
+<td class="org-right">800</td>
+<td class="org-left">Clear</td>
+<td class="org-left">clear sky</td>
+<td class="org-left">01d</td>
+<td class="org-left">stations</td>
+<td class="org-right">15.66</td>
+<td class="org-right">14.12</td>
+<td class="org-right">15.66</td>
+<td class="org-right">15.66</td>
+<td class="org-right">1015</td>
+<td class="org-right">32</td>
+<td class="org-right">1015</td>
+<td class="org-right">730</td>
+<td class="org-right">10000</td>
+<td class="org-right">2.42</td>
+<td class="org-right">354</td>
+<td class="org-right">3.3</td>
+<td class="org-right">10</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-03 06:17:00</td>
+<td class="org-left">2024-08-03 18:23:23</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-02 23:51:42</td>
+<td class="org-right">-78.5211</td>
+<td class="org-right">-0.2309</td>
+<td class="org-right">803</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">broken clouds</td>
+<td class="org-left">04n</td>
+<td class="org-left">stations</td>
+<td class="org-right">8.66</td>
+<td class="org-right">8.66</td>
+<td class="org-right">8.66</td>
+<td class="org-right">8.66</td>
+<td class="org-right">1020</td>
+<td class="org-right">88</td>
+<td class="org-right">1020</td>
+<td class="org-right">726</td>
+<td class="org-right">8882</td>
+<td class="org-right">1.17</td>
+<td class="org-right">146</td>
+<td class="org-right">1.32</td>
+<td class="org-right">68</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-02 06:17:04</td>
+<td class="org-left">2024-08-02 18:23:27</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+
+<tr>
+<td class="org-left">2024-08-03 02:13:58</td>
+<td class="org-right">-78.5249</td>
+<td class="org-right">-0.2299</td>
+<td class="org-right">802</td>
+<td class="org-left">Clouds</td>
+<td class="org-left">scattered clouds</td>
+<td class="org-left">03n</td>
+<td class="org-left">stations</td>
+<td class="org-right">7.53</td>
+<td class="org-right">6.77</td>
+<td class="org-right">7.53</td>
+<td class="org-right">7.53</td>
+<td class="org-right">1019</td>
+<td class="org-right">85</td>
+<td class="org-right">1019</td>
+<td class="org-right">722</td>
+<td class="org-right">10000</td>
+<td class="org-right">1.55</td>
+<td class="org-right">160</td>
+<td class="org-right">1.87</td>
+<td class="org-right">26</td>
+<td class="org-right">1</td>
+<td class="org-right">8555</td>
+<td class="org-left">EC</td>
+<td class="org-left">2024-08-03 06:17:01</td>
+<td class="org-left">2024-08-03 18:23:24</td>
+<td class="org-right">-18000</td>
+<td class="org-right">3652462</td>
+<td class="org-left">Quito</td>
+<td class="org-right">200</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+El siguiente cógido permite hacer la gráfica de la temperatura vs
+tiempo para Org 9.7+. Para saber que versión dispone puede ejecutar
+<code>M-x org-version</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="font-weight: bold;">import</span> matplotlib.pyplot <span style="font-weight: bold;">as</span> plt
+<span style="font-weight: bold;">import</span> matplotlib.dates <span style="font-weight: bold;">as</span> mdates
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Define el tama&#241;o de la figura de salida</span>
+<span style="font-weight: bold; font-style: italic;">fig</span> = plt.figure(figsize=(8,6))
+plt.plot(df[<span style="font-style: italic;">'dt'</span>], df[<span style="font-style: italic;">'main_temp'</span>]) <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">dibuja las variables dt y temperatura</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">ajuste para presentacion de fechas en la imagen </span>
+plt.gca().xaxis.set_major_locator(mdates.DayLocator(interval=2))
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))  </span>
+plt.grid()
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Titulo que obtiene el nombre de la ciudad del DataFrame</span>
+plt.title(f<span style="font-style: italic;">'Main Temp vs Time in {next(iter(set(df.name)))}'</span>)
+plt.xticks(rotation=40) <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">rotaci&#243;n de las etiquetas 40&#176;</span>
+fig.tight_layout()
+<span style="font-weight: bold; font-style: italic;">fname</span> = <span style="font-style: italic;">'./images/temperature.png'</span>
+plt.savefig(fname)
+fname
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./images/temperature.png" alt="temperature.png" />
+</p>
+</div>
+
+<p>
+Debido a que el archivo index.org se abre dentro de la carpeta
+<i>content</i>, y en cambio el servidor http de emacs se ejecuta desde la
+carpeta <i>public</i> es necesario copiar el archivo a la ubicación
+equivalente en <code>/public/images</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">cp -rfv ./images/* /home/leningfe/PythonProjects/QuitoWeather/weather-site/public/images
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Realice una gráfica de Humedad con respecto al tiempo</li>
+<li><b>Opcional</b> Presente alguna gráfica de interés.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org03299c4" class="outline-2">
+<h2 id="org03299c4"><span class="section-number-2">3</span> Referencias</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/28715/get-pandas-data-frame-as-a-table-in-org-babel">presentar dataframe como tabla en emacs org</a></li>
+<li><a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-python.html">Python Source Code Blocks in Org Mode</a></li>
+<li><a href="https://systemcrafters.net/publishing-websites-with-org-mode/building-the-site/">Systems Crafters Construir tu sitio web con Modo Emacs Org</a></li>
+<li><a href="https://www.youtube.com/watch?v=AfkrzFodoNw">Vídeo Youtube Build Your Website with Org Mode</a></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Nota al pie de p&aacute;gina: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Recuerde que su máquina ha de disponer de un entorno de
+anaconda/mamba denominado iccd332 en el cual se dispone del interprete
+de Python
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="date">Fecha: 2024-08-07</p>
+<p class="author">Autor: Profesor: Lenin G. Falconí M.Sc.</p>
+<p class="date">Created: 2024-08-08 Thu 02:51</p>
+</div>
+</body>
+</html>

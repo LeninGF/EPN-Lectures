@@ -1,0 +1,71 @@
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: default
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+title: S9-Memoria-del-Sistema
+#+date: 
+#+author: Lenin G. Falconí, Richard Dawkins, Jean LeCunn
+#+email: lenin.falconi@epn.edu.ec, richard.dawkins@anotheremail.com, lecunn@meta.com
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+
+
+* Estructura del sistema de Memoria(E1, Q1)
+** Características de los sistemas de Memoria
+- Recuerde que si options: H:2, entonces
+- * Declara el nombre de la Sección
+- ** Declara el nombre de la diapositiva
+- Puede alterar la estructura de la diapositiva si lo considera necesario
+- En la 10ma edición en Inglés dispone de contenido en los capítulos 4
+  (pág 136) y 5 (pág 162) y 6 (pág 201)
+** Ubicación
+** Capacidad
+** Unidad de Transferencia
+** Acceso secuencial
+** Acceso directo
+** Acceso aleatorio
+** Tiempo de Acceso
+** Tiempo de ciclo de memoria
+** Jerarquía de Memoria
+* Memoria Cache (E2, Q2)
+** Principios Básicos de las Memorias Caché
+- Realice un resumen de lo más esencial del tema
+- En 7ma edición página 133
+- En 10ma edición página 161
+** Elementos de Diseño de la memoria Caché
+** Tamaño Caché
+** Función de Correspondencia
+- Se recomienda la tabla 5.3 página 170 de la 10ma edición
+** Algoritmo de Sustitución
+** Política de escritura
+** Tamaño de Línea
+** Número de Cachés
+* Memoria Interna (E3, Q3)
+** Organizaciṕon Memoria Principal Semiconductora
+- Stallings 7ma edición página 172
+- Stallings 10ma edición página   201 Capítulo 6
+** DRAM y SRAM
+** RAM dinámica
+** SRAM RAM estática
+** Tipos de ROM
+** Chip de Memoria RAM
+* Corrección de Errores (E4, Q4)
+** Hard Error vs Soft Error
+** Código de Hamming
+- Realice una explicación sencilla con ejemplo
+* Organización Avanzada de Memorias RAM
+** Dram síncrona
+** DDR SDRAM
+** EDRAM
+** Flash Memory
+* Memorias no volátiles de estado solido
+** STT-RAM
+** PCRAM

@@ -1,0 +1,283 @@
+#+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Presentaciones Latex con Emacs
+#+date: 2024-04-27
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.6.27)
+#+cite_export:
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Warsaw
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+
+
+#+LaTeX_HEADER: \usepackage{hyperref}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true, linkcolor=, urlcolor=blue}
+#+LaTeX_HEADER: \RequirePackage{fancyvrb}
+#+LaTeX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+#+LaTeX_HEADER: \setbeamercolor{titlelike}{fg=white}
+
+* Configuración e Instalación
+** Procedimiento
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Se requiere realizar los siguientes ajustes para que Emacs opere:
+
+1. Instalar WSL o un distro de Linux: Se pueden seguir los pasos de la
+   [[https://learn.microsoft.com/es-es/windows/wsl/install][Guía de Instalación]]
+
+1. Instalar Emacs:
+      #+begin_src shell
+        sudo apt-get update
+        sudo apt install emacs
+      #+end_src
+2. Instalar LaTeX (básica o completa):
+      #+begin_src shell
+	sudo apt install texlive-full
+      #+end_src
+   Existen otras opciones para Latex que consumen menos recursos (ver
+   [[https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux][enlace]]):
+      #+begin_src shell
+        sudo apt install texlive-latex-extra
+      #+end_src
+3. Instalar Python
+4. Configurar el archivo en ~/.emacs.d/init.el
+
+** Instalación de Python
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Para instalar python se utilizará el entorno de anaconda o
+mamba. Existen recomendaciones en favor de mamba. La dirección del
+repositorio de Github se encuentra en el enlace [[https://github.com/conda-forge/miniforge/][miniforge]]
+
+1. Abra el subsistema  de Linux para Windows: [[https://learn.microsoft.com/es-es/windows/wsl/install][guía de instalación]]
+
+3. Descargue e instale Mamba: [[https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh][Descargar ejecutable desde github]]
+   #+begin_src shell
+     wget colocar/direccion/archivo_sh_Linux_x86_64
+     sudo chmod +x Miniforge3-Linux-x86_64
+     ./Miniforge3-Linux-x86_64
+   #+end_src
+4. Siga los pasos que indica el instalador y reinicie el shell
+   cerrando la aplicación wsl o cerrando el terminal si está en Ubuntu
+5. Cree un entorno con las librerías a utilizar
+   #+begin_src shell
+     mamba create --name iccd332
+     mamba activate iccd332
+     mamba install python=3.11
+     python --version
+   #+end_src
+
+** Paquetes recomendados de Instalación Python
+Instalar los siguientes paquetes para disponer del shell avanzado
+de Ipython y el complemento *rise* para convertir un jupyter-notebook
+en una presentación tipo reveal.js
+
+#+begin_src shell
+mamba install ipython
+mamba install jupyter
+pip install jupyterlab-rise
+#+end_src
+** Configuración Emacs
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:CUSTOM_ID: configEmacs
+:END:
+
+- El comportamiento de Emacs es completamente configurable por el
+  usuario a través del archivo ~/.emacs.d/init.el
+- El archivo init.el puede generar instalaciones y activaciones para
+  emacs por lo que se sugiere reiniciar emacs para que las
+  configuraciones surtan efecto
+- Abra el archivo init.el en Emacs y escriba la siguiente configuracion
+  #+begin_src emacs-lisp
+    ;; Configure Org Babel to load Python
+(org-babel-do-load-languages
+'org-babel-load-languages
+ '((python . t))) ; This line activates Python
+;;
+(setq python-shell-interpreter "/path/to/anaconda/envs/myenv/bin/python")
+
+  #+end_src
+* Emacs
+#+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
+#+NAME: tabla-emacs
+#+CAPTION: Comandos de Emacs
++--------------------+--------------------+--------------------+--------------------+
+| Comando            | Acción             | Comando            | Acción             |
++--------------------+--------------------+--------------------+--------------------+
+|  C-x C-s           |  guardar           |  C-x C-c           | Salir Emacs        |
++--------------------+--------------------+--------------------+--------------------+
+|  C-n               |  siguiente renglón |  C-p               | anterior renglón   |
++--------------------+--------------------+--------------------+--------------------+
+|  C-f               | avanza un carácter | C-b                | atrás un carácter  |
++--------------------+--------------------+--------------------+--------------------+
+|  M-f               | avanza una palabra | M-b                | atrás una palabra  |
++--------------------+--------------------+--------------------+--------------------+
+| C-a                | ir a inicio        | C-e                | ir al fin          |
++--------------------+--------------------+--------------------+--------------------+
+|  C-SPC             | selecciona región  | C-g                | cancelar comando   |
++--------------------+--------------------+--------------------+--------------------+
+|C-d                 | Borrar un carácter | M-d                | borrar palabra     |
++--------------------+--------------------+--------------------+--------------------+
+
+
+** Hacer una presentación en Emacs
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+1. Abrir emacs ejecuntando `emacs` desde la línea de comandos
+2. Genere un archivo de extensión .org
+   - C-x C-f
+   - presentacion.org
+3. Active el modo org para beamer: M-x org-beamer-mode
+4. Coloque el encabezado por defecto y el de beamer
+   - C-c C-e # default
+   - C-c C-e # beamer
+     **Observar:** el encabezado de beamer sólo se
+     activa si el **modo org-beamer** está habilitado
+5. En opciones, cambiar H:1 a H:2 para que los títulos se interpreten
+   como Secciones de la presentación y las Subsecciones como título de
+   la presentación
+5. Utilice el sistema de marcas de Emacs para escribir la presentación
+- * Sección/Título
+- ** Título Presentación/Subtítulo
+- Una palabra encerrada entre ** equivale a `**negrita**`
+- Una palabra encerrada entre / equivale a `/cursiva/` 
+5. En el shell, instale el diccionario de español para la corrección ortográfica
+   #+begin_src shell
+     sudo apt install aspell aspell-es
+   #+end_src
+6. Puede cambiar de diccionario en el buffer usando M-x ispell-change-dictionary
+7. Puede activar un modo de revisión al vuelo: M-x flyspell-mode
+
+** Algunos Hacks
+   :PROPERTIES:
+   :BEAMER_opt: allowframebreaks
+   :END:
+
+- Para insertar propiedades: C-c C-x p
+- Para insertar código: C-c C-,
+- Para insertar código: M-x org-insert-template-structures y escoge la opción s
+- Para insertar un tag: C-c C-c
+- Para insertar un link: M-x org-insert-link
+- Para generar el archivo pdf: org-beamer-export-to-pdf
+
+* Arquitectura de Computadores ICCD332
+** El Computador
+Un computador es un sistema complejo conformado por varios subsistemas
+electrónicos. Para poder estudiarlo se adopta la perspectiva de
+entender su organización y su arquitectura. En general un computador
+puede hacer las siguientes operaciones:
+
+- procesar información
+- almacenar información
+- comunicarse con periféricos de entrada/salida i.e. E/S
+
+** El CPU
+
+La arquitectura principal usada en los computadores es la Von
+Neumann. El componente principal del sistema es el CPU, o unidad de
+procesamiento central, que es un micro chip. El mismo está formado de:
+
+- Unidad Aritmética Lógica: ALU
+- Unidad de control
+- Registros
+
+** A more complex slide
+This slide illustrates the use of Beamer blocks.  The following text,
+with its own headline, is displayed in a block:
+
+*** Org mode increases productivity                               :B_theorem:
+:PROPERTIES:
+:BEAMER_env: theorem
+:END:
+
+- org mode means not having to remember LaTeX commands.
+- it is based on ascii text which is inherently portable.
+- Emacs!
+- $\int e^{-st}f(t)dt$
+
+  \hfill \(\qed\)
+
+** Two Columns
+
+*** A block                                                           :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+
+- this slide consists of two columns
+- the first (left) column has no heading and consists of text
+- second (right) column has an image and is enclosed in an
+      *example* block
+*** Another block                                           :BMCOL:B_example:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:BEAMER_env: example
+:END:
+
+#+ATTR_LaTeX: :width \textwidth
+[[file:./images/computer.png]]
+
+** Configurar Org-Babel Python
+
+Consiste en editar el archivo ~/.emacs.d/init.el para que emacs tenga
+el comportamiento deseado. Para instrucciones referirse al slide [[#configEmacs][Configuración Emacs]]
+
+Este slide muestra cómo hacer una referencia a otra sección
+
+** Babel
+:PROPERTIES:
+:BEAMER_envargs: [t]
+:END:
+
+*** Python code                                               :BMCOL:B_block:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:BEAMER_env: block
+:END:
+
+#+name: pythonexample
+#+begin_src python
+import numpy as np
+def greet(name):
+    return f"Hello {name}"
+
+return greet("Alice")
+#+end_src
+
+*** The output                                                :BMCOL:B_block:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:BEAMER_env: block
+:BEAMER_envargs: <2->
+:END:
+#+RESULTS: pythonexample
+Hello Alice
+
+
+
+
+
+
+
+
+
+    

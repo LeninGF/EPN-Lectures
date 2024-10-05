@@ -1,0 +1,145 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Taller de Comandos Linux
+#+date: 2024-07-
+#+author: COLOQUE SU NOMBRE
+#+email: lenin.falconi@epn.edu.ec
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+* Objetivos
+
+- Conocer el funcionamiento del terminal de /Linux/
+- Aprender a manejar comandos del terminal de /Linux/
+
+* Instrucciones
+Este taller/tutorial de comandos de Linux tiene por objetivo ejercitar
+en la aplicación de comandos estudiados en clase. Para esto siga las
+Instrucciones indicadas en cada uno de los numerales. Ejecute los
+ejercicios llenando los comandos adecuados dentro de los bloques de
+código de Emacs Org. Los resultados de la ejecución se obtienen
+haciendo ~C-c C-c~
+
+Para todos los ejercicios se sugiere o bien usar directamente un
+distro de /Linux/ o el /WSL/ configurado para la clase de
+/Arquitectura de Computadores/.
+
+1. Utilice ~cd~ para localizarse en la posición de home de su usuario y
+   verifique ejecutando el comando ~pwd~
+   #+begin_src shell :exports both
+     
+   #+end_src
+2. Cree tres directorios denominados FashionData, Train y
+   Test. Verifique usando el comando ~ls~
+   #+begin_src shell :exports both
+     
+   #+end_src
+3. Investigue sobre el comando ~wget~ y utilícelo para descargar en
+   ~/FashionData los datos de train y test del /Fashion-Mnist desde el
+   siguiente enlace: [[https://github.com/zalandoresearch/fashion-mnist][fashion-mnist]]
+   1. Imágenes de entrenamiento:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz
+   2. Etiquetas de entrenamiento:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-labels-idx1-ubyte.gz 
+   3. Imágenes de prueba:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz
+   4. Etiquetas de prueba:
+
+      http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz
+   #+begin_src shell :exports both
+
+   #+end_src
+4. Utilice el comando ~mv~ de manera recursiva para pasar los datos de
+   entrenamiento a la carpeta ~/Train
+   #+begin_src shell :exports both
+
+   #+end_src
+5. Utilice el comando ~mv~ de manera recursiva para pasar los datos de
+   prueba a la carpeta ~/Test
+   #+begin_src shell :exports both
+
+   #+end_src
+6. Verifique que la carpeta FashionData está vacía
+   #+begin_src shell :exports both
+
+   #+end_src
+7. Los archivos anteriores están comprimidos. Investigue como
+   descomprimir usando el comando ~tar~. Si es necesario realice la
+   instalación del comando. Descomprima los archivos en sus
+   respectivas carpetas. Apunte el comando utilizado para la descompresión.
+   #+begin_src shell :exports both
+
+   #+end_src
+8. Una vez completa la descompresión, elimine los archivos
+   .gz. Verifique las carpetas finales usando ~ls~
+   #+begin_src shell :exports both
+
+   #+end_src
+9. Mueva recursivamente las carpetas ~/Train y ~/Test dentro de ~/FashionData
+   #+begin_src shell :exports both
+
+   #+end_src
+   
+10. Se desea realizar un registro climatológico de la ciudad de
+    Quito. Para esto, escriba un script de Python/Java que permita
+    obtener datos climatológicos desde el API de
+    [[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud de Quito como
+    (-0.2299, -78.5249), respectivamente. Los resultados obtenidos de
+    la consulta al API se escriben en un archivo
+    /clima-quito-hoy.csv/. Cada ejecución del script debe almacenar
+    nuevos datos en el archivo. Investigue sobre *crontab* y utilícelo
+    para obtener datos del API de /openweathermap/ cada 5 minutos
+    mediante la ejecución de un archivo ejecutable denominado
+    /get-weather.sh/. Verifique los resultados. Todas las operaciones
+    se realizan en Linux o en el WSL. Las etapas del problema se
+    subdividen en:
+    1. Crear su API gratuito en [[https://openweathermap.org/current#one][openweathermap]]
+    2. Escribir un script en Python/Java que realice la consulta al API
+       y escriba los resultados en /clima-quito-hoy.csv/
+       
+       #+begin_src python :exports both
+
+       #+end_src
+    3. Desarrollar un ejecutable /get-weather.sh/ para ejecutar el
+       programa Python/Java.
+       #+begin_src shell :exports both
+       #+end_src
+    4. Configurar Crontab para la adquisición de datos. Escriba el
+       comando configurado.
+       

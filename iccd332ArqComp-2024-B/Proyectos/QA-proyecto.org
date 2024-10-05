@@ -1,0 +1,128 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Preguntas Respuetas Problemas Proyecto
+#+date: 2024-08-12
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+* Problema con paquetes GNU/ELPA
+Este problema consiste en que no se pueden instalar paquetes que
+pertenecen al conjunto de GNU. Se da sobre todo en versiones de Emacs
+anteriores a la 29. El error suele estar acompañando del mensaje:
+
+#+begin_quote
+  ...failed to verify signature keyring how can I solve it...
+#+end_quote
+También suele tomar la forma de:
+
+[[../images/failedtodownloadgnu.png]]
+
+En estos casos se sugiere:
+1. Editar el archivo ~init.el~ y colocar la siguiente instrucción:
+   #+begin_src elisp
+     (setq package-check-signature nil)
+   #+end_src
+2. Ahora evalúe el Buffer con ~M-x eval-buffer~
+3. Ahora instale el paquete ~gnu-elpa-keyring-update~
+   #+begin_example
+    M-x package-install RET
+    gnu-elpa-keyring-update RET
+   #+end_example
+4. Refrescar los contenidos de paquetes ~M-x package-refresh-contents~
+5. Ejecute la instalación:
+   #+begin_example
+     M-x package-install RET
+     M-x simple-httpd
+   #+end_example
+
+6. Comente la línea añadida en el ~init.el~ que anula el check de firmas
+
+* Problemas con org-babel Python
+Al ejecutar un bloque de código Python se obtiene por respuesta
+
+#+begin_quote
+No org-babel-execute function for python!
+#+end_quote
+
+[[../images/org-babel-python-error.png]]
+
+Esto sucede si no existe la configuración del archivo ~init.el~. Para
+esto se recomienda seguir la explicación que ya se dio para el examen
+del Primer Bimestre. Revise el vídeo de configuración del archivo
+[[https://www.youtube.com/watch?v=OeBBAMJutt4&t=11s][init.el]]. No olvide que la línea 43 define la ubicación del interprete
+de Python. Esta configuración le indica a Emacs qué interprete
+utilizar, pudiendo cambiarlo según nuestras necesidades
+específicas. Ya que el objetivo de usar /mamba/ es crear entornos con
+paquetes diferentes específicos para un conjunto de problemas
+determinados. Por defecto Emacs buscará el path de instalación de
+Python en el sistema.
+
+#+begin_src elisp
+;; Set the correct path to the Python executable within your conda environment
+(setq org-babel-python-command "/home/<user>/miniforge3/envs/tfmlenv/bin/python")
+#+end_src
+
+Las líneas 45 a 50 del archivo activan las funciones para los
+lenguajes de programación a utilizar.
+
+#+begin_src elisp
+;; Set up Python environment and Java for org-mode 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (java . t)
+   (shell .t)))
+#+end_src
+
+
+* Resultado de Ejecución de Python: None
+Si luego de ejecutar ~C-c C-c~ en el bloque de código python, el
+resultado es ~None~, es posible que cuando abrió Emacs no lo haya
+hecho con el entorno del interprete activado. En este caso, la
+sugerencia es que cierre emacs y en el terminal active el interprete
+que tiene configurado en la linea 43 del archivo ~init.el~. Una vez
+activado, abra emacs desde el terminal. Por ejemplo, si el entorno
+configurado es el ~iccd332~:
+
+#+begin_src shell
+mamba activate iccd332
+emacs &
+#+end_src
+
+Adicionalmente, debe observar que en el archivo provisto index.org
+existen ciertas configuraciones para enrutar la salida del resultado
+tales como: ~#+begin_src python :session :results output~
+#+begin_src python :session :results output :exports both
+def multiplicar(a,b):
+    return a*b
+print(multiplicar(3,3))
+#+end_src
+
+#+RESULTS:
+: 9
+
+Finalmente, observe que en el inicio del bloque de python éste esté
+escrito como ~#+begin_src python...~ y no como ~#+begin_src Python...~.
+
+* Problemas org-babel shell
+
+Si se tiene problema en la ejecución de comandos en el shell como
+muestra la Figura [[f1]]
+
+#+caption: Ejecución de bloque shell en Emacs
+#+name: f1
+[[../images/no-org-babel-execute-function-shell.png]]
+
+En este caso puede dar los siguientes comandos desde Emacs:
+#+begin_example
+M-x load-library RET
+ob-shell RET
+#+end_example
