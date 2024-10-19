@@ -42,7 +42,7 @@
     :END:
 
 [[./images/ALU.png]]
-
+* Representación Digital de Números Enteros
 ** Representación de Números Enteros
 - No se dispone de signos +/- para representar los números
 - No se dispone de un punto decimal
@@ -173,7 +173,7 @@ $2^7$ & $2^6$ & $2^5$ & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$  \\ \hline
 $$A=-2^{n-1}a_{n-1}+\sum_{i=0}^{n-2}2^ia_i$$
 
 $A=1000\,0011_2=-128+2+1=-125$
-
+* Representación Digital de Números con Signo
 ** Representaciones con Signo
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -198,7 +198,7 @@ Por ejemplo $-9$ en una máquina de 8 bits puede representarse como:
 +---------------+----------+
 
 
-
+* Suma y Resta de Enteros
 ** Suma de Enteros sin Signo
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -295,7 +295,7 @@ La suma de (-7)+(-6):
 1 & 0 & 0 & 1 & 1 \\
 \end{tabular}
 #+END_EXPORT
-
+* Representación en Coma Flotante
 ** Representación en Coma Flotante
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -410,6 +410,7 @@ $$(-1)^s \times 1.m \times 2^{e-127}$$
 2) Números Negativos entre $-(2-2^{-23})\times 2^{128}$ y -2^{-127}
 3) Números Positivos entre 2^{-127} y (2-2^{-23})\times 2^{128}$
 
+* Tarea
 *** Tarea                                                   :B_definition:Tarea:
     :PROPERTIES:
     :BEAMER_env: definition
