@@ -311,7 +311,7 @@ $$\pm S \times B^{\pm E}$$
 - S: Mantisa o parte más significativa
 - E: Exponente (representación sesgada)
 
-** Estándard IEEE 754 en Coma Flotante en 32 bits
+** Estándar IEEE 754 en Coma Flotante en 32 bits
 - Se utiliza un bit para el signo: 0$\rightarrow$ positivo,
   1$\rightarrow$negativo.
 - El exponente está sesgado: $2^{k-1}-1$ y $k$ es el número de bits
