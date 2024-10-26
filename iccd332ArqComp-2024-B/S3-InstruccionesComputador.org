@@ -5,7 +5,7 @@
 #+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+options: timestamp:t title:t toc:t todo:t |:t
 #+title: S3 Operaciones Lógicas
-#+date: 2024-05-13
+#+date: 2024-10-26
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
 #+language: es
@@ -26,6 +26,7 @@
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
 * Operaciones Lógicas e Instrucciones Computador
+* Máquinas d Estados Finitos
 ** Máquinas de Estados Finitos
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -44,8 +45,8 @@
 - Cada operación requiere de un diferente conjunto de señales de
   control
 - Cada operación tiene un código único e.g. ADD, MOVE
-
-** El computador
+* El Computador
+** Estructura del Computador
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
@@ -124,7 +125,35 @@ computador.
     :END:
 
 [[./images/ConceptoMemoria.png]]
-
+** Computadores Multi Núcleo
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- *Computador Multi núcleo:* aquel que tiene múltiples procesadores en
+  un sólo chip
+- *Núcleo:* cada unidad de procesamiento que incluye su unidad de
+  control, ALU, registros, y cache.
+- *Procesador:* dispositivo de silicón que contiene uno o más núcleos.
+- *Memoria Cache:* Memoria más rápida y pequeña que la memoria
+  principal cuyo objetivo principal es *acelerar* el *acceso a la
+  memoria*. Se conforma en varias capas: $L_1$, $L_2$, etc según su
+  cercanía al núcleo.
+- *Motherboard:* placa principal de circuito impreso en una
+  computadora. Las placas más pequeñas que se conectan a las ranuras
+  de la placa principal se llaman *tarjetas de expansión*.
+- *Printed Circuit (PCB):* placa rígida y plana que sostiene e
+  interconecta chips y otros componentes electrónicos. Típicamente de
+  2 a 10 capas
+** Computadores Mult Núcleo
+#+attr_latex: :height 0.8\textheight
+[[./images/ElementosComputadorMultiCore.png]]
+** Componentes del Núcleo
+- *Instruction Logic (IL):* ejecuta tareas relacionadas con la
+  captación y decodificación de instrucciones.
+- *ALU:* realiza las operaciones indicadas por la instrucción.
+- *Load/store logic:* administra la transferencia de datos hacia y
+  desde la memoria principal a través de la *cache*.
+* lenguaje de Transferencia de Registros
 ** Lenguaje de Transferencia de Registros (RTL)
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -282,7 +311,7 @@ $X = 3+5+2+2+8$
 |  0x0B    |   5      |
 +----------+----------+
 
-
+** Lógica Digital
 ** Lógica Digital - Circuito Eléctrico
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -334,7 +363,7 @@ $X = 3+5+2+2+8$
     :BEAMER_col: 0.6
     :END:
 [[./images/andGate.png]]
-
+* Algebra de Boole
 ** Álgebra de Boole y Compuertas Lógicas
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -368,7 +397,7 @@ $$A \, NOR\, B = \lnot(A \lor B) = \overline{A \lor B}$$
 - NAND y NOR pueden implementar cualquier circuito digital ya que las
   AND, OR y NOT se pueden implementar directamente sólo con compuertas
   NAND o NOR. Condición favorable para procesos de fabricación.
-
+* Circuitos Combinacionales
 ** Circuitos Combinacionales 
 - Conjunto de compuertas lógicas interconectadas cuya salida, en un
 momento dado, es función únicamente de las entradas en ese instante.
@@ -381,6 +410,7 @@ momento dado, es función únicamente de las entradas en ese instante.
   (POS)
 - El Teorema de Morgan permite hacer la conmutación de las dos
   representaciones.
+* Min-Terms o Suma de Productos (SOP)
 ** Representación de Min-Terms o Sumas de Productos (SOP)
 Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
 combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
@@ -389,7 +419,7 @@ combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
    las entradas considerando que si la entrada en la tabla vale 1, se
    mantiene el símbolo. Si vale 0, se escribe el complemento.
 3. Sume los productos obtenidos
-
+* Max-Terms o Producto de Sumas (POS)
 ** Representación de Max-Terms o Productos de Sumas (POS)
 Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
 combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
@@ -483,7 +513,7 @@ $$F =
 - Una vez obtenida se debe reducir por medio de Mapa K. o postulados
   del álgebra booleana.
 
-
+* Circuitos Secuenciales
 ** Circuitos Secuenciales
 La salida actual de estos circuitos depende de la entrada actual y de
 la historia pasada de las entradas. Estos circuitos usan una
