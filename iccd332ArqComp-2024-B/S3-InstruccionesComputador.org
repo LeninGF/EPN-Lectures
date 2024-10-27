@@ -25,8 +25,8 @@
 #+beamer_header:
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
-* Operaciones Lógicas e Instrucciones Computador
-* Máquinas d Estados Finitos
+* Operaciones Lógicas e Instrucciones del Computador
+
 ** Máquinas de Estados Finitos
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -45,7 +45,7 @@
 - Cada operación requiere de un diferente conjunto de señales de
   control
 - Cada operación tiene un código único e.g. ADD, MOVE
-* El Computador
+
 ** Estructura del Computador
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -153,7 +153,7 @@ computador.
 - *ALU:* realiza las operaciones indicadas por la instrucción.
 - *Load/store logic:* administra la transferencia de datos hacia y
   desde la memoria principal a través de la *cache*.
-* lenguaje de Transferencia de Registros
+* Lenguaje de Transferencia de Registros
 ** Lenguaje de Transferencia de Registros (RTL)
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -311,7 +311,7 @@ $X = 3+5+2+2+8$
 |  0x0B    |   5      |
 +----------+----------+
 
-** Lógica Digital
+* Lógica Digital
 ** Lógica Digital - Circuito Eléctrico
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -410,7 +410,7 @@ momento dado, es función únicamente de las entradas en ese instante.
   (POS)
 - El Teorema de Morgan permite hacer la conmutación de las dos
   representaciones.
-* Min-Terms o Suma de Productos (SOP)
+* Expresión de Funciones Booleanas en Min-Terms(SOP) y Max-Terms(POS)
 ** Representación de Min-Terms o Sumas de Productos (SOP)
 Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
 combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
@@ -419,7 +419,7 @@ combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
    las entradas considerando que si la entrada en la tabla vale 1, se
    mantiene el símbolo. Si vale 0, se escribe el complemento.
 3. Sume los productos obtenidos
-* Max-Terms o Producto de Sumas (POS)
+
 ** Representación de Max-Terms o Productos de Sumas (POS)
 Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
 combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
