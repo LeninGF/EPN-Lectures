@@ -397,6 +397,23 @@ $$A \, NOR\, B = \lnot(A \lor B) = \overline{A \lor B}$$
 - NAND y NOR pueden implementar cualquier circuito digital ya que las
   AND, OR y NOT se pueden implementar directamente sólo con compuertas
   NAND o NOR. Condición favorable para procesos de fabricación.
+** Leyes del Algebra de Boole
+\scriptsize
+|---------------------------------------------+---------------------------------------+-------------------|
+| +                                           | $\cdot$                               | Ley               |
+|---------------------------------------------+---------------------------------------+-------------------|
+| $A+0=0$                                     | $A\cdot 1=1$                          | Identidad         |
+| $A+1=1$                                     | $A\cdot 0 = 0$                        | Dominio           |
+| $A+A = A$                                   | $A\cdot A = A$                        | Idempotencia      |
+| $A+\overline{A}=1$                          | $A\cdot \bar{A}=0$                    | Complementariedad |
+| $A+A \cdot B = A$                           | $A \cdot(A+B) = A$                    | Absorción         |
+| $A+\bar{A} \cdot B = A+B$                   | $A\cdot(\bar{A}+B) = A\cdot B$        | Reducción         |
+| $(A+B)+C=A+(B+C)$                           | $(AB)C = A(BC)$                       | Asociatividad     |
+| $A+B\cdot C = (A+B)\cdot (A+C)$             | $A\cdot(B+C) = A\cdot B+A\cdot C$     | Distribución      |
+| $\overline{(A + B)} = \bar{A}\cdot \bar{B}$ | $\overline{A\cdot B}=\bar{A}+\bar{B}$ | De Morgan         |
+|---------------------------------------------+---------------------------------------+-------------------|
+Negación de la Negación: $\bar{\bar{A}} = A$
+\normalsize
 * Circuitos Combinacionales
 ** Circuitos Combinacionales 
 - Conjunto de compuertas lógicas interconectadas cuya salida, en un
@@ -437,25 +454,20 @@ Considera la Siguiente Tabla de Verdad:
     :PROPERTIES:
     :BEAMER_col: 0.3
     :END:
-+-+-+-+-+
-|A|B|C|F|
-+-+-+-+-+
-|0|0|0|1|
-+-+-+-+-+
-|0|0|1|0|
-+-+-+-+-+
-|0|1|0|1|
-+-+-+-+-+
-|0|1|1|1|
-+-+-+-+-+
-|1|0|0|0|
-+-+-+-+-+
-|1|0|1|0|
-+-+-+-+-+
-|1|1|0|1|
-+-+-+-+-+
-|1|1|1|0|
-+-+-+-+-+
+|---+---+---+-------|
+| A | B | C | F     |
+|---+---+---+-------|
+| 0 | 0 | 0 | **1** |
+| 0 | 0 | 1 | 0     |
+| 0 | 1 | 0 | **1** |
+| 0 | 1 | 1 | **1** |
+| 1 | 0 | 0 | 0     |
+| 1 | 0 | 1 | 0     |
+| 1 | 1 | 0 | **1** |
+| 1 | 1 | 1 | 0     |
+|---+---+---+-------|
+
+
 
 *** Representación SOP:                                         :TEXTO:BMCOL:
     :PROPERTIES:
@@ -479,25 +491,20 @@ Considera la Siguiente Tabla de Verdad:
     :PROPERTIES:
     :BEAMER_col: 0.3
     :END:
-+-+-+-+-+
-|A|B|C|F|
-+-+-+-+-+
-|0|0|0|1|
-+-+-+-+-+
-|0|0|1|0|
-+-+-+-+-+
-|0|1|0|1|
-+-+-+-+-+
-|0|1|1|1|
-+-+-+-+-+
-|1|0|0|0|
-+-+-+-+-+
-|1|0|1|0|
-+-+-+-+-+
-|1|1|0|1|
-+-+-+-+-+
-|1|1|1|0|
-+-+-+-+-+
+|---+---+---+-------|
+| A | B | C | F     |
+|---+---+---+-------|
+| 0 | 0 | 0 | 1     |
+| 0 | 0 | 1 | **0** |
+| 0 | 1 | 0 | 1     |
+| 0 | 1 | 1 | 1     |
+| 1 | 0 | 0 | **0** |
+| 1 | 0 | 1 | **0** |
+| 1 | 1 | 0 | 1     |
+| 1 | 1 | 1 | **0** |
+|---+---+---+-------|
+
+
 
 *** Representación POS:                                         :TEXTO:BMCOL:
     :PROPERTIES:
