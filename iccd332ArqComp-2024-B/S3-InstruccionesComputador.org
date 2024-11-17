@@ -530,6 +530,7 @@ señal de reloj, generalmente. Ejemplos son:
 - Biestable D
 - Registros
 - Contadores 
+* Ejercicios
 ** Ejercicios
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
