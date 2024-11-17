@@ -434,7 +434,7 @@ $$(-1)^s \times 1.m \times 2^{e-127}$$
 
 1. Convierta -0.5 en IEEE 754 de 32 bits
 2. Convierta +234.75 en IEEE 754 de 32 bits
-3. Convierta 402DF854_{16} de IEEE 754 32 bits a decimal
+3. Convierta $402DF854_{16}$ de IEEE 754 32 bits a decimal
 4. En clase se estudió el algoritmo utilizado por los desarrolladores
    de Quake para obtener la raíz cuadrada inversa. En el [[https://youtu.be/0xyycrTekc4?si=-NKQTpMHQVn_3vid][vídeo]] se
    presenta el número hexadecimal 0x5F3759DF, el cual ocupa 32
