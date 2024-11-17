@@ -46,6 +46,7 @@
 - Realizar el circuito como una combinación de suma de productos
   (i.e. SOP) o productos de sumas (i.e. POS)
 
+* Multiplexor
 ** Ejemplo Circuito Multiplexor
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -81,6 +82,7 @@ de mapa de K. Por tanto, la ecuación booleana sería:
 
 $$F=\bar{S_2}\bar{S_1}D_0+\bar{S_2}S_1D_1+S_2\bar{S_1}D_2+S_2S_1D_3$$
 
+* Circuito Combinacional de Alarma Básico
 ** Ejemplo Sistema de Alarma Básico
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -192,6 +194,7 @@ La Figura [[fig_alarma]] muestra el circuito a implementar
 Sin embargo, ¿puede este circuito ser práctico en la realidad?
 ¿Existen opciones de mejora?
 
+* Taller de Ejercicios
 ** Taller
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
