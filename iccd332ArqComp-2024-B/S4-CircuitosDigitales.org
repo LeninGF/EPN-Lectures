@@ -45,7 +45,37 @@
   el circuito
 - Realizar el circuito como una combinación de suma de productos
   (i.e. SOP) o productos de sumas (i.e. POS)
-
+* Simplificación de Expresiones Booleanas con Mapas K
+** Simplificación de Expresiones Booleanas con Mapas K
+*** Texto                                                             :Texto:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+- Es un método gráfico para simplificar expresiones booleanas
+- Puede ser utilizado tanto para obtener la representación SOP o POS
+- Consiste en formar tablas de un orden $2^n$, donde $n$ es el número
+  de variables de entrada del problema.
+*** Imagen                                                           :Imagen:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+[[./images/mapaK.png]]
+** Procedimiento Mapas K para Min-Terms
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+1. Formar una tabla con $2^n$ celdas
+2. Colocar los 1 en las ubicaciones o celdas correspondientes
+3. Proceder a agrupar los 1 *adyacentes* en grupos de potencias
+   de 2. Tratar de formar el menor número de grupos y que contengan la
+   mayor cantidad de 1s.
+4. En los grupos formados, las variables que cambian de valor de 0 a 1
+   (y viceversa) se eliminan. Las variables que no cambian de valor se
+   mantienen.
+5. Se combinan todos los grupos de expresiones mediante una suma de
+   productos.
+6. Las variables se representan complementadas si el valor en la celda
+   del grupo (i.e. min-term) es 0.
 * Multiplexor
 ** Ejemplo Circuito Multiplexor
    :PROPERTIES:
