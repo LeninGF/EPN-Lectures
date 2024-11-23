@@ -224,6 +224,42 @@ La Figura [[fig_alarma]] muestra el circuito a implementar
 Sin embargo, ¿puede este circuito ser práctico en la realidad?
 ¿Existen opciones de mejora?
 
+* Simulación Matlab
+** Simulación Matlab
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Para hacer la simulación de circuitos digitales en Matlab se requiere
+usar Simulink. Para esto
+
+1. Abra Matlab o [[https://matlab.mathworks.com/][Matlab Online]]
+2. En la ficha /home/ seleccionar /Simulink/
+3. Se abre una pantalla en la que puede seleccionar abrir un modelo en
+   blanco (Blank Model) o abrir un archivo. Puede encontrar archivos
+   en [[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp-2024-B/Simulaciones][GitHub]]
+4. Para colocar los elementos necesarios puede dar doble clic en
+   cualquier parte del área de trabajo y a lo que se despliegue el
+   cuadro de búsqueda de bloques escriba el nombre de un bloque que
+   requiera que puede ser:
+   - manual switch
+   - constant
+   - and, or, not, xor, nand, nor
+   - display
+5. Configure las compuertas. Puede alterar el número de entradas
+   digitales dando doble clic sobre la compuerta respectiva.
+6. Realice las conexiones de los bloques según sea el diseño del circuito
+7. Configure la simulación: El Stop Time de la pestaña /SIMULATE/ se
+   coloca en **inf**. Esto permitirá que modifique las conexiones a
+   las constantes y pueda visualizar el resultado.
+8. Ejecute la simulación dando clic en RUN
+** Simulación Matlab
+#+caption: Simulación XOR
+#+attr_latex: :height 0.7\textheight
+#+label: fig:label
+[[file:images/Matlab.png]]
+
+
 * Taller de Ejercicios
 ** Taller
    :PROPERTIES:
