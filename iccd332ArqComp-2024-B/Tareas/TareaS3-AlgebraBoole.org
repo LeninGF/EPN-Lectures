@@ -324,4 +324,3 @@ usan normalmente en \LaTeX.
 #+print_bibliography: 
 
 #+end_comment
-
