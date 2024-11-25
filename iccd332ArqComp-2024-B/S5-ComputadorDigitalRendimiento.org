@@ -129,7 +129,7 @@ Define:
 - Arm 
 - Sistemas Embebidos
 
-** Medidas de Desempeño
+* Medidas de Desempeño
 ** Ley de Amdahl
 *** Ley de Amdahl
 - Trata de medir las potenciales ganancias en velocidad al pasar de un
