@@ -77,7 +77,7 @@
 
 - 4096 localidades denominadas /words/
 - Cada /word/ es de 40 bits
-- Contiene tanto os datos como las instrucciones
+- Contiene tanto los datos como las instrucciones
 - Los números usan 1 bit para el signo
 - Cada /word/ se subdivide en 2 instrucciones de 20 bits
 - La instrucción se divide en 8 bits de /operation code/(opcode):
@@ -130,6 +130,7 @@ Define:
 - Sistemas Embebidos
 
 ** Medidas de Desempeño
+** Ley de Amdahl
 *** Ley de Amdahl
 - Trata de medir las potenciales ganancias en velocidad al pasar de un
   programa que usa procesadores múltiples comparados con procesadores
@@ -142,25 +143,32 @@ Define:
  \begin{equation}
    Speedup = \frac{1}{(1-f)+\frac{f}{N}}
   \end{equation}
-
+donde $f$ es la fracción que puede ser paralelizada y $N$ el número de
+procesadores
+- El incremento de velocidad de un programa utilizando
+  múltiples procesadores está limitado por la fracción del programa
+  que no se puede paralelizar.
+- Por ejemplo, si el 50% de un programa es secuencial, el incremento
+  máximo teórico de velocidad, sin importar cuántos procesadores ($N$) se
+  añadan, será de 2 veces.
 - Indica que el software debe ser adaptado para la ejecución en
   paralelo para aprovechar el poder del procesamiento en paralelo
 - Puede ser generalizada para comparar cualquier mejora técnica en el
   diseño de los computadores.
-
+** CPU Time
 *** Velocidad del Reloj
     :PROPERTIES:
     :BEAMER_opt: allowframebreaks
     :END:
 
 - El computador usa un reloj para ejecutar sus operaciones
-  (e.g. captación, decodificación, artimética, etc.)
+  (e.g. captación, decodificación, aritmética, etc.)
 - Son señales sinusoidales generadas por un reloj de cuarzo que son
   digitalizadas en tren de pulsos.
 - La velocidad de un computador está determinada por la frecuencia del
   reloj en Hertz (Hz)
 - **Tiempo de ciclo:** El tiempo entre pulsos del reloj
-- La mayoría de instrucciones en un computador requeiren de varios
+- La mayoría de instrucciones en un computador requieren de varios
   **ciclos del reloj** para completarse
 - Cuando las instrucciones se ejecutan en *pipelining*, múltiples
   instrucciones se ejecutan simultáneamente.
@@ -191,9 +199,9 @@ CPU_\tau = CC \times CT
 
 Sin embargo, no es práctico realizar la cuenta exacta de ciclos de
 reloj que usa un programa al realizar una tarea. Por esta razón se
-prefiere usar el *Promedio de ciclos de reloj por Instruction* o
+prefiere usar el *Promedio de ciclos de reloj por Instrucción* o
 *Instruction Execution Rate* $CPI$
-
+** Instruction Execution Rate CPI
 *** Instruction Execution Rate CPI
     :PROPERTIES:
     :BEAMER_opt: allowframebreaks
@@ -240,7 +248,7 @@ tipos principales de instrucciones como se indica en la Tabla. Obtenga
 el $CPI$ promedio y la tasa de MIPs
 
 +--------------------+--------+--------------------+
-|Tipo de Instruccion | CPI    |Mix de Instrucciones|
+|Tipo de Instrucción | CPI    |Mix de Instrucciones|
 +--------------------+--------+--------------------+
 | Aritmética y Lógica|  1     |           60%      |
 +--------------------+--------+--------------------+
