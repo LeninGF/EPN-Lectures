@@ -132,6 +132,9 @@ Define:
 * Medidas de Desempeño
 ** Ley de Amdahl
 *** Ley de Amdahl
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 - Trata de medir las potenciales ganancias en velocidad al pasar de un
   programa que usa procesadores múltiples comparados con procesadores
   sencillos:
