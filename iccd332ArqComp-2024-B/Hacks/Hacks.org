@@ -1,0 +1,73 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Hacks
+#+date: 2024-12-04
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+latex_class: article
+#+latex_class_options: 12pt
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+* ¿Qué es este archivo y por qué importa?
+Este archivo contiene utilidades tanto para Emacs o para \LaTeX que
+pueden ayudar a solventar problemas frecuentes o habilitar
+funcionalidades poderosas.
+* Emacs
+** El bendito ^M
+Hay ocasiones en que observo que el archivo .org se distorsiona y
+aparece ^M. Esto es un indicador de final de línea. Para eliminarlo:
+1. Ir al inicio del documento ~M-<~
+2. ~M-x replace-string RET RET C-q C-m RET RET~
+
+Los ~RET~ son para ejecutar el comando. Es posible que al invocar ~M-x
+replace-string~ no sea necesario dar RET y podamos ingresar ~C-q C-m~
+que es la combinación de teclas que produce ^M.
+** Code Formatter
+Se sugiere probar si es útil utilizar el recurso [[https://ianyepan.github.io/posts/format-all/][format-all]]. La página
+tiene códgigo de elisp para añadir posiblemente en un init.el. Al
+parecer, una vez instalado el paquete se puede ejecutar:
+#+begin_src elisp
+M-x format-all-region-or-buffer
+#+end_src
+
+Sin embargo, al parecer format-all no incluye \LaTeX
+** ISPELL/FLYSPELL
+colocar información sobre como instalar y configurar ispell para español
+* \LaTeX
+** Formateo automático de archivo tex
+Se puede utilizar el comando ~latexindent~ para ajustar
+automáticamente la identación de un archivo ~.tex~. Para esto, se
+recomienda que esté instalado la paquetería completa de \LaTeX
+(i.e. TexLive). Caso contrario instalar.
+
+Para utilizarlo podemos hacer:
+
+#+begin_src shell
+latexindent -w /path/archivo/original.tex
+#+end_src
+
+El comando anterior sobrescribe el archivo original.tex y hace una
+copia original.bak0. También se puede ejecutar de la siguiente manera
+
+#+begin_src shell
+latexindent /path/archivo/original.tex /path/archivo/nuevo.tex
+#+end_src
+
+Si solo ejecuta ~latexindent /path/archivo/original.tex~ no se guarda
+la conversión pero se observa en consola.
