@@ -49,6 +49,23 @@ M-x format-all-region-or-buffer
 Sin embargo, al parecer format-all no incluye \LaTeX
 ** ISPELL/FLYSPELL
 colocar información sobre como instalar y configurar ispell para español
+
+** PDF Viewer
+Esto sirve para poder ver los pdfs en Emacs y cuando se renderiza un archivo \LaTeX
+
+#+begin_src elisp
+M-x package-install RET pdf-tools RET
+#+end_src
+
+Reiniciar
+
+No olvide instalar evince que es el visualizador por defecto
+
+#+begin_src shell
+sudo apt-get install evince
+#+end_src
+
+Luego pruebe a dar clic en el ícono que da Run Viewer o <<INSERTAR COMANDO>>
 * \LaTeX
 ** Formateo automático de archivo tex
 Se puede utilizar el comando ~latexindent~ para ajustar
@@ -71,3 +88,6 @@ latexindent /path/archivo/original.tex /path/archivo/nuevo.tex
 
 Si solo ejecuta ~latexindent /path/archivo/original.tex~ no se guarda
 la conversión pero se observa en consola.
+
+Es posible que se requiera eliminar ~^M~ luego de su ejecución
+
