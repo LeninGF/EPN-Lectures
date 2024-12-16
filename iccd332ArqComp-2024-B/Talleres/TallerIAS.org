@@ -1,3 +1,12 @@
+#+title: TallerIAS
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+#+cite_export: biblatex
+
 #+latex_class: article
 #+latex_class_options:
 #+latex_header:
@@ -7,24 +16,37 @@
 #+subtitle:
 #+latex_compiler: pdflatex
 #+date: \today
+#+latex_footnote_command: \footnote{%s%s}
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: .././FormatoTareas/bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
 
 
-#+title: TallerIAS
-#+date: <2024-06-11 Tue>
-#+author: Lenin G. Falconí
-#+email: lenin.falconi@epn.edu.ec
-#+language: es
-#+select_tags: export
-#+exclude_tags: noexport
-#+creator: Emacs 27.1 (Org mode 9.3)
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{.././FormatoTareas/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
 
 * Taller Máquina de Von Neuman
 
 La máquina de Von Neuman realiza operaciones en un ciclo de captación
 y ejecución. Para esto, el computador IAS usa una memoria de 40
-bits. Cuando la memoria se usa numérica mente, se representa el número
+bits. Cuando la memoria se usa numéricamente, se representa el número
 en complemento a 2, reservando el bit inicial para el signo. Cuando la
-memoria se usa para el registro de instrucciones, se debide en dos
+memoria se usa para el registro de instrucciones, se divide en dos
 partes de 20 bits. Los 8 primeros bits de cada parte corresponden al
 /opcode/ y los restantes 12 bits de cada parte a la dirección desde la
 que se debe leer.
@@ -32,14 +54,14 @@ que se debe leer.
 ** Conjunto de Instrucciones IAS
 Complete la tabla de instrucciones del computador IAS usando la
 notación RTL. Se suministra la Tabla de LaTeX para tal efecto. Edite
-el archivo en Emacs usando el modo principal ORG y el modo LaTeX, el
-cual puede activar usando M-x Latex-mode RET
+el archivo en Emacs usando el modo principal ORG y el modo \LaTeX, el
+cual puede activar usando ~M-x Latex-mode RET~
 
-- M equivale a Alt
-- x es la letra x
-- RET es dar enter
+- ~M~ equivale a /Alt/
+- ~x~ es la tecla /x/
+- ~RET~ es presionar /enter/
 
-Una vez activado el modo latex el siguiente código recibe colores
+Una vez activado el modo \LaTeX el siguiente código recibe colores
 sobre las palabras clave.
 
 \begin{table}
