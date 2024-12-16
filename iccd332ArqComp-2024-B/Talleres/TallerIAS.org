@@ -1,3 +1,8 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
 #+title: TallerIAS
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
@@ -28,7 +33,7 @@
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage[spanish]{babel}
-#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa, style=apa]{biblatex}
 
 
 #+begin_export latex
@@ -39,23 +44,38 @@ ARQUITECTURA DE COMPUTADORES}
 #+end_export
 
 
+* Recursos
+Para este taller consulte el libro \citetitle{stallings2006}
+disponible en [[https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EgjH2RoedD5NuswqpOt8ExsB_DE052v9Rlrg0QpEtbimDg?e=WoqexR][EPN-SHAREPOINT(Clic Me)]] y use su WSL con Emacs para editar el archivo.
+** Observaciones y Recomendaciones
+- Tenga en cuenta la ruta a las imágenes y a la bibliografía. Se le
+recomienda que realice una clonación o un fork del repositorio de la
+clase a fin de que no tenga problemas generando el documento.
+- Instale \LaTeX completo en el computador que generará el archivo pdf.
+* Instrucciones
+Complete las solicitudes del taller y suba el archivo ~.ORG~ y ~.PDF~
+al aula virtual. Cuando trabaje en Emacs trate de utilizar las
+combinaciones de teclas para navegar por el documento.
 
 * Taller Máquina de Von Neuman
 
-La máquina de Von Neuman realiza operaciones en un ciclo de captación
-y ejecución. Para esto, el computador IAS usa una memoria de 40
-bits. Cuando la memoria se usa numéricamente, se representa el número
-en complemento a 2, reservando el bit inicial para el signo. Cuando la
-memoria se usa para el registro de instrucciones, se divide en dos
-partes de 20 bits. Los 8 primeros bits de cada parte corresponden al
-/opcode/ y los restantes 12 bits de cada parte a la dirección desde la
-que se debe leer.
+La máquina de Von Neuman realiza operaciones en un ciclo repetitivo de
+captación y ejecución. Para esto, el computador IAS usa una memoria de
+40 bits. Cuando la memoria se usa numéricamente, se representa el
+número en complemento a 2, reservando el bit inicial para el
+signo. Cuando la memoria se usa para el registro de instrucciones, se
+divide en dos partes de 20 bits. Los 8 primeros bits de cada parte
+corresponden al /opcode/ y los restantes 12 bits de cada parte a la
+dirección (operando) desde la que se debe leer o a la que se debe
+escribir.
 
 ** Conjunto de Instrucciones IAS
-Complete la tabla de instrucciones del computador IAS usando la
-notación RTL. Se suministra la Tabla de LaTeX para tal efecto. Edite
-el archivo en Emacs usando el modo principal ORG y el modo \LaTeX, el
-cual puede activar usando ~M-x Latex-mode RET~
+Complete la Tabla 2.1 de instrucciones del computador IAS
+[cite:@stallings2006 p.47] usando la notación RTL[fn:1]. Se suministra
+la Tabla en código \LaTeX para tal efecto. Edite el archivo en Emacs
+usando el modo principal ORG y cambie al modo \LaTeX para editar la
+Tabla. El cambio de modo se realiza usando ~M-x Latex-mode RET~ y para
+retornar al modo ~ORG~ haga ~M-x org-mode RET~
 
 - ~M~ equivale a /Alt/
 - ~x~ es la tecla /x/
@@ -64,9 +84,10 @@ cual puede activar usando ~M-x Latex-mode RET~
 Una vez activado el modo \LaTeX el siguiente código recibe colores
 sobre las palabras clave.
 
-\begin{table}
+\begin{table}[htbp]
   \caption{Instrucciones Maquina IAS}
-  
+  \label{tab:tablaISA-IAS}
+  \centering
   \begin{tabular}{|cccc|}
     \hline
     Opcode   & Opcode Hex &  Simbolo          & RTL \\ \hline
@@ -81,19 +102,38 @@ sobre las palabras clave.
   \end{tabular}
 \end{table}
 
+\newpage
 
 ** Ejercicio
 
 En la máquina IAS, las instrucciones se dividen en dos segmentos:
 izquierdo desde el bit 0 a 19 y derecho desde el bit 20 al 39. Primero
 se ejecuta el lado izquierdo (bits 0 a 19) y luego el derecho. El
-contador de programa inicia en la posición 300 ¿qué resultado se tiene
-en el registro del acumulador si se tiene el siguiente mapa de
-memoria? A fin de terminar el programa se agrega la instrucción 99
-para terminar le programa (HALT). El set de instrucciones originales
-del IAS no incluye esta instrucción.
+contador de programa inicia en la posición 300. El set de
+instrucciones del computador o ISA[fn:2] está definido en la Tabla
+\ref{tab:tablaISA-IAS}. A fin de terminar el programa se agrega la
+instrucción ~0x99~ para terminar el programa (i.e. HALT). Conteste las
+siguientes preguntas considerando la Tabla [[tab:memoria-compu]] como el
+mapa de Memoria de la máquina y obtenga el programa en Assembre y en
+RTL.
 
-+---------+-------+-----+-------+-----+
+ si se tiene el siguiente mapa de memoria? 
+
+ #+caption: Mapa de Memoria
+ #+name: tab:memoria-compu
+ |-----------+--------------+---------+--------------+---------|
+ | Dirección | \(Opcode_1\) | \(X_1\) | \(Opcode_2\) | \(X_2\) |
+ |-----------+--------------+---------+--------------+---------|
+ |     0x300 |         0x01 |   0x940 |         0x06 |   0x941 |
+ |     0x301 |         0x21 |   0x940 |         0x99 |   0x000 |
+ |       ... |          ... |     ... |          ... |     ... |
+ |     0x940 |         0x00 |   0x000 |         0x00 |   0x005 |
+ |     0x941 |         0x00 |   0x000 |         0x00 |   0x002 |
+ |-----------+--------------+---------+--------------+---------|
+
+
+ #+begin_comment
+ +---------+-------+-----+-------+-----+
 |Dirección|opcode1| x1  |opcode2|x2   |
 +---------+-------+-----+-------+-----+
 |300      |01     |940  |06     |941  |
@@ -106,19 +146,34 @@ del IAS no incluye esta instrucción.
 +---------+-------+-----+-------+-----+
 |941      |00     |000  |00     |002  |
 +---------+-------+-----+-------+-----+
+ #+end_comment
 
-- Resultado en registro de acumulador: ??  - ¿se sobrescribe algún
-registro como resultado de la ejecución? Si verdadero, indique qué
-registro y con qué valor.
 
-Escriba la notación RTL y el Programa Ensamblador:
+*** Preguntas
+
+1. ¿Qué resultado se tiene en el registro del acumulador?
+
+2. ¿Se sobrescribe algún registro como resultado de la ejecución? Si
+   verdadero, indique qué registro y con qué valor.
 
 *** Código Assembler:
+Escriba el código Assembler del programa que ejecuta el computador IAS.
+
 #+begin_src
 LOAD M(940)
 
 #+end_src
 
 *** Código RTL
-$[AC] \leftarrow [940]$
+Escriba en notación de transferencia de registros el programa que
+ejecuta el computador
 
+IAS $[AC] \leftarrow [940]$
+
+
+#+print_bibliography: 
+
+* Footnotes
+[fn:2]Instruction Set Architecture: los códigos de programación 
+
+[fn:1]Register Transfer Language o Lenguaje de Transferencia de Registros 
