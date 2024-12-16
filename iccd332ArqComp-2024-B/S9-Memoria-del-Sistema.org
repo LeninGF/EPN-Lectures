@@ -61,7 +61,7 @@
 ** Hard Error vs Soft Error
 ** Código de Hamming
 - Realice una explicación sencilla con ejemplo
-* Organización Avanzada de Memorias RAM
+* Organización Avanzada de Memorias RAM (E5)
 ** Dram síncrona
 ** DDR SDRAM
 ** EDRAM
