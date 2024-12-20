@@ -1,0 +1,116 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Plantilla para Toma de Notas en Clase
+#+date: 2024-07-
+#+author: COLOQUE SU NOMBRE
+#+email: coloque.su.nombre@epn.edu.ec
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{./logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+#+begin_comment
+Este comentario contiene la estructura básica para toma de notas de
+acuerdo a la metodología explicada por la Universidad de Cornell.
+* 2024-xx-xx Título de la clase/charla
+** Preguntas y Términos clave (Cue):
+- término clave1 ::
+- término clave2 ::
+** Notas (Notes):
+- nota1
+- nota2
+  - subnota
+  - subnota
+- nota3
+  1. numerado
+  2. numerado
+** Resumen (Summary):
+Aquí se realiza un breve resumen
+#+end_comment
+* 2024-xx-xx Título de la clase/charla
+** Preguntas y Términos clave (Cue):
+- ¿qué es el sistema de notas de U. Cornell? ::
+- TODO :: ????
+** Notas (Notes):
+- Sistema eficiente de toma de apuntes
+- Divide la hoja en tres secciones:
+  1. *Sección para preguntas*: apuntar todo lo que no se entiende o la
+     pregunta que surge de la charla
+  2. *Sección para notas: se coloca las notas normales. Aquí podemos
+     explotar Emacs y Programación literaria para incluir código de programación
+  3. *Resumen*: Una vez terminada la clase, en una fase posterior y
+     usando las notas tomadas, y resolviendo las inquietudes, se
+     escribe un resumen de la clase.
+- Emacs se puede usar para facilitar esta tarea dividiendo la pantalla mediante:
+  - Horizontal: ~C-x 2~
+  - Vertical: ~C-x 3~
+  - Cambiar de ventana ~C-x o~
+  - Cerrar una ventana que ya no quiero ~C-x 0~
+  - Cerrar todas las demás ventanas excepto en la que el cursor está ~C-x 1~
+- Una desventaja de Emacs es que no podemos graficar en la pantalla
+- Una ventaja es que podemos escribir la notación matemática usando \LaTeX
+- Una ventaja es que podemos escribir el código de programación de
+  cualquier lenguaje de programación y testearlo directamente desde el archivo.
+  1. numerado
+  2. numerado
+- Emacs nos permite adicionar el ~TODO~ para marcar las tareas y
+  controlar cuáles ya están realizadas. Para esto generamos más
+  viñetas con el [ ]. Si la tarea ya está realizada podemos dar ~C-c
+  C-c~ en la línea y cambiar el estado de la tarea a realizada. Pruebe
+  en el ejemplo.
+** Enlaces de Interés
+- [[https://lsc.cornell.edu/how-to-study/taking-notes/cornell-note-taking-system/][Página web de Cornell University sobre Toma de Notas]]
+- [[https://youtu.be/nX-xshA_0m8?si=20MELdipZ1cjRh2f][YouTube]]
+** Resumen (Summary):
+Emacs ofrece una herramienta que nos permite combinar código y
+literatura así como aprovechar \LaTeX para escribir notación
+matemática. Mediante el uso de combinaciones de teclas se puede
+alternar entre distintas pantallas. Así por ejemplo, se puede dividir
+la pantalla en una región para apuntar las preguntas, otra para las
+notas y una tercera para el resumen. Algo que no incluye la estrategia
+de Cornell es apuntar las tareas. Pero esto lo podemos aprovechar con
+Emacs ~TODO~.
+
+
+* TODO Mis Tareas [50%]
+- [X] Leer este documento
+- [ ] Escribir el resumen  de la exposición 1
+
+#+print_bibliography: 
+ 
