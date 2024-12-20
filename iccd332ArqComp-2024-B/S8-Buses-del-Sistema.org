@@ -35,7 +35,7 @@
   - ~**~ Declara el nombre de la diapositiva
 - Puede alterar la estructura de la diapositiva si lo considera
   necesario
-- Para este tema puede usar:
+- Para este tema consulte las siguientes fuentes:
   - \textcite{stallings2006}, 7ma edición, 2006, Español, páginas 99 a
     119 [cite:@stallings2006].
   - \textcite{stallings2022computer}, 11ava edición, 2022, English,
@@ -44,10 +44,21 @@
   del PDF (no del libro)
 - Las personas que exponen suben la presentación en formato .ORG y
   .PDF
-- Las personas que atienden suben los apuntes de la clase de acuerdo a
+- Las personas que atienden suben los apuntes de la clase de acuerdo al
   formato de toma de notas en .ORG y .PDF
-* Buses del Sistema (Nombre de la Sección)
-** Estructuras de Interconexión (E1, 7, 97)
+** Diseño de las Diapositivas
+- Para diseñar sus diapositivas puede consultar cualquiera de las
+  presentaciones .ORG desarrolladas por el profesor así como al
+  archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][tutorialBeamer.org]] en el repositorio de [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][GitHub]] de la clase.
+- Recuerde que los archivos .ORG son archivos de texto así que los
+  puede copiar y sustituir por su texto propio.
+** Sobre este Documento
+- Este documento tiene la propuesta de temas a tratar y desarrollar
+  por los estudiantes.
+- Se ha de utilizar como base la bibliografía recomendada, pero puede
+  consultar bibliografía adicional.
+* Buses del Sistema (Sección)
+** Estructuras de Interconexión (Nombre Diapositiva)(E1, 7, 97)
 * Interconexión con Buses (Sección)
 ** Interconexión con Buses (E1, 7, 99)
 ** Estructura del Bus  (E1, 7, 99)
