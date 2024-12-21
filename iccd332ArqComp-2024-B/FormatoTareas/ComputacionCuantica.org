@@ -1,0 +1,116 @@
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Computación Cuántica 
+#+date: 2024-12-04
+#+author: Lenin Falconi
+#+email: h.j.farnsworth@marsu.edu
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: default
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=apa]{biblatex}
+
+#+latex_header: \usepackage{lipsum}
+
+* Sección1
+
+** Diapositiva Control de Columnas
+*** Texto1                                                     :texto1:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+
+- La computación cuántica me aburre
+- Para que me da eso el profe?
+- etc
+*** Texto 2                                                    :Texto2:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+- Repita el mismo procedimiento para la otra columna
+- texto 2
+- texto 3
+- testo interesante interesante kasfjkasdjf asfjlaskdjfasd  
+** Diapositiva División de Texto Largo
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+**También se puede hacer que automáticamente se divida la presentación
+de un texto largo en varias presentaciones**
+
+\lipsum[1-3]
+
+** Diapositiva Referencias
+- Insertar referencias hace uso del comando
+#+begin_src elisp
+M-x org-cite-insert
+#+end_src
+
+- Una vez que se ejecuta, Emacs leerá el archivo .bib
+- seleccionamos la referencia de interes y salimos con ~C-RET~
+
+*** Ejemplo
+Este es un ejemplo para indicar como aparece una cita de
+[cite:@knuth1984literate]
+
+* Sección2
+
+
+** Diapositiva Incrustar código \LaTeX
+Se puede utilizar directamente comandos de \LaTeX
+
+\begin{equation}
+\frac{1}{N}\sum_{i=0}^N(y_i-\hat{y}_i)^2
+\end{equation}
+
+** Diapositiva Insertar Imágenes
+La Figura [[fig:mifigura]] es un ejemplo de incrustar una imagen en un slide
+
+#+caption: Titulo de la Figura
+#+name: fig:mifigura
+#+attr_latex: :width \textwidth :height 0.6\textheight
+[[file:logoEpn.jpg]]
+
+** Diapositiva Insertar Tablas
+- Revisar [[https://orgmode.org/manual/Images-in-LaTeX-export.html][LaTeX export in Org]]
+- Ingresar al manual de org desde la ayuda de Emacs: ~C-h RET~ y buscar ORG Manual
+* Sección3
+
+** Diapositiva Apa
+Creo que también es factible hacer citas apa usando \parencite{knuth1984literate} pero
+la búsqueda del nombrede la referencia no se automatiza.
+
+** Diapositiva Beamer Mode y Generación PDF
+1. Es importante habilitar el modo beamer: ~M-x org-beamer-mode~
+2. La exportación de pdf se hace con
+#+begin_src elisp
+M-x org-beamer-export-to-pdf
+#+end_src
+
+** Diapositiva 33
+
+* Referencias
+** Referencias
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+#+print_bibliography: 
