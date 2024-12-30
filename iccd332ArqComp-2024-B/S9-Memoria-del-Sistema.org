@@ -16,56 +16,89 @@
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.3)
+#+cite_export: biblatex
+
+#+bibliography: ./FormatoTareas/bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa, style=apa]{biblatex}
 
 
-* Estructura del sistema de Memoria(E1, Q1)
-** Características de los sistemas de Memoria
-- Recuerde que si options: H:2, entonces
-- * Declara el nombre de la Sección
-- ** Declara el nombre de la diapositiva
-- Puede alterar la estructura de la diapositiva si lo considera necesario
-- En la 10ma edición en Inglés dispone de contenido en los capítulos 4
-  (pág 136) y 5 (pág 162) y 6 (pág 201)
-** Ubicación
-** Capacidad
-** Unidad de Transferencia
-** Acceso secuencial
-** Acceso directo
-** Acceso aleatorio
-** Tiempo de Acceso
-** Tiempo de ciclo de memoria
-** Jerarquía de Memoria
-* Memoria Cache (E2, Q2)
-** Principios Básicos de las Memorias Caché
+* Indicaciones
+** Indicaciones
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Recuerde que si options: H:2, entonces: 
+  - ~*~ Declara el nombre de la Sección
+  - ~**~ Declara el nombre de la diapositiva
+- Puede alterar la estructura de la diapositiva si lo considera
+  necesario
+- Para este tema consulte las siguientes fuentes:
+  - \textcite{stallings2006}, 7ma edición, 2006, Español, Capítulo 5
+    página 171 y Capítulo 6 página 197 [cite:@stallings2006].
+  - \textcite{stallings2022computer}, 11ava edición, 2022, English,
+    Capítulo 4 desde página 136, Capítulo 5 desde página 162 y Capítlo
+    6 desde 201 [cite:@stallings2022computer].
+- La tupla (E1,7, 97) significa Grupo E1, Libro Edición 7, página 97
+  del PDF (no del libro)
+- Las personas que exponen suben la presentación en formato .ORG y
+  .PDF
+- Las personas que atienden suben los apuntes de la clase de acuerdo al
+  formato de toma de notas en .ORG y .PDF
+** Diseño de las Diapositivas
+- Para diseñar sus diapositivas puede consultar cualquiera de las
+  presentaciones .ORG desarrolladas por el profesor así como al
+  archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][tutorialBeamer.org]] en el repositorio de [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][GitHub]] de la clase.
+- Recuerde que los archivos .ORG son archivos de texto así que los
+  puede copiar y sustituir por su texto propio.
+** Sobre este Documento
+- Este documento tiene la propuesta de temas a tratar y desarrollar
+  por los estudiantes.
+- Se ha de utilizar como base la bibliografía recomendada, pero puede
+  consultar bibliografía adicional.
+* Estructura del sistema de Memoria(E1, 11, 136)
+** Principio de Localidad (E1, 11, 137)
+** Características de los sistemas de Memoria (E1, 11, 142)
+** Ubicación (E1)
+** Capacidad (E1)
+** Unidad de Transferencia (E1)
+** Acceso secuencial (E1)
+** Acceso directo (E1)
+** Acceso aleatorio (E1)
+** Tiempo de Acceso (E1)
+** Tiempo de ciclo de memoria (E1)
+** Jerarquía de Memoria (E1, 11,145) hasta (E1,11,150)
+* Memoria Cache (E2, 11, 162)
+** Principios Básicos de las Memorias Caché (E2,11,163)(E2,7,133)
 - Realice un resumen de lo más esencial del tema
-- En 7ma edición página 133
-- En 10ma edición página 161
 ** Elementos de Diseño de la memoria Caché
 ** Tamaño Caché
-** Función de Correspondencia
+** Función de Correspondencia (E2,11,170)(E2,7,137)
 - Se recomienda la tabla 5.3 página 170 de la 10ma edición
-** Algoritmo de Sustitución
+** Algoritmo de Sustitución (E2,7,148)
 ** Política de escritura
 ** Tamaño de Línea
-** Número de Cachés
-* Memoria Interna (E3, Q3)
-** Organizaciṕon Memoria Principal Semiconductora
-- Stallings 7ma edición página 172
-- Stallings 10ma edición página   201 Capítulo 6
+** Número de Cachés (E2, 7, 150)
+* Memoria Interna (E3,7,172)(E3,11,201)
+** Organización Memoria Principal Semiconductora (E3,7,172) (E3,11,201)
+- [cite:@stallings2006] página 172
+- [cite:@stallings2022computer] página 201 Capítulo 6
 ** DRAM y SRAM
 ** RAM dinámica
 ** SRAM RAM estática
 ** Tipos de ROM
 ** Chip de Memoria RAM
-* Corrección de Errores (E4, Q4)
+* Corrección de Errores (E4, 7, 181)(E4,11,211)
 ** Hard Error vs Soft Error
 ** Código de Hamming
 - Realice una explicación sencilla con ejemplo
-* Organización Avanzada de Memorias RAM (E5)
+* Organización Avanzada de Memorias RAM (E5, 7, 187)(E5,11,216)
 ** Dram síncrona
 ** DDR SDRAM
 ** EDRAM
-** Flash Memory
-* Memorias no volátiles de estado solido
+** Flash Memory(E5,11,223)
+* Memorias no volátiles de estado solido(E5,11,226)
 ** STT-RAM
 ** PCRAM
