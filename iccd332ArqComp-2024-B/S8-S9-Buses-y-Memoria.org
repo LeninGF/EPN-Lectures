@@ -255,7 +255,7 @@
 - SDRAM significa DRAM sincrónica: usa una señal de reloj para
   sincronizar la memoria y el procesador.
 - Recuerde que 1 G equivale a $2^{30}$
-- Para 2021, el estándard de memoria es la DDR5 SDRAM empacada en
+- Para 2021, el estándar de memoria es la DDR5 SDRAM empacada en
   *dual inline memory module (DIMM)*.
 - Un DIMM tiene 288 pines.
 - Para laptops está disponible la **SODIM** de 262 pines
@@ -326,7 +326,7 @@
 ** SATA (Serial AT Attachment)
 
 
-- Interfaz serial bi-direccional standard para conectar /motherboards/
+- Interfaz serial bi-direccional estándar para conectar /motherboards/
   a dispositivos de almacenamiento.
 - Contiene dos conductores diferenciales. Cada para lleva datos en una
   dirección.
