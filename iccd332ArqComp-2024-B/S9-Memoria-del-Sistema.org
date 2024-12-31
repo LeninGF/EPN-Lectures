@@ -39,7 +39,7 @@
   - \textcite{stallings2006}, 7ma edición, 2006, Español, Capítulo 5
     página 171 y Capítulo 6 página 197 [cite:@stallings2006].
   - \textcite{stallings2022computer}, 11ava edición, 2022, English,
-    Capítulo 4 desde página 136, Capítulo 5 desde página 162 y Capítlo
+    Capítulo 4 desde página 136, Capítulo 5 desde página 162 y Capitulo
     6 desde 201 [cite:@stallings2022computer].
 - La tupla (E1,7, 97) significa Grupo E1, Libro Edición 7, página 97
   del PDF (no del libro)
