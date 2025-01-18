@@ -1,0 +1,134 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Booteo de Sistema Operativo Linux
+#+date: 2025-XX-XX
+#+author: COLOQUE SU NOMBRE
+#+email: nombre.apellido@epn.edu.ec
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+* Objetivos
+- Desarrollar un script de python con paradimga estructurado
+
+* Problema
+Usted es el científico de datos para un sistema de lanzamiento de
+cohetes. Para esto se le solicita que determine gráficamente el
+alcance del cohete según al menos tres ángulos de entrada, un tiempo
+máximo de 2 segundos. Se considera la velocidad del tiempo por medio
+de un coeficiente de resistencia del aire. Escriba un programa que
+permita obtener el alcance del cohete y guardarlo a disco. Los
+parámetros como Velocidad inicial ~V~, coeficiente de resistencia ~B~,
+tiempo máximo ~tmax~ y ángulos de lanzamiento se ingresan desde la
+línea de comando.
+
+* Desarrollo Matemático
+
+La fuerza de resistencia del viento se puede considerar que es
+proporcional al cuadrado de la velocidad y en sentido opuesto a
+ésta. De ahí que las fuerzas actuando en el sistema quedarían
+determinadas por la ecuación
+
+
+\begin{equation}
+  \label{}
+  \vec{F}_{\text{net}} = \vec{F}_g + \vec{F}_f = -mg\hat{y} - b|\vec{v}|\vec{v}
+\end{equation}
+
+La velocidad está dada por $\vec{v} = \dot{x} \hat{x} + \dot{y} \hat{y}$
+
+En consecuencia la Fuerza neta del sistema queda:
+
+\begin{equation}
+  \label{}
+  \vec{F}_{\text{net}} = -mg\hat{y} - b\sqrt{\dot{x}^2 + \dot{y}^2}(\dot{x}\hat{x} + \dot{y}\hat{y})
+\end{equation}
+
+Que en forma vectorial se puede escribir como
+
+\begin{equation}
+  \label{}
+  \vec{F}_{\text{net}} = \begin{bmatrix} - b\sqrt{\dot{x}^2 + \dot{y}^2}\dot{x} \\ -mg - b\sqrt{\dot{x}^2 + \dot{y}^2}\dot{y} \end{bmatrix}
+\end{equation}
+
+Dado que $\vec{F}_{\text{net}} = m\vec{a} = m\left< \ddot{x}, \ddot{y} \right>$, se tiene
+
+\begin{equation}
+  \label{}
+   m \begin{bmatrix}\ddot{x} \\ \ddot{y} \end{bmatrix} =  \begin{bmatrix} - b\sqrt{\dot{x}^2 + \dot{y}^2}\dot{x} \\ -mg - b\sqrt{\dot{x}^2 + \dot{y}^2}\dot{y} \end{bmatrix}
+\end{equation}
+
+De donde se obtienen el par de ecuaciones diferenciales
+
+\begin{equation}
+  \label{}
+  \ddot{x} = - \frac{b}{m}\sqrt{\dot{x}^2 + \dot{y}^2}\dot{x}
+\end{equation}
+
+\begin{equation}
+  \label{}
+  \ddot{y} = -g - \frac{b}{m}\sqrt{\dot{x}^2 + \dot{y}^2}\dot{y}
+\end{equation}
+
+Definiendo $x' = x/g$ and $y'=y/g$, se tiene entonces
+
+\begin{equation}
+  \label{}
+   \ddot{x'} = - \frac{bg}{m}\sqrt{\dot{x'}^2 + \dot{y'}^2}\dot{x'}
+\end{equation}
+
+\begin{equation}
+  \label{}
+   \ddot{y'} = -1 - \frac{bg}{m}\sqrt{\dot{x'}^2 + \dot{y'}^2}\dot{y'}
+\end{equation}
+
+Sea $B \equiv bg/m$, entonces considerando el cambio de notación y
+eliminado la ' para simplificar, se propone resolver un sistema de
+ecuaciones de primer orden ODE siguiente:
+
+
+\begin{align}
+  \label{}
+  \dot{x} &= v_x\\
+  \dot{v_x}  &= - B\sqrt{\dot{x}^2 + \dot{y}^2}\dot{x}\\
+  \dot{y} &= v_y\\
+  \dot{v_y} &= - B\sqrt{\dot{x}^2 + \dot{y}^2}\dot{y}
+\end{align}
+
