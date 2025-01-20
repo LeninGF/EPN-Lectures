@@ -46,14 +46,14 @@ ARQUITECTURA DE COMPUTADORES}
 
 
 * Objetivos
-- Desarrollar un script de python con paradimga estructurado
+- Desarrollar un script de Python con paradigma estructurado
 
 * Problema
 Usted es el científico de datos para un sistema de lanzamiento de
 cohetes. Para esto, se le solicita que determine gráficamente el
 alcance del cohete según al menos tres ángulos de entrada, un tiempo
 máximo de vuelo ~t~. Se considera que existe una fuerza de resistencia
-al movimiento debid al viento y representada mediante un coeficiente
+al movimiento debido al viento y representada mediante un coeficiente
 ~b~. Escribir un programa que permita obtener el alcance del cohete
 gráficamente, mediante la resolución de ecuaciones diferenciales
 ordinarias. Los parámetros como Velocidad inicial ~V~, coeficiente de
@@ -78,8 +78,9 @@ completar el taller.
    una carpeta ~utils~ en el archivo ~projectile_functions.py~. El
    código principal se coloca en el archivo ~main.py~ conforme al
    siguiente esquema de archivos.
-   1. Escriba ~imp~ seguido de ~C-TAB~ para escribir ~import~
-   2. Con YASnippet habilitado escriba ~main~ seguido de la secuencia
+   1. Con YASnippet habilitado escriba ~imp~ seguido de ~C-TAB~ para
+      escribir ~import~
+   2. Escriba ~main~ seguido de la secuencia
       de comandos ~C-TAB~. Esto genera una función llamada ~main~
    3. escriba ~ifm~ seguido de la secuencia ~C-TAB~ para generar la
       condición de ejecución del programa Python como programa
@@ -246,3 +247,4 @@ plt.show()
 ** SOLVE_IVP
 ** ARGPARSE
 ** NUMPY
+       
