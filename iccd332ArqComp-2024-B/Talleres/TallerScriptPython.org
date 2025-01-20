@@ -3,8 +3,8 @@
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
-#+title: Booteo de Sistema Operativo Linux
-#+date: 2025-XX-XX
+#+title: Taller Script Python
+#+date: 2025-01-19
 #+author: COLOQUE SU NOMBRE
 #+email: nombre.apellido@epn.edu.ec
 #+language: Español
@@ -50,16 +50,67 @@ ARQUITECTURA DE COMPUTADORES}
 
 * Problema
 Usted es el científico de datos para un sistema de lanzamiento de
-cohetes. Para esto se le solicita que determine gráficamente el
+cohetes. Para esto, se le solicita que determine gráficamente el
 alcance del cohete según al menos tres ángulos de entrada, un tiempo
-máximo de 2 segundos. Se considera la velocidad del tiempo por medio
-de un coeficiente de resistencia del aire. Escriba un programa que
-permita obtener el alcance del cohete y guardarlo a disco. Los
-parámetros como Velocidad inicial ~V~, coeficiente de resistencia ~B~,
-tiempo máximo ~tmax~ y ángulos de lanzamiento se ingresan desde la
-línea de comando.
+máximo de vuelo ~t~. Se considera que existe una fuerza de resistencia
+al movimiento debid al viento y representada mediante un coeficiente
+~b~. Escribir un programa que permita obtener el alcance del cohete
+gráficamente, mediante la resolución de ecuaciones diferenciales
+ordinarias. Los parámetros como Velocidad inicial ~V~, coeficiente de
+resistencia ~B~, tiempo máximo ~tmax~ y ángulos de lanzamiento se
+ingresan desde la línea de comando. Siga las instrucciones
+proporcionadas en  la Sección [[Instrucciones]] para
+completar el taller.
 
-* Desarrollo Matemático
+* Instrucciones
+
+1. Obtener las expresiones matemáticas para las ecuaciones
+   diferenciales ordinarias. Vea la Sección [[Desarrollo Matemático]]
+2. Investigar cómo funciona la librería ~solve_ivp~ del paquete
+   ~scipy.integrate~
+3. Investigar cómo funciona la librearía ~argparse~ para controlar el
+   ingreso de valores y opciones desde la línea de comandos.
+4. Cree una carpeta con los archivos del proyecto denominada ~cohete~.
+5. Dentro de la carpeta cree un archivo ~main.py~ con el código
+   proporcionado en la Sección [[Código Inicial Python]]
+6. Reorganizar el código proporcionado de ejemplo para conformar un
+   proyecto de código estructurado. Las funciones estarán dentro de
+   una carpeta ~utils~ en el archivo ~projectile_functions.py~. El
+   código principal se coloca en el archivo ~main.py~ conforme al
+   siguiente esquema de archivos.
+   1. Escriba ~imp~ seguido de ~C-TAB~ para escribir ~import~
+   2. Con YASnippet habilitado escriba ~main~ seguido de la secuencia
+      de comandos ~C-TAB~. Esto genera una función llamada ~main~
+   3. escriba ~ifm~ seguido de la secuencia ~C-TAB~ para generar la
+      condición de ejecución del programa Python como programa
+      principal
+   4. Use ~fd~ seguido de ~C-TAB~ para escribir una función con
+      /docstrings/ y use ~r~ seguido de ~C-TAB~ para escribir ~return~
+   5. Utilice ~pars~ ~C-TAB~ para crear un parser y ~args~ ~C-TAB~
+      para crear un argumento de entrada del programa. Importe la
+      librería ~argparse~
+
+#+LATEX_HEADER: \usepackage{dirtree}
+#+begin_export latex
+\dirtree{%
+ .1 /. 
+ .2 main.py. 
+ .2 utils. 
+ .3 \_\_init\_\_.py. 
+ .3 projectile\_functions.py. 
+ }
+#+end_export
+* Entregables del taller
+1. Archivo .zip con el archivo ~main.py~ y la librería desarrollada
+   ~projectile_functions.py~ y el gráfico obtenido de una carrera.
+2. Completar en la sección [[]] de este documento una breve
+   descripción de lo que hacen las librerías revisadas en este taller.
+3. Una vez redactado el punto anterior suba el archivo .ORG y el .PDF
+* Recursos
+Puede consultar más información en el siguiente [[https://www.youtube.com/watch?v=b9S_L1AaJNw][vídeo]] y en [[https://github.com/lukepolson/youtube_channel/blob/main/Python%20Metaphysics%20Series/vid22.ipynb][GitHub]]
+
+** Desarrollo Matemático
+
 
 La fuerza de resistencia del viento se puede considerar que es
 proporcional al cuadrado de la velocidad y en sentido opuesto a
@@ -72,13 +123,13 @@ determinadas por la ecuación
   \vec{F}_{\text{net}} = \vec{F}_g + \vec{F}_f = -mg\hat{y} - b|\vec{v}|\vec{v}
 \end{equation}
 
-La velocidad está dada por $\vec{v} = \dot{x} \hat{x} + \dot{y} \hat{y}$
+La velocidad está dada por $\vec{v} = \dot{x} \hat{i} + \dot{y} \hat{j}$
 
 En consecuencia la Fuerza neta del sistema queda:
 
 \begin{equation}
   \label{}
-  \vec{F}_{\text{net}} = -mg\hat{y} - b\sqrt{\dot{x}^2 + \dot{y}^2}(\dot{x}\hat{x} + \dot{y}\hat{y})
+  \vec{F}_{\text{net}} = -mg\hat{y} - b\sqrt{\dot{x}^2 + \dot{y}^2}(\dot{x}\hat{i} + \dot{y}\hat{j})
 \end{equation}
 
 Que en forma vectorial se puede escribir como
@@ -132,3 +183,66 @@ ecuaciones de primer orden ODE siguiente:
   \dot{v_y} &= - B\sqrt{\dot{x}^2 + \dot{y}^2}\dot{y}
 \end{align}
 
+
+
+** Código Inicial Python
+
+
+#+begin_src python :session :results output :exports both
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot  as plt
+
+def dSdt(t,S,B):
+    """
+    Use fd seguido de C-TAB para generar la funcion con docstrings
+    Define el sistema de ecuaciones diferenciales para el movimiento del proyectil
+    con resistencia al aire
+    Parametros:
+        t (float): Tiempo
+        S (list): Estado actual [x, vx, y, vy]
+        B (float): Coeficiente de resistencia del aire. Varía desde 0.0 a 1.0
+    Retorna:
+        list: Derivadas [dx/dt, dvx/dt, dy/dt, dvy/dt]
+    """
+    x, vx, y, vy = S
+    return [vx,
+            -B*np.sqrt(vx**2+vy**2)*vx,
+            vy,
+            -1-B*np.sqrt(vx**2+vy**2)*vy]
+
+B = 0
+V = 1
+t1 = 40*np.pi/180
+t2 = 45*np.pi/180
+t3 = 50*np.pi/180
+
+sol1 = solve_ivp(dSdt, [0, 2],
+                 y0=[0,V*np.cos(t1),0,V*np.sin(t1)],
+                 t_eval=np.linspace(0,2,1000),
+                 args=(B,)) # atol=1e-7, rtol=1e-4)
+sol2 = solve_ivp(dSdt, [0, 2],
+                 y0=[0,V*np.cos(t2),0,V*np.sin(t2)],
+                 t_eval=np.linspace(0,2,1000),
+                 args=(B,)) #atol=1e-7, rtol=1e-4)
+sol3 = solve_ivp(dSdt, [0, 2],
+                 y0=[0,V*np.cos(t3),0,V*np.sin(t3)],
+                 t_eval=np.linspace(0,2,1000),
+                 args=(B,)) #atol=1e-7, rtol=1e-4)
+
+
+plt.plot(sol1.y[0],sol1.y[2], label=r'$\theta_0=40^{\circ}$')
+plt.plot(sol2.y[0],sol2.y[2], label=r'$\theta_0=45^{\circ}$')
+plt.plot(sol3.y[0],sol3.y[2], label=r'$\theta_0=50^{\circ}$')
+plt.ylim(bottom=0)
+plt.legend()
+plt.xlabel('$x/g$', fontsize=20)
+plt.ylabel('$y/g$', fontsize=20)
+plt.show()
+
+#+end_src
+
+* Descripción librerías usadas
+** SOLVE_IVP
+** ARGPARSE
+** NUMPY
