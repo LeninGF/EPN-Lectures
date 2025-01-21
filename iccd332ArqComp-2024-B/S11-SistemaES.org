@@ -16,65 +16,90 @@
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.3)
+#+cite_export: biblatex
+
+#+bibliography: ./FormatoTareas/bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa, style=apa]{biblatex}
 
 
-
-* Sistemas de Entrada/Salida (10,270,E1, Q1)(7,229,E1, Q1)
+* Indicaciones
+** Indicaciones
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Recuerde que si options: H:2, entonces: 
+  - ~*~ Declara el nombre de la Sección
+  - ~**~ Declara el nombre de la diapositiva
+- Puede alterar la estructura de la diapositiva si lo considera
+  necesario
+- Para este tema consulte las siguientes fuentes:
+  - \textcite{stallings2006}, 7ma edición, 2006, Español, Capítulo 7
+    página 229 [cite:@stallings2006].
+  - \textcite{stallings2022computer}, 11ava edición, 2022, English,
+    Capítulo 8 desde página 270 [cite:@stallings2022computer].
+- La tupla (E1,7, 270) significa Grupo E1, Libro Edición 7, página 270
+  del PDF (no del libro)
+- Las personas que exponen suben la presentación en formato .ORG y
+  .PDF
+- Las personas que atienden suben los apuntes de la clase de acuerdo al
+  formato de toma de notas en .ORG y .PDF
+** Diseño de las Diapositivas
+- Para diseñar sus diapositivas puede consultar cualquiera de las
+  presentaciones .ORG desarrolladas por el profesor así como al
+  archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][tutorialBeamer.org]] en el repositorio de [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][GitHub]] de la clase.
+- Recuerde que los archivos .ORG son archivos de texto así que los
+  puede copiar y sustituir por su texto propio.
+** Sobre este Documento
+- Este documento tiene la propuesta de temas a tratar y desarrollar
+  por los estudiantes.
+- Se ha de utilizar como base la bibliografía recomendada, pero puede
+  consultar bibliografía adicional.
+* Sistemas de Entrada/Salida (E1,11,270)(E1, 7,229)
 ** Introducción
 ** Dispositivos Externos 
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
 :END:
-- Recuerde que la tupla (10,270,E1,Q1) significa (edición del libro,
-  página, Grupo de Exposición, Grupo de Preguntas)
-- Recuerde que si options: H:2, entonces
-- * Declara el nombre de la Sección
-- ** Declara el nombre de la diapositiva
-- Puede alterar la estructura de la
-  diapositiva si lo considera
-  necesario
-- La página a consultar se
-  identifica con la tupla (edición,
-  página)
-- El grupo a desarrollar el material
-  se identifica con la tupla (Ex,
-  $Qx$), siendo x el número del grupo
-- No olvide escribir las ecuaciones en Latex
-- Usar doble $$ hace que la ecuación quede escrita en una sola línea  
-$$E = mc²$$
 ** Teclado/Monitor
 ** Controlador de Disco (Disk Drive)
-* Módulos de E/S (10,273,E2, Q2)(7,236,E2, Q2)
+* Módulos de E/S (E2, 11,273)(E2, 7,236)
 ** Módulos de E/S
 ** Funciones
 ** Estructura de Módulos de E/S
-* E/S Programada (10,276,E4, Q4)(7,239, E4, Q4)
+* E/S Programada (E4,11,276)(E4,7,239)
 ** E/S Programada
 ** Comandos de E/S
 ** Instrucciones de E/S
-* E/S mediante Interrupción (10,280,E3, Q3)(7,243,E3, Q3)
+* E/S mediante Interrupción (E3,11,280)(E3,7,243)
 ** E/S mediante Interrupción 
 ** Procesamiento de la Interrupción
 ** Problemas de diseño
-* Acceso directo a Memoria DMA (10, 290, E5, Q5)(7, 251, E5, Q5)
+* Acceso directo a Memoria DMA (E5,11, 290)(E5,7, 251)
 ** Acceso directo a Memoria DMA
 ** Funcionalidad de DMA
+
+
 # Los siguientes capítulos no tienen grupos asignados
-* Acceso directo a Cache (10,295,E, Q)
-** Acceso directo a Cache
-** DMA usando Cache compartida
-** Problemas de desempeño de Cache
-* Canales y Procesadores de E/S (10, 302, E, Q)
-** Canales y Procesadores de E/S
-** Evolución de las funciones E/S
-** Características de los canales E/S
-* Standard de interconexiones externas
-** Standard de interconexiones externas
-** USB
-** Fire Wire
-** SCSI
-** Thunderbolt
-** Sata
-** Ethernet
-** Wi-Fi
+#+begin_comment
+,* Acceso directo a Cache (10,295,E, Q)
+,** Acceso directo a Cache
+,** DMA usando Cache compartida
+,** Problemas de desempeño de Cache
+,* Canales y Procesadores de E/S (10, 302, E, Q)
+,** Canales y Procesadores de E/S
+,** Evolución de las funciones E/S
+,** Características de los canales E/S
+,* Standard de interconexiones externas
+,** Standard de interconexiones externas
+,** USB
+,** Fire Wire
+,** SCSI
+,** Thunderbolt
+,** Sata
+,** Ethernet
+,** Wi-Fi
+#+end_comment
 
