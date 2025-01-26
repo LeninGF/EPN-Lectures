@@ -93,6 +93,20 @@ mamba install ipython
 mamba install jupyter
 pip install jupyterlab-rise
 #+end_src
+** Librerías para Exportar Jupyter Notebook a PDF
+Para exportar un cuaderno de Jupyter a PDF se requiere que el Sistema
+Operativo de Linux disponga de la librería Pandoc:
+#+begin_src shell
+sudo apt-get install pandoc
+#+end_src
+También, si la instalación de \LaTeX se hizo con librerías mínimas, es
+necesario disponer de ~xelatex~
+#+begin_src shell
+sudo apt-get install texlive-xetex
+#+end_src
+
+Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
+*/File/Save and Export Notebook As/PDF/*
 ** Configuración Emacs
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -179,7 +193,7 @@ pip install jupyterlab-rise
 - Para insertar un link: M-x org-insert-link
 - Para generar el archivo pdf: org-beamer-export-to-pdf
 
-* Arquitectura de Computadores ICCD332
+* Diapositivas de Ejemplo Arq Computadores
 ** El Computador
 Un computador es un sistema complejo conformado por varios subsistemas
 electrónicos. Para poder estudiarlo se adopta la perspectiva de
@@ -234,7 +248,8 @@ with its own headline, is displayed in a block:
 :END:
 
 #+ATTR_LaTeX: :width \textwidth
-[[file:./images/computer.png]]
+[[../../images/computer.png]]
+
 
 ** Configurar Org-Babel Python
 

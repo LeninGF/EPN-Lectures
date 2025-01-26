@@ -16,22 +16,52 @@
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.3)
+#+cite_export: biblatex
+
+#+bibliography: ./FormatoTareas/bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa, style=apa]{biblatex}
 
 
+* Indicaciones
+** Indicaciones
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Recuerde que si options: H:2, entonces: 
+  - ~*~ Declara el nombre de la Sección
+  - ~**~ Declara el nombre de la diapositiva
+- Puede alterar la estructura de la diapositiva si lo considera
+  necesario
+- Para este tema puede usar:
+  - \textcite{stallings2006}, 7ma edición, 2006, Español, páginas 99 a
+    119 [cite:@stallings2006].
+  - \textcite{stallings2022computer}, 11ava edición, 2022, English,
+    páginas 116 a 131 [cite:@stallings2022computer].
+- La tupla (E1,7, 97) significa Grupo E1, Libro Edición 7, página 97
+  del PDF (no del libro)
+- Las personas que exponen suben la presentación en formato .ORG y
+  .PDF
+- Las personas que atienden suben los apuntes de la clase de acuerdo a
+  formato de toma de notas en .ORG y .PDF
 * Buses del Sistema (Nombre de la Sección)
-** Buses del Sistema (Presentación)
-- Recuerde que si options: H:2, entonces
-- * Declara el nombre de la Sección
-- ** Declara el nombre de la diapositiva
-- Puede alterar la estructura de la diapositiva si lo considera necesario
-** Estructuras de Interconexión
-* Interconexión con Buses
-** Interconexión con Buses
-** Estructura del Bus
-** Jerarquía de Buses Múltiples
-** Elementos de Diseño de un Bus
+** Estructuras de Interconexión (E1, 7, 97)
+* Interconexión con Buses (Sección)
+** Interconexión con Buses (E1, 7, 99)
+** Estructura del Bus  (E1, 7, 99)
+** Jerarquía de Buses Múltiples (E2, 7)
+** Elementos de Diseño de un Bus (E2, 7)
 * Interconexión punto a punto
-** Interconexión punto a punto
-** QPI
-* PCI Express
-** PCI Express
+** Interconexión punto a punto (E3, 11)
+** QPI (E3, 11)
+* PCI Express (E4, 11)
+** PCI Express (E4, 11)
+* Referencias
+** Bibliografía
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+#+print_bibliography: 

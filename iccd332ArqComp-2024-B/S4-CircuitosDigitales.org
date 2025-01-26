@@ -45,7 +45,38 @@
   el circuito
 - Realizar el circuito como una combinación de suma de productos
   (i.e. SOP) o productos de sumas (i.e. POS)
-
+* Simplificación de Expresiones Booleanas con Mapas K
+** Simplificación de Expresiones Booleanas con Mapas K
+*** Texto                                                             :Texto:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+- Es un método gráfico para simplificar expresiones booleanas
+- Puede ser utilizado tanto para obtener la representación SOP o POS
+- Consiste en formar tablas de un orden $2^n$, donde $n$ es el número
+  de variables de entrada del problema.
+*** Imagen                                                           :Imagen:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+[[./images/mapaK.png]]
+** Procedimiento Mapas K para Min-Terms
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+1. Formar una tabla con $2^n$ celdas
+2. Colocar los 1 en las ubicaciones o celdas correspondientes
+3. Proceder a agrupar los 1 *adyacentes* en grupos de potencias
+   de 2. Tratar de formar el menor número de grupos y que contengan la
+   mayor cantidad de 1s.
+4. En los grupos formados, las variables que cambian de valor de 0 a 1
+   (y viceversa) se eliminan. Las variables que no cambian de valor se
+   mantienen.
+5. Se combinan todos los grupos de expresiones mediante una suma de
+   productos.
+6. Las variables se representan complementadas si el valor en la celda
+   del grupo (i.e. min-term) es 0.
+* Multiplexor
 ** Ejemplo Circuito Multiplexor
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -81,6 +112,7 @@ de mapa de K. Por tanto, la ecuación booleana sería:
 
 $$F=\bar{S_2}\bar{S_1}D_0+\bar{S_2}S_1D_1+S_2\bar{S_1}D_2+S_2S_1D_3$$
 
+* Circuito Combinacional de Alarma Básico
 ** Ejemplo Sistema de Alarma Básico
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
@@ -192,6 +224,43 @@ La Figura [[fig_alarma]] muestra el circuito a implementar
 Sin embargo, ¿puede este circuito ser práctico en la realidad?
 ¿Existen opciones de mejora?
 
+* Simulación Matlab
+** Simulación Matlab
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Para hacer la simulación de circuitos digitales en Matlab se requiere
+usar Simulink. Para esto
+
+1. Abra Matlab o [[https://matlab.mathworks.com/][Matlab Online]]
+2. En la ficha /home/ seleccionar /Simulink/
+3. Se abre una pantalla en la que puede seleccionar abrir un modelo en
+   blanco (Blank Model) o abrir un archivo. Puede encontrar archivos
+   en [[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp-2024-B/Simulaciones][GitHub]]
+4. Para colocar los elementos necesarios puede dar doble clic en
+   cualquier parte del área de trabajo y a lo que se despliegue el
+   cuadro de búsqueda de bloques escriba el nombre de un bloque que
+   requiera que puede ser:
+   - manual switch
+   - constant
+   - and, or, not, xor, nand, nor
+   - display
+5. Configure las compuertas. Puede alterar el número de entradas
+   digitales dando doble clic sobre la compuerta respectiva.
+6. Realice las conexiones de los bloques según sea el diseño del circuito
+7. Configure la simulación: El Stop Time de la pestaña /SIMULATE/ se
+   coloca en **inf**. Esto permitirá que modifique las conexiones a
+   las constantes y pueda visualizar el resultado.
+8. Ejecute la simulación dando clic en RUN
+** Simulación Matlab
+#+caption: Simulación XOR
+#+attr_latex: :height 0.7\textheight
+#+label: fig:label
+[[file:images/Matlab.png]]
+
+
+* Taller de Ejercicios
 ** Taller
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks

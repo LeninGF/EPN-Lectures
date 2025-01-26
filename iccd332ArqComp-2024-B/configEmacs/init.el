@@ -60,6 +60,18 @@
   :init
   (elpy-enable))
 
+;; Rebind ELPY's completion command to C-M-TAB
+
+(with-eval-after-load 'elpy
+  (define-key elpy-mode-map (kbd "C-M-SPC") 'elpy-company-backend))
+;; Ensure Yasnippet is enabled in ELPY
+(add-hook 'elpy-mode-hook 'yas-minor-mode)
+
+;; Testing to solve problems when writing code
+;; (defun add-yasnippet-ac-sources ()
+;;    (add-to-list 'ac-sources 'ac-source-yasnippet))
+;; (add-hook 'python-mode-hook 'add-yasnippet-ac-sources)
+
 ;; Install and configure company for code completion
 (use-package company
   :ensure t
@@ -67,8 +79,7 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'LaTeX-mode-hook #'company-mode)
   :config
-  (global-set-key (kbd "<C-return>") 'company-complete)
-  (global-auto-complete-mode 1))
+  (global-set-key (kbd "C-c C-SPC") 'company-complete-selection))
 
 ;; Get auto completion of :emoji: names.
 (use-package company-emoji
@@ -92,22 +103,13 @@
  '(custom-enabled-themes '(deeper-blue))
  '(ispell-dictionary "american")
  '(package-selected-packages
-   '(babel helm-lsp helm projectile lsp-javacomp company-auctex git-gutter+ flycheck which-key lsp-ui lsp-java lsp-mode magit company-emoji auto-complete-auctex ac-math auto-complete yasnippet-snippets markdown-mode ein gnu-elpa-keyring-update auctex elpy ob-ipython use-package)))
+   '(helm-bibtex company-reftex htmlize csv-mode csv simple-httpd calc-at-point org elpygen babel helm-lsp helm projectile lsp-javacomp company-auctex git-gutter+ flycheck which-key lsp-ui lsp-java lsp-mode magit company-emoji auto-complete-auctex ac-math auto-complete yasnippet-snippets markdown-mode ein gnu-elpa-keyring-update auctex elpy ob-ipython use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; --------------- Setting up emacs for LaTeX ---------------
-;; (use-package tex			
-;;   :ensure auctex
-;;   :config(add-hook 'LaTeX-mode-hook #'turn-on-auto-reftex))
-
-;; load auctex
-(load "auctex.el" nil t t)
-(require 'tex-mik)
 
 
 ;; Setting Yasnippet for Emacs
@@ -121,39 +123,39 @@
 ;; https://jdhao.github.io/2021/10/06/yasnippet_setup_emacs/
 
 ;; Configure Auto Complete
-(use-package auto-complete
-  :ensure t
-  :defer t)
-(require 'auto-complete)
-(add-to-list 'ac-modes 'latex-mode) ; Add LaTeX mode to Auto-Complete modes
-(use-package ac-math
-  :ensure t
-  :defer t)
-(require 'ac-math) ; Install ac-math package first
+;; (use-package auto-complete
+;;   :ensure t
+;;   :defer t)
+;; (require 'auto-complete)
+;; (add-to-list 'ac-modes 'latex-mode) ; Add LaTeX mode to Auto-Complete modes
+;; (use-package ac-math
+;;   :ensure t
+;;   :defer t)
+;; (require 'ac-math) ; Install ac-math package first
 
-;; Set up LaTeX-specific Auto-Complete sources
-(defun my-ac-latex-mode ()
-  (setq ac-sources
-        (append '(ac-source-math-unicode
-                  ac-source-math-latex
-                  ac-source-latex-commands)
-                ac-sources)))
+;; ;; Set up LaTeX-specific Auto-Complete sources
+;; (defun my-ac-latex-mode ()
+;;   (setq ac-sources
+;;         (append '(ac-source-math-unicode
+;;                   ac-source-math-latex
+;;                   ac-source-latex-commands)
+;;                 ac-sources)))
 
-;; Hook into LaTeX mode
-(add-hook 'LaTeX-mode-hook 'my-ac-latex-mode)
+;; ;; Hook into LaTeX mode
+;; (add-hook 'LaTeX-mode-hook 'my-ac-latex-mode)
 
-;; Enable Unicode math input
-(setq ac-math-unicode-in-math-p t)
+;; ;; Enable Unicode math input
+;; (setq ac-math-unicode-in-math-p t)
 
-;; Workaround for flyspell delay (if you use flyspell)
-(ac-flyspell-workaround)
+;; ;; Workaround for flyspell delay (if you use flyspell)
+;; (ac-flyspell-workaround)
 
-;; Add Auto-Complete for org-mode (optional)
-(add-to-list 'ac-modes 'org-mode)
+;; ;; Add Auto-Complete for org-mode (optional)
+;; ;; (add-to-list 'ac-modes 'org-mode)	
 
-;; Load Auto-Complete configuration
-(require 'auto-complete-config)
-(ac-config-default)
+;; ;; Load Auto-Complete configuration
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;; --------------- Setting up emacs for LaTeX ---------------
 
@@ -236,4 +238,6 @@
 (add-hook 'lsp-mode-hook #'lsp-lens-mode)
 (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
 
+;; Helm Doc view set up to show all pdf pages
+(setq doc-view-continuous t)
 

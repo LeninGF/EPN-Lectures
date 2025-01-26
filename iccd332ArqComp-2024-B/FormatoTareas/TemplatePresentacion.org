@@ -1,0 +1,137 @@
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: Computación Cuántica
+#+date: 2024-12-16
+#+author: Marco Marcillo
+#+email: marco.marcillo@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: default
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=apa]{biblatex}
+
+#+latex_header: \usepackage{lipsum}
+
+* Sección1
+
+** Proceso de fabricación de procesadores/ Parte 1
+
+:PROPERTIES:
+:END:
+
+**Es un proceso muy complejo, es el cerebro del computador ya que controla las funciones de este.**
+1. Se comienza con un buen buguiado de arena, compuesto de silicio dónde se hace un mono cristal de 20*150cm seguido se funde el material con 1370° selcios.
+2. Se corta el cristal en los extremos en la superficie exterior, y con una sierra eléctrica se corta de menos de un milímetro de espesor para obtener los woofer hasta llegar a un cilindro perfecto 
+3. Las obleas se pulen hasta que estén planas, para limpiar hasta las imperfecciones 
+4. Proceso de dibujado de los transistores (impresión)de sucesivas máscaras, que conforman a cada microprocesador.
+5. Cada capaz que se pintan sobre los woofer, preparación para que reciban átomos como aluminio o cobre.
+
+
+** Proceso de fabricación de procesadores/ Parte 2
+
+:PROPERTIES:
+:END:
+6. Se produce una longitud de onda mediante máscaras. 380-780 nanómetros.
+7. Se cortan los woofer y se controla su calidad e integridad es un proceso automatizado. Y se individualizan los chips.
+8. Este proceso se realizan en ambientes limpios. Con sistemas de ventilación ya que cualquier mínima particular puede dañar el proceso.
+9. Se dotan de cápsulas protectoras plásticas a las placas. Conectados a los pines metálicos con pines de oro.
+10. El proceso de escrito dura 2-3 meses, de cada cristal de silicio se obtiene decenas de miles de procesadores de Dónde la inversión fue arena Y la construcción de la planta
+
+* Sección2
+
+** ¿Por qué los computadores cuánticos son más poderosos que los computadores clásicos y qué medidas de rendimiento se estima que tienen?
+
+:PROPERTIES:
+:END:
+
+Los computadores cuánticos a diferencia que los computadores clasicos, es que la unidad minima de información son los cubits los cuales,mientras
+que el ordenador clasico esta compuesto por una serie de bits, esto en si es lo mas importante ya que mientras el ordenador clasico contiene
+un estado en concreto de tamaño n compuestos con 0 y 1. Por otro lado en el ordenador cuantico este estado en concreto llega a ser una combinación
+de todas las posibles combinaciones con varios coeficientes de n,1 y 0.
+Tambien se sabe que los computadores cuánticos son mas potentes en teoria que los computadores clásicos.
+
+El redimiento que estos computadores cuánticos tiene un tamaño de *2^n*, lo cual son numerosos procesos/operaciones ya que crece de forma *exponencial*
+
+* Sección3
+
+** ¿A qué temperatura trabaja un computador cuántico?
+
+:PROPERTIES:
+:END:
+
+Los computadores cuánticos trabajan en temperaturas muy bajas, más especificamente en [0 Kelvin o -273,15 °C].
+Esto para poder reservar la coherencia cuántica, una propiedad fundamental de los qubits.
+
+#+caption: Titulo de la Figura
+#+name: fig:mifigura
+#+attr_latex: :width \textwidth :height 0.6\textheight
+[[file:]][[2D.jpg]]
+
+* Sección4
+
+** ¿Qué compuertas lógicas existen en computación cuántica?/ Parte 1
+
+:PROPERTIES:
+:END:
+
+Por el momento existen muchas puertas logicas y se siguen actualizando.
+Presentamos algunas de ellas:
+
+ -*Pauli*
+  Es un conjunto de tres compuertas (X, Y, Z) que realizan transformaciones básicas en qubits:
+  
+    • Pauli-X: Invierte el estado del qubit (∣0⟩↔∣1⟩∣0⟩↔∣1⟩), similar a un NOT clásico.
+    
+    • Pauli-Y: Rota el estado en el plano xy y agrega una fase compleja.
+    
+    • Pauli-Z: Cambia la fase del estado ∣1⟩∣1⟩, reflejando el qubit en el eje z.
+    
+ -*Hadamard*
+ Genera superposición al convertir un estado base ∣0⟩∣0⟩ o ∣1⟩∣1⟩ en una combinación igual de ambos estados (∣0⟩+∣1⟩∣0⟩+∣1⟩ o ∣0⟩−∣1⟩∣0⟩−∣1⟩).
+ Es esencial para los algoritmos cuánticos porque permite explorar múltiples estados simultáneamente.
+ 
+** ¿Qué compuertas lógicas existen en computación cuántica? /Parte 2
+ 
+ -*CNOT*
+ Compuerta de dos qubits: si el qubit de control está en ∣1⟩∣1⟩, invierte (aplica NOT) al qubit objetivo.
+ Se utiliza para generar entrelazamiento entre qubits.
+ 
+ -*Toffoli*
+ Compuerta de tres qubits: si ambos qubits de control están en ∣1⟩∣1⟩, invierte (aplica NOT) al qubit objetivo.
+ Es universal para la computación reversible, ya que puede simular cualquier circuito clásico.
+ 
+Encadenando estas compuertas en un algortimo nos lleva a una solución al problema que se planteo.
+
+** ¿Por qué un computador cuántico podría implicar el fin del block chain?
+
+:PROPERTIES:
+
+:END:
+
+Un computador cuántico podría amenazar la seguridad del blockchain debido a su capacidad para resolver problemas
+matemáticos complejos que sustentan los algoritmos criptográficos en los que se basa.
+La seguridad del blockchain depende principalmente de dos tipos de algoritmos criptográficos:
+    - Funciones Hash (SHA-256): Utilizadas para la minería y la integridad de los bloques.
+    - Criptografía Asimétrica (como ECDSA): Protege las claves públicas y privadas que se utilizan para las firmas digitales en las transacciones.
+    - Puede reducir el tiempo necesario para encontrar colisiones en las funciones hash. Aunque no las rompe por completo, reduce significativamente
+     la seguridad de funciones como SHA-256.
+     
+* 2D.jpg

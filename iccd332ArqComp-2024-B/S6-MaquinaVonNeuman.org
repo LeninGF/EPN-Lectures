@@ -1,4 +1,4 @@
-#+options: H:2
+#+options: H:3
 #+latex_class: beamer
 #+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
 #+beamer_theme: Madrid
@@ -7,15 +7,12 @@
 #+beamer_inner_theme:
 #+beamer_outer_theme:
 #+beamer_header:
-
-
-#+options: ':nil *:t -:t ::t <:t H:2 \n:nil ^:t arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
 #+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+options: timestamp:t title:t toc:t todo:t |:t
 #+title: Máquina de Von Neumann
-#+date: 2024-06-04 Tue
+#+date: 2024-12-05
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
 #+language: es
@@ -25,6 +22,7 @@
 
 * Conceptualización de Von Neumann
 ** Conceptos de Diseño
+*** Conceptos de Diseño
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
@@ -41,27 +39,104 @@
   las señales de control requeridas.
 - La programación usa el mismo hardware pero diferentes códigos para
   diferentes propósitos.
+** Computador IAS
+*** Computador IAS(Institute for Advanced Study)
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+**** Texto                                                      :Texto:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+- La idea de diseño: /stored-program concept/
+- Idea de diseño de Von Neuman
+- Consiste de una estructura conformada por:
+  - Memoria Principal: guarda los datos y las instrucciones
+  - ALU: operaciones binarias sobre los datos
+  - Unidad de control: interpreta las instrucciones de la memoria y las ejecuta
+  - E/S: interfaz de entradas y salidas
+  - Bus de datos para comunicar CPU y Memoria
+**** Imagen                                                    :Imagen:BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+#+ATTR_LATEX: :width \textwidth
+[[./images/ias_structure.png]]
 
-* Ciclo de Captación y ejecución
+*** Arquitectura Von Neuman
+#+attr_latex: :width \textwidth :height 0.7\textheight
+[[file:images/arqVonNeuman.png]]
+
+*** Arquitectura Von Neuman
+- La memoria tiene instrucciones y datos
+- Los datos e instrucciones se almacenan en binario
+- La arquitectura de Von Neuman es secuencial: leer, decodificar, ejecutar
+- Las arquitecturas actuales usan *pipelining*
+- *Pipelining* permite hacer un /overlap/ i.e.  captar una nueva
+  instrucción antes que la anterior haya concluido.
+*** Memoria del Computador IAS
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+
+- 4096 localidades denominadas /words/
+- Cada /word/ es de 40 bits
+- Contiene tanto los datos como las instrucciones
+- Los números usan 1 bit para el signo
+- Cada /word/ se subdivide en 2 instrucciones de 20 bits
+- La instrucción se divide en 8 bits de /operation code/(opcode):
+  especifica la operación
+- La instrucción se divide en 12 bits que contiene la dirección en
+  donde se aloja la instrucción o el dato
+
+*** Memoria del Computador IAS
+[[./images/ias_memory.png]]
+
+** Instruction Set Architecture
+*** Instruction Set Architecture (ISA)
+    :PROPERTIES:
+    :BEAMER_opt: allowframebreaks
+    :END:
+Define:
+- Formato de Instrucciones
+- Opcodes
+- Registros
+- Memoria e instrucciones
+- El efecto de la ejecución de instrucciones sobre los registros
+- El algoritmo que controla la ejecución de las instrucciones
+- Se propende a que el ISA sea compatible con versiones anteriores
+  (i.e. un programa escrito en versiones anteriores debe ser
+  ejecutable en versiones nuevas)
+- El incremento de la densidad de transistores permite ISA más
+  complejos
+
+* Ciclo de Captación, decodificación y ejecución
 ** Ciclo de Captación, decodificación y ejecución
+*** Ciclo de Captación, decodificación y ejecución
 
    [[./images/vonNeumancycle.png]]
 
 ** Proceso de Captación
+*** Proceso de Captación
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
 
-- El contador de programa $PC$ apunta a la siguiente instrucción
+- El contador de programa $PC$ apunta a la siguiente instrucción:
+  $[PC]\leftarrow [PC]+1$
 - El contenido del contador de programa se transfiere al $MAR$ (Memory
   Addresds Register)
+  $[MAR] \leftarrow [PC]$
 - $MAR$ tiene la dirección de memoria desde donde se leerá
   datos/instrucciones o hacia donde se escribirá.
 - En un ciclo de lectura, el contenido apuntado por $MAR$ se
   transfiere al $MBR$ Memory Buffer Register
+  $[MBR] \leftarrow [[ MAR ]]$
 - La instrucción se pasa del $MBR$ al $IR$ (instruction register),
   donde se decodifica en el /opcode/ y la dirección del dato.
-- La CPU ejecuta la instrucción.
+- La CPU ejecuta la instrucción dictada por /opcode/.
+- El /operand field/ obtenido al decodificar $IR$ puede tener una
+  dirección o un valor constante (literal)
 
 \newpage
 - El proceso de captación se puede escribir en notación RTL como:
@@ -70,8 +145,9 @@
     3. $[MBR] \leftarrow [[MAR]]$
     4. $[IR] \leftarrow [MBR]$
     5. $CPU \leftarrow [IR_{opcode}]$
-
+* Ejemplo
 ** Ejemplo
+*** Ejemplo
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
@@ -95,7 +171,9 @@ Considere un computador de las siguientes características:
 \end{figure}
 
 ** Programa Fetch en Python
-#+begin_src python
+*** Programa Fetch en Python
+
+#+begin_src python :session :results output :exports both
 pc = 0
 mem = [0]*16
 def fetch(memory):
@@ -109,4 +187,73 @@ def fetch(memory):
     return (cu, address)
 #+end_src
 
+#+RESULTS:
+
+*** Programa Fetch en Python
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Para probar el código suponga:
+- Tamaño de instrucción 12 bits
+- Tamaño de la memoria de 16 localidades
+- Opcode 4 bits
+- Address 8 bits
+
+Se declara 16 ubicaciones de memoria e inicializo el contador de
+programa en 0
+
+#+begin_src python :session :results output :exports both
+mem = [0]*16
+pc = 0
+print(mem)
+#+end_src
+
+#+RESULTS:
+: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+Asigno un valor a la primera instrucción. Donde los 4 primeros dígitos son opcode
+#+begin_src python :session :results output :exports both
+mem[0] = 0b011000001010
+mem[1] = 0b100011111111
+print(mem)
+#+end_src
+
+#+RESULTS:
+: [1546, 2303, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+#+begin_src python :session :results output :exports both
+opCode, address = fetch(mem)
+print(f"pc = {pc-1}\nopcode = {opCode}\nOperand = {address}")
+opCode, address = fetch(mem)
+print(f"pc = {pc-1}\nopcode = {opCode}\nOperand = {address}")
+#+end_src
+
+#+RESULTS:
+: pc = 0
+: opcode = 6
+: Operand = 10
+: pc = 1
+: opcode = 8
+: Operand = 255
+* Ejercicio
+** Simulación ciclos Von Neuman
+*** Simulación ciclos Von Neuman
+Adaptar el código fetch para resolver las operaciones planteadas en el
+ejemplo. Para esto se necesitaría escribir una rutina de /decode/ para
+decodificar las instrucciones y otra de ejecución que permitan obtener
+los resultados.
+
+- Memoria de 16 bits
+- 4 bits opcode
+- 12 bits address
+- Un único registro de acumulación AC
+
+|--------+-----------------------------|
+| opcode | Función                     |
+|--------+-----------------------------|
+|   0001 | Cargar AC desde Memoria     |
+|   0010 | Almacenar AC en Memoria     |
+|   0101 | Sumar AC un dato de Memoria |
+|--------+-----------------------------|
 

@@ -5,7 +5,7 @@
 #+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
 #+options: timestamp:t title:t toc:t todo:t |:t
 #+title: S2 Aritmética Digital
-#+date: 2024-04-28
+#+date: 2024-11-09
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
 #+language: es
@@ -313,7 +313,7 @@ $$\pm S \times B^{\pm E}$$
 
 ** Estándar IEEE 754 en Coma Flotante en 32 bits
 - Se utiliza un bit para el signo: 0$\rightarrow$ positivo,
-  1$\rightarrow$negativo.
+  1 $\rightarrow$ negativo.
 - El exponente está sesgado: $2^{k-1}-1$ y $k$ es el número de bits
   del exponente. Por tanto, tiene un sesgo (/BIAS/) de 127 y un rango
   de -127 a +128
@@ -418,17 +418,25 @@ $$(-1)^s \times 1.m \times 2^{e-127}$$
 
 1. Consultar ¿cuáles son el número más grande y más pequeño que puede
    representar la IEEE754 de 32 bits?
-2. Consultar cómo se representa 0^{+}, 0^{-}, $+\infty$, $-\infty$ en
+2. Consultar cómo se representa $0^{+}$, $0^{-}$, $+\infty$, $-\infty$ en
    IEEE754
 3. ¿Cuál es la condición **NaN**?
 
 ** Límites de representación en coma flotante 32 bits
-
+ 
 #+CAPTION: Comparación de números representables con 32 bits. Parte superior enteros en complemento a 2. Parte inferior Notación de Coma flotante
 [[./images/floatingPointNumbers.png]]
 
 ** Ejercicios varios:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 
-- Convierta -0.5 en IEEE 754 de 32 bits
-- Convierta +234.75 en IEEE 754 de 32 bits
-- Convierta 402DF854_{16} de IEEE 754 32 bits a decimal
+1. Convierta -0.5 en IEEE 754 de 32 bits
+2. Convierta +234.75 en IEEE 754 de 32 bits
+3. Convierta $402DF854_{16}$ de IEEE 754 32 bits a decimal
+4. En clase se estudió el algoritmo utilizado por los desarrolladores
+   de Quake para obtener la raíz cuadrada inversa. En el [[https://youtu.be/0xyycrTekc4?si=-NKQTpMHQVn_3vid][vídeo]] se
+   presenta el número hexadecimal 0x5F3759DF, el cual ocupa 32
+   bits. Suponga que el número es la representación en coma flotante
+   de un número decimal $X_{10}$, ¿Cuál es el número?

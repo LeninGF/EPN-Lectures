@@ -60,7 +60,7 @@ $$T_a = T_s+\frac{1}{2r}+\frac{b}{rN}$$
 ** Organización del SSD
 ** Problemas Prácticos
 * Memoria Óptica
-** Memoria Óptica (10,258, E3, Q3)
+** Memoria Óptica (10,258, E4, Q4)
 ** Disco Compacto
 ** DVD
 ** Discos de Alta Definición

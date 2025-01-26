@@ -1,0 +1,142 @@
+% Created 2024-12-16 Mon 23:46
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, american]{babel}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{/home/alejandro0122/EPN-Lectures/iccd332ArqComp-2024-B/FormatoTareas/bibliography.bib}
+\usepackage{lipsum}
+\usetheme{default}
+\usecolortheme{}
+\usefonttheme{}
+\useinnertheme{}
+\useoutertheme{}
+\author{Marco Marcillo}
+\date{2024-12-16}
+\title{Computación Cuántica}
+
+\hypersetup{
+ pdfauthor={Marco Marcillo},
+ pdftitle={Computación Cuántica},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.7.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+
+\section{Sección1}
+\label{sec:org1a73b66}
+
+\begin{frame}[label={sec:orgff4a182}]{Proceso de fabricación de procesadores/ Parte 1}
+\alert{\alert{Es un proceso muy complejo, es el cerebro del computador ya que controla las funciones de este.}}
+\begin{enumerate}
+\item Se comienza con un buen buguiado de arena, compuesto de silicio dónde se hace un mono cristal de 20*150cm seguido se funde el material con 1370° selcios.
+\item Se corta el cristal en los extremos en la superficie exterior, y con una sierra eléctrica se corta de menos de un milímetro de espesor para obtener los woofer hasta llegar a un cilindro perfecto
+\item Las obleas se pulen hasta que estén planas, para limpiar hasta las imperfecciones
+\item Proceso de dibujado de los transistores (impresión)de sucesivas máscaras, que conforman a cada microprocesador.
+\item Cada capaz que se pintan sobre los woofer, preparación para que reciban átomos como aluminio o cobre.
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[label={sec:org3d1975c}]{Proceso de fabricación de procesadores/ Parte 2}
+\begin{enumerate}
+\item Se produce una longitud de onda mediante máscaras. 380-780 nanómetros.
+\item Se cortan los woofer y se controla su calidad e integridad es un proceso automatizado. Y se individualizan los chips.
+\item Este proceso se realizan en ambientes limpios. Con sistemas de ventilación ya que cualquier mínima particular puede dañar el proceso.
+\item Se dotan de cápsulas protectoras plásticas a las placas. Conectados a los pines metálicos con pines de oro.
+\item El proceso de escrito dura 2-3 meses, de cada cristal de silicio se obtiene decenas de miles de procesadores de Dónde la inversión fue arena Y la construcción de la planta
+\end{enumerate}
+\end{frame}
+
+\section{Sección2}
+\label{sec:org7f4b454}
+
+\begin{frame}[label={sec:org2b1221f}]{¿Por qué los computadores cuánticos son más poderosos que los computadores clásicos y qué medidas de rendimiento se estima que tienen?}
+Los computadores cuánticos a diferencia que los computadores clasicos, es que la unidad minima de información son los cubits los cuales,mientras
+que el ordenador clasico esta compuesto por una serie de bits, esto en si es lo mas importante ya que mientras el ordenador clasico contiene
+un estado en concreto de tamaño n compuestos con 0 y 1. Por otro lado en el ordenador cuantico este estado en concreto llega a ser una combinación
+de todas las posibles combinaciones con varios coeficientes de n,1 y 0.
+Tambien se sabe que los computadores cuánticos son mas potentes en teoria que los computadores clásicos.
+
+El redimiento que estos computadores cuánticos tiene un tamaño de \alert{2\textsuperscript{n}}, lo cual son numerosos procesos/operaciones ya que crece de forma \alert{exponencial}
+\end{frame}
+
+\section{Sección3}
+\label{sec:orgc4e6771}
+
+\begin{frame}[label={sec:org3b0c963}]{¿A qué temperatura trabaja un computador cuántico?}
+Los computadores cuánticos trabajan en temperaturas muy bajas, más especificamente en [0 Kelvin o -273,15 °C].
+Esto para poder reservar la coherencia cuántica, una propiedad fundamental de los qubits.
+
+\url{}\ref{sec:orgdde7571}
+\end{frame}
+
+\section{Sección4}
+\label{sec:org27dd18f}
+
+\begin{frame}[label={sec:org94c21ab}]{¿Qué compuertas lógicas existen en computación cuántica?/ Parte 1}
+Por el momento existen muchas puertas logicas y se siguen actualizando.
+Presentamos algunas de ellas:
+
+-\alert{Pauli}
+ Es un conjunto de tres compuertas (X, Y, Z) que realizan transformaciones básicas en qubits:
+
+• Pauli-X: Invierte el estado del qubit (∣0⟩↔∣1⟩∣0⟩↔∣1⟩), similar a un NOT clásico.
+
+• Pauli-Y: Rota el estado en el plano xy y agrega una fase compleja.
+
+• Pauli-Z: Cambia la fase del estado ∣1⟩∣1⟩, reflejando el qubit en el eje z.
+
+-\alert{Hadamard}
+Genera superposición al convertir un estado base ∣0⟩∣0⟩ o ∣1⟩∣1⟩ en una combinación igual de ambos estados (∣0⟩+∣1⟩∣0⟩+∣1⟩ o ∣0⟩−∣1⟩∣0⟩−∣1⟩).
+Es esencial para los algoritmos cuánticos porque permite explorar múltiples estados simultáneamente.
+\end{frame}
+
+\begin{frame}[label={sec:org6c0696f}]{¿Qué compuertas lógicas existen en computación cuántica? /Parte 2}
+-\alert{CNOT}
+Compuerta de dos qubits: si el qubit de control está en ∣1⟩∣1⟩, invierte (aplica NOT) al qubit objetivo.
+Se utiliza para generar entrelazamiento entre qubits.
+
+-\alert{Toffoli}
+Compuerta de tres qubits: si ambos qubits de control están en ∣1⟩∣1⟩, invierte (aplica NOT) al qubit objetivo.
+Es universal para la computación reversible, ya que puede simular cualquier circuito clásico.
+
+Encadenando estas compuertas en un algortimo nos lleva a una solución al problema que se planteo.
+\end{frame}
+
+\begin{frame}[label={sec:orgcd1c637}]{¿Por qué un computador cuántico podría implicar el fin del block chain?}
+
+
+Un computador cuántico podría amenazar la seguridad del blockchain debido a su capacidad para resolver problemas
+matemáticos complejos que sustentan los algoritmos criptográficos en los que se basa.
+La seguridad del blockchain depende principalmente de dos tipos de algoritmos criptográficos:
+\begin{itemize}
+\item Funciones Hash (SHA-256): Utilizadas para la minería y la integridad de los bloques.
+\item Criptografía Asimétrica (como ECDSA): Protege las claves públicas y privadas que se utilizan para las firmas digitales en las transacciones.
+\item Puede reducir el tiempo necesario para encontrar colisiones en las funciones hash. Aunque no las rompe por completo, reduce significativamente
+la seguridad de funciones como SHA-256.
+\end{itemize}
+\end{frame}
+
+\section{2D.jpg}
+\label{sec:orgdde7571}
+\end{document}

@@ -1,0 +1,109 @@
+% Created 2024-11-30 Sat 23:21
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{longtable}
+\fancyhead[R]{}
+\setlength\headheight{43.0pt}
+\author{Marco Marcillo}
+\date{2024-11-30}
+\title{Taller de Comandos Emacs}
+\hypersetup{
+ pdfauthor={Marco Marcillo},
+ pdftitle={Taller de Comandos Emacs},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.7.5)}, 
+ pdflang={Español}}
+\begin{document}
+
+\maketitle
+\fancyhead[C]{\includegraphics[scale=0.05]{./images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+
+
+
+
+
+
+\section{Objetivos}
+\label{sec:orgf910b6f}
+
+\begin{itemize}
+\item Comprender y utilizar comandos de Emacs para poder navegar de manera
+\end{itemize}
+eficiente por el texto y editarlo.
+
+\begin{itemize}
+\item Aprender a manipular archivos en Emacs
+\end{itemize}
+
+\section{Instrucciones}
+\label{sec:orgdba02da}
+Seguir el tutorial integrado en Emacs al respecto de la navegación y
+operaciones más frecuentes. El tutorial puede ser accedido en Español
+utilizando el comando:
+
+\begin{verbatim}
+M-x help-with-tutorial-spec-language
+\end{verbatim}
+
+Realice los ejercicios del tutorial (al menos un 80\% del texto) y
+complete la siguiente tabla con los comandos que considere de mayor
+interés. Verifique que en la parte superior se active el menú de
+tabla. Dentro de la región de la tabla puede dar C-c C-c para que se
+alinee automáticamente la tabla al contenido del texto que
+escriba. Para generar una nueva fila escriba | y presione la tecla TAB
+
+\section{Comandos Emacs}
+\label{sec:orga01232a}
+\begin{longtable}{llll}
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción}\\[0pt]
+\hline
+\endfirsthead
+\multicolumn{4}{l}{Continued from previous page} \\[0pt]
+\hline
+
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción} \\[0pt]
+
+\hline
+\endhead
+\hline\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\hline
+\texttt{C-c C-e \# latex} & Insertar template de  latex & \texttt{C-x C-s} & Guardar los cambios en el archivo\\[0pt]
+\texttt{C-x C-c \# latex} & Salir de emacs & \texttt{C-c C-z     \# latex} & Nos lleva a buffer interprete\\[0pt]
+\texttt{M-w     \# latex} & Copiar & \texttt{C-w       \# latex} & Cortar\\[0pt]
+\texttt{C-y     \# latex} & Pegar & \texttt{C-x u     \# latex} & Deshacer\\[0pt]
+\texttt{C-x     \# latex} & Minimizar & \texttt{C-c C-,   \# latex} & Insertar blog\\[0pt]
+\texttt{C-c C-c \# latex} & Ejecutar & \texttt{C-x C-s   \# latex} & Guardar\\[0pt]
+\texttt{C-x 1   \# latex} & Quedarse en una hoja & \texttt{C-espacio \# latex} & Seleccionar\\[0pt]
+\texttt{C-h     \# latex} & Ayuda & \texttt{C-c C-l   \# latex} & Insertar archivos\\[0pt]
+\texttt{C-g     \# latex} & Cancelar un comando en curso & \texttt{M-g g     \# latex} & Ir a una linea especifica\\[0pt]
+\texttt{C-v     \# latex} & Avanzar una pagina & \texttt{M-v       \# latex} & Retroceder una pagina\\[0pt]
+\texttt{C-a     \# latex} & Ir al inicio de la linea & \texttt{C-e       \# latex} & Ir al final de una linea\\[0pt]
+\texttt{M-/     \# latex} & Autocompletar palabras & \texttt{C-s       \# latex} & Busqueda hacia adelante\\[0pt]
+\texttt{C-r     \# latex} & Busqueda hacia atras & \texttt{M-\%       \# latex} & Remplazar texto\\[0pt]
+\texttt{C-x b   \# latex} & Cambiar entre buffers & \texttt{C-l       \# latex} & Centrar linea actual\\[0pt]
+\texttt{C-x 2   \# latex} & Dividir la ventana en horizontal & \texttt{C-x 2     \# latex} & Dividir la pantalla en vertical\\[0pt]
+\texttt{C-x o   \# latex} & Cambiar entre ventana & \texttt{C-x k     \# latex} & Cerrar el buffer actual\\[0pt]
+\texttt{C-x C-b \# latex} & Mostar una lista de buffers & \texttt{C-l       \# latex} & Refresca la pantalla\\[0pt]
+\texttt{C-n     \# latex} & salta una linea hacia abajo & \texttt{C-p       \# latex} & Sube una hacia la linea superior\\[0pt]
+\end{longtable}
+\end{document}

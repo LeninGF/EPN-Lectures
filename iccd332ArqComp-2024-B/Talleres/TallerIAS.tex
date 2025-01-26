@@ -1,0 +1,263 @@
+% Created 2024-12-23 Mon 19:53
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{longtable}
+\fancyhead[R]{}
+\setlength\headheight{43.0pt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{/home/alejandro0122/EPN-Lectures/iccd332ArqComp-2024-B/FormatoTareas/bibliography.bib}
+\usetheme{default}
+\author{Marco Marcillo}
+\date{\today}
+\title{TallerIAS}
+\hypersetup{
+ pdfauthor={Marco Marcillo},
+ pdftitle={TallerIAS},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={Spanish}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\fancyhead[C]{\includegraphics[scale=0.05]{.././FormatoTareas/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+
+
+\section{Recursos}
+\label{sec:org0e2ec63}
+Para este taller consulte el libro \citetitle{stallings2006}
+disponible en \href{https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin\_falconi\_epn\_edu\_ec/EgjH2RoedD5NuswqpOt8ExsB\_DE052v9Rlrg0QpEtbimDg?e=WoqexR}{EPN-SHAREPOINT(Clic Me)} y use su WSL con Emacs para editar el archivo.
+\subsection{Observaciones y Recomendaciones}
+\label{sec:orgaba6b63}
+\begin{itemize}
+\item Tenga en cuenta la ruta a las imágenes y a la bibliografía. Se le
+\end{itemize}
+recomienda que realice una clonación o un fork del repositorio de la
+clase a fin de que no tenga problemas generando el documento.
+\begin{itemize}
+\item Instale \LaTeX completo en el computador que generará el archivo pdf.
+\end{itemize}
+\section{Instrucciones}
+\label{sec:org7b9c085}
+Complete las solicitudes del taller y suba el archivo \texttt{.ORG} y \texttt{.PDF}
+al aula virtual. Cuando trabaje en Emacs trate de utilizar las
+combinaciones de teclas para navegar por el documento.
+
+\section{Taller Máquina de Von Neuman}
+\label{sec:org87386bf}
+
+La máquina de Von Neuman realiza operaciones en un ciclo repetitivo de
+captación y ejecución. Para esto, el computador IAS usa una memoria de
+40 bits. Cuando la memoria se usa numéricamente, se representa el
+número en complemento a 2, reservando el bit inicial para el
+signo. Cuando la memoria se usa para el registro de instrucciones, se
+divide en dos partes de 20 bits. Los 8 primeros bits de cada parte
+corresponden al \emph{opcode} y los restantes 12 bits de cada parte a la
+dirección (operando) desde la que se debe leer o a la que se debe
+escribir.
+
+\subsection{Conjunto de Instrucciones IAS}
+\label{sec:orgc555b26}
+Complete la Tabla 2.1 de instrucciones del computador IAS
+\autocite[p.47]{stallings2006} usando la notación RTL\footnote{Register Transfer Language o Lenguaje de Transferencia de Registros}. Se suministra
+la Tabla en código \LaTeX para tal efecto. Edite el archivo en Emacs
+usando el modo principal ORG y cambie al modo \LaTeX para editar la
+Tabla. El cambio de modo se realiza usando \texttt{M-x Latex-mode RET} y para
+retornar al modo \texttt{ORG} haga \texttt{M-x org-mode RET}
+
+\begin{itemize}
+\item \texttt{M} equivale a \emph{Alt}
+\item \texttt{x} es la tecla \emph{x}
+\item \texttt{RET} es presionar \emph{enter}
+\end{itemize}
+
+Una vez activado el modo \LaTeX el siguiente código recibe colores
+sobre las palabras clave.
+
+\begin{table}[htbp]
+  \caption{Instrucciones Maquina IAS}
+  \label{tab:tablaISA-IAS}
+  \centering
+  \begin{tabular}{|cccc|}
+    \hline
+    Opcode   & Opcode Hex &  Simbolo          & RTL \\ \hline
+    00001010 & 0xA        &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
+    00001001 & 0x9        &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
+    00100001 & 0x21       &  STOR M(X)        & $[X]\leftarrow[AC]$\\
+    00000010 & 0x02       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
+    00000011 & 0x03       &  LOAD |M(X)|      & $[AC]\leftarrow|[X]|$\\
+    00000100 & 0x04       &  LOAD -|M(X)|     & $[AC]\leftarrow-|[X]|$\\
+    00001101 & 0xD        &  JUMP M(X.0:19)   & $[PC]\leftarrow[X]$\\
+    00001110 & 0xE        &  JUMP M(X.20:39)  & $[PC]\leftarrow[X]$\\
+    00001111 & 0xF        &  JUMP M+(X.0:19)  & $Si [AC] >=0,  [PC]\leftarrow[X]$\\
+    00010000 & 0x10       &  JUMP M+(X.20:39) & $Si [AC] >=0,  [PC]\leftarrow[X]$\\
+    00000101 & 0x05       &  ADD M(X)         & $[AC]\leftarrow[AC]+[X]$\\
+    00000110 & 0x06       &  SUB M(X)         & $[AC]\leftarrow[AC]-[X]$\\
+    00000111 & 0x07       &  ADD IM(X)        & $[AC]\leftarrow[AC]+|[X]|$\\
+    00001000 & 0x08       &  SUB IM(X)        & $[AC]\leftarrow[AC]-|[X]|$\\
+    00001011 & 0xB        &  MUL M(X)         & $[AC]\leftarrow[AC]*[X]$\\
+    00001100 & 0xC        &  DIV M(X)         & $[AC]\leftarrow[AC]/[X]$\\
+    00010010 & 0x12       &  STOR M(X.8:19)   & $[X]\leftarrow[AC]$\\
+    00010011 & 0x13       &  STOR M(X.28:39)  & $[X]\leftarrow[AC]$\\
+    00010100 & 0x14       &  LSH              & $[AC]\leftarrow[AC]*2$\\
+    00010101 & 0x15       &  RSH              & $[AC]\leftarrow[AC]/2$\\
+    \hline
+    
+  \end{tabular}
+\end{table}
+
+\newpage
+
+\subsection{Ejercicio}
+\label{sec:org9a57614}
+
+En la máquina IAS, las instrucciones se dividen en dos segmentos:
+izquierdo desde el bit 0 a 19 y derecho desde el bit 20 al 39. Primero
+se ejecuta el lado izquierdo (bits 0 a 19) y luego el derecho. El
+contador de programa inicia en la posición 300. El set de
+instrucciones del computador o ISA\footnote{Instruction Set Architecture: los códigos de programación} está definido en la Tabla
+\ref{tab:tablaISA-IAS}. A fin de terminar el programa se agrega la
+instrucción \texttt{0x99} para terminar el programa (i.e. HALT). Conteste las
+siguientes preguntas considerando la Tabla \ref{tab:orgcd9552c} como el
+mapa de Memoria de la máquina y obtenga el programa en Assembre y en
+RTL.
+
+si se tiene el siguiente mapa de memoria?
+
+Si es un mapa de memoria ya que posee:
+
+• Cada word es de 40 bits.
+
+• Cada word se subdivide en 2 instrucciones del 20 bits
+   en este caso del [0 al 19] y del [20 al 39].
+
+• Tenemos la instruccion opcode HALT la cual finaliza el programa.
+
+• Entre otras.
+
+\begin{table}[htbp]
+\caption{\label{tab:orgcd9552c}Mapa de Memoria}
+\centering
+\begin{tabular}{rrrrr}
+\hline
+Dirección & \(Opcode_1\) & \(X_1\) & \(Opcode_2\) & \(X_2\)\\[0pt]
+\hline
+0x300 & 0x01 & 0x940 & 0x06 & 0x941\\[0pt]
+0x301 & 0x21 & 0x940 & 0x99 & 0x000\\[0pt]
+\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{}\\[0pt]
+0x940 & 0x00 & 0x000 & 0x00 & 0x005\\[0pt]
+0x941 & 0x00 & 0x000 & 0x00 & 0x002\\[0pt]
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{frame}[label={sec:org8581f17}]{Solucion}
+• Paso 1 (Opcode1)
+
+LOAD M(940)
+AC ← 0x003
+
+\alert{PC} 0x300
+\alert{AC} 0x003
+\alert{IR} 0x940
+
+• Paso 2 (Opcode2)
+
+STORE M(941)
+M(941) ← 0x003
+
+\alert{PC} 0x300
+\alert{AC} 0x003
+\alert{IR} 0x941
+
+• Paso 3 (Opcode1)
+
+ADD M(941)
+AC ← 0x003 + 0x003
+AC ← 0x006
+
+\alert{PC} 0x301
+\alert{AC} 0x003
+\alert{IR} 0x941
+
+• Paso 4 (Opcode2)
+
+HALT
+
+\alert{Detiene la ejecución}
+\end{frame}
+
+\begin{frame}[label={sec:orgbd47b58}]{Preguntas}
+\begin{enumerate}
+\item ¿Qué resultado se tiene en el registro del acumulador?
+
+El acumulador al final tiene la ejecución  0x006.
+
+\item ¿Se sobrescribe algún registro como resultado de la ejecución?
+Sí, se sobrescribe la dirección de memoria 0x941 con el valor 0x003
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[label={sec:org6305171}]{Código Assembler:}
+\end{frame}
+
+\section{Escriba el código Assembler del programa que ejecuta el computador IAS.}
+\label{sec:orgbd47ef9}
+
+
+\begin{verbatim}
+
+• LOAD M(940)   -->  Cargar contenido de 0x940 en AC
+
+• STORE M(941)  -->  Almacenar contenido de AC en 0x941
+
+• ADD M(941)    -->  Sumar contenido de 0x941 a AC
+
+• HALT          -->  Detener la ejecución)
+
+\end{verbatim}
+
+\begin{frame}[label={sec:orge4c0327}]{Código RTL}
+Escriba en notación de transferencia de registros el programa que
+ejecuta el computador
+
+
+IAS \([AC] \leftarrow [940]\)
+
+AC ← M[940]      -->  Cargar contenido de 0x940 en el AC(acumulador)
+
+M[941] ← AC      -->  Almacenar contenido de AC en 0x941
+
+AC ← AC + M[941] -->  Sumar contenido de 0x941 al acumulador
+
+HALT(Ox99)       -->  Detener la ejecución
+
+
+\printbibliography
+\end{frame}
+\end{document}

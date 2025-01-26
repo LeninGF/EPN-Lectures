@@ -1,0 +1,326 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Lógica Digital
+#+date: 2024-07-
+#+author: COLOQUE SU NOMBRE
+#+email: lenin.falconi@epn.edu.ec
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{.././images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+
+* Objetivos de Aprendizaje
+- Comprender las operaciones del álgebra de Boole
+- Comprender la estructura de un computador
+- Diseñar circuitos combinacionales simples
+- Ejercitar reducción con mapa de K.
+- Ejercitar uso de Emacs
+* Instrucciones
+1. Completar el desarrollo de los ejercicios propuestos
+2. Subir al aula virtual su archivo .org y el .pdf generado
+* Guía Emacs
+** Logo EPN
+Si el Logo de la EPN no aparece revise que esté correctamente escrita
+la ubicación de la imagen del logo. Como sugerencia, coloque el logo
+en la misma carpeta en la que esté trabajando con este archivo con lo
+cual puede escribir:
+
+   #+begin_src latex
+    \fancyhead[C]{\includegraphics[scale=0.05]{./logoEPN.jpg}\\
+   #+end_src
+** Generar Archivo PDF 
+Si desea observar el resultado recuerde usar ~M-x org-latex-export-to-pdf~
+** Insertar Imágenes
+Si requeire insertar imágenes en el texto, le sugiero descargar la
+imagen a la misma carpeta en la que esté desarrollando este
+documento. Luego escriba entre doble corchete la ubicación del archivo:
+
+#+begin_src elisp
+[[./logoEPN.jpg]]
+#+end_src
+** Tablas
+La tabla propuesta para la XOR puede llenarla. Las columnas se
+ajustarán automáticamente al contenido luego de presionar Tabulador
+(~TAB~) o ~C-c C-c~. La Tabla que he colocado para el Mapa K no va a
+obedecer este procedimiento.
+** \LaTeX
+En este caso se ha utilizado el entorno ~align~ para alinear la
+escritura de ecuaciones entorno del símbolo ~=~. Si se desea observar
+el resultado de las expresiones matemáticas directamente en el archivo
+ORG, sin generar el pdf, localice el cursor en la ecuación y ejecute
+la secuencia de comandos ~C-c C-x C-l~
+
+$$E = mc^2$$
+
+** Comandos Emacs
+Recuerde que en Emacs:
+- la tecla control está representada por ~C~
+- la tecla alt está representada por ~M~
+- para abrir o crear un archivo ~C-x C-f~
+- para guardar los cambios ~C-x C-s~
+
+* Ejercicios
+1. A partir de la tabla de verdad de la compuerta OR exclusiva de dos
+   entradas obtenga la función booleana como SOP (min-términos).
+   - Complete la siguiente tabla. Después de modificar la tabla
+     ejecutar ~C-c C-c~ o dar un ~TAB~ para que la tabla se ajuste
+     automáticamente
+   - Escriba la expresión en SOP usando \LaTeX
+
+     La Tabla de la XOR es:
+     |---+---+--------------|
+     | A | B | $A \oplus B$ |
+     |---+---+--------------|
+     | 0 | 0 |              |
+     | 0 | 1 |              |
+     | 1 | 0 |              |
+     | 1 | 1 |              |
+     |---+---+--------------|
+
+     A partir de la Tabla, en SOP,
+
+    $$A\oplus B = ???$$
+
+2. Para el ejercicio anterior obtenga la representación en POS
+   (max-términos).
+
+   $$A\oplus B = ???$$
+
+3. ¿Puede representar el circuito sólo con compuertas NAND?
+   - Utilice las leyes de Morgan para obtener una representación sólo
+     con compuertas NAND. Recuerde que una compuerta NAND es una
+     compuerta AND negada
+
+     El siguiente código de \LaTeX permite alinear una ecuación con
+     respecto de un símbolo. Realice las sustituciones de acuerdo al
+     enunciado y obtenga la expresión en compuertas NAND.
+
+     \begin{align*}
+       F &= x^2 - y ^2 \\
+       F &= (x-y)(x+y)
+     \end{align*}
+
+4. Simplificar $F = ACD+\bar{A}BCD$. Resp:$CD(A+B)$
+
+   De igual manera se puede usar el siguiente código \LaTeX para
+   escribir el desarrollo matemático
+
+   \begin{align*}
+     F &= ACD+\bar{A}BCD \\
+     F &= 
+   \end{align*}
+
+   De acuerdo a la tabla de reglas del álgebra de Boole ¿qué reglas ha
+   utilizado? Use M-RET (i.e. ALT-ENTER) para producir el siguiente
+   item numerado una vez que ha terminado el anterior
+
+   1. Regla ...
+
+   2. Regla ...
+
+   3. Regla ...
+
+
+5. Simplificar $F=ABC+A\bar{B} \overline{\bar{A}\bar{C}}$. R: $A(\bar{B}+C)$
+
+   \begin{align*}
+     F &=ABC+A\bar{B} \overline{\bar{A}\bar{C}} \\
+     F &=
+   \end{align*}
+
+6. A partir de la Tabla [[tab-ejercicio]] de verdad obtener la
+   representación en SOP.
+
+
+#+CAPTION: Ejercicio de tres variables
+#+NAME: tab-ejercicio
++--+--+--+--+
+|A  B  C | F|
++--+--+--+--+
+|0   0  0|0 |
+|0   0  1|0 |
+|0   1  0|1 |
+|0   1  1|1 |
+|1   0  0|0 |
+|1   0  1|0 |
+|1   1  0|1 |
+|1   1  1|0 |
++--+--+--+--+
+
+
+7. Usando Mapas de Karnaugh obtenga la simplificación del circuito de
+   la Tabla [[tab-ejercicio]]
+   
+La tabla aquí propuesta se edita con ~C-c '~. Una vez hechos los
+cambios si se desea aceptar se vuelve a ejecutar ~C-c '~.
+
++---+----+----+----+----+
+|   | BC | BC | BC | BC |
++---+----+----+----+----+
+| A | 00 | 01 | 11 | 10 |
++---+----+----+----+----+
+| 0 |    |    |    |    |
++---+----+----+----+----+
+| 1 |    |    |    |    |
++---+----+----+----+----+
+
+
+
+
+
+#+begin_comment
+,* ¿Cómo insertar una cita bibliográfica?
+1. Crear el archivo ~bibliography.bib~
+2. Escribir en el archivo del paso anterior las entradas
+   bibliográficas en formato /BIBTEX/
+3. Para insertar una cita, salve cambios en ~bibliography.bib~ y luego
+   ejecute el comando
+   ,#+begin_src elisp
+     M-x org-cite-insert
+   ,#+end_src
+4. Seleccione uno o mas autores dando ~RET~. Para salir dar ~C-RET~
+5. Genere el archivo PDF.
+6. Puede cambiar el formato de la cita afectando el estilo. Por
+   defecto está en formato /ieee/. Pruebe a usar /apa/
+
+,* Concepto de Programación Literaria
+Emacs tiene por objetivo realizar programación literaria. En inglés
+este concepto se conoce como /literate programming/ que fue
+introducido por \citeauthor{knuth1984literate} en 1984 en su artículo
+\citetitle{knuth1984literate} [cite:@knuth1984literate]:
+,#+begin_quote
+En este enfoque, un programa de computadora se escribe como una
+explicación en un lenguaje natural, como el español, intercalado con
+fragmentos de código fuente y macros tradicionales. Esto permite que
+el programa sea leído y comprendido fácilmente por humanos, similar a
+un texto literario [cite:@wikipedialitp2024].
+,#+end_quote
+
+,* Insertar Código de Python
+Para insertar un código de programación:
+1. Ejecute ~C-c C-,~ o en su defecto ~M-x org-insert-structure-template~
+2. Esto desplegará un menú para seleccionar varias opciones, escriba
+   ~s~ que corresponde a ~src~
+3. Defina el tipo de código a escribir. En este caso python. Se
+   sugiere que acompañe al bloque de las opciones: ~:session :results
+   output :exports both~ que hacen posible que el código se utilice en
+   todo el documento, reteniendo en memoria valores de variables,
+   funciones, etc. Además permite exportar los resultados de ejecución al PDF.
+4. Para ejecutar el código escrito se da ~C-c C-c~
+
+Observe que para que se pueda ejecutar el código de python, el archivo
+de configuración de Emacs debe conocer en dónde o cuál interpréte se
+va a utilizar. Por lo mismo, si usa anaconda, se ha de abrir Emacs con
+el entorno respectivo activado.
+
+,#+begin_src shell :results output :exports both
+which python
+,#+end_src
+
+,#+RESULTS:
+: /home/leningfe/miniforge3/envs/tfmlenv/bin/python
+
+,** Ejemplo
+Se desea un programa que devuelva ~Hola + {nombre}: {cuenta}~. Donde
+~nombre~ es una variable que contiene su nombre y ~cuenta~ se
+incrementa cada vez que la función se ejecute.
+
+Primero declaramos la función
+,#+begin_src python :session :results output :exports both
+def saludar_contar(nombre:str, contador:int):
+    contador = contador + 1
+    print(f"Hola {nombre}: {contador}")
+    return contador
+,#+end_src
+
+,#+RESULTS:
+
+Ahora hacemos una primera ejecución inicializando el valor de cuenta
+en 0
+
+,#+begin_src python :session :results output :exports both
+cuenta_actual = saludar_contar("Lenin", 0)
+,#+end_src
+
+,#+RESULTS:
+: Hola Lenin: 1
+
+Ahora realicemos una segunda ejecución. El valor del contador a usar
+es el almacenado en ~cuenta_actual~
+
+,#+begin_src python :session :results output :exports both
+cuenta_actual = saludar_contar("Lenin", cuenta_actual)
+,#+end_src
+
+,#+RESULTS:
+: Hola Lenin: 7
+
+Si el bloque anterior se vuelve a ejecutar, el contador será
+incrementado.
+
+,* Escribiendo Matemática
+Para escribir expresiones matemáticas en un archivo ORG se recurre a
+la notación de \LaTeX. También se puede intercalar código de \LaTeX
+junto al texto en ORG si se requiere un control más específico. En
+general, las expresiones matemáticas pueden incrustarse usando un par
+de signos $.
+
+Una ecuación muy conocida es $x^2+y^2=z^2$, que se denomina Teorema de
+Pitágoras. Sin embargo, si no deseo colocar la ecuación en línea con
+el texto se puede usar doble signo $
+
+$$E=mc^2$$
+
+Es otra ecuación bastante conocida. Ahora si deseo enumerar ecuaciones
+es conveniente usar código de \LaTeX:
+,#+name: eq:error_cuad
+\begin{equation}
+  ECM = \frac{1}{n}\sum_{i=1}^n(y_i-\hat{y}_i)^2
+\end{equation}
+
+La ecuación [[eq:error_cuad]] corresponde al error cuadrático medio entre
+una variable conocida $y$ y la variable predicha
+$\hat{y}$. Alternativamente, puede usar ~\label~ y ~\eqref~ como se
+usan normalmente en \LaTeX.
+
+
+#+print_bibliography: 
+
+#+end_comment
