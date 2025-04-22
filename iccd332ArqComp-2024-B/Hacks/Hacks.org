@@ -91,3 +91,88 @@ la conversión pero se observa en consola.
 
 Es posible que se requiera eliminar ~^M~ luego de su ejecución
 
+* Crear un artículo IEEE
+Para esto es necesario que esté instalada la clase IEEEtran en
+\LaTeX. Esto se puede hacer de varias formas y se debe intentarlas
+porque no todas funcionan.
+
+1. instalación con sudo
+
+   #+begin_src shell
+     sudo tlmgr install ieeetran
+   #+end_src
+
+2. descargar el archivo y copiarlo en la ruta que el sistema tenga el
+   article.cls Esto se puede revisar en
+   [[https://tex.stackexchange.com/questions/222765/writing-an-ieee-document]]
+
+   - Se puede usar ~locate article.cls~
+
+   - luego copiar el archivo a la misma localidad: ~cp IEEEtran.cls <destino>~
+
+   - luego ejecutar ~sudo texhash~
+
+   - adicional insltalar ~sudo apt-get install texlive-fonts-recommended~
+
+   - Alternativametne buscar con ~sudo find / -name article.cls~
+
+3. Finalmente, si Emacs no reconoce el formato añadir al archivo de
+   configuración la siguinte
+   #+begin_src elisp
+     (add-to-list 'org-latex-classes
+             '("IEEEtran"
+               "\\documentclass[10pt]{IEEEtran}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+   #+end_src
+   
+4. Estructurar el archivo org
+#+begin_src org
+#+TITLE: A Novel Method for XYZ
+#+AUTHOR: Jane Doe, John Smith
+#+DATE: \today
+#+LATEX_CLASS: IEEEtran
+#+LATEX_CLASS_OPTIONS: [journal]
+#+cite_export: biblatex
+#+startup: indent
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+latex_header: \usepackage{hyperref}
+#+latex_header: \usepackage{booktabs}
+#+latex_header: \usepackage{tabularx}
+
+#+bibliography: bibliography.bib
+
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+#+begin_export latex
+\begin{abstract}
+This paper proposes a groundbreaking approach to XYZ...
+\end{abstract}
+#+cite_export: biblatex
+
+#+LATEX: \IEEEkeywords{Machine Learning, Optimization, Algorithms, Data Science}
+
+* Introduction
+\label{sec:intro}
+Prior work [[cite:key1]] has focused on...
+
+* Methodology
+** Algorithm
+\begin{equation}
+y = \sum_{i=0}^n \alpha_i x_i
+\end{equation}
+
+* Results
+#+CAPTION: Performance comparison.
+[[file:results.png]]
+
+* References
+#+print_bibliography: 
+
+
+
+#+end_src
