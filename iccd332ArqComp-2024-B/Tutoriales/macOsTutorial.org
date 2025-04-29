@@ -1,0 +1,72 @@
+* Instalacion de brew
+
+#+begin_src shell
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#+end_src
+
+- El comando se toma de la página de HomeBrew
+- Seguir las instrucciones en pantalla
+Al final aparece una serie de comandos que se deben ejecutar para que brew pertenezca al path del sistema
+
+#+begin_src shell
+    echo >> /Users/delta/.zprofile
+    echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/delta/.zprofile
+    eval "$(/usr/local/bin/brew shellenv)"
+#+end_src
+
+Para verificar que brew esta funcionando usar los comandos
+
+#+begin_src shell
+  which brew
+#+end_src
+
+#+begin_src shell
+  brew --version
+#+end_src
+* Instalacion Latex
+Para instalar Latex se usa el siguiente comando. Esto instala Latex
+por completo
+
+#+begin_src shell
+  brew install --cask mactex
+#+end_src
+
+* Instalacion de Mamba
+Para instalar podemos ir a la pagina de github de miniforge y copiar y
+ejecutar el siguiente comando
+Importante determinar la arquitectura de Mac que este utilizando
+El comando lo hace aparentemente
+
+Para hacer uso del comando wget primero instalar con
+#+begin_src shell
+  brew install wget
+#+end_src
+
+#+begin_src shell
+  wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#+end_src
+
+alternativamente si toma mucho tiempo instalar el comando wget puede
+ejecutar el comando
+
+#+begin_src shell
+  curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#+end_src
+
+Luego verifique la ubicacion en que se descargo el archivo
+use chmod + x seguido del nombre de archivo descargado para hacerlo ejecutable
+ejecutelo de la misma manera que en Linux
+
+#+begin_src shell
+  chmod +x Miniforge3-Darwin-x86_64.sh
+  ./Miniforge3-Darwin-x86_64.sh
+#+end_src
+
+Siga las instrucciones y reinicie las lineas de comandos para observar
+si mamba ha sido instalado exitosamente
+
+paquetes faltantes como pandoc se puede instalar como
+
+#+begin_src shell
+  brew install pandoc
+#+end_src
