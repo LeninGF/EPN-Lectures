@@ -23,12 +23,17 @@
 
 
 #+LaTeX_HEADER: \usepackage{hyperref}
-#+LaTeX_HEADER: \hypersetup{colorlinks=true, linkcolor=, urlcolor=blue}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true, linkcolor=magenta, urlcolor=red}
 #+LaTeX_HEADER: \RequirePackage{fancyvrb}
-#+LaTeX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+
 #+LaTeX_HEADER: \setbeamercolor{titlelike}{fg=white}
+#+LaTeX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+#+OPTIONS: listings:t
 
 * Configuración e Instalación en Windows
+:PROPERTIES:
+:CUSTOM_ID: procedimiento-windows
+:END:
 ** Procedimiento
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -38,13 +43,12 @@ Se requiere realizar los siguientes ajustes para que Emacs opere:
 
 1. Instalar WSL o un distro de Linux: Se pueden seguir los pasos de la
    [[https://learn.microsoft.com/es-es/windows/wsl/install][Guía de Instalación]]
-
-1. Instalar Emacs:
+2. Instalar Emacs:
       #+begin_src shell
         sudo apt-get update
         sudo apt install emacs
       #+end_src
-2. Instalar LaTeX (básica o completa):
+3. Instalar LaTeX (básica o completa):
       #+begin_src shell
 	sudo apt install texlive-full
       #+end_src
@@ -53,9 +57,12 @@ Se requiere realizar los siguientes ajustes para que Emacs opere:
       #+begin_src shell
         sudo apt install texlive-latex-extra
       #+end_src
-3. Instalar Python
-4. Configurar el archivo en ~/.emacs.d/init.el
-
+4. Instalar Python
+5. Configurar el archivo en ~/.emacs.d/init.el
+* Instalación Python
+:PROPERTIES:
+:CUSTOM_ID: install-python
+:END:
 ** Instalación de Python
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -153,9 +160,13 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 * Configuración en Linux
 ** Configuración en Linux
 - Python :: Se realiza directamente la descarga del Miniforge conforme a lo
-  señalado en Instalacion de Python
-- Emacs :: se realiza directamente los comandos en Procedimiento
-- $\LaTeX$ :: se realiza directamente los comandos en Procedimiento
+  señalado en [[#install-python][Instalación Python]]
+- Emacs :: Se realiza directamente los comandos en
+  [[#procedimiento-windows][Configuración e Instalación Windows]] en el punto 3.
+- \LaTeX :: Se realiza directamente los comandos en
+  [[id:procedimiento-windows][Configuración e Instalación Windows]] en el punto 2.
+
+En Linux **no** es necesario instalar **WSL**
 * Configuración e Instalación en MacOS
 ** Configuración en MacOS (Instalar Brew)
 :PROPERTIES:
@@ -166,13 +177,13 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
    - El comando identifica la arquitectura del sistema automáticamente
    - Seguir las indicaciones en pantalla
 
-#+begin_src shell
+#+begin_src shell :exports code
  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 #+end_src
 
 2. Para que ~brew~ sea reconocido por el sistema operativo ejecutar:
 
-#+begin_src shell
+#+begin_src shell :exports code
  echo >> /Users/delta/.zprofile
  echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/delta/.zprofile
  eval "$(/usr/local/bin/brew shellenv)"
@@ -187,8 +198,8 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 #+begin_src shell
   brew --version
 #+end_src
-** Instalar $\LaTeX$ en MacOS
-Usando ~brew~ proceder a la instalación completa de $\LaTeX$ mediante
+** Instalar \LaTeX en MacOS
+Usando ~brew~ proceder a la instalación completa de \LaTeX mediante
 el comando:
 
 #+begin_src shell
@@ -202,7 +213,7 @@ Utilizar el comando:
  brew install --cask emacs
 #+end_src
 
-Se debe asegurar que Emacs detecte la instalación de $\LaTeX$
+Se debe asegurar que Emacs detecte la instalación de \LaTeX
 ** Instalar Python en Mamba en MacOS
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -224,13 +235,31 @@ Se debe asegurar que Emacs detecte la instalación de $\LaTeX$
 5. Realice la ejecución del script de instalación
 6. Siga los pasos en pantalla de igual manera  Windows/Linux
 7. Reinicie el terminal para observar si ~Mamba~ está instalado
+
+** Configuración de Teclado para Emacs
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+Dado que el teclado de MacOs es diferente, es necesario que el archivo
+de configuración ~~/.emacs.d/init.el~ permita el uso adecuado de
+~Command~ como ~Alt~ o ~Meta~ y desactivar el ~Option~ a fin de poder
+obtener los caracteres especiales del teclado.
+
+1. Crear o editar el archivo ~~/.emacs.d/init.el~
+2. Insertar en el archivo la configuración siguiente:
+   #+begin_src elisp
+     (setq mac-command-modifier 'meta)
+     (setq mac-option-modifier 'none)
+   #+end_src
+3. Guardar el archivo ~C-x C-s~
+4. Evaluar el buffer ~M-x eval-buffer~ o reiniciar Emacs
 ** Instalar paquetes adicionales
 Puede usar ~brew~ para instalar componentes adicionales como pandoc
 
 #+begin_src shell
   brew install pandoc
 #+end_src
-
+* Presentaciones con Emacs
 ** Hacer una presentación en Emacs
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -327,7 +356,7 @@ with its own headline, is displayed in a block:
 :BEAMER_env: example
 :END:
 
-#+ATTR_LaTeX: :width \textwidth
+#+ATTR_LaTeX: :width .6\textwidth
 [[../../images/computer.png]]
 
 
