@@ -28,7 +28,7 @@
 #+LaTeX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 #+LaTeX_HEADER: \setbeamercolor{titlelike}{fg=white}
 
-* Configuración e Instalación
+* Configuración e Instalación en Windows
 ** Procedimiento
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -128,7 +128,7 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 (setq python-shell-interpreter "/path/to/anaconda/envs/myenv/bin/python")
 
   #+end_src
-* Emacs
+* Comandos básicos de Emacs
 #+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
 #+NAME: tabla-emacs
 #+CAPTION: Comandos de Emacs
@@ -150,6 +150,86 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 |C-d                 | Borrar un carácter | M-d                | borrar palabra     |
 +--------------------+--------------------+--------------------+--------------------+
 
+* Configuración en Linux
+** Configuración en Linux
+- Python :: Se realiza directamente la descarga del Miniforge conforme a lo
+  señalado en Instalacion de Python
+- Emacs :: se realiza directamente los comandos en Procedimiento
+- $\LaTeX$ :: se realiza directamente los comandos en Procedimiento
+* Configuración e Instalación en MacOS
+** Configuración en MacOS (Instalar Brew)
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+1. *Instalar ~brew~:*
+   - Utilizar el comando de la página de HomeBrew
+   - El comando identifica la arquitectura del sistema automáticamente
+   - Seguir las indicaciones en pantalla
+
+#+begin_src shell
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#+end_src
+
+2. Para que ~brew~ sea reconocido por el sistema operativo ejecutar:
+
+#+begin_src shell
+ echo >> /Users/delta/.zprofile
+ echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/delta/.zprofile
+ eval "$(/usr/local/bin/brew shellenv)"
+#+end_src
+
+3. Verificar que ~brew~ está funcionado en el sistema usando los
+   comandos:
+#+begin_src shell
+  which brew
+#+end_src
+
+#+begin_src shell
+  brew --version
+#+end_src
+** Instalar $\LaTeX$ en MacOS
+Usando ~brew~ proceder a la instalación completa de $\LaTeX$ mediante
+el comando:
+
+#+begin_src shell
+  brew install --cask mactex
+#+end_src
+
+** Instalar Emacs en MacOS
+Utilizar el comando:
+
+#+begin_src shell
+ brew install --cask emacs
+#+end_src
+
+Se debe asegurar que Emacs detecte la instalación de $\LaTeX$
+** Instalar Python en Mamba en MacOS
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+1. Instalar ~wget~ o usar e comando ~curl~ para descargar el archivo
+#+begin_src shell
+  brew install wget
+#+end_src
+2. Ejecutar el siguiente comando disponible en el GitHub de Miniforge:
+#+begin_src shell
+  wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#+end_src
+#+begin_src shell
+  curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+#+end_src
+3. Verificar la dirección de descarga del archivo
+4. Usar ~chmod +x~ seguido del nombre del archivo descargado para
+   convertirlo en ejecutable
+5. Realice la ejecución del script de instalación
+6. Siga los pasos en pantalla de igual manera  Windows/Linux
+7. Reinicie el terminal para observar si ~Mamba~ está instalado
+** Instalar paquetes adicionales
+Puede usar ~brew~ para instalar componentes adicionales como pandoc
+
+#+begin_src shell
+  brew install pandoc
+#+end_src
 
 ** Hacer una presentación en Emacs
 :PROPERTIES:
