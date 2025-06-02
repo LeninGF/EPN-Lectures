@@ -407,8 +407,8 @@ $$(-1)^s \times 1.m \times 2^{e-127}$$
 
 1) La representación en coma flotante no puede representar a todos los
    números reales.
-2) Números Negativos entre $-(2-2^{-23})\times 2^{128}$ y -2^{-127}
-3) Números Positivos entre 2^{-127} y (2-2^{-23})\times 2^{128}$
+2) Números Negativos entre $-(2-2^{-23})\times 2^{128}$ y $-2^{-127}$
+3) Números Positivos entre $2^{-127}$ y $(2-2^{-23})\times 2^{128}$
 
 * Tarea
 *** Tarea                                                   :B_definition:Tarea:
