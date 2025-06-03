@@ -1,24 +1,66 @@
-;; 01 Name and email
+;;; initel.el --- Emacs Configuration
+
+;;; Commentary:
+;; This configuration is tailored for Org-mode, Python, Jupyter, Java, and LaTeX development.
+;; It includes packages for enhanced functionality such as autocompletion, version control,
+;; and spell checking.
+
+;;; AuthSource for Apis
+(require 'auth-source)
+(setq auth-sources '("~/.authinfo.gpg" "~/.authinfo"))
+
+;;; Code:
+
+;;; 1.  Initialization and Basic Setup
+
+;; 1.1 User Information
 (setq user-full-name "Lenin G. Falconí"
-      user-mail-address "lenin.falconi@epn.edu.ec")
+      user-mail-address "lenin.falconi@epn.edu.ec") ; [cite: 1]
 
-;; Initialize Package Archives if not already done
+;; 1.2 Package Management
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
-(package-initialize)
 
+;; 1.3 Package Archives
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t) ; [cite: 2]
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t) ; [cite: 2]
 
-;; Install required packages if not already installed
+;; 1.4 Initialize Packages
+(package-initialize) ; [cite: 3]
+
+;; 1.5 Ensure use-package is installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)) ; [cite: 4]
 
-;; Load use-package for package management
+;; 1.6 Load use-package
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)) ; [cite: 5]
 
-;; Install and configure org mode
+;; 1.7 Save History
+(savehist-mode 1) ; [cite: 18]
+
+;;; 2. Core Functionality and UI
+
+;; 2.1 Indentation
+(electric-indent-mode 1) ; [cite: 6]
+
+;; 2.2 Line Numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode) ; [cite: 31]
+
+;;; 3. Text and Document Editing
+
+;; 3.1 Auto-fill Mode
+(add-hook 'org-mode-hook #'auto-fill-mode) ; [cite: 6]
+
+;; 3.2 Spell Checking
+(use-package flyspell
+  :ensure t
+  :hook ((text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode))) ; For spell-checking in comments and strings [cite: 34, 35]
+
+;;; 4. Org Mode Configuration
+
+;; 4.1 Org Mode Basics
 (use-package org
   :ensure t
   :config
@@ -26,183 +68,143 @@
         org-src-fontify-natively t
         org-src-tab-acts-natively t
         org-src-preserve-indentation t
-        org-edit-src-content-indentation 0))
+        org-edit-src-content-indentation 0)) ; [cite: 5]
 
-;; proper identation in all modes
-(electric-indent-mode 1)
-;; Install and configure ob-ipython for Python execution
-(use-package ob-ipython
-  :ensure t
-  :after org)
-
-;; Add your conda environment to Emacs's exec-path ;; This seems to look for native instaltion for instance in wsl looks for windows conda
-;(setq exec-path (append (split-string (shell-command-to-string "conda info --base") "\n")
-;                        (list "envs/tfwin/bin")))
-
-;; Set the correct path to the Python executable within your conda environment
-(setq org-babel-python-command "/home/leningfe/miniforge3/envs/tfmlenv/bin/python")
-
-;; Set up Python environment and Java for org-mode 
+;; 4.2 Babel Languages
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
    (java . t)
-   (shell .t)))
+   (shell .t))) ; [cite: 10]
 
+;; 4.3 ob-ipython
+(use-package ob-ipython
+  :ensure t
+  :after org) ; [cite: 7]
 
-;; Customize the python shell executable path
-(setq python-shell-interpreter "/home/leningfe/miniforge3/envs/tfmlenv/bin/ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
+;; 4.4 Python Configuration for Org-Babel
+(setq org-babel-python-command "/home/leningfe/miniforge3/envs/tfmlenv/bin/python") ; [cite: 9]
 
-;; Install and configure elpy for Python development
+;; 4.5 LaTeX in Org Mode
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+	     '("IEEEtran"
+                 "\\documentclass[10pt]{IEEEtran}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))) ; [cite: 45, 46]
+
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 2.0)) ;; increase preview font [cite: 47]
+
+;;; 5. Python Development
+
+;; 5.1 Elpy
 (use-package elpy
   :ensure t
   :init
-  (elpy-enable))
+  (elpy-enable)) ; [cite: 12]
 
-;; Rebind ELPY's completion command to C-M-TAB
+;; 5.2 Yasnippet with Elpy
+(add-hook 'elpy-mode-hook 'yas-minor-mode) ; [cite: 13]
 
-(with-eval-after-load 'elpy
-  (define-key elpy-mode-map (kbd "C-M-SPC") 'elpy-company-backend))
-;; Ensure Yasnippet is enabled in ELPY
-(add-hook 'elpy-mode-hook 'yas-minor-mode)
+;; 5.3 Python Shell
+(setq python-shell-interpreter "/home/leningfe/miniforge3/envs/tfmlenv/bin/ipython"
+      python-shell-interpreter-args "-i --simple-prompt") ; [cite: 11]
 
-;; Testing to solve problems when writing code
-;; (defun add-yasnippet-ac-sources ()
-;;    (add-to-list 'ac-sources 'ac-source-yasnippet))
-;; (add-hook 'python-mode-hook 'add-yasnippet-ac-sources)
+;;; 6. Code Completion
 
-;; Install and configure company for code completion
+;; 6.1 Company Mode
 (use-package company
   :ensure t
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'LaTeX-mode-hook #'company-mode)
   :config
-  (global-set-key (kbd "C-c C-SPC") 'company-complete-selection))
+  (global-set-key (kbd "C-c s") 'company-complete-selection)) ;C-c C-SPC [cite: 15, 30]
 
-;; Get auto completion of :emoji: names.
+;; 5.4 Company with Elpy
+(with-eval-after-load 'elpy
+  (define-key elpy-mode-map (kbd "M-TAB") nil) ; disable M-TAB in ELPY [cite: 16, 17]
+  (define-key elpy-mode-map (kbd "C-c SPC") 'company-complete))
+
+;; 6.2 Company Emoji
 (use-package company-emoji
   :ensure t
   :after company-mode
   :config
-  (company-emoji-init))
+  (company-emoji-init)) ; [cite: 17]
 
-;; Save configuration
-(savehist-mode 1)
+;;; 7. Yasnippet
 
-;; Set custom key bindings if needed
-;; (global-set-key (kbd "C-c r") 'org-babel-execute-buffer)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes '(deeper-blue))
- '(ispell-dictionary "american")
- '(package-selected-packages
-   '(helm-bibtex company-reftex htmlize csv-mode csv simple-httpd calc-at-point org elpygen babel helm-lsp helm projectile lsp-javacomp company-auctex git-gutter+ flycheck which-key lsp-ui lsp-java lsp-mode magit company-emoji auto-complete-auctex ac-math auto-complete yasnippet-snippets markdown-mode ein gnu-elpa-keyring-update auctex elpy ob-ipython use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-
-;; Setting Yasnippet for Emacs
+;; 7.1 Yasnippet Setup
 (use-package yasnippet
   :ensure t
   :config (use-package yasnippet-snippets
-	    :ensure t))
+	    :ensure t)) ; [cite: 22]
 (yas-reload-all)
-(yas-global-mode t) 			;activate yasnippet
+(yas-global-mode t) 			;activate yasnippet [cite: 22]
 (define-key yas-minor-mode-map (kbd "C-<tab>") 'yas-expand)
-;; https://jdhao.github.io/2021/10/06/yasnippet_setup_emacs/
+;; ref: https://jdhao.github.io/2021/10/06/yasnippet_setup_emacs/ [cite: 23]
 
-;; Configure Auto Complete
-;; (use-package auto-complete
-;;   :ensure t
-;;   :defer t)
-;; (require 'auto-complete)
-;; (add-to-list 'ac-modes 'latex-mode) ; Add LaTeX mode to Auto-Complete modes
-;; (use-package ac-math
-;;   :ensure t
-;;   :defer t)
-;; (require 'ac-math) ; Install ac-math package first
+;;; 8. Jupyter (EIN)
 
-;; ;; Set up LaTeX-specific Auto-Complete sources
-;; (defun my-ac-latex-mode ()
-;;   (setq ac-sources
-;;         (append '(ac-source-math-unicode
-;;                   ac-source-math-latex
-;;                   ac-source-latex-commands)
-;;                 ac-sources)))
-
-;; ;; Hook into LaTeX mode
-;; (add-hook 'LaTeX-mode-hook 'my-ac-latex-mode)
-
-;; ;; Enable Unicode math input
-;; (setq ac-math-unicode-in-math-p t)
-
-;; ;; Workaround for flyspell delay (if you use flyspell)
-;; (ac-flyspell-workaround)
-
-;; ;; Add Auto-Complete for org-mode (optional)
-;; ;; (add-to-list 'ac-modes 'org-mode)	
-
-;; ;; Load Auto-Complete configuration
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-
-;; --------------- Setting up emacs for LaTeX ---------------
-
-;; Setting up company
-(require 'company)
-;; Enable Company mode globally
-(add-hook 'after-init-hook 'global-company-mode)
-
-;; jupyter notebooks
+;; 8.1 EIN Setup
 (use-package ein
   :ensure t
-  :defer t)
-(setq ein:use-auto-complete t) ; Enable auto-completion
-;; could be handy 2 check https://www.sharons.org.uk/emacs-init-from-an-org-mode-file.html
-;; enabling line numbers
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-;; java configuration https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-java.html
-
-
-;; Following are taken from https://gitlab.com/skybert/my-little-friends/-/blob/master/emacs/.emacs
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 40 Version control
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Editing VC log messages
-(add-hook 'log-edit-hook (lambda () (flyspell-mode 1)))
-
-(use-package magit
-  :ensure t
+  :defer t
+  :init
+  (setq ein:use-auto-complete t)
   :config
-  (setq magit-log-arguments '("-n256" "--graph" "--decorate" "--color")
-        ;; Show diffs per word, looks nicer!
-        magit-diff-refine-hunk t))
-(use-package git-gutter+
-  :ensure t
-  :config
-  (setq git-gutter+-disabled-modes '(org-mode))
-  ;; Move between local changes
-  (global-set-key (kbd "M-<up>") 'git-gutter+-previous-hunk)
-  (global-set-key (kbd "M-<down>") 'git-gutter+-next-hunk))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 71 fly check
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package flycheck :ensure t)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 80 Java
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  (require 'ein-notebook)) ; [cite: 30, 49, 50]
+;; ref: https://millejoh.github.io/emacs-ipython-notebook/ [cite: 49]
+;; ref: https://github.com/tkf/emacs-ipython-notebook [cite: 50]
+
+;;; 9. LaTeX Configuration
+
+;; 9.1 AUCTeX Setup
+(unless (package-installed-p 'auctex)
+  (package-refresh-contents)
+  (package-install 'auctex)) ; [cite: 37]
+
+;; 9.2 RefTeX Setup
+(unless (package-installed-p 'reftex)
+  (package-refresh-contents)
+  (package-install 'reftex)) ; [cite: 38]
+
+;; 9.3 AUCTeX Configuration
+(require 'tex-site) ; [cite: 39]
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil) ;; Use nil for multi-file projects [cite: 39]
+
+;; 9.4  AUCTeX and RefTeX Integration
+(with-eval-after-load 'tex
+  ;; Enable RefTeX in AUCTeX
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  ;; Enable auto-fill-mode and flyspell-mode in LaTeX mode
+  (add-hook 'LaTeX-mode-hook #'auto-fill-mode)
+  (add-hook 'LaTeX-mode-hook #'flyspell-mode)
+  (setq reftex-plug-into-AUCTeX t)
+  ;; Configure RefTeX to automatically detect bibliography files from the document
+  (setq reftex-bibliography-commands '("bibliography" "addbibresource" "nobibliography"))
+  ;; Configure citation format for biblatex
+  ;; (setq reftex-cite-format '((?a . "\\autocite[]{%l}")
+  ;;                            (?b . "\\blockcite[]{%l}")
+  ;;                            (?c . "\\cite[]{%l}")
+  ;;                            (?f . "\\footcite[]{%l}")
+  ;;                            (?n . "\\nocite{%l}")
+  ;;                            (?p . "\\parencite[]{%l}")
+  ;;                            (?s . "\\smartcite[]{%l}")
+  ;;                            (?t . "\\textcite[]{%l}")))
+  ) ; [cite: 40, 41, 42, 43, 44]
+;; Ensure .tex files automatically open in LaTeX-mode.
+;; (add-to-list 'auto-mode-alist '("\\.tex\\'" . LaTeX-mode))
+
+;;; 10. Java Development
+
 (require 'lsp-java)
 (add-hook 'java-mode-hook #'lsp)
 (condition-case nil
@@ -233,11 +235,106 @@
 (use-package lsp-treemacs)
 
 (require 'lsp-java-boot)
+;; (use-package lsp-java-boot :ensure t)
 
-;; to enable the lenses
+;; 10.3 Lenses
 (add-hook 'lsp-mode-hook #'lsp-lens-mode)
-(add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+;; (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
 
-;; Helm Doc view set up to show all pdf pages
-(setq doc-view-continuous t)
+;;; 11. Version Control
 
+;; 11.1 VC Log Messages
+(add-hook 'log-edit-hook (lambda () (flyspell-mode 1))) ; [cite: 32]
+
+;; 11.2 Magit
+(use-package magit
+  :ensure t
+  :config
+  (setq magit-log-arguments '("-n256" "--graph" "--decorate" "--color")
+        ;; Show diffs per word, looks nicer!
+        magit-diff-refine-hunk t)) ; [cite: 32]
+
+;; 11.3  git-gutter+ (disabled)
+;; (use-package git-gutter+
+;;   :ensure t
+;;   :config
+;;   (setq git-gutter+-disabled-modes '(org-mode))
+;;   ;; Move between local changes
+;;   (global-set-key (kbd "M-<up>") 'git-gutter+-previous-hunk)
+;;   (global-set-key (kbd "M-<down>") 'git-gutter+-next-hunk)) ; [cite: 33]
+
+;;; 12. Helm Configuration
+
+(use-package helm
+  :ensure t
+  :init) ; [cite: 44]
+(use-package helm-flyspell
+  :ensure t
+  :after (helm flyspell)) ; Ensure Helm and Flyspell are loaded first
+;; (use-package helm-bibtex
+;;   :ensure t
+;;   :init) ; [cite: 45]
+
+;; 12.1 Helm Doc View
+(setq doc-view-continuous t) ; [cite: 36]
+
+;;; 13. Auto-update Packages
+
+(use-package auto-package-update
+  :ensure t
+  :custom
+  (auto-package-update-interval 7)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-hide-results t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "09:00")) ; [cite: 48]
+
+;;; 14. Enabling LLMs GPTel https://github.com/karthink/gptel
+(use-package gptel
+  :ensure t
+  :config
+  ;; Uncomment the next line to use markdown-mode as default when
+  ;; chatting, otherwise org-mode is used
+  ;; (setq gptel-default-mode 'org-mode)
+  (setq gptel-model 'gpt-4.1
+	gptel-backend (gptel-make-gh-copilot "Copilot"))
+  (gptel-make-deepseek "DeepSeek" :stream t :key gptel-api-key)
+  (gptel-make-gh-copilot "Copilot")
+)
+
+;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
+;; (gptel-make-deepseek "DeepSeek" :stream t :key gptel-api-key)
+;; (gptel-make-gh-copilot "Copilot")
+
+
+;;; 15. wskview
+;;; requires sudo apt install wslu
+(setq browse-url-generic-program "wslview")
+(setq browse-url-browser-function 'browse-url-generic)
+;;; 16. Customizations
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes '(deeper-blue))
+ '(ispell-dictionary "american")
+ '(package-selected-packages
+   '(gptel helm-flyspell auto-complete-auctex company-auctex auctex-lua auto-package-update helm-bibtex company-reftex htmlize csv-mode csv simple-httpd calc-at-point org elpygen babel helm-lsp helm projectile lsp-javacomp flycheck which-key lsp-ui lsp-java lsp-mode magit company-emoji ac-math auto-complete yasnippet-snippets markdown-mode ein gnu-elpa-keyring-update elpy ob-ipython use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+ ; [cite: 19, 20, 21]
+
+;; 16. mac keyboard
+;; (setq mac-command-modifier 'meta)
+;; (setq mac-option-modifier 'none)
+;;;###autoload
+;;;###e
