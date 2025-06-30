@@ -64,8 +64,8 @@
 ** Estructura del Bus  (E1, 7, 99)
 ** Jerarquía de Buses Múltiples (E2, 7)
 ** Elementos de Diseño de un Bus (E2, 7)
-* Interconexión punto a punto
-** Interconexión punto a punto (E3, 11)
+* Interconexión punto a punto(E3, 11)
+** Interconexión punto a punto 
 ** QPI (E3, 11)
 * PCI Express (E4, 11)
 ** PCI Express (E4, 11)

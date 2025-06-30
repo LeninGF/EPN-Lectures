@@ -20,7 +20,7 @@
 
 * Estructura del sistema de Memoria Externa
 * Discos Magnéticos
-** Discos Magnéticos (7,197,E1, Q1)
+** Discos Magnéticos (E1,7,197)(E1,11,235)
 - Recuerde que si options: H:2, entonces
 - * Declara el nombre de la Sección
 - ** Declara el nombre de la diapositiva
@@ -33,19 +33,18 @@
 - El grupo a desarrollar el material
   se identifica con la tupla (Ex,
   $Qx$), siendo x el número del grupo
-** Mecanismo de Lectura y Escritura Magnética (199)
-** Organización y Formato de Datos (178)
-** Características Físicas
-** Parámetros para Medir Prestaciones del Disco
+** Mecanismo de Lectura y Escritura Magnética (E1,7, 199)
+** Organización y Formato de Datos (E1, 7, 200)(E1,11,236)
+** Características Físicas (E1, 7, 202)(E1,11,240)
+** Parámetros para Medir Prestaciones del Disco (E1, 7, 204)(E1,11,241)
 - No olvide escribir las ecuaciones en Latex
 - Usar doble $$ hace que la ecuación quede escrita en una sola línea  
 
 $$T_a = T_s+\frac{1}{2r}+\frac{b}{rN}$$
 
-** Ejercicios
+** Ejercicios (E1)
 - Explique algunos ejercicios de la literatura
-* RAID
-** RAID (7,207,E2, Q2)
+* RAID (E2, 7, 208)(E2,11,245)
 ** NIVEL RAID 0
 ** NIVEL RAID 1
 ** NIVEL RAID 2
@@ -53,14 +52,14 @@ $$T_a = T_s+\frac{1}{2r}+\frac{b}{rN}$$
 ** NIVEL RAID 4
 ** NIVEL RAID 5
 ** NIVEL RAID 6
+** NIVEL RAID 10
 
-* Discos de Estado Sólido 
-** Discos de Estado Sólido (10, 255, E3, Q3)
+* Discos de Estado Sólido (E3,11,255) 
+** Discos de Estado Sólido
 - Información disponible en la décima edición de Stallings
-** Organización del SSD
-** Problemas Prácticos
-* Memoria Óptica
-** Memoria Óptica (10,258, E4, Q4)
-** Disco Compacto
-** DVD
+** Organización del SSD (E3,11,256)
+** Problemas Prácticos (E3,11,256)
+* Memoria Óptica (E4,11,258)
+** Disco Compacto 
+** DVD 
 ** Discos de Alta Definición
