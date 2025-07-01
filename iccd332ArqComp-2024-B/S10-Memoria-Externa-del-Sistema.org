@@ -52,7 +52,7 @@ $$T_a = T_s+\frac{1}{2r}+\frac{b}{rN}$$
 ** NIVEL RAID 4
 ** NIVEL RAID 5
 ** NIVEL RAID 6
-** NIVEL RAID 10
+** NIVEL RAID 10 (Consultar aparte ya que no está en los libros)
 
 * Discos de Estado Sólido (E3,11,255) 
 ** Discos de Estado Sólido
