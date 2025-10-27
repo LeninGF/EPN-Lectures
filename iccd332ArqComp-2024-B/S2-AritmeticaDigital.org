@@ -380,7 +380,7 @@ Visita la [[https://www.h-schmidt.net/FloatConverter/IEEE754.html][calculadora e
 
 - Bit de signo: 1
 - Convertir a binario el valor sin signo: 11111000.11
-- Desplazar la como a la izquierda del 1 más significativo (normalización):$1.111100011\times 2^{-7}$
+- Desplazar la coma a la izquierda del 1 más significativo (normalización):$1.111100011\times 2^{+7}$
 - Ajustar con el sesgo el exponente: $127+7=134$
 - Convertir a binario el exponente sesgado: 10000110
 - Colocar en la mantisa la fracción: 1. **111100011**
