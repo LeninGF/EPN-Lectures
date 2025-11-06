@@ -25,6 +25,8 @@
 #+beamer_header:
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
+#+latex_header: \usepackage{tabularx}
+
 * Operaciones Lógicas e Instrucciones del Computador
 
 ** Máquinas de Estados Finitos
@@ -311,21 +313,336 @@ $X = 3+5+2+2+8$
 |  0x0B    |   5      |
 +----------+----------+
 
-* Lógica Digital
-** Lógica Digital - Circuito Eléctrico
+* Electricidad
+** Electricidad - Generación
+#+caption: Generación Eléctrica y Distribución
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[./images/electricalDistribution.png]]
+** Electricidad - Tensión Trifásica
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+#+begin_src python :session :results file
+import numpy as np
+import matplotlib.pyplot as plt
+
+frecuencia  = 60
+t = np.linspace(0,2/frecuencia, 1000)
+omega = 2*np.pi*frecuencia
+Vmax = 230*np.sqrt(2) # Voltaje Pico
+R = Vmax*np.sin(omega*t)
+S = Vmax*np.sin(omega*t-2*np.pi/3)
+T = Vmax*np.sin(omega*t+2*np.pi/3)
+# Plot
+plt.figure(figsize=(10,6))
+plt.plot(t,R,label="Fase R", color="red")
+plt.plot(t,S,label="Fase S", color="green")
+plt.plot(t,T,label="Fase T", color="blue")
+plt.title("Tensión Trifásica")
+plt.ylabel("Voltaje (V)")
+plt.xlabel("Tiempo (s)")
+plt.grid(True, linestyle="--", alpha=0.7)
+plt.legend()
+plt.tight_layout()
+plt.savefig("./images/tensionTrifasica.png")
+# plt.show()
+
+#+end_src
+
+#+RESULTS:
+[[file:None]]
+
+#+caption: Tensión Trifásica
+#+attr_latex: scale=0.8\textheight
+#+label: fig:label
+[[file:images/tensionTrifasica.png]]
+** Electricidad - Conceptos Básicos
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+\begin{tabularx}{\textwidth}{lXl}
+\hline
+\textbf{Magnitud} & \textbf{Descripción} & \textbf{Unidad} \\
+\hline
+Voltaje $V$ & Diferencia de potencial eléctrico entre dos puntos & Voltios (V) \\
+
+Corriente $I$ & Flujo de carga eléctrica por unidad de tiempo & Amperios (A) \\
+
+Resistencia $R$ & Oposición al flujo de corriente & Ohmios ($\Omega$) \\
+
+Capacitancia $C$ & Capacidad para almacenar carga eléctrica & Faradios (F) \\
+
+Inductancia $L$ & Oposición a cambios en la corriente & Henrios (H) \\
+\hline
+\end{tabularx}
+
+*** Valor Eficaz
+El Valor Eficaz o Root Mean Square (RMS) de una señal sinusoidal de
+tensión  se define como $V_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T V_{\mathrm{max}} \sin^2(\omega t)dt}$
+** Electricidad - Relaciones Básicas
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+\centering
+\small
+\begin{tabularx}{0.9\textwidth}{Xccc}
+\hline
+\textbf{Elemento} & \textbf{Voltaje} & \textbf{Corriente} & \textbf{Potencia} \\
+\hline
+\tikz \draw (0,0) to[R=$R$] (1,0);  & $v(t) = R \cdot i(t)$ & $i(t) = \dfrac{v(t)}{R}$ & $p = vi = i^2R$\\
+
+\tikz \draw (0,0) to[L=$L$] (1,0);  & $v(t) = L \dfrac{di(t)}{dt}$ & $i(t) = \dfrac{1}{L} \displaystyle\int v(t) \, dt$ & $p = vi = Li\frac{di}{dt}$ \\
+
+\tikz \draw (0,0) to[pC=$C$] (1,0);  & $v(t) = \dfrac{1}{C} \displaystyle\int i(t) \, dt$ & $i(t) = C \dfrac{dv(t)}{dt}$ & $p=vi=Cv\frac{dv}{dt}$\\
+\hline
+\end{tabularx}
+
+*** Ley de Ohm
+El voltaje $V$, la corriente $I$ y la resistencia $R$ se relacionan
+con la Ley de Ohm $V=IR$
+
+** Leyes de Kirchhoff y Tipos de Conexiones
+*** Serie                                                     :column1:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+
+#+begin_export latex
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=.65]{./images/circuitoSerie.png}
+  \caption{Circtuio Serie\label{fig:label} }
+\end{figure}
+#+end_export
+
+\centering
+**LVK:** $v = v_1+v_2+v_3$
+*** paralelo                                                  :column2:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+caption: Circuito Paralelo
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[./images/circuitoParalelo.png]]
+\centering
+**LCK:** $i = i_1+i_2+i_3$
+
+** Aplicación Leyes de Kirchhoff
+*** Circuito                                                 :circuito:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+begin_export latex
+\begin{circuitikz}[american]
+    % Battery
+    \draw
+    (0,0) to[battery1, invert,l=$E$] (0,3)
+    % Switch
+    to[normal open switch] (3,3)
+    % Capacitor
+    to[C,l_=$C$] (3,1.5)
+    % Resistor
+    to[R,l_=$R$] (3,0)
+    -- (0,0);
+\end{circuitikz}
+#+end_export
+*** Problema                                                 :problema:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+*Problema:*
+
+Encuentre expresiones para el voltaje del capacitor y corriente del
+circuito, si el switch se cierra en $t=0$
+
+** Aplicación Leyes de Kirchhoff
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+*** Circuito                                                 :circuito:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+begin_export latex
+\begin{circuitikz}[american]
+    % Battery
+    \draw
+    (0,0) to[battery1, invert,l=$E$] (0,3)
+    % Switch
+    to[normal open switch] (3,3)
+    % Capacitor
+    to[C,l_=$C$] (3,1.5)
+    % Resistor
+    to[R,l_=$R$] (3,0)
+    -- (0,0);
+\end{circuitikz}
+#+end_export
+*** Problema                                                 :problema:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+*Solución:*
+
+LVK: $E = v_C+v_R$
+
+Pero $i = C\frac{dv_C}{dt}$
+
+Ley de Ohm: $v_R=iR$
+
+Dado que el circuito es serie $i$ es la misma, entonces
+
+$E = v_C+RC\frac{dv_C}{dt}$
+
+Para $t=0$, $v_C=0$, entonces
+
+$v_c = E(1-e^{-\frac{t}{RC}})$
+
+Aplicando las propiedades de la capacitancia, tenemos
+
+$i = \frac{E}{R}e^{-\frac{t}{RC}}$
+
+** Aplicación Leyes de Kirchhoff
+*** Circuito                                                 :circuito:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+begin_export latex
+\begin{circuitikz}[american]
+    % Battery
+    \draw
+    (0,0) to[battery1, invert,l=$E$] (0,3)
+    % Switch
+    to[normal open switch] (3,3)
+    % Capacitor
+    to[C,l_=$C$] (3,1.5)
+    % Resistor
+    to[R,l_=$R$] (3,0)
+    -- (0,0);
+\end{circuitikz}
+#+end_export
+*** Problema                                                 :problema:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+*Preguntas:*
+
+1. ¿Qué sucede con el voltaje en el capacitor y la corriente del
+   circuito cuando $t \to +\infty$?
+2. ¿Qué sucede con las expresiones obtenidas para el voltaje del
+   capacitor y la corriente si la fuente de voltaje no es constante y
+   es de la forma $A\sin(\omega t)$
+3. Para $t = RC$, en qué porcentaje se ha cargado el capacitor?
+4. Considere un capacitor de $1\mu \mathrm{F}$, una resistencia de $1
+   \mathrm{M}\Omega$, obtenga la curva de la corriente en el tiempo
+   usando python.
+
+** Aplicaciones Leyes de Kirchhoff
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Para el circuito de carga del capacitor se obtuvo que $v_c =
+E(1-e^{-\frac{t}{RC}})$, considerando $C = 1\mu \mathrm{F}$, $R = 1
+\mathrm{M}\Omega$, y $E = 10V$ el siguiente código permite obtener $v_c$ en
+función del tiempo hasta $t=10s$
+
+#+begin_src python :session :results file
+import numpy as np
+import matplotlib.pyplot as plt
+R = 1e6 # 1 MegaOhm
+C = 1e-6 # 1 microFarad
+V = 10 # 10 Vdc
+t = np.linspace(0,10,1000)
+vc = V*(1-np.exp(-t/(R*C)))
+plt.plot(t,vc)
+plt.title("Carga de un Capacitor en circuito RC")
+plt.grid()
+# plt.show() ## descomentar para ver fig
+# plt.savefig('./images/cargaCapacitor.png') # guardar plot
+#+end_src
+
+#+RESULTS:
+[[file:None]]
+
+** Aplicaciones Leyes de Kirchhoff
+#+caption: Carga del Capacitor
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:images/cargaCapacitor.png]]
+
+** Aplicación Leyes de Kirchhoff
+*** Circuito                                                 :circuito:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+begin_export latex
+\begin{circuitikz}[american]
+    % Discharge circuit: switch, capacitor, and resistor in series
+    \draw
+    (0,0) 
+    to[short, o-] (0,3)
+    to[normal open switch] (3,3)
+    to[C, l_=$C$] (3,1.5)
+    to[R, l_=$R$] (3,0)
+    -- (0,0);
+\end{circuitikz}
+#+end_export
+*** Problema                                                 :problema:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+*Problema:*
+
+Encuentre expresiones para el voltaje del capacitor y corriente del
+circuito, si el switch se cierra en $t=0$ y el capacitor inicia
+cargado con un voltaje $V_0$
+
+* Electrónica y Lógica Digital
+** Materiales Semiconductores
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
 - Los materiales conductores tienen la característica de producir una
   corriente eléctrica en presencia de un campo eléctrico.
-- El voltaje $V$, la corriente $I$ y la resistencia $R$ se relacionan
-  con la Ley de Ohm $V=IR$
 - Un semiconductor es un material que exhibe las características tanto
   de un buen conductor como de un buen aislante. Esta característica
   se controla por una entrada de control.
+- La conductividad de un semiconductor se controla mediante:
+  temperatura, impurezas (dopaje), y campo eléctrico.
+- **Ejemplos comunes**: Silicio (Si), Germanio (Ge), Arseniuro de
+  Galio (GaAs)
 - Un transistor es un semiconductor que opera como un switch
   digital. Cambia de alta a baja resistencia dependiendo del estado de
   una señal de entrada.
+- [[https://youtu.be/ajqrRV9v_JI][Introducción a Diodos y Transistores(Vídeo)]]
+- [[https://youtu.be/fFVU7-kfPe8][¿Qué es un semiconductor?(Vídeo)]]
+
+** Materiales tipo N y tipo P
+*** tipoN                                                             :tipoN:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+- **Material Tipo N**: Semiconductor  dopado con impurezas donadoras
+- **Impurezas comunes**: Fósforo (P), Arsénico (As), Antimonio (Sb) en Silicio
+- **Características**:
+  - Exceso de electrones libres
+  - Portadores mayoritarios: electrones (n⁻)
+  - Portadores minoritarios: huecos (p⁺)
+*** tipoP                                                             :tipoP:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+- **Material Tipo P**: Semiconductor  dopado con impurezas aceptoras
+- **Impurezas comunes**: Boro (B), Aluminio (Al), Galio (Ga) en Silicio
+- **Características**:
+  - Exceso de huecos libres
+  - Portadores mayoritarios: huecos (p⁺)
+  - Portadores minoritarios: electrones (n⁻)
 
 ** Compuertas Lógicas
 *** Texto                                                             :BMCOL:
