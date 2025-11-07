@@ -193,6 +193,14 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
   [[id:procedimiento-windows][Configuración e Instalación Windows]] en el punto 2.
 
 En Linux **no** es necesario instalar **WSL**
+** Instalación de Corrector Ortográfico
+Para la corrección ortográfica se requiere de la librería ~aspell~. Esta se puede instalar de la siguiente manera en Linux
+#+begin_src shell
+sudo apt install aspell aspell-en aspell-es
+#+end_src
+
+#+RESULTS:
+
 * Configuración e Instalación en MacOS
 ** Configuración en MacOS (Instalar Brew)
 :PROPERTIES:
