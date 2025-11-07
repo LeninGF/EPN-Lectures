@@ -627,7 +627,7 @@ cargado con un voltaje $V_0$
 :PROPERTIES:
 :BEAMER_col: 0.5
 :END:
-- **Material Tipo N**: Semiconductor  dopado con impurezas donadoras
+- **Material Tipo N**: Semiconductor extrínseco dopado con impurezas donadoras
 - **Impurezas comunes**: Fósforo (P), Arsénico (As), Antimonio (Sb) en Silicio
 - **Características**:
   - Exceso de electrones libres
@@ -637,12 +637,73 @@ cargado con un voltaje $V_0$
 :PROPERTIES:
 :BEAMER_col: 0.5
 :END:
-- **Material Tipo P**: Semiconductor  dopado con impurezas aceptoras
+- **Material Tipo P**: Semiconductor extrínseco dopado con impurezas aceptoras
 - **Impurezas comunes**: Boro (B), Aluminio (Al), Galio (Ga) en Silicio
 - **Características**:
   - Exceso de huecos libres
   - Portadores mayoritarios: huecos (p⁺)
   - Portadores minoritarios: electrones (n⁻)
+** Materiales tipo N y tipo P
+*** tipoN                                                             :tipoN:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+caption: Tipo N
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:images/materialTipoN.png]]
+*** tipoP                                                             :tipoP:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+#+caption: Tipo P
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:images/materialTipoP.png]]
+
+** Diodo
+#+begin_export latex
+\begin{figure}[h]
+\centering
+\begin{circuitikz}[scale=0.8]
+% Unión PN
+\draw[thick] (0,0) -- (2,0);
+\draw[thick, fill=blue!30] (2,0) rectangle (4,1);
+\draw[thick, fill=red!30] (4,0) rectangle (6,1);
+\node at (3,0.5) {P};
+\node at (5,0.5) {N};
+\node at (1,0.5) {Ánodo};
+\node at (7,0.5) {Cátodo};
+
+% Diodo
+\draw (8,0.5) to[diode, o-] (10,0.5);
+\node at (9,1) {Símbolo del Diodo};
+\end{circuitikz}
+\caption{Unión PN y su representación como diodo}
+\end{figure}
+#+end_export
+** Transistor
+#+begin_export latex
+\begin{figure}[h]
+\centering
+\begin{circuitikz}[scale=0.8]
+% Transistor NPN
+\draw (0,0) node[npn](npn1){};
+\node[left] at (npn1.base) {B};
+\node[above] at (npn1.collector) {C};
+\node[below] at (npn1.emitter) {E};
+\node at (0,-1) {NPN};
+
+% Transistor PNP
+\draw (3,0) node[pnp](pnp1){};
+\node[left] at (pnp1.base) {B};
+\node[below] at (pnp1.collector) {C};
+\node[above] at (pnp1.emitter) {E};
+\node at (3,-1) {PNP};
+\end{circuitikz}
+\caption{Transistores BJT usando materiales tipo N y P}
+\end{figure}
+#+end_export
 
 ** Compuertas Lógicas
 *** Texto                                                             :BMCOL:
