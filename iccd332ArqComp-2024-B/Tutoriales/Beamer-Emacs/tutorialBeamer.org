@@ -89,7 +89,33 @@ repositorio de Github se encuentra en el enlace [[https://github.com/conda-forge
      mamba install python=3.11
      python --version
    #+end_src
+** Trouble Shooting Mamba/MicroMamba
+Puede suceder que al ejecutar el comando ~mamba activate~ se presente el siguiente error
+#+begin_src shell
+  'mamba' is running as a subprocess and can't modify the parent shell.
+Thus you must initialize your shell before using activate and deactivate.
 
+To initialize the current bash shell, run:
+    $ eval "$(mamba shell hook --shell bash)"
+and then activate or deactivate with:
+    $ mamba activate
+To automatically initialize all future (bash) shells, run:
+    $ mamba shell init --shell bash --root-prefix=~/.local/share/mamba
+If your shell was already initialized, reinitialize your shell with:
+    $ mamba shell reinit --shell bash
+Otherwise, this may be an issue. In the meantime you can run commands. See:
+    $ mamba run --help
+
+Supported shells are {bash, zsh, csh, posix, xonsh, cmd.exe, powershell, fish, nu}.
+critical libmamba Shell not initialized
+#+end_src
+
+En este caso se sugiere ejecutar el siguiente comando para arreglar y reinciar el shell.
+#+begin_src shell
+  mamba shell init --shell bash --root-prefix=~/.local/share/mamba
+#+end_src
+
+Una vez ejecutado reinicie el shell o ejecute ~source ~/.bashrc~. Puede reiniciar saliendo de wsl con ~exit~ y luego ~wsl --shutdown~, si se abrió sesión de wsl desde un CMD de Windows
 ** Paquetes recomendados de Instalación Python
 Instalar los siguientes paquetes para disponer del shell avanzado
 de Ipython y el complemento *rise* para convertir un jupyter-notebook
