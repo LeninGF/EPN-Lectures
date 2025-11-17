@@ -212,32 +212,32 @@
 ;; Added :ensure t to all packages that need it.
 
 (use-package lsp-mode
-  :ensure t
-  :hook ((prog-mode . lsp-deferred)
-         (lsp-mode . lsp-enable-which-key-integration)))
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (java-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
 
-(use-package lsp-ui
-  :ensure t
-  :after lsp-mode)
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-(use-package lsp-java
-  :ensure t
-  :hook (java-mode . lsp))
+;; optionally if you want to use debugger
+;; (use-package dap-mode)
+;; (use-package dap-java) ;;to load the dap adapter for your language
 
-(use-package dap-mode
-  :ensure t
-  :after lsp-mode
-)
-
-
-(use-package lsp-treemacs
-  :ensure t
-  :after lsp-mode)
-
-
+;; optional if you want which-key integration
+(use-package which-key
+    :config
+    (which-key-mode))
 
 ;; 10.3 Lenses
-(add-hook 'lsp-mode-hook #'lsp-lens-mode)
+;; (add-hook 'lsp-mode-hook #'lsp-lens-mode)
 
 
 ;;; 11. Version Control
