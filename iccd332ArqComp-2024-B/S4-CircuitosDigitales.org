@@ -12,7 +12,8 @@
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.3)
-
+#+cite_export: biblatex
+#+bibliography: bibliography.bib
 # to enable beamer mode M-x org-beamer-mode
 #+options: H:2
 #+latex_class: beamer
@@ -25,6 +26,11 @@
 #+beamer_header:
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other,maxcitenames=99, maxbibnames=99]{biblatex}
+
 * Circuitos Digitales
 # ** Máquinas de Estados Finitos
 #    :PROPERTIES:
@@ -268,7 +274,7 @@ usar Simulink. Para esto
 
 Dada la siguiente tabla de verdad, simplificar utilizando Mapa de
 Karnaugh y obtener el respectivo circuito combinacional. Simular el
-resultado.
+resultado. Resp: $F = \bar{A}\bar{B}+C$
 #+ATTR_LATEX: :fontsize \scriptsize
 +--+--+--+--+
 |A |B |C |F |
@@ -295,11 +301,17 @@ resultado.
 Obtener un circuito combinacional que realice la suma binaria. Para
 esto, considere que el sumador se resuelve integrado en cascada
 diferentes etapas que suman los dígitos de los sumandos y el acarreo,
-que inicia en 0.
-
+que inicia en 0. Consulte [cite:@stallings2006esp], página PDF 777 a
+780 y [cite:@stallings2022eng], páginas 435 a 438.
 1. Obtenga la Tabla de Verdad
 2. Deduzca las expresiones booleanas reducidas
 3. Implemente el circuito en Matlab y realice la simulación
+
+
+* Referencias
+
+** Referencias
+#+print_bibliography:
 
 # ** Taller 3 
 #    :PROPERTIES:
