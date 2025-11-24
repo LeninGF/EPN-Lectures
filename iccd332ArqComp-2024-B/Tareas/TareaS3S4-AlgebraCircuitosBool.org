@@ -1,0 +1,249 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Circuitos y Lógica Digital
+#+date: 2024-11-
+#+author: COLOQUE SU NOMBRE
+#+email: COLOQUE SU EMAIL
+#+language: Español
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{.././images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+
+* Objetivos de Aprendizaje
+- Diseñar circuitos combinacionales simples
+- Ejercitar reducción con mapa de K.
+- Ejercitar uso de Emacs
+* Instrucciones
+1. Completar el desarrollo de los ejercicios propuestos
+2. Subir al aula virtual su archivo .org y el .pdf generado
+* Guía Emacs
+** Logo EPN
+Si el Logo de la EPN no aparece revise que esté correctamente escrita
+la ubicación de la imagen del logo. Como sugerencia, coloque el logo
+en la misma carpeta en la que esté trabajando con este archivo con lo
+cual puede escribir:
+
+   #+begin_src latex
+    \fancyhead[C]{\includegraphics[scale=0.05]{./logoEPN.jpg}\\
+   #+end_src
+** Generar Archivo PDF 
+Si desea observar el resultado recuerde usar ~M-x org-latex-export-to-pdf~
+** Insertar Imágenes
+Si requeire insertar imágenes en el texto, le sugiero descargar la
+imagen a la misma carpeta en la que esté desarrollando este
+documento. Luego escriba entre doble corchete la ubicación del archivo:
+
+#+begin_src elisp
+[[./logoEPN.jpg]]
+#+end_src
+** Tablas
+La tabla propuesta para la XOR puede llenarla. Las columnas se
+ajustarán automáticamente al contenido luego de presionar Tabulador
+(~TAB~) o ~C-c C-c~. La Tabla que he colocado para el Mapa K no va a
+obedecer este procedimiento.
+** \LaTeX
+En este caso se ha utilizado el entorno ~align~ para alinear la
+escritura de ecuaciones entorno del símbolo ~=~. Si se desea observar
+el resultado de las expresiones matemáticas directamente en el archivo
+ORG, sin generar el pdf, localice el cursor en la ecuación y ejecute
+la secuencia de comandos ~C-c C-x C-l~
+
+$$E = mc^2$$
+
+** Comandos Emacs
+Recuerde que en Emacs:
+- la tecla control está representada por ~C~
+- la tecla alt está representada por ~M~
+- para abrir o crear un archivo ~C-x C-f~
+- para guardar los cambios ~C-x C-s~
+
+** Observación!!!!
+Por favor comente o remueva el texto de instrucciones y deje sólo el
+desarrollo de su taller.
+
+* Lógica Digital
+** Ejercicio 1
+A partir de la tabla de verdad de la compuerta OR exclusiva de dos
+   entradas obtenga la función booleana como SOP (min-términos).
+   - Complete la siguiente tabla. Después de modificar la tabla
+     ejecutar ~C-c C-c~ o dar un ~TAB~ para que la tabla se ajuste
+     automáticamente
+   - Escriba la expresión en SOP usando \LaTeX
+
+     La Tabla de la XOR es:
+     |---+---+--------------|
+     | A | B | $A \oplus B$ |
+     |---+---+--------------|
+     | 0 | 0 |              |
+     | 0 | 1 |              |
+     | 1 | 0 |              |
+     | 1 | 1 |              |
+     |---+---+--------------|
+
+     A partir de la Tabla, en SOP,
+
+    $$A\oplus B = ???$$
+
+** Ejercicio 2
+   Para el ejercicio anterior obtenga la representación en POS
+   (max-términos).
+
+   $$A\oplus B = ???$$
+
+** Ejercicio 3
+   ¿Puede representar el circuito sólo con compuertas NAND?
+   - Utilice las leyes de Morgan para obtener una representación sólo
+     con compuertas NAND. Recuerde que una compuerta NAND es una
+     compuerta AND negada
+
+     El siguiente código de \LaTeX permite alinear una ecuación con
+     respecto de un símbolo. Realice las sustituciones de acuerdo al
+     enunciado y obtenga la expresión en compuertas NAND.
+
+     \begin{align*}
+       F &= x^2 - y ^2 \\
+       F &= (x-y)(x+y)
+     \end{align*}
+
+** Ejercicio 4
+Simplificar $F = ACD+\bar{A}BCD$. Resp:$CD(A+B)$
+
+   De igual manera se puede usar el siguiente código \LaTeX para
+   escribir el desarrollo matemático
+
+   \begin{align*}
+     F &= ACD+\bar{A}BCD \\
+     F &= 
+   \end{align*}
+
+   De acuerdo a la tabla de reglas del álgebra de Boole ¿qué reglas ha
+   utilizado? Use M-RET (i.e. ALT-ENTER) para producir el siguiente
+   item numerado una vez que ha terminado el anterior
+
+   1. Regla ...
+
+   2. Regla ...
+
+   3. Regla ...
+
+** Ejercicio 5
+Simplificar $F=ABC+A\bar{B} \overline{\bar{A}\bar{C}}$. R: $A(\bar{B}+C)$
+
+   \begin{align*}
+     F &=ABC+A\bar{B} \overline{\bar{A}\bar{C}} \\
+     F &=
+   \end{align*}
+** Ejercicio 6
+A partir de la Tabla [[tab-ejercicio]] de verdad obtener la
+   representación en SOP.
+
+
+#+CAPTION: Ejercicio de tres variables
+#+NAME: tab-ejercicio
++--+--+--+--+
+|A  B  C | F|
++--+--+--+--+
+|0   0  0|0 |
+|0   0  1|0 |
+|0   1  0|1 |
+|0   1  1|1 |
+|1   0  0|0 |
+|1   0  1|0 |
+|1   1  0|1 |
+|1   1  1|0 |
++--+--+--+--+
+
+** Ejercicio 7
+Usando Mapas de Karnaugh obtenga la simplificación del circuito de
+   la Tabla [[tab-ejercicio]]
+   
+La tabla aquí propuesta se edita con ~C-c '~. Una vez hechos los
+cambios si se desea aceptar se vuelve a ejecutar ~C-c '~.
+
++---+----+----+----+----+
+|   | BC | BC | BC | BC |
++---+----+----+----+----+
+| A | 00 | 01 | 11 | 10 |
++---+----+----+----+----+
+| 0 |    |    |    |    |
++---+----+----+----+----+
+| 1 |    |    |    |    |
++---+----+----+----+----+
+
+* Circuitos Digitales y Mapas K
+** Ejercicio 1
+Dada la siguiente tabla de verdad, simplificar utilizando Mapa de
+Karnaugh y obtener el respectivo circuito combinacional. Simular el
+resultado.
+
+#+ATTR_LATEX: :fontsize \scriptsize
++--+--+--+--+
+|A |B |C |F |
++--+--+--+--+
+|0 |0 |0 |1 |
++--+--+--+--+
+|0 |0 |1 |1 |
++--+--+--+--+
+|0 |1 |0 |0 |
++--+--+--+--+
+|0 |1 |1 |1 |
++--+--+--+--+
+|1 |0 |0 |0 |
++--+--+--+--+
+|1 |0 |1 |1 |
++--+--+--+--+
+|1 |1 |0 |0 |
++--+--+--+--+
+|1 |1 |1 |1 |
++--+--+--+--+
+
+** Ejercicio 2
+Obtener un circuito combinacional que realice la suma binaria. Para
+esto, considere que el sumador se resuelve integrado en cascada
+diferentes etapas que suman los dígitos de los sumandos y el
+acarreo,que inicia en 0. Consulte los Anexos del Libro de Salling.
+   - Obtenga la Tabla de Verdad
+   - Deduzca las expresiones booleanas reducidas
+   - Implemente el circuito en Matlab y realice la simulación 
+
+
+
+
+
