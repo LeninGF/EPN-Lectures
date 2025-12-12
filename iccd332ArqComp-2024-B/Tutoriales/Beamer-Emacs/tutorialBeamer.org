@@ -146,11 +146,13 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 :CUSTOM_ID: configEmacs
 :END:
 
-- El comportamiento de Emacs es completamente configurable por el
-  usuario a través del archivo ~/.emacs.d/init.el
 - El archivo init.el puede generar instalaciones y activaciones para
   emacs por lo que se sugiere reiniciar emacs para que las
   configuraciones surtan efecto
+- El comportamiento de Emacs es completamente configurable por el
+  usuario a través del archivo ~/.emacs.d/init.el
+- El archivo ~/.emacs.d/init.el se genera la primera vez que abre emacs.
+#+begin_comment
 - Abra el archivo init.el en Emacs y escriba la siguiente configuracion
   #+begin_src emacs-lisp
     ;; Configure Org Babel to load Python
@@ -161,6 +163,26 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 (setq python-shell-interpreter "/path/to/anaconda/envs/myenv/bin/python")
 
   #+end_src
+#+end_comment
+
+** Configuración Emacs Archivo init.el
+1. Ubíquese en la raíz de Ubuntu ~cd~
+2. Verifique que se encuentra en la raíz de su sistema con el comando
+   ~pwd~. Por ejemplo:
+   #+begin_src shell
+cd
+pwd
+   #+end_src
+
+   #+RESULTS:
+   : /home/leningfe
+
+3. Abra emacs desde la línea de comandos de Ubuntu(WSL)~emacs &~
+
+4. Verifique la presencia de archivos ocultos con el comando ~ls -la~
+   desde la raíz (i.e. ~/home/leningfe~)
+
+5. Si existe un archivo ~~
 * Comandos básicos de Emacs
 #+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
 #+NAME: tabla-emacs
@@ -200,7 +222,32 @@ sudo apt install aspell aspell-en aspell-es
 #+end_src
 
 #+RESULTS:
+** Habilitación de Modelos Grandes de Lenguaje o LLM
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+1. Disponer de una cuenta en GitHub. La configuración del archivo
+   ~init.el~ hace uso por defecto de ~CoPilot~
+2. Instalar ~wslview~ a fin de que en el primer uso del Chat se pueda
+   habilitar el uso de ~CoPilot~ en el dispositivo: ~sudo apt install wslu~
+3. Instalar el paquete para modo de MarkDown. Los archivos de chat con
+   las ~LLM~ se guardan por defecto en formato ~MarkDown~. Sin
+   embargo, si existiera problema, se pueden modificar para que se
+   guarden en archivo ~.org~. Para esto puede ejecutar:
+   1. ~M-x package-install RET~
+   2. busca el paquete ~markdown-mode~
+** Utilización de Modelos Grandes de Lenguaje o LLM
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+El paquete que realiza la conexión entre ~Emacs~ y los diferentes
+~LLMs~ es ~GPTEL~. Para iniciar un chat y configurarlo puede ejecutar:
+~M-x gptel-menu~. Se abrirá un menú en donde podrá configurar el
+funcionamiento del sistema, cambiar de ~LLM~ y configurar desde donde
+se envía el prompt y dónde se obtiene la respuesta.
 
+Una sesión de chat se puede grabar ~C-x C-s~ y se puede restablecer
+abriendo el archivo y activando ~M-x gptel-mode~.
 * Configuración e Instalación en MacOS
 ** Configuración en MacOS (Instalar Brew)
 :PROPERTIES:
