@@ -320,6 +320,11 @@ cp -rfv ./images/* /home/leningfe/PythonProjects/QuitoWeather/weather-site/publi
 
 **  Realice una gráfica de Humedad con respecto al tiempo
 **  *Opcional* Presente alguna gráfica de interés.
+* Instrucciones Java Script
+En la siguiente página se indica cómo integrar ~javascript~ como un
+alternativa para testear el código.
+[[file:index.org][
+JavaScript]]
 
 * Referencias
 - [[https://emacs.stackexchange.com/questions/28715/get-pandas-data-frame-as-a-table-in-org-babel][presentar dataframe como tabla en emacs org]]

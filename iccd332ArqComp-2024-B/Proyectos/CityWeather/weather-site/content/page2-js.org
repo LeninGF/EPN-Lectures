@@ -1,0 +1,74 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Uso de JavaScript 
+#+date: <2026-01-09 Fri>
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.6.15)
+#+cite_export:
+
+[[file:index.org][Inicio]]
+* Uso de Java Script
+** Concepto
+Para usar javascript se inserta el código necesario dentro de un
+bloque que exporta de ~emacs~ a ~html~. El procedimiento sería el
+siguiente:
+1. En la región o área en la que se insertará el código ~js~ ejecutar
+   el comando ~C-c C-,~ y seleccionar la opción ~h~ que corresponde a
+   **export html**
+2. ~Emacs~ abrirá un bloque en el que pondremos el código que incluye
+   tanto las declaraciones ~html~ para declarar botones o entradas de
+   datos y dentro de ~<script>...</script>~ se colocará las funciones
+   o e programa que se vaya a ejectuar.
+3. Como ejemplo, en esta página se realiza la suma de dos números
+   definiendo una función de ~javascript~ llamada ~sumNumbers~.
+4. Coloque hipervínculos para saltar de la página main a las
+   subsiguientes y regresar. Para esto puede usar el comando ~C-c
+   C-l~. Selecciona la opción ~file~ y selecciona el archivo al que se
+   desea vincular. Puede renombrar el enlace a conveniencia
+   e.g. [[file:index.org][HOME]]. Dado que el modo ~HELM~ está habilitado, si no encuentra
+   el archivo ejecute ~C-c C-u~ para refrescar y actualizar la lista
+   de archivos. Esto es equivalente a ~helm-refresh~
+5. Se utiliza el script de ~./build.sh~ para la construcción del sitio.
+
+
+** Código en Emacs ORG
+
+#+begin_src org
+#+begin_export html
+<input type="number" id="num1" placeholder="First number">
+<input type="number" id="num2" placeholder="Second number">
+<button onclick="sumNumbers()">Add</button>
+<p id="result"></p>
+
+<script>
+function sumNumbers() {
+  const a = parseFloat(document.getElementById("num1").value) || 0;
+  const b = parseFloat(document.getElementById("num2").value) || 0;
+  document.getElementById("result").textContent = "Sum: " + (a + b);
+}
+</script>
+#+end_export
+#+end_src
+
+** Ejemplo Suma de dos Números
+#+begin_export html
+<input type="number" id="num1" placeholder="First number">
+<input type="number" id="num2" placeholder="Second number">
+<button onclick="sumNumbers()">Add</button>
+<p id="result"></p>
+
+<script>
+function sumNumbers() {
+  const a = parseFloat(document.getElementById("num1").value) || 0;
+  const b = parseFloat(document.getElementById("num2").value) || 0;
+  document.getElementById("result").textContent = "Sum: " + (a + b);
+}
+</script>
+#+end_export
