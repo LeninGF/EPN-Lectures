@@ -170,6 +170,44 @@ Considere un computador de las siguientes características:
   %\caption{\label{fig:label} }
 \end{figure}
 
+*** Notación RTL Ejemplo
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+Aplicando la notación ~RTL~ al ejemplo propuesto, este puede
+resolverse como:
+
+$\mathbf{[PC] \leftarrow 300}$:
+- $[IR] \leftarrow [300]$ ; El registro ~IR~ lee el contenido de la
+  dirección ~0x300~
+- $[IR] \leftarrow 0\mathrm{x}1940$; ~IR~ se carga con el valor ~0x1940~
+- Decodificamos ~IR~, observando que el ~opcode~ tiene 4 bits (i.e. 1
+  dígito ~hex~) mientras
+  que el operando usa 12 bits (i.e. 3 dígitos ~hex~)
+- $[AC] \leftarrow [940]$; La instrucción ~0b0001~ es *cargar al acumulador
+  desde memoria*
+- $[AC] \leftarrow 0\mathrm{x}0003$; Se carga el acumulador con el
+  valor $0\mathrm{x}0003$, ya que se usa el total **16 bits** para las
+  operaciones.
+\newpage
+$\mathbf{[PC] \leftarrow 301}$:
+- $[IR] \leftarrow [301]$ ; El registro ~IR~ lee el contenido de la
+  dirección ~0x301~
+- $[IR] \leftarrow 0\mathrm{x}5941$
+- $[AC] \leftarrow [AC]+[941]$; La instrucción ~0b0101~ es *sumar al acumulador
+  un dato de  memoria*
+- $[AC] \leftarrow 0\mathrm{x}0003+0\mathrm{x}0002$; Se realiza la
+  operación en **complemento a la base**
+- $[AC] \leftarrow 0\mathrm{x}0005$
+
+  \newpage
+$\mathbf{[PC] \leftarrow 302}$:
+- $[IR] \leftarrow [302]$ 
+- $[IR] \leftarrow 0\mathrm{x}2941$
+- $[941] \leftarrow [AC]$; La instrucción ~0b0010~ es *almacenar el
+  Acumulador en memoria*
+- $[941] \leftarrow 0\mathrm{x}0005$;
+
 ** Programa Fetch en Python
 *** Programa Fetch en Python
 
