@@ -21,7 +21,8 @@
 #+beamer_inner_theme:
 #+beamer_outer_theme:
 
-
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \DeclareUnicodeCharacter{2500}{-}
 #+LaTeX_HEADER: \usepackage{hyperref}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true, linkcolor=magenta, urlcolor=red}
 #+LaTeX_HEADER: \RequirePackage{fancyvrb}
@@ -31,12 +32,11 @@
 #+OPTIONS: listings:t
 
 * Configuración e Instalación en Windows
-:PROPERTIES:
-:CUSTOM_ID: procedimiento-windows
-:END:
+
 ** Procedimiento
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
+:CUSTOM_ID: procedimientoWindows
 :END:
 
 Se requiere realizar los siguientes ajustes para que Emacs opere:
@@ -90,6 +90,9 @@ repositorio de Github se encuentra en el enlace [[https://github.com/conda-forge
      python --version
    #+end_src
 ** Trouble Shooting Mamba/MicroMamba
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 Puede suceder que al ejecutar el comando ~mamba activate~ se presente el siguiente error
 #+begin_src shell
   'mamba' is running as a subprocess and can't modify the parent shell.
@@ -186,10 +189,13 @@ ls -lha | grep emacs
 #+end_comment
 
 ** Configuración Emacs Archivo y creación de archivo init.el
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 1. Ubíquese en la raíz de Ubuntu ~cd~
 2. Verifique que se encuentra en la raíz de su sistema con el comando
    ~pwd~. Por ejemplo:
-   #+begin_src shell
+   #+begin_src shell 
    cd
    pwd
    #+end_src
@@ -208,7 +214,7 @@ ls -lha | grep emacs
    #+end_src
 
 6. Verifique que existe únicamente la carpeta ~.emacs.d/~
-   #+begin_src shell
+   #+begin_src shell :results verbatim :exports both
    cd 
    pwd
    ls -lha | grep emacs
@@ -227,7 +233,7 @@ ls -lha | grep emacs
 9. Escriba el destino en ~/home/<<User>>/.emacs.d/init.el~. Sustituya
    con <<User>> con su Usuario
 
-10. Copie el contenido del archivo desde [[iccd332ArqComp-2024-B/configEmacs/init.el][init.el en Github]]. Use ~C-y~
+10. Copie el contenido del archivo desde [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/configEmacs/init.el][Github]]. Use ~C-y~
     para pegar en el archivo creado. Guarde los cambios con ~C-x C-s~.
 
 11. Personalice el archivo con las características personales suyas y
@@ -237,6 +243,10 @@ ls -lha | grep emacs
     desea salir, puede desencadenar la instalación haciendo ~M-x eval-buffer~
 
 * Comandos básicos de Emacs
+** Comandos básicos de Emacs
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 Emacs utiliza las teclas ~CTRL~ y ~ALT~, en combinación con otras para
 desencadenar acciones y comportamientos. Abreviamos ~CTRL~ con ~C~ y
 ~ALT~, que se conoce como ~META~, con la letra ~M~.
@@ -278,9 +288,9 @@ adicionales. Caso contrario se ejecuta.
 - Python :: Se realiza directamente la descarga del Miniforge conforme a lo
   señalado en [[#install-python][Instalación Python]]
 - Emacs :: Se realiza directamente los comandos en
-  [[#procedimiento-windows][Configuración e Instalación Windows]] en el punto 3.
+  [[#procedimientoWindows][Configuración e Instalación Windows]] en el punto 3.
 - \LaTeX :: Se realiza directamente los comandos en
-  [[id:procedimiento-windows][Configuración e Instalación Windows]] en el punto 2.
+  [[id:procedimientoWindows][Configuración e Instalación Windows]] en el punto 2.
 
 En Linux **no** es necesario instalar **WSL**
 ** Instalación de Corrector Ortográfico
@@ -291,33 +301,37 @@ sudo apt install aspell aspell-en aspell-es
 
 #+RESULTS:
 ** Habilitación de Elpy
-Elpy es un paquete de Emacs para edición de scripts de Python. Permite
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Elpy es un paquete de Emacs para edición de scripts de Python. Permite
 completar el código de manera automática, acceder a documentación,
 etc.
 
-Su auto configuración inicia si creamos un archivo ~.py~. Al hacerlo
+- Su auto configuración inicia si creamos un archivo ~.py~. Al hacerlo
 pedirá instalar dependencias necesarias. Esta pregunta aparecerá en la
 parte inferior en la barra de estado de Emacs y debe contestarla
 afirmativamente con una ~y~.
 
-Para revisar el estado de la configuración de Elpy ejecute ~M-x
+- Para revisar el estado de la configuración de Elpy ejecute ~M-x
 elpy-config~. Este comando abrirá un buffer en el que indicará el
 entorno virtual utilizado, las versiones de python y también si hace
 falta instalar alguna paquetería adicional.
 
-En el archivo de configuración ~init.el~ es importante definir el
+- En el archivo de configuración ~init.el~ es importante definir el
 ~path~ a la carpeta de entornos de *Anaconda*. Para ser cuál es la
-carpeta de los entornos ejecute el comando:
+carpeta de los entornos ejecute el comando ~mamba info --envs~:
 
-#+begin_src shell
-mamba info --envs
+#+begin_src shell :results verbatim :exports both
+mamba env list
 #+end_src
 
 #+RESULTS:
-| Name                                                        | Active                    | Path                                   |
-| ─────────────────────────────────────────────────────────── |                           |                                        |
-| base                                                        | /home/leningfe/miniforge3 |                                        |
-| tfmlenv                                                     | *                         | /home/leningfe/miniforge3/envs/tfmlenv |
+:   Name     Active  Path                                  
+: ───────────────────────────────────────────────────────────
+:   base             /home/leningfe/miniforge3             
+:   tfmlenv  *       /home/leningfe/miniforge3/envs/tfmlenv
+
 
 En el archivo ~init.el~ debe personalizar con su dirección respectiva
 agregando por ejemplo
@@ -587,13 +601,3 @@ return greet("Alice")
 :END:
 #+RESULTS: pythonexample
 Hello Alice
-
-
-
-
-
-
-
-
-
-    
