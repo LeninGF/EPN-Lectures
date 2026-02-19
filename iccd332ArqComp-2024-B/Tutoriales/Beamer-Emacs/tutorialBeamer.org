@@ -152,6 +152,26 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 - El comportamiento de Emacs es completamente configurable por el
   usuario a través del archivo ~/.emacs.d/init.el
 - El archivo ~/.emacs.d/init.el se genera la primera vez que abre emacs.
+- Para que no exista conflictos en el uso de la configuración revise
+  si existe alternativamente el archivo oculto ~.emacs~ en la raíz del
+  sistema operativo. Para esto use el comando ~ls -lha~ desde la
+  posición de ~home~. Por ejemplo, debe existir únicamente el
+  directorio ~.emacs.d~:
+
+#+begin_src shell
+cd
+pwd
+ls -lha | grep emacs
+#+end_src
+
+#+RESULTS:
+| /home/leningfe |    |          |          |      |     |    |       |                            |
+| drwx------     | 10 | leningfe | leningfe | 4.0K | Feb | 18 | 22:49 | .emacs.d                   |
+| -rw-r--r--     |  1 | leningfe | leningfe | 157M | Apr |  9 |  2025 | emacs-config-backup.tar.gz |
+| drwxr-xr-x     |  2 | leningfe | leningfe | 4.0K | Jul |  4 |  2025 | emacs-init-files           |
+
+- Si existe el archivo ~.emacs~ borrarlo con ~rm .emacs~ desde la
+  posición de  home
 #+begin_comment
 - Abra el archivo init.el en Emacs y escriba la siguiente configuracion
   #+begin_src emacs-lisp
@@ -165,13 +185,13 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
   #+end_src
 #+end_comment
 
-** Configuración Emacs Archivo init.el
+** Configuración Emacs Archivo y creación de archivo init.el
 1. Ubíquese en la raíz de Ubuntu ~cd~
 2. Verifique que se encuentra en la raíz de su sistema con el comando
    ~pwd~. Por ejemplo:
    #+begin_src shell
-cd
-pwd
+   cd
+   pwd
    #+end_src
 
    #+RESULTS:
@@ -182,8 +202,56 @@ pwd
 4. Verifique la presencia de archivos ocultos con el comando ~ls -la~
    desde la raíz (i.e. ~/home/leningfe~)
 
-5. Si existe un archivo ~~
+5. Si existe un archivo ~.emacs~ bórrelo usando
+   #+begin_src shell
+     rm .emacs
+   #+end_src
+
+6. Verifique que existe únicamente la carpeta ~.emacs.d/~
+   #+begin_src shell
+   cd 
+   pwd
+   ls -lha | grep emacs
+   #+end_src
+
+   #+RESULTS:
+   | /home/leningfe |    |          |          |      |     |    |       |                            |
+   | drwx------     | 10 | leningfe | leningfe | 4.0K | Feb | 18 | 22:54 | .emacs.d                   |
+   | -rw-r--r--     |  1 | leningfe | leningfe | 157M | Apr |  9 |  2025 | emacs-config-backup.tar.gz |
+   | drwxr-xr-x     |  2 | leningfe | leningfe | 4.0K | Jul |  4 |  2025 | emacs-init-files           |
+
+7. Abra Emacs con ~emacs &~ desde la raíz
+
+8. Cree el archivo ~init.el~ haciendo ~C-x C-f~
+
+9. Escriba el destino en ~/home/<<User>>/.emacs.d/init.el~. Sustituya
+   con <<User>> con su Usuario
+
+10. Copie el contenido del archivo desde [[iccd332ArqComp-2024-B/configEmacs/init.el][init.el en Github]]. Use ~C-y~
+    para pegar en el archivo creado. Guarde los cambios con ~C-x C-s~.
+
+11. Personalice el archivo con las características personales suyas y
+    de su máquina.
+
+12. Puede cerrar y reiniciar Emacs para inciar la instalación. Si no
+    desea salir, puede desencadenar la instalación haciendo ~M-x eval-buffer~
+
 * Comandos básicos de Emacs
+Emacs utiliza las teclas ~CTRL~ y ~ALT~, en combinación con otras para
+desencadenar acciones y comportamientos. Abreviamos ~CTRL~ con ~C~ y
+~ALT~, que se conoce como ~META~, con la letra ~M~.
+
+Se sugiere que revise el Tutorial Integrado en Emacs para
+familiarizarse con el sistema. Este tutorial está disponible en
+español ejecutando el comando ~M-x help-with-tutorial-spec-language~.
+
+Para ejecutar un comando compuesto no es necesario mantener presionada
+la combinación de teclas. Usted notará en la barra inferior que cuando
+ha presionado una combinación, Emacs responde indicando el comando y
+aguardando a que complete si es que el comando requiere de
+adicionales. Caso contrario se ejecuta.
+
+
 #+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
 #+NAME: tabla-emacs
 #+CAPTION: Comandos de Emacs
@@ -222,6 +290,49 @@ sudo apt install aspell aspell-en aspell-es
 #+end_src
 
 #+RESULTS:
+** Habilitación de Elpy
+Elpy es un paquete de Emacs para edición de scripts de Python. Permite
+completar el código de manera automática, acceder a documentación,
+etc.
+
+Su auto configuración inicia si creamos un archivo ~.py~. Al hacerlo
+pedirá instalar dependencias necesarias. Esta pregunta aparecerá en la
+parte inferior en la barra de estado de Emacs y debe contestarla
+afirmativamente con una ~y~.
+
+Para revisar el estado de la configuración de Elpy ejecute ~M-x
+elpy-config~. Este comando abrirá un buffer en el que indicará el
+entorno virtual utilizado, las versiones de python y también si hace
+falta instalar alguna paquetería adicional.
+
+En el archivo de configuración ~init.el~ es importante definir el
+~path~ a la carpeta de entornos de *Anaconda*. Para ser cuál es la
+carpeta de los entornos ejecute el comando:
+
+#+begin_src shell
+mamba info --envs
+#+end_src
+
+#+RESULTS:
+| Name                                                        | Active                    | Path                                   |
+| ─────────────────────────────────────────────────────────── |                           |                                        |
+| base                                                        | /home/leningfe/miniforge3 |                                        |
+| tfmlenv                                                     | *                         | /home/leningfe/miniforge3/envs/tfmlenv |
+
+En el archivo ~init.el~ debe personalizar con su dirección respectiva
+agregando por ejemplo
+
+#+begin_src elisp
+(setenv "WORKON_HOME" "/home/leningfe/miniforge3/envs/")
+#+end_src
+
+Reinicie Emacs y luego ejecute ~M-x pyvenv-workon~ y seleccione el
+entorno de *Anaconda* que se usará para trabajar con Python. Si
+ejecuta de nuevo el diagnóstico de Elpy, notará que ya no está con
+~None~ en la declaración de ~Virtualenv~/
+
+Instale la paquetería sugerida en el diagnóstico.
+
 ** Habilitación de Modelos Grandes de Lenguaje o LLM
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
