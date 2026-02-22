@@ -31,12 +31,118 @@
 #+LaTeX_HEADER: \DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 #+OPTIONS: listings:t
 
-* Configuración e Instalación en Windows
 
-** Procedimiento
+* ¿Qué es Emacs?
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
-:CUSTOM_ID: procedimientoWindows
+:END:
+
+** Un entorno de programación extensible y personalizable
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- No es simplemente un editor de texto.
+- Es un *intérprete de Lisp* diseñado para la computación interactiva.
+- Un entorno de trabajo que evoluciona contigo.
+- "El sistema operativo dentro de tu sistema operativo".
+- Filosofía: Proveer un entorno autocontenido y altamente adaptable
+  para la manipulación de texto y datos estructurados.
+
+** Filosofía: Plataforma vs. Producto
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- **VS Code:** Un producto con decisiones predefinidas por terceros.
+- **Emacs:** Una plataforma donde tú escribes el comportamiento del software.
+- **Inversión:** Tu configuración evoluciona contigo por décadas; no caduca.
+- **Contexto único:** "Everything in Emacs" para reducir el cambio de
+  aplicaciones.
+
+Es un ecosistema que puede ser personalizado a tu estilo de trabajo,
+con el principio /Everything in Emacs/ que reduce la necesidad de
+cambiar de contexto entre aplicaciones.
+
+** El Corazón: Elisp (Emacs Lisp)
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Casi todo lo que ves en Emacs está escrito en Elisp.
+- Puedes evaluar código en tiempo real.
+- No necesitas reiniciar el editor para aplicar cambios profundos.
+- *Ejemplo:* ¿Quieres que el editor se comporte distinto al guardar un archivo? Escribe una función y conéctala a un "hook".
+
+** Conceptos Clave de Operación
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- **Búferes y Ventanas:** La unidad de trabajo es el búfer (archivo, proceso, ayuda).
+- **Modalidad sin modos estrictos:** Operación directa complementada con "modos menores".
+- **Comandos por teclado:** Uso intensivo de ~M-x~ y ~C-x~ para ejecutar funciones Elisp.
+- **Documentación integrada:** Ayuda instantánea con ~C-h k~ (teclas) y ~C-h f~ (funciones).
+
+** Emacs en el contexto académico y de desarrollo
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- **Redacción técnica:** Modo *Org* e Integración con \LaTeX y BibTeX (RefTeX).
+- **Software Libre:** Garantiza libertad de uso, estudio y
+  modificación (GNU GPL).
+- **Gestión bibliográfica:** Herramientas como ~org-ref~ para investigadores.
+- Soporte nativo para decenas de lenguajes de programación.
+
+** La Joya de la Corona: Org-mode
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Mucho más que "tomar notas": un ecosistema de productividad completo.
+- **Gestión:** Tareas (GTD), agendas y calendarios (~org-agenda~).
+- **Exportación:** Genera PDFs, HTML y diapositivas (como esta) desde un solo origen.
+- **Literate Programming:** Documentos que mezclan texto, ecuaciones y código ejecutable.
+
+** ¿Qué más puede hacer Emacs?
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+    - /Edición de código/: Completado inteligente (company-mode),
+      verificación de sintaxis (flycheck), navegación (lsp-mode).
+    - /Gestión de proyectos/ (projectile, magit).
+    - /Composición de documentos/ (Org mode, AUCTeX).
+    - /Correo y noticias/ (mu4e, gnus).
+    - /Agenda y calendario/ (org-agenda).
+    - /Shell integrada/ (eshell, term, vterm).
+    - /Navegación web/ (eww).
+    - /Personalización total/: Desde atajos de teclado hasta la
+      creación de nuevas aplicaciones dentro de Emacs.
+
+** Conclusión: ¿Qué es Emacs?
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+- Emacs no es solo un editor; 
+- Su curva de aprendizaje es pronunciada, pero su retorno en
+  productividad y control es enorme.
+- **VS Code:** Gratificación instantánea, pero techo de personalización bajo.
+- **Emacs:** Frustración inicial, pero techo de personalización infinito.
+- Se trata de disfrutar el proceso de "construir tu propia herramienta".
+- Si buscas una herramienta que simplemente funcione de salida, quédate en VS Code.
+- Si buscas una herramienta que sea una **extensión de tu
+  pensamiento** y estás dispuesto a aprender, Emacs es el destino
+  final.
+* Objetivos
+** Objetivos con Emacs
+- En este curso, nos enfocaremos en usar Emacs  para la creación de
+  presentaciones y artículos académicos con \LaTeX, aprovechando el modo Org
+  como interfaz unificada. Esto ahorra el uso de la sintaxis de
+  \LaTeX, reservándola para requerimientos especiales.
+- También abordaremos el concepto de /literate programming/ y cómo
+  ~Org~ permite crear documentos que involucran: texto, código y
+  ecuaciones matemáticas.
+
+* Configuración e Instalación en Windows
+** Procedimiento de Configuración en Windows
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:CUSTOM_ID: procedimiento-windows
 :END:
 
 Se requiere realizar los siguientes ajustes para que Emacs opere:
@@ -154,7 +260,8 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
   configuraciones surtan efecto
 - El comportamiento de Emacs es completamente configurable por el
   usuario a través del archivo ~/.emacs.d/init.el
-- El archivo ~/.emacs.d/init.el se genera la primera vez que abre emacs.
+- El directorio ~/.emacs.d/~ se genera la primera vez que abre
+  emacs. Debe crear el archivo ~init.el~ dentro de éste.
 - Para que no exista conflictos en el uso de la configuración revise
   si existe alternativamente el archivo oculto ~.emacs~ en la raíz del
   sistema operativo. Para esto use el comando ~ls -lha~ desde la
@@ -265,6 +372,7 @@ adicionales. Caso contrario se ejecuta.
 #+ATTR_LATEX: :environment tabular :font \scriptsize :placement [H]
 #+NAME: tabla-emacs
 #+CAPTION: Comandos de Emacs
+
 +--------------------+--------------------+--------------------+--------------------+
 | Comando            | Acción             | Comando            | Acción             |
 +--------------------+--------------------+--------------------+--------------------+
@@ -287,10 +395,9 @@ adicionales. Caso contrario se ejecuta.
 ** Configuración en Linux
 - Python :: Se realiza directamente la descarga del Miniforge conforme a lo
   señalado en [[#install-python][Instalación Python]]
-- Emacs :: Se realiza directamente los comandos en
-  [[#procedimientoWindows][Configuración e Instalación Windows]] en el punto 3.
+- Emacs :: Se realiza directamente los comandos en  en el punto 3.
 - \LaTeX :: Se realiza directamente los comandos en
-  [[id:procedimientoWindows][Configuración e Instalación Windows]] en el punto 2.
+  [[id:procedimiento-windows][Configuración e Instalación Windows]] en el punto 2.
 
 En Linux **no** es necesario instalar **WSL**
 ** Instalación de Corrector Ortográfico
@@ -304,23 +411,23 @@ sudo apt install aspell aspell-en aspell-es
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
 :END:
-- Elpy es un paquete de Emacs para edición de scripts de Python. Permite
-completar el código de manera automática, acceder a documentación,
-etc.
+- Elpy es un paquete de Emacs para edición de scripts de
+  Python. Permite completar el código de manera automática, acceder a
+  documentación, etc.
 
 - Su auto configuración inicia si creamos un archivo ~.py~. Al hacerlo
-pedirá instalar dependencias necesarias. Esta pregunta aparecerá en la
-parte inferior en la barra de estado de Emacs y debe contestarla
-afirmativamente con una ~y~.
+  pedirá instalar dependencias necesarias. Esta pregunta aparecerá en
+  la parte inferior en la barra de estado de Emacs y debe contestarla
+  afirmativamente con una ~y~.
 
 - Para revisar el estado de la configuración de Elpy ejecute ~M-x
-elpy-config~. Este comando abrirá un buffer en el que indicará el
-entorno virtual utilizado, las versiones de python y también si hace
-falta instalar alguna paquetería adicional.
+  elpy-config~. Este comando abrirá un buffer en el que indicará el
+  entorno virtual utilizado, las versiones de python y también si hace
+  falta instalar alguna paquetería adicional.
 
 - En el archivo de configuración ~init.el~ es importante definir el
-~path~ a la carpeta de entornos de *Anaconda*. Para ser cuál es la
-carpeta de los entornos ejecute el comando ~mamba info --envs~:
+  ~path~ a la carpeta de entornos de *Anaconda*. Para ser cuál es la
+  carpeta de los entornos ejecute el comando ~mamba info --envs~:
 
 #+begin_src shell :results verbatim :exports both
 mamba env list
@@ -347,6 +454,7 @@ ejecuta de nuevo el diagnóstico de Elpy, notará que ya no está con
 
 Instale la paquetería sugerida en el diagnóstico.
 
+* Integración de IA en Emacs GPTEL
 ** Habilitación de Modelos Grandes de Lenguaje o LLM
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -373,6 +481,7 @@ se envía el prompt y dónde se obtiene la respuesta.
 
 Una sesión de chat se puede grabar ~C-x C-s~ y se puede restablecer
 abriendo el archivo y activando ~M-x gptel-mode~.
+
 * Configuración e Instalación en MacOS
 ** Configuración en MacOS (Instalar Brew)
 :PROPERTIES:
@@ -465,6 +574,7 @@ Puede usar ~brew~ para instalar componentes adicionales como pandoc
 #+begin_src shell
   brew install pandoc
 #+end_src
+
 * Presentaciones con Emacs
 ** Hacer una presentación en Emacs
 :PROPERTIES:
