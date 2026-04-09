@@ -1,0 +1,217 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Taller de Configuracion de Entorno WSL
+#+date: 2026-04-08
+#+author: COLOQUE SU NOMBRE
+#+email: lenin.falconi@epn.edu.ec
+#+language: Espanol
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export:
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{longtable}
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+* Objetivos
+
+- Configurar y validar el entorno de trabajo para la asignatura de Arquitectura de Computadores en Linux o WSL.
+- Verificar la instalacion de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
+- Documentar evidencias tecnicas mediante capturas y comandos ejecutados.
+
+* Instrucciones
+
+1. Realice todas las actividades en Linux o en WSL.
+2. En cada seccion ejecute los comandos solicitados y registre la salida en el bloque correspondiente.
+4. Guarde el archivo y exporte a pdf con el comando `org-latex-export-to-pdf`. 
+
+Si require insertar una imagen, crear una carpeta ~images~ y colocar
+la imagen dentro. Para llamar la imagen desde Emacs use ~C-c C-l~ y
+busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
+
+#+begin_src org
+[[./images/image1.jpg]]
+#+end_src
+* Actividades
+** Configuración de WSL con Ubuntu, \LaTeX, Python e Emacs
+
+1. Verificacion de entorno mamba/anaconda
+   1. Active WSL (si aplica) y su entorno de trabajo.
+   2. Ejecute ~mamba info~ con ~C-c C-c~ dentro del bloque de código.
+   3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
+   
+   #+begin_src shell :exports both :results verbatim
+     mamba info
+   #+end_src
+  
+   #+RESULTS:
+
+
+2. Verificacion de Python
+   1. Active el entorno ~iccd332~ para abrir Emacs con ~mamba activate iccd332~.
+   2. Ejecute ~python --version~ en la consola y desde Emacs.
+
+   #+begin_src shell :exports both :results verbatim
+    python --version
+   #+end_src
+
+   #+RESULTS:
+   : Python 3.9.23
+
+3. Verificacion de Emacs
+   Ejecute ~emacs --version~ en la consola y desde Emacs.
+
+   #+begin_src shell :exports both :results verbatim
+   emacs --version
+   #+end_src
+
+   #+RESULTS:
+
+
+4. Verificacion de LaTeX
+   Ejecute ~latex --version~ en la consola y desde Emacs.
+
+   #+begin_src shell :exports both :results verbatim
+   latex --version
+   #+end_src
+
+   #+RESULTS:
+
+
+5. Registro de problemas y solucion aplicada
+
+Complete la siguiente tabla si tuvo errores durante la configuracion:
+
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align lXX
+| *Herramienta* | *Problema observado* | *Solucion aplicada* |
+|---------------+----------------------+---------------------|
+|               |                      |                     |
+|               |                      |                     |
+|               |                      |                     |
+
+** Comandos Emacs Tutorial
+Seguir el tutorial integrado en Emacs al respecto de la navegación y
+operaciones más frecuentes. El tutorial puede ser accedido en Español
+utilizando el comando:
+
+#+begin_src emacs-lisp
+M-x help-with-tutorial-spec-language
+#+end_src
+
+Realice los ejercicios del tutorial (al menos un 80% del texto) y
+complete la siguiente tabla con los comandos que considere de mayor
+interés. Verifique que en la parte superior se active el menú de
+tabla. Dentro de la región de la tabla puede dar C-c C-c para alinear
+automáticamente la tabla al contenido del texto que escriba. Para
+generar una nueva fila escriba presione la tecla TAB
+
+#+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
+| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
+|-------------------+-----------------------------+-----------+-----------------------------------|
+| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
+|                   |                             |           |                                   |
+|                   |                             |           |                                   |
+
+
+** Comandos Emacs Juego
+En la anterior sección usted revisó los comandos de mayor interés
+sobre la manipulación de Emacs. Es hora de poner en práctica sus
+conocimientos. Realice unas 3 visitas al juego  [[https://chat.qwen.ai/s/deploy/t_785b6a8a-99e8-42e2-9daf-4788fab0f8ba][Emacs-Trainer]] y apunte
+en la siguiente tabla su puntaje.
+
+Estudiante A: 
+|-----------+---------|
+| iteración | Puntaje |
+|-----------+---------|
+|         1 |         |
+|         2 |         |
+|         3 |         |
+|-----------+---------|
+
+Estudiante B: 
+|-----------+---------|
+| iteración | Puntaje |
+|-----------+---------|
+|         1 |         |
+|         2 |         |
+|         3 |         |
+|-----------+---------|
+
+Estudiante C: 
+|-----------+---------|
+| iteración | Puntaje |
+|-----------+---------|
+|         1 |         |
+|         2 |         |
+|         3 |         |
+|-----------+---------|
+
+Estudiante D: 
+|-----------+---------|
+| iteración | Puntaje |
+|-----------+---------|
+|         1 |         |
+|         2 |         |
+|         3 |         |
+|-----------+---------|
+
+
+¿Qué comandos le resultan más fáciles de usar y cuáles le son más
+extraños? Identifique 3 comandos que le sean fáciles y 3 que le
+resulten complicados. Revise qué dice la ayuda de Emacs sobre cada
+comando y escriba en sus palabras el para qué sirve.
+
+Para consultar lo que hace un comando ejecute:
+1. ~C-h k~
+2. Emacs le preguntara cuál es la combinación de la que requiere
+   ayuda. Presione las teclas del comando. Por ejemplo, ~C-x C-f~
+3. Emacs abrirá un nuevo buffer con la descripción del comando.
+4. Cambie al buffer de la ayuda con ~C-x o~
+5. Seleccione el primer parrafo de ayuda ubicando el cursor al inicio
+   del parrafo y activando la marcación de texto con
+   ~C-SPC~. Seleccione avanzando por palabras ~M-f~ o directamente
+   toda la linea ~C-e~
+6. Una vez seleccionado, copie el texto con ~M-w~.
+7. Regrese al buffer anterior con ~C-x o~.
+8. Pegue el texto en <Pegar lo que dice el...> con ~C-y~
+
+**Comandos Fáciles**
+1. <Poner el comando>: <Pegar lo que dice el primer párrafo de la ayuda>
+2. 
+3.
+
+**Comandos Difíciles**
+1. <Poner el comando>: <Pegar lo que dice el primer párrafo de la ayuda>
+2. 
+3.
+   
+* Entregable
+
+- Archivo: ~Taller-ConfiguracionEntorno.org~ completado.
+- Archivo: ~Taller-ConfigracionEntorno.pdf~
