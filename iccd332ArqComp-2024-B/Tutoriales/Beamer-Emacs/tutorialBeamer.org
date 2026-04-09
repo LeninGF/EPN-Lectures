@@ -412,7 +412,11 @@ adicionales. Caso contrario se ejecuta.
 +--------------------+--------------------+--------------------+--------------------+
 |C-d                 | Borrar un carácter | M-d                | borrar palabra     |
 +--------------------+--------------------+--------------------+--------------------+
-
+** Referencias Web para Comandos Emacs
+- [[https://quickref.me/emacs.html][Emacs Cheat Sheet English]]
+- [[https://cheatography.com/peraza00/cheat-sheets/emacs-guide/#google_vignette][Emacs Cheat Sheet Español]]
+- [[https://www.gnu.org/software/emacs/tour/][Emacs Tour]]
+- [[https://orgmode.org/manuals.html][Manual de Documentos Org]]
 * Configuración en Linux
 ** Configuración en Linux
 - Python :: Se realiza directamente la descarga del Miniforge conforme a lo
