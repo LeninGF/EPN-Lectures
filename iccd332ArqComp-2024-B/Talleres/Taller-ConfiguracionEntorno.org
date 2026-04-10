@@ -169,7 +169,7 @@ generar una nueva fila escriba presione la tecla TAB
 ** Comandos Emacs Juego
 En la anterior sección usted revisó los comandos de mayor interés
 sobre la manipulación de Emacs. Es hora de poner en práctica sus
-conocimientos. Realice unas 3 visitas al juego  [[https://chat.qwen.ai/s/deploy/t_785b6a8a-99e8-42e2-9daf-4788fab0f8ba][Emacs-Trainer]] y apunte
+conocimientos. Realice unas 3 visitas al juego  [[https://chat.qwen.ai/s/deploy/t_23ff57ef-b59a-4bd7-9b79-54679b33686d][Emacs-Trainer]] y apunte
 en la siguiente tabla su puntaje.
 
 Estudiante A: 
@@ -184,6 +184,8 @@ Estudiante A:
 #+begin_src org
 [[./estudianteA-game.png]]
 #+end_src
+
+[[./EmacsTrainerResult.png]]
 
 Estudiante B: 
 |-----------+---------|
