@@ -5,7 +5,7 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Configuracion de Entorno WSL
 #+date: 2026-04-08
-#+author: COLOQUE SU NOMBRE
+#+author: COLOQUE SU NOMBRE, COLOQUE SEGUNDO NOMBRE
 #+email: lenin.falconi@epn.edu.ec
 #+language: Espanol
 #+select_tags: export
@@ -48,8 +48,12 @@ ARQUITECTURA DE COMPUTADORES}
 * Instrucciones
 
 1. Realice todas las actividades en Linux o en WSL.
-2. En cada seccion ejecute los comandos solicitados y registre la salida en el bloque correspondiente.
-4. Guarde el archivo y exporte a pdf con el comando `org-latex-export-to-pdf`. 
+2. En cada sección ejecute los comandos solicitados y registre la salida en el bloque correspondiente.
+3. Guarde el archivo y exporte a pdf con el comando `org-latex-export-to-pdf`.
+4. Verifique que estén todos los nombres de los integrantes del grupo
+   de trabajo. Los grupos para este trabajo están en [[https://epnecuador.sharepoint.com/:x:/s/ICCD332-ArquitecturaComputadores/IQCjNuELSDbJTb42EfrLL2ksATBSbitbZ9_iFLJxIiCtSr0?e=gowv5I][Equipos de Trabajo]].
+5. Verifique que en las distintas secciones de este archivo esté
+   identificado con nombre e email el aporte del estudiante.
 
 Si require insertar una imagen, crear una carpeta ~images~ y colocar
 la imagen dentro. Para llamar la imagen desde Emacs use ~C-c C-l~ y
@@ -131,6 +135,7 @@ tabla. Dentro de la región de la tabla puede dar C-c C-c para alinear
 automáticamente la tabla al contenido del texto que escriba. Para
 generar una nueva fila escriba presione la tecla TAB
 
+<Estudiante A>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
 | *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
 |-------------------+-----------------------------+-----------+-----------------------------------|
@@ -138,7 +143,29 @@ generar una nueva fila escriba presione la tecla TAB
 |                   |                             |           |                                   |
 |                   |                             |           |                                   |
 
+<Estudiante B>
+#+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
+| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
+|-------------------+-----------------------------+-----------+-----------------------------------|
+| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
+|                   |                             |           |                                   |
+|                   |                             |           |                                   |
 
+<Estudiante C>
+#+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
+| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
+|-------------------+-----------------------------+-----------+-----------------------------------|
+| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
+|                   |                             |           |                                   |
+|                   |                             |           |                                   |
+
+<Estudiante D>
+#+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
+| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
+|-------------------+-----------------------------+-----------+-----------------------------------|
+| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
+|                   |                             |           |                                   |
+|                   |                             |           |                                   |
 ** Comandos Emacs Juego
 En la anterior sección usted revisó los comandos de mayor interés
 sobre la manipulación de Emacs. Es hora de poner en práctica sus
@@ -154,6 +181,10 @@ Estudiante A:
 |         3 |         |
 |-----------+---------|
 
+#+begin_src org
+[[./estudianteA-game.png]]
+#+end_src
+
 Estudiante B: 
 |-----------+---------|
 | iteración | Puntaje |
@@ -162,6 +193,10 @@ Estudiante B:
 |         2 |         |
 |         3 |         |
 |-----------+---------|
+
+#+begin_src org
+[[./estudianteB-game.png]]
+#+end_src
 
 Estudiante C: 
 |-----------+---------|
@@ -172,6 +207,10 @@ Estudiante C:
 |         3 |         |
 |-----------+---------|
 
+#+begin_src org
+[[./estudianteC-game.png]]
+#+end_src
+
 Estudiante D: 
 |-----------+---------|
 | iteración | Puntaje |
@@ -181,9 +220,12 @@ Estudiante D:
 |         3 |         |
 |-----------+---------|
 
-
+#+begin_src org
+[[./estudianteD-game.png]]
+#+end_src
+** Usando Emacs para tener Ayuda sobre Emacs
 ¿Qué comandos le resultan más fáciles de usar y cuáles le son más
-extraños? Identifique 3 comandos que le sean fáciles y 3 que le
+extraños? Identifique 4 comandos que le sean fáciles y 4 que le
 resulten complicados. Revise qué dice la ayuda de Emacs sobre cada
 comando y escriba en sus palabras el para qué sirve.
 
@@ -202,16 +244,40 @@ Para consultar lo que hace un comando ejecute:
 8. Pegue el texto en <Pegar lo que dice el...> con ~C-y~
 
 **Comandos Fáciles**
-1. <Poner el comando>: <Pegar lo que dice el primer párrafo de la ayuda>
-2. 
-3.
+1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+3. 
+4. 
 
 **Comandos Difíciles**
-1. <Poner el comando>: <Pegar lo que dice el primer párrafo de la ayuda>
-2. 
+1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
 3.
-   
-* Entregable
 
-- Archivo: ~Taller-ConfiguracionEntorno.org~ completado.
-- Archivo: ~Taller-ConfigracionEntorno.pdf~
+* Equipo de Trabajo
+Complete la información de los integrantes de grupo e indique el líder
+de grupo.
+
+|-----------------+-------------------------+-------------|
+| Nombre          | email                   | Rol         |
+|-----------------+-------------------------+-------------|
+| Alan Turing     | a.turing@enigma.com     | líder       |
+| Albert Einstein | a.einstein@relativo.com | colaborador |
+|                 |                         |             |
+|-----------------+-------------------------+-------------|
+
+* Verificación de Entregables [33%]:
+Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
+no. Si un ítem no pudo realizarse apunte en la siguiente sección las
+razones al respecto.
+- [X] Verificación de configuración de entorno WSL y paquetes del curso. 
+- [ ] Tutorial de Comandos Emacs realizado.
+- [ ] Captura de Imágenes y puntajes de Emacs Trainer App.
+- [ ] Usando Emacs para tener ayuda sobre Emacs
+- [ ] Verifique que estén los nombres de los integrantes del equipo e
+  identificado el líder.
+- [ ] Revisión de ortografía con ~ispell~ en el buffer
+- [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
+** Problemas con la Tarea:
+- Tarea $X_1$ no pudo completarse debido a
+- Tarea $X_2$ no pudo completarse debido a
