@@ -701,7 +701,6 @@ with its own headline, is displayed in a block:
 #+ATTR_LaTeX: :width .6\textwidth
 [[../../images/computer.png]]
 
-
 ** Configurar Org-Babel Python
 
 Consiste en editar el archivo ~/.emacs.d/init.el para que emacs tenga
@@ -737,3 +736,137 @@ return greet("Alice")
 :END:
 #+RESULTS: pythonexample
 Hello Alice
+
+* Funciones avanzadas de WSL
+
+** Funciones avanzadas de WSL
+El uso de espacio de por parte de WSL cambia
+dinámicamente. Especialmente, en proyectos de /machine learning/. Para
+mitigar esta opción hay las siguientes opciones:
+
+1. Mover el distro de WSL a otra unidad de disco
+2. Comprimir el espacio que ocupa el distro en el disco
+3. Eliminar el distro
+
+** Mover el distro de WSL
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Desde un prompt de Windows realice las siguientes operaciones desde un Powershell
+1. Exportar el distro a otra unidad de disco
+   #+begin_src shell
+   wsl --export Ubuntu-22.04 D:\WSL\ubuntu22.tar
+   #+end_src
+2. Desinstalar el distro de la unidad ~C:~ (Windows)
+   #+begin_src shell
+   wsl --unregister Ubuntu-22.04
+   #+end_src
+3. Importar de nuevo desde la nueva unidad ~D:~
+   #+begin_src shell
+   wsl --import Ubuntu-22.04 D:\WSL\Ubuntu22 D:\WSL\ubuntu22.tar --version 2
+   #+end_src
+** Comprimir un distro de WSL
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+Realice las siguientes operaciones desde un Powershell
+1. Terminar WSL completamente
+   #+begin_src shell
+   wsl --shutdown
+   #+end_src
+2. Abrir ~diskpart~ en un Powershell
+   #+begin_src shell
+   diskpart
+   #+end_src
+3. Seleccionar el archivo virtual que contiene el distro. Para esto
+   debe ubicar la ruta al archivo ext4.vhdx del distro
+   #+begin_src shell
+    select vdisk file="C:\Users\<YourUser>\AppData\Local\Packages\CanonicalGroupLimited...Ubuntu22.04...\LocalState\ext4.vhdx"
+    compact vdisk
+   #+end_src
+** Eliminar el Distro
+Para eliminar el distro sólo ejecutamos desde un Powershell:
+#+begin_src shell
+wsl --unregister <Nombre Distro>
+#+end_src
+
+Para esto, el distro debe estar detenido y su nombre localizado. Esto
+último lo puede derivar con el comando ~wsl -l -v~ desde Powershell
+* Funciones avanzadas de Anaconda
+Los entornos de anaconda crecen con la instalación de paquetes y
+librerías. A fin de evitar descargar nuevamente de internet, anaconda
+almacena las descargas en el disco. Esto ocupa demasiado espacio, por
+lo que es recomendable limpiar el cache, los logs y paquetes no
+usados.
+** Comandos de Limpieza para Conda
+Ejecute el siguiente comando para eliminar ~tarballs~, limpiar el
+cache, logs y paquetes no usados.
+*** comando                                                         :comando:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+#+begin_src shell
+conda clean --all --yes
+#+end_src
+*** imagen                                                           :imagen:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+[[file:/mnt/d/entea/Lectures/iccd332ArqComp-2024-B/images/conda-clean.png]]
+** Eliminar un entorno de Conda
+Para eliminar el entorno es necesario primero salir de él con el
+comando ~conda deactivate~. Una vez que esta desactivado:
+#+begin_src shell
+conda deactivate
+conda remove --name myenv --all
+#+end_src
+Reemplace ~myenv~ con el nombre del entorno. Esto borrará toda la
+información del entorno.
+** Crear un backup del entorno
+Para replicar resultados es importante trabajar con los mismos
+paquetes (incluyendo las versiones específicas de los mismos). Esto se
+puede lograr exportando a un archivo ~YAML~:
+#+begin_src shell
+conda activate myenv
+conda env export > myenv.yml
+#+end_src
+
+Note que las versiones de los paquetes cambian con el sistema
+operativo por lo que si el proyecto trabaja en un S.O. Windows, las
+versiones no serán las mismas que se instalan en un S.O. Linux. Una
+alternativa para evitar este problema y garantizar replicación es
+trabajar con ~Docker~.
+
+Verifique que el archivo contenga tanto los paquetes de ~pip~ como los
+de ~anaconda~. 
+** Crear un entorno desde YAML
+#+begin_src shell
+conda env create -f myenv.yml
+#+end_src
+Para verificar los paquetes instalados o restituidos use
+#+begin_src shell
+conda list
+#+end_src
+** Entorno Anaconda Portable
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+El entorno se puede exportar como archivo portable para moverlo a otro
+sistema operativo (de igual naturaleza) con:
+#+begin_src
+conda pack -n myenv -o myenv.tar.gz
+#+end_src
+Para restituirlo:
+#+begin_src shell
+mkdir -p ~/envs/myenv
+tar -xzf myenv.tar.gz -C ~/envs/myenv
+source ~/envs/myenv/bin/activate
+#+end_src
+**Importante** debe estar instalado en el entorno el paquete ~conda
+  pack~. Se puede instalar de las siguientes maneras:
+  #+begin_src shell
+    conda install -c conda-forge conda-pack
+    mamba install conda-pack
+    pip install conda-pack
+  #+end_src
