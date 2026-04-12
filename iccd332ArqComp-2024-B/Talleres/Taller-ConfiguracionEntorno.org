@@ -71,10 +71,33 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
    
    #+begin_src shell :exports both :results verbatim
-     mamba info
+     mamba infohttps://github.com/SantyProanio06/Guit_Hub_ICCD332.git
    #+end_src
   
    #+RESULTS:
+   #+begin_example
+
+	  libmamba version : 2.5.0
+	     mamba version : 2.5.0
+	      curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
+	libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
+	  envs directories : /home/santiago_proanio/.local/share/mamba/envs
+	     package cache : /home/santiago_proanio/.local/share/mamba/pkgs
+			     /home/santiago_proanio/.mamba/pkgs
+	       environment : iccd332 (active)
+	      env location : /home/santiago_proanio/.local/share/mamba/envs/iccd332
+	 user config files : /home/santiago_proanio/.mambarc
+    populated config files : 
+	  virtual packages : __unix=0=0
+			     __linux=6.6.87=0
+			     __glibc=2.39=0
+			     __archspec=1=x86_64_v4
+			     __cuda=13.2=0
+		  channels : https://conda.anaconda.org/conda-forge/linux-64
+			     https://conda.anaconda.org/conda-forge/noarch
+	  base environment : /home/santiago_proanio/.local/share/mamba
+		  platform : linux-64
+   #+end_example
 
 
 2. Verificacion de Python
@@ -86,7 +109,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+end_src
 
    #+RESULTS:
-   : Python 3.9.23
+   : Python 3.11.15
 
 3. Verificacion de Emacs
    Ejecute ~emacs --version~ en la consola y desde Emacs.
@@ -96,6 +119,12 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+end_src
 
    #+RESULTS:
+   : GNU Emacs 29.3
+   : Copyright (C) 2024 Free Software Foundation, Inc.
+   : GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+   : You may redistribute copies of GNU Emacs
+   : under the terms of the GNU General Public License.
+   : For more information about these matters, see the file named COPYING.
 
 
 4. Verificacion de LaTeX
@@ -106,11 +135,25 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+end_src
 
    #+RESULTS:
+   #+begin_example
+   pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+   kpathsea version 6.3.5
+   Copyright 2023 Han The Thanh (pdfTeX) et al.
+   There is NO warranty.  Redistribution of this software is
+   covered by the terms of both the pdfTeX copyright and
+   the Lesser GNU General Public License.
+   For more information about these matters, see the file
+   named COPYING and the pdfTeX source.
+   Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+   Compiled with libpng 1.6.43; using libpng 1.6.43
+   Compiled with zlib 1.3; using zlib 1.3
+   Compiled with xpdf version 4.04
+   #+end_example
 
 
 5. Registro de problemas y solucion aplicada
 
-Complete la siguiente tabla si tuvo errores durante la configuracion:
+Complete la siguiente tabla si tuvo errores durante la configuración:
 
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align lXX
 | *Herramienta* | *Problema observado* | *Solucion aplicada* |
