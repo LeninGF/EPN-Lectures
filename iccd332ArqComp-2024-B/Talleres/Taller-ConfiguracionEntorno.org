@@ -233,9 +233,9 @@ Estudiante Santiago Proaño:
 [[./estudianteA-game.png]]
 #+end_src
 
-[[Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Uno_SP.png]]
-[[Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Dos_SP.png]]
-[[Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Tres_SP.png]]
+[[./Emacs_Trainer_Uno_SP.png]]
+[[./Emacs_Trainer_Dos_SP.png]]
+[[./Emacs_Trainer_Tres_SP.png]]
 
 Estudiante B: 
 |-----------+---------|
