@@ -34,7 +34,7 @@
 
 #+begin_export latex
 \fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
-ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
 ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 #+end_export
@@ -42,8 +42,8 @@ ARQUITECTURA DE COMPUTADORES}
 * Objetivos
 
 - Configurar y validar el entorno de trabajo para la asignatura de Arquitectura de Computadores en Linux o WSL.
-- Verificar la instalacion de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
-- Documentar evidencias tecnicas mediante capturas y comandos ejecutados.
+- Verificar la instalación de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
+- Documentar evidencias técnicas mediante capturas y comandos ejecutados.
 
 * Instrucciones
 
@@ -55,7 +55,7 @@ ARQUITECTURA DE COMPUTADORES}
 5. Verifique que en las distintas secciones de este archivo esté
    identificado con nombre e email el aporte del estudiante.
 
-Si require insertar una imagen, crear una carpeta ~images~ y colocar
+Si requiere insertar una imagen, crear una carpeta ~images~ y colocar
 la imagen dentro. Para llamar la imagen desde Emacs use ~C-c C-l~ y
 busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 
@@ -65,7 +65,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 * Actividades
 ** Configuración de WSL con Ubuntu, \LaTeX, Python e Emacs
 
-1. Verificacion de entorno mamba/anaconda
+1. Verificación de entorno mamba/anaconda
    1. Active WSL (si aplica) y su entorno de trabajo.
    2. Ejecute ~mamba info~ con ~C-c C-c~ dentro del bloque de código.
    3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
@@ -111,7 +111,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+RESULTS:
    : Python 3.11.15
 
-3. Verificacion de Emacs
+3. Verificación de Emacs
    Ejecute ~emacs --version~ en la consola y desde Emacs.
 
    #+begin_src shell :exports both :results verbatim
@@ -178,13 +178,18 @@ tabla. Dentro de la región de la tabla puede dar C-c C-c para alinear
 automáticamente la tabla al contenido del texto que escriba. Para
 generar una nueva fila escriba presione la tecla TAB
 
-<Estudiante A>
+<Estudiante Santiago Proaño>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
-| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
-|-------------------+-----------------------------+-----------+-----------------------------------|
-| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
-|                   |                             |           |                                   |
-|                   |                             |           |                                   |
+| *Comando*          | *Descripción*                   | *Comando* | *Descripción*                         |
+|--------------------+---------------------------------+-----------+---------------------------------------|
+| ~C-u 2 C-n~        | El comando permite repetir      | ~C-g~     | Permite cancelar algun comando en     |
+|                    | n veces el comando siguiente    |           | ejecución.                            |
+|                    | en este caso permite saltar     | ~C-/~     | Permite deshacer el comando previo    |
+|                    | una linea 2 veces.              |           | a excepción de comandos de mov. de    |
+| ~M-x recover-file~ | Permite recuperar un archivo    |           | cursor.                               |
+|                    | del auto guardado.              | ~C-M-v~   | Permite desplazar el siguiente buffer |
+| ~M-x repl s~       | Permite remplazar una cadena de |           | abierto sin estar dentro del buffer.  |
+|                    | caracteres por otra.            |           |                                       |
 
 <Estudiante B>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
@@ -215,20 +220,22 @@ sobre la manipulación de Emacs. Es hora de poner en práctica sus
 conocimientos. Realice unas 3 visitas al juego  [[https://chat.qwen.ai/s/deploy/t_23ff57ef-b59a-4bd7-9b79-54679b33686d][Emacs-Trainer]] y apunte
 en la siguiente tabla su puntaje.
 
-Estudiante A: 
+Estudiante Santiago Proaño: 
 |-----------+---------|
 | iteración | Puntaje |
 |-----------+---------|
-|         1 |         |
-|         2 |         |
-|         3 |         |
+|         1 |     116 |
+|         2 |     140 |
+|         3 |     140 |
 |-----------+---------|
 
 #+begin_src org
 [[./estudianteA-game.png]]
 #+end_src
 
-[[./EmacsTrainerResult.png]]
+[[file:~/Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Uno_SP.png]]
+[[file:~/Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Dos_SP.png]]
+[[file:~/Guit_Hub_ICCD332/iccd332ArqComp-2024-B/images/Emacs_Trainer_Tres_SP.png]]
 
 Estudiante B: 
 |-----------+---------|
@@ -289,13 +296,15 @@ Para consultar lo que hace un comando ejecute:
 8. Pegue el texto en <Pegar lo que dice el...> con ~C-y~
 
 **Comandos Fáciles**
-1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+1. **Estudiante Santiago Proaño:** ~C-x 3~. C-x 3 runs the command split-window-right (found in global-map), which
+is an interactive native-compiled Lisp function in ‘window.el’.
 2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
 3. 
 4. 
 
 **Comandos Difíciles**
-1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+1. **Estudiante Santiago Proaño:** ~C-M-v~.C-M-v runs the command scroll-other-window (found in global-map),
+which is an interactive native-compiled Lisp function in ‘window.el’. 
 2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
 3.
 
@@ -303,23 +312,24 @@ Para consultar lo que hace un comando ejecute:
 Complete la información de los integrantes de grupo e indique el líder
 de grupo.
 
-|-----------------+-------------------------+-------------|
-| Nombre          | email                   | Rol         |
-|-----------------+-------------------------+-------------|
-| Alan Turing     | a.turing@enigma.com     | líder       |
-| Albert Einstein | a.einstein@relativo.com | colaborador |
-|                 |                         |             |
-|-----------------+-------------------------+-------------|
+|-----------------+------------------------------+-------------|
+| Nombre          | email                        | Rol         |
+|-----------------+------------------------------+-------------|
+| Santiago Proaño | santiago.proano01@epn.edu.ec | líder       |
+| Martín Pérez    | martin.perez02@epn.edu.ec    | colaborador |
+| Ariel Montufar  | ariel.montufar@epn.edu.ec    | colaborador |
+| Damian Haro     | damian.haro@epn.edu.ec       | colaborador |
+|-----------------+------------------------------+-------------|
 
-* Verificación de Entregables [33%]:
+* Verificación de Entregables [71%]:
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse apunte en la siguiente sección las
 razones al respecto.
 - [X] Verificación de configuración de entorno WSL y paquetes del curso. 
-- [ ] Tutorial de Comandos Emacs realizado.
-- [ ] Captura de Imágenes y puntajes de Emacs Trainer App.
-- [ ] Usando Emacs para tener ayuda sobre Emacs
-- [ ] Verifique que estén los nombres de los integrantes del equipo e
+- [X] Tutorial de Comandos Emacs realizado.
+- [X] Captura de Imágenes y puntajes de Emacs Trainer App.
+- [X] Usando Emacs para tener ayuda sobre Emacs
+- [X] Verifique que estén los nombres de los integrantes del equipo e
   identificado el líder.
 - [ ] Revisión de ortografía con ~ispell~ en el buffer
 - [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
