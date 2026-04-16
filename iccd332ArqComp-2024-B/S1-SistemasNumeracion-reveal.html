@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>S1 Sistemas de Numeración</title>
+<meta name="author" content="Lenin G. Falconi"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">S1 Sistemas de Numeración</h1><p class="subtitle"></p>
+<h2 class="author">Lenin G. Falconi</h2><h2 class="date">2026-04-08</h2>
+</section>
+<section id="sec-table-of-contents"><div id="table-of-contents" role="doc-toc">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#/slide-org18490c2">Sistemas de Numeración</a></li>
+<li><a href="#/slide-orgdd8c47d">Sistema Decimal y Binario</a></li>
+<li><a href="#/slide-org4647318">Conversión de Base r a Decimal</a></li>
+<li><a href="#/slide-orgfac04fa">Conversión Decimal a Binario</a></li>
+<li><a href="#/slide-org9234e90">Conversión entre Binario, Octal y Hexadecimal</a></li>
+<li><a href="#/slide-org154ce2c">Ordenes de Magnitud</a></li>
+<li><a href="#/slide-org6b403c3">Taller</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org18490c2">
+<h2 id="org18490c2">Sistemas de Numeración</h2>
+<div class="outline-text-2" id="text-org18490c2">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org6c0e793">
+<h3 id="org6c0e793">Concepto General de Número</h3>
+<ul>
+<li>Un número se puede representar como una cadena de dígitos
+\(b_{n-1} \dots b_2b_1b_0 \cdot b_{-1}b_{-2}\dots b_m\)</li>
+<li>La posición relativa \(i\) del dígito posee un <b>peso</b> \(r^i\), donde \(r\)
+es la <b>base</b> del sistema de numeración</li>
+<li>El alfabeto de dígitos posibles en una base \(r\) cumple:
+\(0 \leq b_i \leq r-1\)</li>
+
+</ul>
+
+<p>
+Por tanto, un número \(N\) en base \(r\) se expresa como:
+</p>
+
+<p>
+\[N_r = \sum_{i=-m}^{n-1} b_i \times r^i\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga451828">
+<h3 id="orga451828">Tipos de Sistemas de Numeración</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Denominación</th>
+<th scope="col" class="org-right">Base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Decimal</td>
+<td class="org-right">10</td>
+</tr>
+
+<tr>
+<td class="org-left">Octal</td>
+<td class="org-right">8</td>
+</tr>
+
+<tr>
+<td class="org-left">Binario</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Hexadecimal</td>
+<td class="org-right">16</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org32f3687">
+<h3 id="org32f3687">Ejercicio 1: Conversión a Decimal</h3>
+<ul>
+<li class="fragment appear">Escriba un número en base 7</li>
+<li class="fragment appear">Escriba un número en base 4</li>
+<li class="fragment appear">¿Qué valor decimal corresponde a cada uno?</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdd8c47d">
+<h2 id="orgdd8c47d">Sistema Decimal y Binario</h2>
+<div class="outline-text-2" id="text-orgdd8c47d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgfef2b00">
+<h3 id="orgfef2b00">Sistema de Numeración Decimal</h3>
+<ul>
+<li>La base es \(r=10\)</li>
+<li>Los dígitos cumplen \(0 \leq b_i \leq 9\) y \(b_i \in \mathbb{Z}^+\)</li>
+
+</ul>
+
+<p>
+Ejemplo:
+</p>
+
+<p>
+\[123.45 = 1\times10^2 + 2\times10^1 + 3\times10^0 + 4\times10^{-1} + 5\times10^{-2}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org522bd39">
+<h3 id="org522bd39">Sistema de Numeración Binario</h3>
+<ul>
+<li>La base es \(r=2\)</li>
+<li>Los dígitos cumplen \(0 \leq b_i \leq 1\) y \(b_i \in \mathbb{Z}^+\)</li>
+<li>Equivalencias directas: \(0_2 = 0_{10}\) y \(1_2 = 1_{10}\)</li>
+
+</ul>
+
+<p>
+Ejemplo:
+</p>
+
+<p>
+\[1101.01_2 = 1\times2^3 + 1\times2^2 + 0\times2^1 + 1\times2^0 + 0\times2^{-1} + 1\times2^{-2}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org4647318">
+<h2 id="org4647318">Conversión de Base r a Decimal</h2>
+<div class="outline-text-2" id="text-org4647318">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org788952e">
+<h3 id="org788952e">Conversión \(N_r \rightarrow X_{10}\)</h3>
+<p>
+Sea \(N_r \rightarrow X_{10}\) la conversión de un número en base \(r\) a decimal.
+</p>
+
+<p>
+\[X_{10} = \sum_i b_i \times r^i\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orge06670a">
+<h3 id="orge06670a">Ejercicio 2: \(N_r \rightarrow X_{10}\)</h3>
+<ul>
+<li class="fragment appear">\((4021.2)_5\)</li>
+<li class="fragment appear">\((127.4)_8\)</li>
+<li class="fragment appear">\((110101)_2\)</li>
+<li class="fragment appear">\((B65F)_{16}\)</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfac04fa">
+<h2 id="orgfac04fa">Conversión Decimal a Binario</h2>
+<div class="outline-text-2" id="text-orgfac04fa">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org32099b2">
+<h3 id="org32099b2">Parte Entera</h3>
+<p>
+Dado un número decimal, se aplica divisiones sucesivas entre 2:
+</p>
+
+<ul>
+<li class="fragment appear">Sea \(N\) la parte entera decimal</li>
+<li class="fragment appear">Dividir sucesivamente entre 2 y registrar residuos</li>
+<li class="fragment appear">El número binario buscado = residuos leídos en <b>orden inverso</b></li>
+
+</ul>
+
+<p>
+\[N = 2N_1 + R_0 \quad N_1 = 2N_2 + R_1 \quad \dots \quad N_{m-1} = 2N_m + R_{m-1}\]
+</p>
+
+<p>
+Entonces:
+</p>
+
+<p>
+\[N = 2^mN_m + 2^{m-1}R_{m-1} + \dots + 2^1R_1 + R_0\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf2a104c">
+<h3 id="orgf2a104c">Ejercicio 3: \(N_{10} \rightarrow X_r\)</h3>
+<ol>
+<li class="fragment appear">Convertir 41 a binario</li>
+<li class="fragment appear">Convertir 153 a octal</li>
+<li class="fragment appear">Convertir 256 a hexadecimal</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orga89db98">
+<h3 id="orga89db98">Parte Fraccionaria</h3>
+<p>
+Sea \(F = 0\cdot b_{-1}b_{-2}\dots\) la parte fraccionaria en binario.
+</p>
+
+<p>
+\[2F = b_{-1} + F_1\]
+</p>
+
+<p>
+Procedimiento:
+</p>
+<ol>
+<li class="fragment appear">Multiplique la fracción por la base y tome la <b>parte entera</b></li>
+<li class="fragment appear">Repita con la nueva fracción resultante</li>
+<li class="fragment appear">Detenga al llegar a 0 o alcanzar la precisión deseada</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org6939859">
+<h3 id="org6939859">Ejercicio 4: Parte Fraccionaria</h3>
+<ol>
+<li class="fragment appear">\((0.6875)_{10} \rightarrow X_2\)</li>
+<li class="fragment appear">\((0.513)_{10} \rightarrow X_8\)</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-org9234e90">
+<h2 id="org9234e90">Conversión entre Binario, Octal y Hexadecimal</h2>
+<div class="outline-text-2" id="text-org9234e90">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc3c362e">
+<h3 id="orgc3c362e">Sistema Hexadecimal</h3>
+<p>
+La base es 16 y sus símbolos son:
+</p>
+
+<p>
+\[0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F\]
+</p>
+
+<p>
+Relaciones clave:
+</p>
+
+<p>
+\[2^3 = 8 \qquad 2^4 = 16\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org97b21b7">
+<h3 id="org97b21b7">Conversión Binario &rarr; Octal</h3>
+<ol>
+<li>Agrupar en bloques de <b>3 bits</b> desde el punto decimal rellenando con 0</li>
+
+</ol>
+
+<p>
+Sea \(N_2 = 10101001.10111\):
+</p>
+
+<p>
+\[010\,101\,001.101\,110\]
+</p>
+
+<ol>
+<li>Sustituir cada grupo por su equivalente octal</li>
+
+</ol>
+
+<p>
+\[\Rightarrow 251.56_8\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2e7f4ae">
+<h3 id="org2e7f4ae">Conversión Binario &rarr; Hexadecimal</h3>
+<ol>
+<li>Agrupar en bloques de <b>4 bits</b> desde el punto decimal rellenando con 0</li>
+
+</ol>
+
+<p>
+Sea \(N_2 = 10101001.10111\):
+</p>
+
+<p>
+\[1010\,1001.1011\,1000\]
+</p>
+
+<ol>
+<li>Sustituir cada grupo por su equivalente hexadecimal</li>
+
+</ol>
+
+<p>
+\[\Rightarrow A9.B8_{16}\]
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org154ce2c">
+<h2 id="org154ce2c">Ordenes de Magnitud</h2>
+<div class="outline-text-2" id="text-org154ce2c">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2c6ac37">
+<h3 id="org2c6ac37">Potencias de 2 para Unidades de Información</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Potencia</th>
+<th scope="col" class="org-left">Nombre</th>
+<th scope="col" class="org-left">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(2^0\)</td>
+<td class="org-left">bit</td>
+<td class="org-left">1</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2^3\)</td>
+<td class="org-left">byte</td>
+<td class="org-left">8</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2^{10}\)</td>
+<td class="org-left">Kilo</td>
+<td class="org-left">1 024</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2^{20}\)</td>
+<td class="org-left">Mega</td>
+<td class="org-left">1 048 576</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2^{30}\)</td>
+<td class="org-left">Giga</td>
+<td class="org-left">1 073 741 824</td>
+</tr>
+
+<tr>
+<td class="org-left">\(2^{40}\)</td>
+<td class="org-left">Tera</td>
+<td class="org-left">~1.1 billones</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+</section>
+<section>
+<section id="slide-org9ba5e45">
+<h3 id="org9ba5e45">Ejercicio 5: Órdenes de Magnitud</h3>
+<ul>
+<li>Verifique con Python los valores de la tabla anterior</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre   ><code class="python" >for nombre, pot in zip(['bit','byte','Kilo','Mega','Giga','Tera'],
+                       [0, 3, 10, 20, 30, 40]):
+    print(f"2^{pot:2d} -&gt; {nombre:5s} = {2**pot}")
+</code></pre>
+</div>
+
+<pre class="example">
+2^ 0 -&gt; bit   = 1
+2^ 3 -&gt; byte  = 8
+2^10 -&gt; Kilo  = 1024
+2^20 -&gt; Mega  = 1048576
+2^30 -&gt; Giga  = 1073741824
+2^40 -&gt; Tera  = 1099511627776
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org6b403c3">
+<h2 id="org6b403c3">Taller</h2>
+<div class="outline-text-2" id="text-org6b403c3">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0e3b4dc">
+<h3 id="org0e3b4dc">Ejercicios Propuestos</h3>
+<ol>
+<li class="fragment appear">Función en Python: convierte un número en base \(r\) a decimal</li>
+<li class="fragment appear">Función en Python: convierte decimal a binario
+<ul>
+<li>separar parte entera y fraccionaria</li>
+
+</ul></li>
+<li class="fragment appear">Generalizar para convertir de decimal a base \(r\) arbitraria</li>
+
+</ol>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf20c70f">
+<h3 id="orgf20c70f">Plantilla Taller</h3>
+<div class="org-src-container">
+
+<pre   ><code class="python" >def numero_r_a_dec(numero: str, base: int):
+    resp = 0
+    # implementar
+    print(f"{numero} en base {base} = {resp} en base 10")
+
+def decimal_a_binario(numero: float):
+    entero = int(numero)
+    fraccion = numero - entero
+    # implementar parte entera y fraccionaria
+    pass
+
+def decimal_a_base_r(numero: float, base: int):
+    # generalizar decimal_a_binario para base r
+    pass
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+width:1200, height:900, margin: 0.1, minScale:0.2, maxScale:1.2,
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+]
+
+});
+
+</script>
+</body>
+</html>
