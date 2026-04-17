@@ -1,0 +1,435 @@
+% Created 2026-04-17 Fri 00:46
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{longtable}
+\fancyhead[R]{}
+\setlength\headheight{43.0pt}
+\usepackage{tabularx}
+\usepackage{longtable}
+\author{MARTÍN PÉREZ}
+\date{2026-04-08}
+\title{Taller de Configuracion de Entorno WSL}
+\hypersetup{
+ pdfauthor={MARTÍN PÉREZ},
+ pdftitle={Taller de Configuracion de Entorno WSL},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.7.5)}, 
+ pdflang={Espanol}}
+\begin{document}
+
+\maketitle
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+
+\section{Objetivos}
+\label{sec:org84ddf36}
+
+\begin{itemize}
+\item Configurar y validar el entorno de trabajo para la asignatura de Arquitectura de Computadores en Linux o WSL.
+\item Verificar la instalacion de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
+\item Documentar evidencias tecnicas mediante capturas y comandos ejecutados.
+\end{itemize}
+
+\section{Instrucciones}
+\label{sec:org9674a74}
+
+\begin{enumerate}
+\item Realice todas las actividades en Linux o en WSL.
+\item En cada sección ejecute los comandos solicitados y registre la salida en el bloque correspondiente.
+\item Guarde el archivo y exporte a pdf con el comando `org-latex-export-to-pdf`.
+\item Verifique que estén todos los nombres de los integrantes del grupo
+de trabajo. Los grupos para este trabajo están en \href{https://epnecuador.sharepoint.com/:x:/s/ICCD332-ArquitecturaComputadores/IQCjNuELSDbJTb42EfrLL2ksATBSbitbZ9\_iFLJxIiCtSr0?e=gowv5I}{Equipos de Trabajo}.
+\item Verifique que en las distintas secciones de este archivo esté
+identificado con nombre e email el aporte del estudiante.
+\end{enumerate}
+
+Si require insertar una imagen, crear una carpeta \texttt{images} y colocar
+la imagen dentro. Para llamar la imagen desde Emacs use \texttt{C-c C-l} y
+busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
+
+\begin{verbatim}
+[[./images/image1.jpg]]
+\end{verbatim}
+\section{Actividades}
+\label{sec:org0ceb3c8}
+\subsection{Configuración de WSL con Ubuntu, \LaTeX, Python e Emacs}
+\label{sec:orgc3dd327}
+
+\begin{enumerate}
+\item Verificacion de entorno mamba/anaconda
+\begin{enumerate}
+\item Active WSL (si aplica) y su entorno de trabajo.
+\item Ejecute \texttt{mamba info} con \texttt{C-c C-c} dentro del bloque de código.
+\item Si el comando falla, active un entorno con \texttt{mamba activate iccd332} e intente de nuevo.
+\end{enumerate}
+
+\begin{verbatim}
+     mamba info https://github.com/SantyProanio06/Guit_Hub_ICCD332.git
+\end{verbatim}
+\end{enumerate}
+
+
+\begin{enumerate}
+\item Verificacion de Python
+\begin{enumerate}
+\item Active el entorno \texttt{iccd332} para abrir Emacs con \texttt{mamba activate iccd332}.
+\item Ejecute \texttt{python -{}-{}version} en la consola y desde Emacs.
+\end{enumerate}
+
+\begin{verbatim}
+    python --version
+\end{verbatim}
+
+\begin{verbatim}
+Python 3.14.4
+\end{verbatim}
+
+\item Verificacion de Emacs
+Ejecute \texttt{emacs -{}-{}version} en la consola y desde Emacs.
+
+\begin{verbatim}
+   emacs --version
+\end{verbatim}
+
+\begin{verbatim}
+GNU Emacs 29.3
+Copyright (C) 2024 Free Software Foundation, Inc.
+GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+You may redistribute copies of GNU Emacs
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING.
+\end{verbatim}
+\end{enumerate}
+
+
+\begin{enumerate}
+\item Verificacion de \LaTeX{}
+Ejecute \texttt{latex -{}-{}version} en la consola y desde Emacs.
+
+\begin{verbatim}
+   latex --version
+\end{verbatim}
+
+\begin{verbatim}
+   pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+   kpathsea version 6.3.5
+   Copyright 2023 Han The Thanh (pdfTeX) et al.
+   There is NO warranty.  Redistribution of this software is
+   covered by the terms of both the pdfTeX copyright and
+   the Lesser GNU General Public License.
+   For more information about these matters, see the file
+   named COPYING and the pdfTeX source.
+   Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+   Compiled with libpng 1.6.43; using libpng 1.6.43
+   Compiled with zlib 1.3; using zlib 1.3
+   Compiled with xpdf version 4.04
+\end{verbatim}
+\end{enumerate}
+
+
+\begin{enumerate}
+\item Registro de problemas y solucion aplicada
+\end{enumerate}
+
+Complete la siguiente tabla si tuvo errores durante la configuración:
+
+\begin{center}
+\begin{tabularx}{\textwidth}{lXX}
+\textbf{Herramienta} & \textbf{Problema observado} & \textbf{Solucion aplicada}\\[0pt]
+\hline
+ & Error from syntax checker org-lint: Wrong type argument: number-or-marker-p, "14" & \\[0pt]
+ &  & \\[0pt]
+ &  & \\[0pt]
+\end{tabularx}
+\end{center}
+
+\subsection{Comandos Emacs Tutorial}
+\label{sec:orgd69a92f}
+Seguir el tutorial integrado en Emacs al respecto de la navegación y
+operaciones más frecuentes. El tutorial puede ser accedido en Español
+utilizando el comando:
+
+\begin{verbatim}
+M-x help-with-tutorial-spec-language
+\end{verbatim}
+
+Realice los ejercicios del tutorial (al menos un 80\% del texto) y
+complete la siguiente tabla con los comandos que considere de mayor
+interés. Verifique que en la parte superior se active el menú de
+tabla. Dentro de la región de la tabla puede dar C-c C-c para alinear
+automáticamente la tabla al contenido del texto que escriba. Para
+generar una nueva fila escriba presione la tecla TAB
+
+<Estudiante A>
+\begin{longtable}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción}\\[0pt]
+\hline
+\endfirsthead
+\multicolumn{4}{l}{Continued from previous page} \\[0pt]
+\hline
+
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción} \\[0pt]
+
+\hline
+\endhead
+\hline\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\hline
+\texttt{C-c C-e \# latex} & Insertar template de  latex & \texttt{C-x C-s} & Guardar los cambios en el archivo\\[0pt]
+ &  &  & \\[0pt]
+ &  &  & \\[0pt]
+\end{longtable}
+
+<Estudiante B>
+\begin{longtable}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción}\\[0pt]
+\hline
+\endfirsthead
+\multicolumn{4}{l}{Continued from previous page} \\[0pt]
+\hline
+
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción} \\[0pt]
+
+\hline
+\endhead
+\hline\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\hline
+\texttt{C-c C-e \# latex} & Insertar template de  latex & \texttt{C-x C-s} & Guardar los cambios en el archivo\\[0pt]
+ &  &  & \\[0pt]
+ &  &  & \\[0pt]
+\end{longtable}
+
+<Martín Pérez>
+\begin{longtable}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción}\\[0pt]
+\hline
+\endfirsthead
+\multicolumn{4}{l}{Continued from previous page} \\[0pt]
+\hline
+
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción} \\[0pt]
+
+\hline
+\endhead
+\hline\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\hline
+\texttt{C-f} & Avanzar un carácter en la línea & \texttt{C-x C-s} & Guardar los cambios en el archivo\\[0pt]
+\texttt{C-b} & Retroceder un carácter en la línea & \texttt{C-x 1} & Dejar solo una ventana\\[0pt]
+\texttt{M-a} & Retroceder al comienzo de la oración & \texttt{C-g} & Detener un comando no deseado\\[0pt]
+\texttt{M-e} & Avanzar al final de la oración & \texttt{C-s} & Buscar una palabra\\[0pt]
+\end{longtable}
+
+<Estudiante D>
+\begin{longtable}{|p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|}
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción}\\[0pt]
+\hline
+\endfirsthead
+\multicolumn{4}{l}{Continued from previous page} \\[0pt]
+\hline
+
+\textbf{Comando} & \textbf{Descripción} & \textbf{Comando} & \textbf{Descripción} \\[0pt]
+
+\hline
+\endhead
+\hline\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+\endlastfoot
+\hline
+\texttt{C-c C-e \# latex} & Insertar template de  latex & \texttt{C-x C-s} & Guardar los cambios en el archivo\\[0pt]
+ &  &  & \\[0pt]
+ &  &  & \\[0pt]
+\end{longtable}
+\subsection{Comandos Emacs Juego}
+\label{sec:org990b53d}
+En la anterior sección usted revisó los comandos de mayor interés
+sobre la manipulación de Emacs. Es hora de poner en práctica sus
+conocimientos. Realice unas 3 visitas al juego  \href{https://chat.qwen.ai/s/deploy/t\_23ff57ef-b59a-4bd7-9b79-54679b33686d}{Emacs-Trainer} y apunte
+en la siguiente tabla su puntaje.
+
+Estudiante A: 
+\begin{center}
+\begin{tabular}{rl}
+\hline
+iteración & Puntaje\\[0pt]
+\hline
+1 & \\[0pt]
+2 & \\[0pt]
+3 & \\[0pt]
+\hline
+\end{tabular}
+\end{center}
+
+\begin{verbatim}
+[[./estudianteA-game.png]]
+\end{verbatim}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./EmacsTrainerResult.png}
+\end{center}
+
+Estudiante B: 
+\begin{center}
+\begin{tabular}{rl}
+\hline
+iteración & Puntaje\\[0pt]
+\hline
+1 & \\[0pt]
+2 & \\[0pt]
+3 & \\[0pt]
+\hline
+\end{tabular}
+\end{center}
+
+\begin{verbatim}
+[[./estudianteB-game.png]]
+\end{verbatim}
+
+Martín Pérez: 
+\begin{center}
+\begin{tabular}{rr}
+\hline
+iteración & Puntaje\\[0pt]
+\hline
+1 & 110\\[0pt]
+2 & 136\\[0pt]
+3 & 140\\[0pt]
+\hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./Imágenes/Martin-Cap1.png}
+\end{center}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./Imágenes/Martin-Cap2.png}
+\end{center}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{./Imágenes/Martin-Cap3.png}
+\end{center}
+
+Estudiante D: 
+\begin{center}
+\begin{tabular}{rl}
+\hline
+iteración & Puntaje\\[0pt]
+\hline
+1 & \\[0pt]
+2 & \\[0pt]
+3 & \\[0pt]
+\hline
+\end{tabular}
+\end{center}
+
+\begin{verbatim}
+[[./estudianteD-game.png]]
+\end{verbatim}
+\subsection{Usando Emacs para tener Ayuda sobre Emacs}
+\label{sec:org17b934e}
+¿Qué comandos le resultan más fáciles de usar y cuáles le son más
+extraños? Identifique 4 comandos que le sean fáciles y 4 que le
+resulten complicados. Revise qué dice la ayuda de Emacs sobre cada
+comando y escriba en sus palabras el para qué sirve.
+
+Para consultar lo que hace un comando ejecute:
+\begin{enumerate}
+\item \texttt{C-h k}
+\item Emacs le preguntara cuál es la combinación de la que requiere
+ayuda. Presione las teclas del comando. Por ejemplo, \texttt{C-x C-f}
+\item Emacs abrirá un nuevo buffer con la descripción del comando.
+\item Cambie al buffer de la ayuda con \texttt{C-x o}
+\item Seleccione el primer parrafo de ayuda ubicando el cursor al inicio
+del parrafo y activando la marcación de texto con
+\texttt{C-SPC}. Seleccione avanzando por palabras \texttt{M-f} o directamente
+toda la linea \texttt{C-e}
+\item Una vez seleccionado, copie el texto con \texttt{M-w}.
+\item Regrese al buffer anterior con \texttt{C-x o}.
+\item Pegue el texto en <Pegar lo que dice el\ldots{}> con \texttt{C-y}
+\end{enumerate}
+
+\textbf{\textbf{Comandos Fáciles}}
+\begin{enumerate}
+\item \textbf{\textbf{Estudiante A:}} <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+\item \textbf{\textbf{Estudiante B:}} <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+\item \textbf{\textbf{Martín Pérez:}} \texttt{C-x 1}. C-x 1 runs the command delete-other-windows (found in global-map),
+\end{enumerate}
+which is an interactive native-compiled Lisp function in ‘window.el’.
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\textbf{\textbf{Comandos Difíciles}}
+\begin{enumerate}
+\item \textbf{\textbf{Estudiante A:}} <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+\item \textbf{\textbf{Estudiante B:}} <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+\item \textbf{\textbf{Martín Pérez:}} \texttt{C-x C-b}. C-x C-b runs the command list-buffers (found in global-map), which is
+\end{enumerate}
+an interactive native-compiled Lisp function in ‘buff-menu.el’.
+\begin{enumerate}
+\item 
+\end{enumerate}
+
+\section{Equipo de Trabajo}
+\label{sec:org0ea1fd4}
+Complete la información de los integrantes de grupo e indique el líder
+de grupo.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Nombre & email & Rol\\[0pt]
+\hline
+Santiago Proaño & santiago.proano01@epn.edu.ec & líder\\[0pt]
+Martín Pérez & martin.perez02@epn.edu.ec & colaborador\\[0pt]
+Ariel Montufar & ariel.montufar@epn.edu.ec & colaborador\\[0pt]
+Damian Haro & damian.haro@epn.edu.ec & colaborador\\[0pt]
+\hline
+\end{tabular}
+\end{center}
+
+\section{Verificación de Entregables [100\%]:}
+\label{sec:orgcb7b1cb}
+Ejecute \texttt{C-c C-c} sobre los ítems de tarea según se hayan cumplido o
+no. Si un ítem no pudo realizarse apunte en la siguiente sección las
+razones al respecto.
+\begin{itemize}
+\item[{$\boxtimes$}] Verificación de configuración de entorno WSL y paquetes del curso.
+\item[{$\boxtimes$}] Tutorial de Comandos Emacs realizado.
+\item[{$\boxtimes$}] Captura de Imágenes y puntajes de Emacs Trainer App.
+\item[{$\boxtimes$}] Usando Emacs para tener ayuda sobre Emacs
+\item[{$\boxtimes$}] Verifique que estén los nombres de los integrantes del equipo e
+identificado el líder.
+\item[{$\boxtimes$}] Revisión de ortografía con \texttt{ispell} en el buffer
+\item[{$\boxtimes$}] Generación de Archivo PDF \texttt{M-x org-latex-export-to-pdf}
+\end{itemize}
+\subsection{Problemas con la Tarea:}
+\label{sec:org7d183e8}
+\begin{itemize}
+\item Tarea \(X_1\) no pudo completarse debido a
+\item Tarea \(X_2\) no pudo completarse debido a
+\end{itemize}
+\end{document}

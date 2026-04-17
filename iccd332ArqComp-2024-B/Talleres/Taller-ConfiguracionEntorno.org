@@ -5,8 +5,8 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Configuracion de Entorno WSL
 #+date: 2026-04-08
-#+author: COLOQUE SU NOMBRE, COLOQUE SEGUNDO NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+author: MARTÍN PÉREZ
+#+email: martin.perez02@epn.edu.ec
 #+language: Espanol
 #+select_tags: export
 #+exclude_tags: noexport
@@ -71,7 +71,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
    
    #+begin_src shell :exports both :results verbatim
-     mamba infohttps://github.com/SantyProanio06/Guit_Hub_ICCD332.git
+     mamba info https://github.com/SantyProanio06/Guit_Hub_ICCD332.git
    #+end_src
   
    #+RESULTS:
@@ -81,21 +81,21 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 	     mamba version : 2.5.0
 	      curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
 	libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
-	  envs directories : /home/santiago_proanio/.local/share/mamba/envs
-	     package cache : /home/santiago_proanio/.local/share/mamba/pkgs
-			     /home/santiago_proanio/.mamba/pkgs
+	  envs directories : /home/martinpr/miniforge3/envs
+	     package cache : /home/martinpr/miniforge3/pkgs
+			     /home/martinpr/.mamba/pkgs
 	       environment : iccd332 (active)
-	      env location : /home/santiago_proanio/.local/share/mamba/envs/iccd332
-	 user config files : /home/santiago_proanio/.mambarc
-    populated config files : 
+	      env location : /home/martinpr/miniforge3/envs/iccd332
+	 user config files : /home/martinpr/.mambarc
+    populated config files : /home/martinpr/miniforge3/.condarc
 	  virtual packages : __unix=0=0
 			     __linux=6.6.87=0
 			     __glibc=2.39=0
-			     __archspec=1=x86_64_v4
-			     __cuda=13.2=0
+			     __archspec=1=x86_64_v3
+			     __cuda=12.2=0
 		  channels : https://conda.anaconda.org/conda-forge/linux-64
 			     https://conda.anaconda.org/conda-forge/noarch
-	  base environment : /home/santiago_proanio/.local/share/mamba
+	  base environment : /home/martinpr/miniforge3
 		  platform : linux-64
    #+end_example
 
@@ -109,7 +109,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+end_src
 
    #+RESULTS:
-   : Python 3.11.15
+   : Python 3.14.4
 
 3. Verificación de Emacs
    Ejecute ~emacs --version~ en la consola y desde Emacs.
@@ -156,11 +156,11 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 Complete la siguiente tabla si tuvo errores durante la configuración:
 
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align lXX
-| *Herramienta* | *Problema observado* | *Solucion aplicada* |
-|---------------+----------------------+---------------------|
-|               |                      |                     |
-|               |                      |                     |
-|               |                      |                     |
+| *Herramienta* | *Problema observado*                                                              | *Solucion aplicada* |
+|---------------+-----------------------------------------------------------------------------------+---------------------|
+|               | Error from syntax checker org-lint: Wrong type argument: number-or-marker-p, "14" |                     |
+|               |                                                                                   |                     |
+|               |                                                                                   |                     |
 
 ** Comandos Emacs Tutorial
 Seguir el tutorial integrado en Emacs al respecto de la navegación y
@@ -199,13 +199,14 @@ generar una nueva fila escriba presione la tecla TAB
 |                   |                             |           |                                   |
 |                   |                             |           |                                   |
 
-<Estudiante C>
+<Martín Pérez>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
-| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
-|-------------------+-----------------------------+-----------+-----------------------------------|
-| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
-|                   |                             |           |                                   |
-|                   |                             |           |                                   |
+| *Comando* | *Descripción*                        | *Comando* | *Descripción*                     |
+|-----------+--------------------------------------+-----------+-----------------------------------|
+| ~C-f~     | Avanzar un carácter en la línea      | ~C-x C-s~ | Guardar los cambios en el archivo |
+| ~C-b~     | Retroceder un carácter en la línea   | ~C-x 1~   | Dejar solo una ventana            |
+| ~M-a~     | Retroceder al comienzo de la oración | ~C-g~     | Detener un comando no deseado     |
+| ~M-e~     | Avanzar al final de la oración       | ~C-s~     | Buscar una palabra                |
 
 <Estudiante D>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
@@ -250,18 +251,21 @@ Estudiante B:
 [[./estudianteB-game.png]]
 #+end_src
 
-Estudiante C: 
+Martín Pérez: 
 |-----------+---------|
 | iteración | Puntaje |
 |-----------+---------|
-|         1 |         |
-|         2 |         |
-|         3 |         |
+|         1 | 110     |
+|         2 | 136     |
+|         3 | 140     |
 |-----------+---------|
 
-#+begin_src org
-[[./estudianteC-game.png]]
-#+end_src
+
+[[./Imágenes/Martin-Cap1.png]]
+
+[[./Imágenes/Martin-Cap2.png]]
+
+[[./Imágenes/Martin-Cap3.png]]
 
 Estudiante D: 
 |-----------+---------|
@@ -299,14 +303,17 @@ Para consultar lo que hace un comando ejecute:
 1. **Estudiante Santiago Proaño:** ~C-x 3~. C-x 3 runs the command split-window-right (found in global-map), which
 is an interactive native-compiled Lisp function in ‘window.el’.
 2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
-3. 
+3. **Martín Pérez:** ~C-x 1~. C-x 1 runs the command delete-other-windows (found in global-map),
+which is an interactive native-compiled Lisp function in ‘window.el’.
 4. 
 
 **Comandos Difíciles**
 1. **Estudiante Santiago Proaño:** ~C-M-v~.C-M-v runs the command scroll-other-window (found in global-map),
 which is an interactive native-compiled Lisp function in ‘window.el’. 
 2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
-3.
+3. **Martín Pérez:** ~C-x C-b~. C-x C-b runs the command list-buffers (found in global-map), which is
+an interactive native-compiled Lisp function in ‘buff-menu.el’.
+4. 
 
 * Equipo de Trabajo
 Complete la información de los integrantes de grupo e indique el líder
@@ -321,7 +328,7 @@ de grupo.
 | Damian Haro     | damian.haro@epn.edu.ec       | colaborador |
 |-----------------+------------------------------+-------------|
 
-* Verificación de Entregables [71%]:
+* Verificación de Entregables [100%]:
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse apunte en la siguiente sección las
 razones al respecto.
@@ -331,8 +338,8 @@ razones al respecto.
 - [X] Usando Emacs para tener ayuda sobre Emacs
 - [X] Verifique que estén los nombres de los integrantes del equipo e
   identificado el líder.
-- [ ] Revisión de ortografía con ~ispell~ en el buffer
-- [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
+- [X] Revisión de ortografía con ~ispell~ en el buffer
+- [X] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
 ** Problemas con la Tarea:
 - Tarea $X_1$ no pudo completarse debido a
 - Tarea $X_2$ no pudo completarse debido a
