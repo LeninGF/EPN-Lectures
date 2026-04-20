@@ -254,16 +254,12 @@ Estudiante C:
 |-----------+---------|
 |         1 |   124   |
 |         2 |   140   |
-|         3 |         |
+|         3 |   140   |
 |-----------+---------|
 
-#+begin_src org
-[[Puntaje1.png]]
-
-[[Puntaje2.png]]
-
-[[Puntaje3.png]]
-#+end_src
+[[file:Puntaje1.png]]
+[[file:Puntaje2.png]]
+[[file:Puntaje3.png]]
 
 Estudiante D: 
 |-----------+---------|
@@ -274,7 +270,7 @@ Estudiante D:
 |         3 |         |
 |-----------+---------|
 
-#+begin_src org
+,#+begin_src org
 [[./estudianteD-game.png]]
 #+end_src
 ** Usando Emacs para tener Ayuda sobre Emacs
