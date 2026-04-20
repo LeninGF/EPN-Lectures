@@ -72,7 +72,8 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+begin_src shell :exports both :results verbatim
      mamba info
    #+end_src
-  
+   
+  Molina Jhanavi
    #+RESULTS:
    #+begin_example
 
@@ -102,6 +103,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    1. Active el entorno ~iccd332~ para abrir Emacs con ~mamba activate iccd332~.
    2. Ejecute ~python --version~ en la consola y desde Emacs.
 
+      Molina Jhanavi
    #+begin_src shell :exports both :results verbatim
     python --version
    #+end_src
@@ -116,6 +118,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    emacs --version
    #+end_src
 
+   Molina Jhanavi
    #+RESULTS:
    : GNU Emacs 29.3
    : Copyright (C) 2024 Free Software Foundation, Inc.
@@ -128,6 +131,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 4. Verificacion de LaTeX
    Ejecute ~latex --version~ en la consola y desde Emacs.
 
+   Molina Jhanavi
    #+begin_src shell :exports both :results verbatim
    latex --version
    #+end_src
