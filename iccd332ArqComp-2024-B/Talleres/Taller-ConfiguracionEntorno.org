@@ -103,11 +103,11 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    1. Active el entorno ~iccd332~ para abrir Emacs con ~mamba activate iccd332~.
    2. Ejecute ~python --version~ en la consola y desde Emacs.
 
-      Molina Jhanavi
    #+begin_src shell :exports both :results verbatim
     python --version
    #+end_src
 
+   Molina Jhanavi
    #+RESULTS:
    : Python 3.11.15
 
@@ -130,12 +130,12 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 
 4. Verificacion de LaTeX
    Ejecute ~latex --version~ en la consola y desde Emacs.
-
-   Molina Jhanavi
+   
    #+begin_src shell :exports both :results verbatim
    latex --version
    #+end_src
 
+   Molina Jhanavi
    #+RESULTS:
    #+begin_example
    pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
@@ -252,7 +252,7 @@ Estudiante B:
 [[./estudianteB-game.png]]
 #+end_src
 
-Estudiante C: 
+Molina Jhanavi: 
 |-----------+---------|
 | iteración | Puntaje |
 |-----------+---------|
