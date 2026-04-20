@@ -1,4 +1,4 @@
-% Created 2026-04-19 Sun 00:10
+% Created 2026-04-19 Sun 21:09
 % Intended LaTeX compiler: pdflatex
 \documentclass{article}
 \usepackage[utf8]{inputenc}
@@ -39,7 +39,7 @@ ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 
 \section{Objetivos}
-\label{sec:org9d544c6}
+\label{sec:orga0b1333}
 
 \begin{itemize}
 \item Configurar y validar el entorno de trabajo para la asignatura de Arquitectura de Computadores en Linux o WSL.
@@ -48,7 +48,7 @@ ARQUITECTURA DE COMPUTADORES}
 \end{itemize}
 
 \section{Instrucciones}
-\label{sec:org50b368c}
+\label{sec:orga99b555}
 
 \begin{enumerate}
 \item Realice todas las actividades en Linux o en WSL.
@@ -68,9 +68,9 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 [[./images/image1.jpg]]
 \end{verbatim}
 \section{Actividades}
-\label{sec:org14134b5}
+\label{sec:orgf7449e1}
 \subsection{Configuración de WSL con Ubuntu, \LaTeX, Python e Emacs}
-\label{sec:org8b1032d}
+\label{sec:org5f5bfc6}
 
 \begin{enumerate}
 \item Verificacion de entorno mamba/anaconda
@@ -93,8 +93,8 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 	  envs directories : /home/jhanavi/miniforge3/envs
 	     package cache : /home/jhanavi/miniforge3/pkgs
 			     /home/jhanavi/.mamba/pkgs
-	       environment : base (active)
-	      env location : /home/jhanavi/miniforge3
+	       environment : iccd332 (active)
+	      env location : /home/jhanavi/miniforge3/envs/iccd332
 	 user config files : /home/jhanavi/.mambarc
     populated config files : /home/jhanavi/miniforge3/.condarc
 	  virtual packages : __unix=0=0
@@ -121,7 +121,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 \end{verbatim}
 
 \begin{verbatim}
-Python 3.13.12
+Python 3.11.15
 \end{verbatim}
 
 \item Verificacion de Emacs
@@ -184,7 +184,7 @@ Complete la siguiente tabla si tuvo errores durante la configuracion:
 \end{center}
 
 \subsection{Comandos Emacs Tutorial}
-\label{sec:orge9f5218}
+\label{sec:org3413828}
 Seguir el tutorial integrado en Emacs al respecto de la navegación y
 operaciones más frecuentes. El tutorial puede ser accedido en Español
 utilizando el comando:
@@ -291,7 +291,7 @@ generar una nueva fila escriba presione la tecla TAB
  &  &  & \\[0pt]
 \end{longtable}
 \subsection{Comandos Emacs Juego}
-\label{sec:orgf405a76}
+\label{sec:orge932829}
 En la anterior sección usted revisó los comandos de mayor interés
 sobre la manipulación de Emacs. Es hora de poner en práctica sus
 conocimientos. Realice unas 3 visitas al juego  \href{https://chat.qwen.ai/s/deploy/t\_23ff57ef-b59a-4bd7-9b79-54679b33686d}{Emacs-Trainer} y apunte
@@ -343,18 +343,20 @@ iteración & Puntaje\\[0pt]
 \hline
 1 & 124\\[0pt]
 2 & 140\\[0pt]
-3 & \\[0pt]
+3 & 140\\[0pt]
 \hline
 \end{tabular}
 \end{center}
 
-\begin{verbatim}
-[[file:Talleres/Puntaje1.png]]
-
-[[file:Talleres/Puntaje2.png]]
-
-[[file:Talleres/Puntaje3.png]]
-\end{verbatim}
+\begin{center}
+\includegraphics[width=.9\linewidth]{Puntaje1.png}
+\end{center}
+\begin{center}
+\includegraphics[width=.9\linewidth]{Puntaje2.png}
+\end{center}
+\begin{center}
+\includegraphics[width=.9\linewidth]{Puntaje3.png}
+\end{center}
 
 Estudiante D: 
 \begin{center}
@@ -369,11 +371,13 @@ iteración & Puntaje\\[0pt]
 \end{tabular}
 \end{center}
 
-\begin{verbatim}
-[[./estudianteD-game.png]]
-\end{verbatim}
+,\#+begin\textsubscript{src} org
+\begin{center}
+\includegraphics[width=.9\linewidth]{./estudianteD-game.png}
+\end{center}
+\#+end\textsubscript{src}
 \subsection{Usando Emacs para tener Ayuda sobre Emacs}
-\label{sec:org4884c33}
+\label{sec:org58a80c6}
 ¿Qué comandos le resultan más fáciles de usar y cuáles le son más
 extraños? Identifique 4 comandos que le sean fáciles y 4 que le
 resulten complicados. Revise qué dice la ayuda de Emacs sobre cada
@@ -411,7 +415,7 @@ toda la linea \texttt{C-e}
 
 
 \section{Equipo de Trabajo}
-\label{sec:orgaba77a4}
+\label{sec:orga0c00ea}
 Complete la información de los integrantes de grupo e indique el líder
 de grupo.
 
@@ -429,7 +433,7 @@ Flores Alex & alex.flores01@epn.edu.ec & colaborador\\[0pt]
 \end{center}
 
 \section{Verificación de Entregables [57\%]:}
-\label{sec:org181f3e1}
+\label{sec:orgd937abe}
 Ejecute \texttt{C-c C-c} sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse apunte en la siguiente sección las
 razones al respecto.
@@ -444,7 +448,7 @@ identificado el líder.
 \item[{$\square$}] Generación de Archivo PDF \texttt{M-x org-latex-export-to-pdf}
 \end{itemize}
 \subsection{Problemas con la Tarea:}
-\label{sec:orga351ef6}
+\label{sec:org3aa892b}
 \begin{itemize}
 \item Tarea \(X_1\) no pudo completarse debido a
 \item Tarea \(X_2\) no pudo completarse debido a
