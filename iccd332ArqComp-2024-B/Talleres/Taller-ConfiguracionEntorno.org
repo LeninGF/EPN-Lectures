@@ -72,6 +72,8 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+begin_src shell :exports both :results verbatim
      mamba info
    #+end_src
+
+   #+RESULTS:
    
   Molina Jhanavi
    #+RESULTS:
@@ -107,6 +109,10 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
     python --version
    #+end_src
 
+   Sagñay Micaela
+   #+RESULTS:
+   : Python 3.12.3
+
    Molina Jhanavi
    #+RESULTS:
    : Python 3.11.15
@@ -115,8 +121,17 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    Ejecute ~emacs --version~ en la consola y desde Emacs.
 
    #+begin_src shell :exports both :results verbatim
-   emacs --version
+     emacs --version
    #+end_src
+
+   Sagñay Micaela
+   #+RESULTS:
+   : GNU Emacs 29.3
+   : Copyright (C) 2024 Free Software Foundation, Inc.
+   : GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+   : You may redistribute copies of GNU Emacs
+   : under the terms of the GNU General Public License.
+   : For more information about these matters, see the file named COPYING.
 
    Molina Jhanavi
    #+RESULTS:
@@ -134,6 +149,23 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+begin_src shell :exports both :results verbatim
    latex --version
    #+end_src
+
+   Sagñay Micaela
+   #+RESULTS:
+   #+begin_example
+   pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+   kpathsea version 6.3.5
+   Copyright 2023 Han The Thanh (pdfTeX) et al.
+   There is NO warranty.  Redistribution of this software is
+   covered by the terms of both the pdfTeX copyright and
+   the Lesser GNU General Public License.
+   For more information about these matters, see the file
+   named COPYING and the pdfTeX source.
+   Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+   Compiled with libpng 1.6.43; using libpng 1.6.43
+   Compiled with zlib 1.3; using zlib 1.3
+   Compiled with xpdf version 4.04
+   #+end_example
 
    Molina Jhanavi
    #+RESULTS:
