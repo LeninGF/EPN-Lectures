@@ -1,0 +1,193 @@
+
+#+OPTIONS: num:nil toc:1 timestamp:nil
+# Reveal.js configuration
+# Export with: M-x org-reveal-export-to-html-and-browse
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_THEME: moon
+#+REVEAL_TRANS: slide
+#+REVEAL_SPEED: default
+#+REVEAL_SLIDE_NUMBER: c/t
+#+REVEAL_HLEVEL: 2
+#+REVEAL_PLUGINS: (highlight notes math)
+#+REVEAL_MATHJAX: t
+#+REVEAL_MATHJAX_URL: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+#+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1, minScale:0.2, maxScale:1.2
+
+#+title: S1 Sistemas de Numeración
+#+date: 2026-04-08
+#+author: Lenin G. Falconi
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+
+* Sistemas de Numeración
+** Concepto General de Número
+- Un número se puede representar como una cadena de dígitos
+  $b_{n-1} \dots b_2b_1b_0 \cdot b_{-1}b_{-2}\dots b_m$
+- La posición relativa $i$ del dígito posee un *peso* $r^i$, donde $r$
+  es la *base* del sistema de numeración
+- El alfabeto de dígitos posibles en una base $r$ cumple:
+  $0 \leq b_i \leq r-1$
+
+Por tanto, un número $N$ en base $r$ se expresa como:
+
+$$N_r = \sum_{i=-m}^{n-1} b_i \times r^i$$
+
+** Tipos de Sistemas de Numeración
+| Denominación | Base |
+|--------------+------|
+| Decimal      |   10 |
+| Octal        |    8 |
+| Binario      |    2 |
+| Hexadecimal  |   16 |
+
+** Ejercicio 1: Conversión a Decimal
+#+ATTR_REVEAL: :frag (appear)
+- Escriba un número en base 7
+- Escriba un número en base 4
+- ¿Qué valor decimal corresponde a cada uno?
+
+* Sistema Decimal y Binario
+** Sistema de Numeración Decimal
+- La base es $r=10$
+- Los dígitos cumplen $0 \leq b_i \leq 9$ y $b_i \in \mathbb{Z}^+$
+
+Ejemplo:
+
+$$123.45 = 1\times10^2 + 2\times10^1 + 3\times10^0 + 4\times10^{-1} + 5\times10^{-2}$$
+
+** Sistema de Numeración Binario
+- La base es $r=2$
+- Los dígitos cumplen $0 \leq b_i \leq 1$ y $b_i \in \mathbb{Z}^+$
+- Equivalencias directas: $0_2 = 0_{10}$ y $1_2 = 1_{10}$
+
+Ejemplo:
+
+$$1101.01_2 = 1\times2^3 + 1\times2^2 + 0\times2^1 + 1\times2^0 + 0\times2^{-1} + 1\times2^{-2}$$
+
+* Conversión de Base r a Decimal
+** Conversión $N_r \rightarrow X_{10}$
+Sea $N_r \rightarrow X_{10}$ la conversión de un número en base $r$ a decimal.
+
+$$X_{10} = \sum_i b_i \times r^i$$
+
+** Ejercicio 2: $N_r \rightarrow X_{10}$
+#+ATTR_REVEAL: :frag (appear)
+- $(4021.2)_5$
+- $(127.4)_8$
+- $(110101)_2$
+- $(B65F)_{16}$
+
+* Conversión Decimal a Binario
+** Parte Entera
+Dado un número decimal, se aplica divisiones sucesivas entre 2:
+
+#+ATTR_REVEAL: :frag (appear)
+- Sea $N$ la parte entera decimal
+- Dividir sucesivamente entre 2 y registrar residuos
+- El número binario buscado = residuos leídos en *orden inverso*
+
+$$N = 2N_1 + R_0 \quad N_1 = 2N_2 + R_1 \quad \dots \quad N_{m-1} = 2N_m + R_{m-1}$$
+
+Entonces:
+
+$$N = 2^mN_m + 2^{m-1}R_{m-1} + \dots + 2^1R_1 + R_0$$
+
+** Ejercicio 3: $N_{10} \rightarrow X_r$
+#+ATTR_REVEAL: :frag (appear)
+1. Convertir 41 a binario
+2. Convertir 153 a octal
+3. Convertir 256 a hexadecimal
+
+** Parte Fraccionaria
+Sea $F = 0\cdot b_{-1}b_{-2}\dots$ la parte fraccionaria en binario.
+
+$$2F = b_{-1} + F_1$$
+
+Procedimiento:
+#+ATTR_REVEAL: :frag (appear)
+1. Multiplique la fracción por la base y tome la *parte entera*
+2. Repita con la nueva fracción resultante
+3. Detenga al llegar a 0 o alcanzar la precisión deseada
+
+** Ejercicio 4: Parte Fraccionaria
+#+ATTR_REVEAL: :frag (appear)
+1. $(0.6875)_{10} \rightarrow X_2$
+2. $(0.513)_{10} \rightarrow X_8$
+
+* Conversión entre Binario, Octal y Hexadecimal
+** Sistema Hexadecimal
+La base es 16 y sus símbolos son:
+
+$$0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$$
+
+Relaciones clave:
+
+$$2^3 = 8 \qquad 2^4 = 16$$
+
+** Conversión Binario \rightarrow Octal
+1. Agrupar en bloques de *3 bits* desde el punto decimal rellenando con 0
+
+Sea $N_2 = 10101001.10111$:
+
+$$010\,101\,001.101\,110$$
+
+2. Sustituir cada grupo por su equivalente octal
+
+$$\Rightarrow 251.56_8$$
+
+** Conversión Binario \rightarrow Hexadecimal
+1. Agrupar en bloques de *4 bits* desde el punto decimal rellenando con 0
+
+Sea $N_2 = 10101001.10111$:
+
+$$1010\,1001.1011\,1000$$
+
+2. Sustituir cada grupo por su equivalente hexadecimal
+
+$$\Rightarrow A9.B8_{16}$$
+
+* Ordenes de Magnitud
+** Potencias de 2 para Unidades de Información
+| Potencia  | Nombre | Valor        |
+|-----------+--------+--------------|
+| $2^0$     | bit    | 1            |
+| $2^3$     | byte   | 8            |
+| $2^{10}$  | Kilo   | 1 024        |
+| $2^{20}$  | Mega   | 1 048 576    |
+| $2^{30}$  | Giga   | 1 073 741 824|
+| $2^{40}$  | Tera   | ~1.1 billones|
+
+** Ejercicio 5: Órdenes de Magnitud
+- Verifique con Python los valores de la tabla anterior
+
+#+begin_src python :session :results output :exports both
+for nombre, pot in zip(['bit','byte','Kilo','Mega','Giga','Tera'],
+                       [0, 3, 10, 20, 30, 40]):
+    print(f"2^{pot:2d} -> {nombre:5s} = {2**pot}")
+#+end_src
+
+* Taller
+** Ejercicios Propuestos
+#+ATTR_REVEAL: :frag (appear)
+1. Función en Python: convierte un número en base $r$ a decimal
+2. Función en Python: convierte decimal a binario
+   - separar parte entera y fraccionaria
+3. Generalizar para convertir de decimal a base $r$ arbitraria
+
+** Plantilla Taller
+#+begin_src python :session :results output :exports both
+def numero_r_a_dec(numero: str, base: int):
+    resp = 0
+    # implementar
+    print(f"{numero} en base {base} = {resp} en base 10")
+
+def decimal_a_binario(numero: float):
+    entero = int(numero)
+    fraccion = numero - entero
+    # implementar parte entera y fraccionaria
+    pass
+
+def decimal_a_base_r(numero: float, base: int):
+    # generalizar decimal_a_binario para base r
+    pass
+#+end_src
