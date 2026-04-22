@@ -150,7 +150,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    latex --version
    #+end_src
 
-   Sagñay Micaela
+   Molina Jhanavi
    #+RESULTS:
    #+begin_example
    pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
@@ -167,7 +167,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    Compiled with xpdf version 4.04
    #+end_example
 
-   Molina Jhanavi
+   Sagñay Micaela
    #+RESULTS:
    #+begin_example
    pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
