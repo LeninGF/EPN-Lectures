@@ -5,9 +5,9 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Programación Literaria en Python con Emacs
 #+date: 2026-04-22
-#+author: COLOQUE SU NOMBRE, COLOQUE SEGUNDO NOMBRE
-#+email: lenin.falconi@epn.edu.ec
-#+language: Espanol
+#+author: NOMBRE ESTUDIANTE A, NOMBRE ESTUDIANTE B
+#+email: 
+#+language: spa
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.7.5)
@@ -92,20 +92,25 @@ Repositorio Git de la clase
 6. Ejecute el bloque con ~C-c C-c~ para observar el resultado insertado por Org mode.
 
 ** ¿Qué debe resolver el estudiante?
-En cada actividad encontrará uno o más bloques de Python con comentarios que indican el objetivo. Su tarea consiste en:
+En cada actividad encontrará uno o más bloques de Python con
+comentarios que indican el objetivo. Su tarea consiste en:
 - Leer la explicación del tutorial.
 - Escribir el código solicitado dentro del bloque.
 - Ejecutarlo con ~C-c C-c~.
 - Verificar la salida.
 - Explicar brevemente lo observado cuando se le pida.
 
-No se espera copiar código de memoria. Se espera construir soluciones pequeñas y entender la relación entre texto, código y resultados.
+No se espera copiar código de memoria. Se espera construir soluciones
+pequeñas y entender la relación entre texto, código y resultados.
 
 * Parte 1: Tutorial guiado de Python en Org mode
-Esta primera parte es de familiarización. El objetivo es practicar conceptos básicos de Python y usar repetidamente ~C-c '~ y ~C-c C-c~.
+Esta primera parte es de familiarización. El objetivo es practicar
+conceptos básicos de Python y usar repetidamente ~C-c '~ y ~C-c C-c~.
 
 ** Variables y tipos
-Python permite almacenar valores en variables de diferentes tipos como enteros, flotantes y cadenas. Estos son temas introductorios comunes en hojas de referencia para principiantes.[web:12]
+Python permite almacenar valores en variables de diferentes tipos como
+enteros, flotantes y cadenas. Estos son temas introductorios comunes
+en hojas de referencia para principiantes.
 
 *** Actividad 1
 Escriba un programa que:
@@ -140,7 +145,9 @@ Escriba un programa que:
 Escriba una línea indicando para qué sirve el operador ~%~:
 
 ** Listas
-Las listas permiten agrupar varios valores y recorrerlos. Las hojas de referencia introductorias suelen mostrar creación, acceso, modificación y recorrido de listas.[web:12]
+Las listas permiten agrupar varios valores y recorrerlos. Las hojas de
+referencia introductorias suelen mostrar creación, acceso,
+modificación y recorrido de listas.
 
 *** Actividad 3
 Escriba un programa que:
@@ -174,7 +181,7 @@ Escriba un programa que:
 Describa brevemente cómo usó ~if~ y el operador ~%~:
 
 ** Comprensión de listas
-La comprensión de listas es una manera concisa de crear listas en Python.[web:15][web:18]
+La comprensión de listas es una manera concisa de crear listas en Python.
 
 *** Actividad 5
 Escriba un programa que:
@@ -191,7 +198,7 @@ Escriba un programa que:
 Explique en 2 líneas qué ventaja tiene una *list comprehension* frente a escribir varios ~append~:
 
 ** Funciones
-Las funciones permiten encapsular lógica y reutilizar código; son una parte básica y frecuente en resúmenes de Python.[web:12]
+Las funciones permiten encapsular lógica y reutilizar código; son una parte básica y frecuente en resúmenes de Python.
 
 *** Actividad 6
 Escriba un programa que:
@@ -230,7 +237,7 @@ Escriba un programa que:
 Explique en 3 líneas cómo este ejemplo muestra la idea de programación literaria:
 
 * Parte 2: Resolución de problemas sencillos
-En esta segunda parte ya no se explica el concepto paso a paso. Ahora debe crear los bloques de código resolviendo pequeños problemas. Se recomienda usar ~C-c '~ para editar cada bloque y ~C-c C-c~ para probar la solución.[web:6][web:11]
+En esta segunda parte ya no se explica el concepto paso a paso. Ahora debe crear los bloques de código resolviendo pequeños problemas. Se recomienda usar ~C-c '~ para editar cada bloque y ~C-c C-c~ para probar la solución.
 
 ** Problema 1
 Escriba un programa que lea una lista fija de calificaciones ~[7, 8, 10, 9, 6]~, calcule el promedio y lo imprima.
