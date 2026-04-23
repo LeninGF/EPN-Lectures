@@ -1,0 +1,323 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Taller de Programación Literaria en Python con Emacs
+#+date: 2026-04-22
+#+author: NOMBRE ESTUDIANTE A, NOMBRE ESTUDIANTE B
+#+email: 
+#+language: spa
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options: 
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+#+latex_header: \usepackage{tabularx}
+
+#+bibliography: ../bibliography/bibliography.bib
+#+latex_header: \usepackage[backend=biber,style=ieee]{biblatex}
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+* Objetivos
+- Familiarizar al estudiante con el uso de Python dentro de Org mode
+  en Emacs.
+- Practicar programación literaria combinando texto, matemáticas y
+  código ejecutable.
+- Usar ~C-c C-c~ para ejecutar bloques y ~C-c '~ para editar bloques
+  en un buffer especializado.
+- Resolver ejercicios sencillos de Python inspirados en temas
+  frecuentes de cheat sheets: variables, tipos, listas, condicionales,
+  bucles y funciones.
+
+* Instrucciones Generales
+1. Realice todas las actividades en Linux o WSL.
+2. Abra este archivo en Emacs y guárdelo con un nombre como
+   ~Taller-Python-Literario-(Apellido O Grupo).org~.
+3. Ejecute bloques de código con ~C-c C-c~ cuando el cursor esté
+   dentro del bloque. Org mode ejecuta el bloque y coloca el resultado
+   en una sección ~#+RESULTS~.
+4. Para editar cómodamente un bloque de Python use ~C-c '~. Esto abre
+   un buffer de edición con el modo principal apropiado para el
+   lenguaje; al usar ~C-c '~ nuevamente regresa al documento Org, y
+   con ~C-x C-s~ se actualiza el contenido del bloque en el archivo
+   base.
+5. En este taller, en lugar de modificar código ya terminado, usted
+   debe *escribir la lógica de programa* dentro de los bloques
+   propuestos.
+6. Exporte el documento a PDF con ~M-x org-latex-export-to-pdf~ cuando
+   haya terminado.
+7. Suba al aula virtual el archivo ~.org~ y el ~.pdf~.
+
+* Recursos Adicionales
+Puede consultar los siguientes recursos en Internet y en el
+Repositorio Git de la clase
+- Este trabajo
+- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/ConfiguracionJavaPythonEmacs/ConfiguracionJavaPythonEmacs.org][Tutorial de Python y Java en Emacs]]
+- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/ConfiguracionJavaPythonEmacs/tutorial-latex-python-jupyter-org-esp.org][Tutorial LaTeX Python e Emacs]]
+- [[https://github.com/prspth/python-cheat-sheet][The only Python cheatsheet you will ever need]]
+- [[https://github.com/gto76/python-cheatsheet/tree/main][Comprehensive Python Cheatsheet]]
+- Capítulo 2 del Libro /Practical Computer Architecture with Python
+  and ARM/[cite:@clements2023computer]
+- [[https://orgmode.org/manual/Working-with-Source-Code.html][Working with Source Blocks in Emacs]]
+* Cómo trabajar con bloques de Python
+** Flujo recomendado
+1. Ubique el cursor dentro de un bloque ~#+begin_src python~.
+2. Presione ~C-c '~ para abrir el bloque en una zona de edición más cómoda con soporte del modo de Python en Emacs.
+3. Escriba la lógica del programa dentro de ese buffer.
+4. Guarde con ~C-x C-s~ para actualizar el bloque en el archivo Org.
+5. Regrese con ~C-c '~ al documento principal.
+6. Ejecute el bloque con ~C-c C-c~ para observar el resultado insertado por Org mode.
+
+** ¿Qué debe resolver el estudiante?
+En cada actividad encontrará uno o más bloques de Python con
+comentarios que indican el objetivo. Su tarea consiste en:
+- Leer la explicación del tutorial.
+- Escribir el código solicitado dentro del bloque.
+- Ejecutarlo con ~C-c C-c~.
+- Verificar la salida.
+- Explicar brevemente lo observado cuando se le pida.
+
+No se espera copiar código de memoria. Se espera construir soluciones
+pequeñas y entender la relación entre texto, código y resultados.
+
+* Parte 1: Tutorial guiado de Python en Org mode
+Esta primera parte es de familiarización. El objetivo es practicar
+conceptos básicos de Python y usar repetidamente ~C-c '~ y ~C-c C-c~.
+
+** Variables y tipos
+Python permite almacenar valores en variables de diferentes tipos como
+enteros, flotantes y cadenas. Estos son temas introductorios comunes
+en hojas de referencia para principiantes.
+
+*** Actividad 1
+Escriba un programa que:
+- Declare una variable entera llamada ~edad~.
+- Declare una variable flotante llamada ~promedio~.
+- Declare una cadena llamada ~nombre~.
+- Imprima el valor y el tipo de cada variable.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+# Debe usar variables: edad, promedio, nombre
+#+end_src
+
+#+RESULTS:
+
+Explique en 2 líneas qué diferencia observa entre ~int~, ~float~ y ~str~:
+
+** Operaciones y expresiones
+Python permite realizar operaciones aritméticas como suma, producto, potencia y residuo.
+
+*** Actividad 2
+Escriba un programa que:
+- Defina dos variables numéricas ~a~ y ~b~.
+- Imprima su suma, resta, multiplicación, división y residuo.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Escriba una línea indicando para qué sirve el operador ~%~:
+
+** Listas
+Las listas permiten agrupar varios valores y recorrerlos. Las hojas de
+referencia introductorias suelen mostrar creación, acceso,
+modificación y recorrido de listas.
+
+*** Actividad 3
+Escriba un programa que:
+- Cree una lista llamada ~numeros~ con cinco enteros.
+- Imprima la lista completa.
+- Imprima el primer y el último elemento.
+- Imprima la longitud de la lista.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Explique en 1 o 2 líneas qué hace ~len()~:
+
+** Bucles y condicionales
+Los bucles permiten repetir acciones y los condicionales permiten tomar decisiones según una condición lógica.
+
+*** Actividad 4
+Escriba un programa que:
+- Recorra los números del 1 al 10.
+- Imprima cuáles son pares y cuáles son impares.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Describa brevemente cómo usó ~if~ y el operador ~%~:
+
+** Comprensión de listas
+La comprensión de listas es una manera concisa de crear listas en Python.
+
+*** Actividad 5
+Escriba un programa que:
+- Genere una lista con los números del 1 al 10.
+- Genere otra lista con los cuadrados de esos números usando *list comprehension*.
+- Imprima ambas listas.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Explique en 2 líneas qué ventaja tiene una *list comprehension* frente a escribir varios ~append~:
+
+** Funciones
+Las funciones permiten encapsular lógica y reutilizar código; son una parte básica y frecuente en resúmenes de Python.
+
+*** Actividad 6
+Escriba un programa que:
+- Defina una función ~cuadrado(x)~.
+- La función debe retornar el cuadrado de ~x~.
+- Luego pruebe la función con 3 valores e imprima los resultados.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Escriba en 2 líneas por qué las funciones ayudan a organizar programas:
+
+** Texto, matemáticas y código
+Una ventaja de la programación literaria es documentar una idea con texto y validarla con código ejecutable en el mismo archivo.[cite:4]
+
+Considere la fórmula de la suma de los primeros \(n\) números naturales:
+\[
+S(n) = \frac{n(n+1)}{2}
+\]
+
+*** Actividad 7
+Escriba un programa que:
+- Calcule la suma de 1 hasta ~n~ usando un bucle.
+- Calcule la misma suma usando la fórmula.
+- Compare los resultados para ~n = 10~.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su programa
+#+end_src
+
+#+RESULTS:
+
+Explique en 3 líneas cómo este ejemplo muestra la idea de programación literaria:
+
+* Parte 2: Resolución de problemas sencillos
+En esta segunda parte ya no se explica el concepto paso a paso. Ahora debe crear los bloques de código resolviendo pequeños problemas. Se recomienda usar ~C-c '~ para editar cada bloque y ~C-c C-c~ para probar la solución.
+
+** Problema 1
+Escriba un programa que lea una lista fija de calificaciones ~[7, 8, 10, 9, 6]~, calcule el promedio y lo imprima.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+** Problema 2
+Escriba un programa que cuente cuántas vocales hay en la cadena ~"arquitectura"~.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+** Problema 3
+Escriba un programa que construya una lista con los números pares del 2 al 20.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+** Problema 4
+Escriba una función ~maximo_de_tres(a, b, c)~ que retorne el mayor de tres números y pruébela con un ejemplo.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+** Problema 5
+Escriba un programa que imprima la tabla de multiplicar del 5, desde ~5 x 1~ hasta ~5 x 10~.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+** Problema 6
+Escriba un programa que determine si la palabra ~"reconocer"~ es palíndroma.
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+#+RESULTS:
+
+
+
+* Equipo de Trabajo
+Complete la información de los integrantes del grupo e indique el líder.
+
+|-----------------+-------------------------+-------------|
+| Nombre          | email                   | Rol         |
+|-----------------+-------------------------+-------------|
+|                 |                         | líder       |
+|                 |                         | colaborador |
+|                 |                         | colaborador |
+|-----------------+-------------------------+-------------|
+
+* Verificación de Entregables [0%]
+- [ ] Parte 1 completada.
+- [ ] Parte 2 completada.
+- [ ] Cuestionario de 10 preguntas respondido en el aula virtual.
+- [ ] Uso de ~C-c '~ para editar bloques practicado.
+- [ ] Ejecución de bloques con ~C-c C-c~ verificada.
+- [ ] Archivo PDF generado con ~M-x org-latex-export-to-pdf~.
+- [ ] Entrega de archivo ~.org~ y ~.pdf~.
+
+** Problemas con la Tarea / Comentarios
+- Actividad no completada debido a:
+- Dificultades encontradas con Emacs, Org mode o Python:
+- Comentarios adicionales:
+* Referencias
+#+print_bibliography: 
