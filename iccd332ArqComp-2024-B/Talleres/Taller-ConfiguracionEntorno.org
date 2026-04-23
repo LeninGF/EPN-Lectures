@@ -49,10 +49,12 @@ ARQUITECTURA DE COMPUTADORES}
 
 1. Realice todas las actividades en Linux o en WSL.
 2. En cada sección ejecute los comandos solicitados y registre la salida en el bloque correspondiente.
-3. Guarde el archivo y exporte a pdf con el comando `org-latex-export-to-pdf`.
-4. Verifique que estén todos los nombres de los integrantes del grupo
+3. Guarde el archivo ~.org ~y exporte a ~.pdf~ con el comando `org-latex-export-to-pdf`.
+4. Suba al aula virtual tanto el ~.org~ como el ~.pdf~. El formato
+   final del ~.pdf~ no es relevante.
+5. Verifique que estén todos los nombres de los integrantes del grupo
    de trabajo. Los grupos para este trabajo están en [[https://epnecuador.sharepoint.com/:x:/s/ICCD332-ArquitecturaComputadores/IQCjNuELSDbJTb42EfrLL2ksATBSbitbZ9_iFLJxIiCtSr0?e=gowv5I][Equipos de Trabajo]].
-5. Verifique que en las distintas secciones de este archivo esté
+6. Verifique que en las distintas secciones de este archivo esté
    identificado con nombre e email el aporte del estudiante.
 
 Si require insertar una imagen, crear una carpeta ~images~ y colocar
@@ -411,7 +413,7 @@ Para consultar lo que hace un comando ejecute:
 4. **Sagñay MIcaela:** Se me complicó bastante usar ~C-x o~ para cambiar de ventana, ~M-%~ para reemplazar, ~C-x u~ para deshacer y ~M-x~ para ejecutar funciones. 
 * Equipo de Trabajo
 Complete la información de los integrantes de grupo e indique el líder
-de grupo.
+de grupo. Por defecto será la primera persona designada en la lista compartida.
 
 |----------------+---------------------------+-------------|
 | Nombre         | email                     | Rol         |
@@ -434,6 +436,7 @@ razones al respecto.
   identificado el líder.
 - [ ] Revisión de ortografía con ~ispell~ en el buffer
 - [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
-** Problemas con la Tarea:
+- [ ] Subir al aula virutal archivo ~.org~ y ~.pdf~
+** Problemas con la Tarea/logísticos:
 - Tarea $X_1$ no pudo completarse debido a
 - Tarea $X_2$ no pudo completarse debido a
