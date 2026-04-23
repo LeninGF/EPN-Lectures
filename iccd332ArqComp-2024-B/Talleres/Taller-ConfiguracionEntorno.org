@@ -373,10 +373,9 @@ Sagñay Micaela:
 |         3 |  140    |
 |-----------+---------|
 
-[[./EmacsTrainerResult.png]]
-[[./Puntaje1.png]]
-[[./Puntaje2.png]]
-[[./Puntaje3.png]]
+[[./Juego1.png]]
+[[./Juego2.png]]
+[[./Juego3.png]]
 
 ,#+begin_src org
 [[./estudianteD-game.png]]
