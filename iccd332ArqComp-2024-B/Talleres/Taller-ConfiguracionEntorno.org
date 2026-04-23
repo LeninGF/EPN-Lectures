@@ -402,12 +402,13 @@ Para consultar lo que hace un comando ejecute:
 1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
 2. **Alex Flores:** <C-x C-f>. <C-x C-f runs the command find-file (found in global-map), which is an interactive native-compiled Lisp function in ‘files.el’. It is used to open or create files in Emacs.>
 3. **Molina Jhanavi:** ~C-x C-f~ Cambiar a un búfer visitando el archivo NOMBRE_ARCHIVO, creando uno si no existe ninguno
-
+4. **Sagñay Micaela:** Me resultó súper sencillo usar ~C-x C-f~ para abrir archivos, ~C-s~ para buscar, ~C-x C-s~ para guardar, ~C-g~ para cancelar y ~M-w~ para copiar.
+   
 **Comandos Difíciles**
 1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
 2. **Alex Flores:** <C-h k>. <C-h k runs the command describe-key (found in global-map), which is an interactive native-compiled Lisp function in ‘help.el’. It displays documentation for the key sequence you press next, showing what command it is bound to and what it does.>
 3. **Molina Jhanavi:** ~C-s~ El comando isearch-forward (que se encuentra en global-map), que es una función Lisp interactiva compilada de forma nativa en 'isearch.el'
-
+4. **Sagñay MIcaela:** Se me complicó bastante usar ~C-x o~ para cambiar de ventana, ~M-%~ para reemplazar, ~C-x u~ para deshacer y ~M-x~ para ejecutar funciones. 
 * Equipo de Trabajo
 Complete la información de los integrantes de grupo e indique el líder
 de grupo.
