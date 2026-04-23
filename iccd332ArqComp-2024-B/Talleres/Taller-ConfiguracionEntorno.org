@@ -266,12 +266,24 @@ generar una nueva fila escriba presione la tecla TAB
 | ~C-x C-f~         | Encontrar un archivo                                  | ~C-x C-s~ | Guardar                            |
 | ~C-x b~           | Escoger un archivo                                    | ~C-x 1~   | Quitar la doble ventana            |
 
-<Estudiante D>
+<Sagñay Micaela>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
 | *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
 |-------------------+-----------------------------+-----------+-----------------------------------|
 | ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
-|                   |                             |           |                                   |
+| ~C-f~             | Mover adelante (Forward)    | ~C-b~     | Mover atrás (Backward)            |
+| ~C-n~             | Siguiente línea (Next)      | ~C-p~     | Línea anterior (Previous)         |
+| ~C-a~             | Ir al inicio de la línea    | ~C-e~     | Ir al final de la línea           |
+| ~M-f~             | Avanzar una palabra         | ~M-b~     | Retroceder una palabra            |
+| ~C-d~             | Borrar carácter (Delete     | ~C-k~     | Cortar línea (Kill)               |
+| ~C-y~             | Pegar (Yank)                | ~C-/~     | Deshacer (Undo)                   |
+| ~C-x C-f~         | Abrir archivo (Find)        | ~C-x C-s~ | Guardar cambios (Save)            |
+| ~C-x 2~           | Dividir ventana horizontal  | ~C-x 3~   | Dividir ventana vertical          |
+| ~C-x 1~           | Cerrar otras ventanas       | ~C-x o~   | Ir a la otra ventana              |
+| ~C-x b~           | Cambiar de Búfer            | ~C-x k~   | Cerrar Búfer actual               |
+| ~C-s~             | Buscar texto adelante       | ~C-r~     | Buscar texto atrás                |
+| ~C-c C-c~         | Ejecutar bloque de código   | ~C-c C-e~ | Exportar (LaTeX/PDF)              |
+| ~C-x C-c~         | Salir de Emacs              | ~C-g~     | Cancelar comando                  |
 |                   |                             |           |                                   |
 ** Comandos Emacs Juego
 En la anterior sección usted revisó los comandos de mayor interés
@@ -320,14 +332,19 @@ Molina Jhanavi:
 [[file:Puntaje2.png]]
 [[file:Puntaje3.png]]
 
-Estudiante D: 
+Sagñay Micaela: 
 |-----------+---------|
 | iteración | Puntaje |
 |-----------+---------|
-|         1 |         |
-|         2 |         |
-|         3 |         |
+|         1 |  128    |
+|         2 |  140    |
+|         3 |  140    |
 |-----------+---------|
+
+[[./EmacsTrainerResult.png]]
+[[./Puntaje1.png]]
+[[./Puntaje2.png]]
+[[./Puntaje3.png]]
 
 ,#+begin_src org
 [[./estudianteD-game.png]]
