@@ -5,7 +5,6 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Programación Literaria en Python con Emacs
 #+date: 2026-04-22
-<<<<<<< HEAD
 #+author: NOMBRE ESTUDIANTE A, NOMBRE ESTUDIANTE B
 #+email: 
 #+language: spa
@@ -93,7 +92,8 @@ Repositorio Git de la clase
 6. Ejecute el bloque con ~C-c C-c~ para observar el resultado insertado por Org mode.
 
 ** ¿Qué debe resolver el estudiante?
-En cada actividad encontrará uno o más bloques de Python con comentarios que indican el objetivo. Su tarea consiste en:
+En cada actividad encontrará uno o más bloques de Python con
+comentarios que indican el objetivo. Su tarea consiste en:
 - Leer la explicación del tutorial.
 - Escribir el código solicitado dentro del bloque.
 - Ejecutarlo con ~C-c C-c~.
@@ -181,7 +181,7 @@ Escriba un programa que:
 Describa brevemente cómo usó ~if~ y el operador ~%~:
 
 ** Comprensión de listas
-La comprensión de listas es una manera concisa de crear listas en Python.[web:15][web:18]
+La comprensión de listas es una manera concisa de crear listas en Python.
 
 *** Actividad 5
 Escriba un programa que:
@@ -199,8 +199,7 @@ Explique en 2 líneas qué ventaja tiene una *list comprehension* frente a escri
 
 ** Funciones
 Las funciones permiten encapsular lógica y reutilizar código; son una parte básica y frecuente en resúmenes de Python.[web:12]
->>>>>>> e4ddef4 (TallerPython)
-
+(TallerPython)
 *** Actividad 6
 Escriba un programa que:
 - Defina una función ~cuadrado(x)~.
@@ -212,7 +211,6 @@ Escriba un programa que:
 #+end_src
 
 #+RESULTS:
->>>>>>> e4ddef4 (TallerPython)
 
 Escriba en 2 líneas por qué las funciones ayudan a organizar programas:
 
@@ -239,7 +237,6 @@ Escriba un programa que:
 Explique en 3 líneas cómo este ejemplo muestra la idea de programación literaria:
 
 * Parte 2: Resolución de problemas sencillos
-<<<<<<< HEAD
 En esta segunda parte ya no se explica el concepto paso a paso. Ahora debe crear los bloques de código resolviendo pequeños problemas. Se recomienda usar ~C-c '~ para editar cada bloque y ~C-c C-c~ para probar la solución.
 
 ** Problema 1
