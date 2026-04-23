@@ -5,7 +5,8 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Configuracion de Entorno WSL
 #+date: 2026-04-18
-#+author: Jami Mateo, Sagñay Micaela, Molina Jhanavi, Flores Alex
+#+author: Jami Mateo, Sagñay Micaela, Molina Jhanavi, Flores Alex, Sebastian
+#+email: lenin.falconi@epn.edu.ec
 #+language: Espanol
 #+select_tags: export
 #+exclude_tags: noexport
@@ -68,61 +69,62 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    1. Active WSL (si aplica) y su entorno de trabajo.
    2. Ejecute ~mamba info~ con ~C-c C-c~ dentro del bloque de código.
    3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
-   
+
    #+begin_src shell :exports both :results verbatim
      mamba info
    #+end_src
 
+   Alex Flores
+   #+RESULTS:
+   #+begin_example
+      libmamba version : 2.5.0
+         mamba version : 2.5.0
+          curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
+    libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
+      envs directories : /home/alex/miniforge3/envs
+         package cache : /home/alex/miniforge3/pkgs
+                         /home/alex/.mamba/pkgs
+           environment : iccd332 (active)
+          env location : /home/alex/miniforge3/envs/iccd332
+     user config files : /home/alex/.mambarc
+    populated config files : /home/alex/miniforge3/.condarc
+      base environment : /home/alex/miniforge3
+   #+end_example
+
+   Molina Jhanavi
+   #+RESULTS:
+   #+begin_example
+      libmamba version : 2.5.0
+         mamba version : 2.5.0
+          curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
+    libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
+      envs directories : /home/jhanavi/miniforge3/envs
+         package cache : /home/jhanavi/miniforge3/pkgs
+                         /home/jhanavi/.mamba/pkgs
+           environment : iccd332 (active)
+          env location : /home/jhanavi/miniforge3/envs/iccd332
+     user config files : /home/jhanavi/.mambarc
+    populated config files : /home/jhanavi/miniforge3/.condarc
+      base environment : /home/jhanavi/miniforge3
+   #+end_example
+
    Sagñay Micaela
    #+RESULTS:
    #+begin_example
-
-	  libmamba version : 2.5.0
-	     mamba version : 2.5.0
-	      curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
-	libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
-	  envs directories : /home/micaela/.local/share/mamba/envs
-	     package cache : /home/micaela/.local/share/mamba/pkgs
-			     /home/micaela/.mamba/pkgs
-	       environment : /home/micaela/miniforge3 (active)
-	      env location : /home/micaela/miniforge3
-	 user config files : /home/micaela/.mambarc
+      libmamba version : 2.5.0
+         mamba version : 2.5.0
+          curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
+    libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
+      envs directories : /home/micaela/.local/share/mamba/envs
+         package cache : /home/micaela/.local/share/mamba/pkgs
+                         /home/micaela/.mamba/pkgs
+           environment : /home/micaela/miniforge3 (active)
+          env location : /home/micaela/miniforge3
+     user config files : /home/micaela/.mambarc
     populated config files : /home/micaela/miniforge3/.condarc
-	  virtual packages : __unix=0=0
-			     __linux=6.6.87=0
-			     __glibc=2.39=0
-			     __archspec=1=x86_64_v3
-		  channels : https://conda.anaconda.org/conda-forge/linux-64
-			     https://conda.anaconda.org/conda-forge/noarch
-	  base environment : /home/micaela/.local/share/mamba
-		  platform : linux-64
+      base environment : /home/micaela/.local/share/mamba
+      platform : linux-64
    #+end_example
-   
-  Molina Jhanavi
-   #+RESULTS:
-   #+begin_example
-
-	  libmamba version : 2.5.0
-	     mamba version : 2.5.0
-	      curl version : libcurl/8.19.0 OpenSSL/3.6.1 zlib/1.3.2 zstd/1.5.7 libssh2/1.11.1 nghttp2/1.68.1 mit-krb5/1.22.2
-	libarchive version : libarchive 3.8.6 zlib/1.3.2 liblzma/5.8.2 bz2lib/1.0.8 liblz4/1.10.0 libzstd/1.5.7 liblzo2/2.10 openssl/3.5.5 libb2/bundled
-	  envs directories : /home/jhanavi/miniforge3/envs
-	     package cache : /home/jhanavi/miniforge3/pkgs
-			     /home/jhanavi/.mamba/pkgs
-	       environment : iccd332 (active)
-	      env location : /home/jhanavi/miniforge3/envs/iccd332
-	 user config files : /home/jhanavi/.mambarc
-    populated config files : /home/jhanavi/miniforge3/.condarc
-	  virtual packages : __unix=0=0
-			     __linux=5.15.167=0
-			     __glibc=2.39=0
-			     __archspec=1=x86_64_v3
-		  channels : https://conda.anaconda.org/conda-forge/linux-64
-			     https://conda.anaconda.org/conda-forge/noarch
-	  base environment : /home/jhanavi/miniforge3
-		  platform : linux-64
-   #+end_example
-
 
 2. Verificacion de Python
    1. Active el entorno ~iccd332~ para abrir Emacs con ~mamba activate iccd332~.
@@ -132,13 +134,17 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
     python --version
    #+end_src
 
-   Sagñay Micaela
+   Alex Flores
    #+RESULTS:
    : Python 3.12.3
 
    Molina Jhanavi
    #+RESULTS:
    : Python 3.11.15
+
+   Sagñay Micaela
+   #+RESULTS:
+   : Python 3.12.3
 
 3. Verificacion de Emacs
    Ejecute ~emacs --version~ en la consola y desde Emacs.
@@ -147,7 +153,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
      emacs --version
    #+end_src
 
-   Sagñay Micaela
+   Alex Flores
    #+RESULTS:
    : GNU Emacs 29.3
    : Copyright (C) 2024 Free Software Foundation, Inc.
@@ -165,14 +171,39 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    : under the terms of the GNU General Public License.
    : For more information about these matters, see the file named COPYING.
 
+   Sagñay Micaela
+   #+RESULTS:
+   : GNU Emacs 29.3
+   : Copyright (C) 2024 Free Software Foundation, Inc.
+   : GNU Emacs comes with ABSOLUTELY NO WARRANTY.
+   : You may redistribute copies of GNU Emacs
+   : under the terms of the GNU General Public License.
+   : For more information about these matters, see the file named COPYING.
 
 4. Verificacion de LaTeX
    Ejecute ~latex --version~ en la consola y desde Emacs.
-   
+
    #+begin_src shell :exports both :results verbatim
    latex --version
    #+end_src
 
+   Alex Flores
+   #+RESULTS:
+   #+begin_example
+   pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+   kpathsea version 6.3.5
+   Copyright 2023 Han The Thanh (pdfTeX) et al.
+   There is NO warranty.  Redistribution of this software is
+   covered by the terms of both the pdfTeX copyright and
+   the Lesser GNU General Public License.
+   For more information about these matters, see the file
+   named COPYING and the pdfTeX source.
+   Primary author of pdfTeX: Han The Thanh (pdfTeX) et al.
+   Compiled with libpng 1.6.43; using libpng 1.6.43
+   Compiled with zlib 1.3; using zlib 1.3
+   Compiled with xpdf version 4.04
+   #+end_example
+
    Molina Jhanavi
    #+RESULTS:
    #+begin_example
@@ -206,7 +237,6 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    Compiled with zlib 1.3; using zlib 1.3
    Compiled with xpdf version 4.04
    #+end_example
-
 
 5. Registro de problemas y solucion aplicada
 
@@ -243,13 +273,15 @@ generar una nueva fila escriba presione la tecla TAB
 |                   |                             |           |                                   |
 |                   |                             |           |                                   |
 
-<Estudiante B>
+<Alex Flores>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
-| *Comando*         | *Descripción*               | *Comando* | *Descripción*                     |
-|-------------------+-----------------------------+-----------+-----------------------------------|
-| ~C-c C-e # latex~ | Insertar template de  latex | ~C-x C-s~ | Guardar los cambios en el archivo |
-|                   |                             |           |                                   |
-|                   |                             |           |                                   |
+| *Comando* | *Descripción*            | *Comando* | *Descripción*                     |
+|-----------+--------------------------+-----------+-----------------------------------|
+| ~C-x C-f~ | Abrir un archivo         | ~C-x C-s~ | Guardar los cambios en el archivo |
+| ~C-x C-c~ | Salir de Emacs           | ~C-g~     | Cancelar la acción actual         |
+| ~C-b~     | Mover cursor hacia atrás | ~C-f~     | Mover cursor hacia adelante       |
+| ~C-n~     | Mover cursor hacia abajo | ~C-p~     | Mover cursor hacia arriba         |
+|           |                          |           |                                   |
 
 <Molina Jhanavi>
 #+ATTR_LATEX: :environment longtable :align |p{0.2\linewidth}|p{0.3\linewidth}|p{0.2\linewidth}|p{0.3\linewidth}|
@@ -304,19 +336,19 @@ Estudiante A:
 [[./estudianteA-game.png]]
 #+end_src
 
-[[./EmacsTrainerResult.png]]
-
-Estudiante B: 
+Alex Flores: 
 |-----------+---------|
 | iteración | Puntaje |
 |-----------+---------|
-|         1 |         |
-|         2 |         |
-|         3 |         |
+|         1 | 100     |
+|         2 | 110     |
+|         3 | 140     |
 |-----------+---------|
 
-#+begin_src org
-[[./estudianteB-game.png]]
+[[./images/Alex_game1.jpeg]]
+[[./images/Alex_game2.png]]
+[[./images/Alex_game3.png]]
+  
 #+end_src
 
 Molina Jhanavi: 
@@ -371,14 +403,13 @@ Para consultar lo que hace un comando ejecute:
 
 **Comandos Fáciles**
 1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
-2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
-3. **Molina Jhanavi:** ~C-x C-f~ Cambiar a un búfer visitando el archivo NOMBRE_ARCHIVO,creando uno si no existe ninguno
+2. **Alex Flores:** <C-x C-f>. <C-x C-f runs the command find-file (found in global-map), which is an interactive native-compiled Lisp function in ‘files.el’. It is used to open or create files in Emacs.>
+3. **Molina Jhanavi:** ~C-x C-f~ Cambiar a un búfer visitando el archivo NOMBRE_ARCHIVO, creando uno si no existe ninguno
 
 **Comandos Difíciles**
 1. **Estudiante A:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
-2. **Estudiante B:** <Poner el comando>. <Pegar lo que dice el primer párrafo de la ayuda>
+2. **Alex Flores:** <C-h k>. <C-h k runs the command describe-key (found in global-map), which is an interactive native-compiled Lisp function in ‘help.el’. It displays documentation for the key sequence you press next, showing what command it is bound to and what it does.>
 3. **Molina Jhanavi:** ~C-s~ El comando isearch-forward (que se encuentra en global-map), que es una función Lisp interactiva compilada de forma nativa en 'isearch.el'
-
 
 * Equipo de Trabajo
 Complete la información de los integrantes de grupo e indique el líder
