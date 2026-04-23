@@ -377,9 +377,7 @@ Sagñay Micaela:
 [[./Juego2.png]]
 [[./Juego3.png]]
 
-,#+begin_src org
-[[./estudianteD-game.png]]
-#+end_src
+
 ** Usando Emacs para tener Ayuda sobre Emacs
 ¿Qué comandos le resultan más fáciles de usar y cuáles le son más
 extraños? Identifique 4 comandos que le sean fáciles y 4 que le
