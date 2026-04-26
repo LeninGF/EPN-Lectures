@@ -45,7 +45,6 @@ Definimos la representación en complemento a la base disminuida
 #+end_export
 
 
-#+end_export
 Entonces podemos escribir el siguiente código para $r=2$
 #+begin_src python :session t1 :results output :exports both
 x = -15
