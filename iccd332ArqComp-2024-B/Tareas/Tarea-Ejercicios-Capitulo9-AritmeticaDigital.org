@@ -19,7 +19,7 @@
 - Puede usar bloques de código =python= o =calc= de Emacs para verificaciones.
 #+end_comment
 \newpage
-* Sugerencias para usar Python en el cálculo de aritmética digital
+* Representación entera en Computador Digital con Python
 ** Complemento a base disminuida
 Sea \(r \ge 2\) la base, \(n \in \mathbb{N}\), el número de dígitos[fn:1], y
 \(x \in \mathbb{Z}\) en *base 10* tal que
@@ -150,11 +150,12 @@ else:
 : 11110001 en base 2
 : F1 en base 16
 
-Se puede programar la representación de complemento a 2 para verificar
-el resultado, usando
+Se puede programar la conversión inversa desde la cadena binaria en
+complemento a 2 a su equivalente decimal para verificar el resultado,
+usando
 
 \[
-x = -b_{i-1}\times 2^{n-1}+\sum_i=0^{n-2}b_i\times 2^i
+x = -b_{i-1}\times 2^{n-1}+\sum_{i=0}^{n-2}b_i\times 2^i
 \]
 
 #+begin_src python :session t1 :results output :exports both
