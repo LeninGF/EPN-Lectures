@@ -21,23 +21,29 @@
 \newpage
 * Representación entera en Computador Digital con Python
 ** Complemento a base disminuida
-Sea \(r \ge 2\) la base, \(n \in \mathbb{N}\), el número de dígitos[fn:1], y
-\(x \in \mathbb{Z}\) en *base 10* tal que
+Sea \(r \ge 2\) la base, \(n \in \mathbb{N}\) el número de dígitos
+y \(x \in \mathbb{Z}\) tal que
+
 \[
--(r^{n-1}-1) \le x \le r^{n-1}-1.
+-\left(\frac{r^n}{2}-1\right) \le x \le \frac{r^n}{2}-1.
 \]
 
-Definimos la representación en complemento a base disminuida \((r-1)\) como
+
+Definimos la representación en complemento a la base disminuida
+((r-1)-complement) como
 #+begin_export latex
 \begin{equation}
-C_{r-1}^{(n)}(x) =
-\begin{cases}
-\begin{aligned}
-&x, && 0 \le x \le r^{n-1}-1,\\
-&(r^n - 1) - \lvert x \rvert, && -(r^{n-1}-1) \le x < 0.
-\end{aligned}
-\end{cases}
+  \label{eq:r_minus1_complement}
+  C_{r-1}^{(n)}(x) =
+  \left\{
+    \begin{aligned}
+      x,          &\quad 0 \le x \le \frac{r^n}{2}-1,\\
+      (r^n - 1) - |x|,  &\quad -\left(\frac{r^n}{2}-1\right) \le x < 0.
+    \end{aligned}
+  \right.
 \end{equation}
+#+end_export
+
 
 #+end_export
 Entonces podemos escribir el siguiente código para $r=2$
@@ -45,8 +51,8 @@ Entonces podemos escribir el siguiente código para $r=2$
 x = -15
 n = 8
 r = 2
-limit_inferior = -(r**(n-1)-1)
-limit_superior = r**(n-1)-1
+limit_inferior = -(r**n//2-1)   # para cualquier base r
+limit_superior = r**n//2-1      # para cualquier base r
 # Verificar si el número esta en el rango
 if  limit_inferior <= x <= limit_superior:
     # el complemento a 1 de X es:
@@ -106,8 +112,10 @@ else:
 Sea \(r \ge 2\) la base, \(n \in \mathbb{N}\) el número de dígitos
 y \(x \in \mathbb{Z}\) tal que
 
+
+
 \[
--r^{n-1} \le x \le r^{n-1}-1.
+-\frac{r^n}{2} \le x \le \frac{r^n}{2}-1.
 \]
 
 Definimos la representación en complemento a la base \(r\)
@@ -119,8 +127,8 @@ Definimos la representación en complemento a la base \(r\)
   C_r^{(n)}(x) =
   \left\{
     \begin{aligned}
-      x,          &\quad 0 \le x \le r^{n-1} - 1,\\
-      r^n - |x|,  &\quad -r^{n-1} \le x < 0.
+      x,          &\quad 0 \le x \le \frac{r^n}{2} - 1,\\
+      r^n - |x|,  &\quad -\frac{r^n}{2} \le x < 0.
     \end{aligned}
   \right.
 \end{equation}
@@ -129,18 +137,18 @@ Definimos la representación en complemento a la base \(r\)
 
 #+begin_src python :session t1 :results output :exports both
 
-limit_inferior = -(r**(n-1))
-limit_superior = r**(n-1) - 1
+limit_inferior = -(r**n//2)     # para cualquier r
+limit_superior = r**n//2 - 1    # para cualquier r
 
 if limit_inferior <= x <= limit_superior:
     # Two's complement conversion
-    cmpl_2_dec = x if x >= 0 else (r**n - abs(x))
-    cmpl_2_bin = format(cmpl_2_dec, f'0{n}b')
-    cmpl_2_hex = format(cmpl_2_dec, f'0{n//4}X')
+    cmpl_r_dec = x if x >= 0 else (r**n - abs(x))
+    cmpl_r_bin = format(cmpl_r_dec, f'0{n}b')
+    cmpl_r_hex = format(cmpl_r_dec, f'0{n//4}X')
     
     print(f"La representación en complemento a {r} de {x} es:")
-    print(f"{cmpl_2_bin} en base {r}")
-    print(f"{cmpl_2_hex} en base 16")
+    print(f"{cmpl_r_bin} en base {r}")
+    print(f"{cmpl_r_hex} en base 16")
 else:
     print(f"{x} fuera de rango [{limit_inferior},{limit_superior}]")
 #+end_src
@@ -184,6 +192,7 @@ De manera similar podemos establecer la relación siguiente:
 C_r^{(n)}(x) = C_{r-1}^{(n)}(x) + 1
 \]
 
+Aplicando para el caso cuando \(r=2\)
 #+begin_src python :session t1 :results output :exports both
 if limit_inferior <= x <= limit_superior:
     # Handle zero and positive numbers (same as original)
