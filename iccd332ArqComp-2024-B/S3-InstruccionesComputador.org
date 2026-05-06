@@ -23,6 +23,9 @@
 #+beamer_inner_theme:
 #+beamer_outer_theme:
 #+beamer_header:
+
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks=true, linkcolor=., urlcolor=blue!70!black, citecolor=blue!70!black}
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
 #+latex_header: \usepackage{tabularx}
@@ -442,6 +445,64 @@ Encuentre expresiones para el voltaje del capacitor y corriente del
 circuito, si el switch se cierra en $t=0$ y el capacitor inicia
 cargado con un voltaje $V_0$
 
+** Interruptores Electromecánicos: El Contactor
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+El *contactor* es un Interruptor electromecánico que conmuta corrientes elevadas ($\ge
+15,\mathtt{A}$) de forma controlada y remota.
+
+- \textbf{Bobina (electroimán):} genera el campo magnético al recibir
+  tensión de control.
+- \textbf{Núcleo fijo:} parte estática del circuito magnético
+- \textbf{Armadura (núcleo móvil):} pieza atraída por el campo.
+- \textbf{Contactos principales:} conducen la corriente del circuito
+  de potencia (e.g. motor).
+- \textbf{Contactos auxiliares:} circuitos de señalización y enclavamiento
+- \textbf{Resorte de retorno:} devuelve la armadura a la posición
+  inicial al desenergizar la bobina
+
+
+#+caption: Partes de un contactor desmontado (Saguzar1, CC0)
+#+attr_latex: :width \linewidth   
+[[./images/despiece_contactor.jpg]]
+# scale=0.75
+** Contactor: Principio de Funcionamiento
+*** Electroimán                                                      :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.34
+:END:
+#+caption: Electroimán con entrehierro y líneas de campo (Chetvorno, PD)
+#+attr_latex: :width \linewidth
+[[./images/electroiman_con_entrehierro.png]]
+
+\medskip
+\small\textbf{Video:} \url{https://youtu.be/YSf_Duvg3hY}
+*** Funcionamiento                                                   :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.64
+:END:
+
+1. \textbf{Energización:} al aplicar tensión a la bobina, la corriente
+   genera un campo magnético $B$ en el núcleo de hierro laminado
+   (Ley de Ampère).
+
+2. \textbf{Atracción:} la fuerza $F = \dfrac{B^2\,A}{2\mu_0}$ atrae
+   la armadura contra el núcleo fijo, venciendo el resorte de retorno.
+
+3. \textbf{Cierre:} el desplazamiento mecánico de la armadura arrastra
+   los contactos móviles, cerrando el circuito de potencia.
+
+4. \textbf{Apertura:} al desenergizar la bobina desaparece $B$; el
+   resorte devuelve la armadura y los contactos se abren.
+
+#+begin_comment
+\medskip
+\textbf{Ventaja:} un circuito de control a baja tensión ($\sim$24\,V)
+gobierna una carga de alta corriente, con aislamiento galvánico total.
+#+end_comment
+
 * Electrónica y Lógica Digital
 ** Materiales Semiconductores
    :PROPERTIES:
@@ -518,7 +579,7 @@ cargado con un voltaje $V_0$
 
 % Diodo
 \draw (8,0.5) to[diode, o-] (10,0.5);
-\node at (9,1) {Símbolo del Diodo};
+\node at (9,-1) {Símbolo del Diodo};
 \end{circuitikz}
 \caption{Unión PN y su representación como diodo}
 \end{figure}
@@ -533,14 +594,14 @@ cargado con un voltaje $V_0$
 \node[left] at (npn1.base) {B};
 \node[above] at (npn1.collector) {C};
 \node[below] at (npn1.emitter) {E};
-\node at (0,-1) {NPN};
+\node at (0,-2) {NPN};
 
 % Transistor PNP
 \draw (3,0) node[pnp](pnp1){};
 \node[left] at (pnp1.base) {B};
 \node[below] at (pnp1.collector) {C};
 \node[above] at (pnp1.emitter) {E};
-\node at (3,-1) {PNP};
+\node at (3,-2) {PNP};
 \end{circuitikz}
 \caption{Transistores BJT usando materiales tipo N y P}
 \end{figure}
@@ -563,7 +624,7 @@ cargado con un voltaje $V_0$
     :BEAMER_col: 0.6
     :END:
 [[./images/notGate.png]]
-
+[[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp-2024-B/Simulaciones][Not_Gate_Simulation.slx]]
 ** Compuertas Lógicas
 *** Texto                                                             :BMCOL:
     :PROPERTIES:
