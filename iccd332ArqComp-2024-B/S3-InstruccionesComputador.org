@@ -108,27 +108,6 @@ computador.
 #+ATTR_LATEX: :width 0.6\textwidth
 [[./images/componentesComputador.png]]
 
-** Concepto de Memoria
-*** Texto                                                             :BMCOL:
-    :PROPERTIES:
-    :BEAMER_col: 0.5
-    :END:
-- Puede ser de escritura o lectura dependiendo de una señal
-  de control
-- Las distintas operaciones y datos con los que trabaja el computador
-  son mapeados con direcciones de memoria en donde sus valores se
-  encuentran almacenados.
-- Se puede pensar como una
-  lista o tabla de elementos almacenados.
-
- # - El procesador utiliza una dirección de memoria y una señal de
- #   control para definir un ciclo de escritura o lectura.
-*** Imagen                                                     :BMCOL:Imagen:
-    :PROPERTIES:
-    :BEAMER_col: 0.5
-    :END:
-
-[[./images/ConceptoMemoria.png]]
 ** Computadores Multi Núcleo
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks

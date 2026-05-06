@@ -74,6 +74,24 @@
 - Las arquitecturas actuales usan *pipelining*
 - *Pipelining* permite hacer un /overlap/ i.e.  captar una nueva
   instrucción antes que la anterior haya concluido.
+*** Concepto de Memoria
+**** Texto                                                            :BMCOL:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+- Puede ser de escritura o lectura dependiendo de una señal
+  de control
+- Las distintas operaciones y datos con los que trabaja el computador
+  son mapeados con direcciones de memoria en donde sus valores se
+  encuentran almacenados.
+- Se puede pensar como una
+  lista o tabla de elementos almacenados.
+**** Imagen                                                    :BMCOL:Imagen:
+     :PROPERTIES:
+     :BEAMER_col: 0.5
+     :END:
+
+[[./images/ConceptoMemoria.png]]
 *** Memoria del Computador IAS
     :PROPERTIES:
     :BEAMER_opt: allowframebreaks
