@@ -26,6 +26,8 @@
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{circuitikz}
 #+latex_header: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage{amsmath}
 
 * Operaciones Lógicas e Instrucciones del Computador
 
@@ -181,22 +183,27 @@ computador.
 Si las direcciones son de 4 bits, se puede almacenar hasta
 $2^{n=4}=16$ localidades.
 
-#+ATTR_LATEX: :font \scriptsize
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|direcc |  dato         |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0|0|0|0| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0|0|0|1| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0|0|1|0| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|.|.|.|.| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|.|.|.|.| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
-|1|1|1|1| | | | | | | | |
-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+#+begin_export latex
+\scriptsize
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{direcc} & \multicolumn{8}{c|}{dato} \\
+\hline
+0 & 0 & 0 & 0 &   &   &   &   &   &   &   &   \\
+\hline
+0 & 0 & 0 & 1 &   &   &   &   &   &   &   &   \\
+\hline
+0 & 0 & 1 & 0 &   &   &   &   &   &   &   &   \\
+\hline
+. & . & . & . &   &   &   &   &   &   &   &   \\
+\hline
+. & . & . & . &   &   &   &   &   &   &   &   \\
+\hline
+1 & 1 & 1 & 1 &   &   &   &   &   &   &   &   \\
+\hline
+\end{tabular}
+#+end_export
 
 En Hexadecimal tendríamos localidades desde la $0x0$ hasta la $0xF$
 
@@ -238,34 +245,23 @@ Considere la siguiente memoria abstracta. Obtenga: $X =
     :PROPERTIES:
     :BEAMER_col: 0.4
     :END:
+|-----------+------|
+| Dirección | Dato |
+|-----------+------|
+|      0x00 |    6 |
+|      0x01 |    2 |
+|      0x02 |    3 |
+|      0x03 |    4 |
+|      0x04 |    5 |
+|      0x05 |    2 |
+|      0x06 |    8 |
+|      0x07 |    1 |
+|      0x08 |    5 |
+|      0x09 |    2 |
+|      0x0A |    1 |
+|      0x0B |    5 |
+|-----------+------|
 
-+----------+----------+
-|Dirección | Dato     |
-+----------+----------+
-|  0x00    |   6      |
-+----------+----------+
-|  0x01    |   2      |
-+----------+----------+
-|  0x02    |   3      |
-+----------+----------+
-|  0x03    |   4      |
-+----------+----------+
-|  0x04    |   5      |
-+----------+----------+
-|  0x05    |   2      |
-+----------+----------+
-|  0x06    |   8      |
-+----------+----------+
-|  0x07    |   1      |
-+----------+----------+
-|  0x08    |   5      |
-+----------+----------+
-|  0x09    |   2      |
-+----------+----------+
-|  0x0A    |   1      |
-+----------+----------+
-|  0x0B    |   5      |
-+----------+----------+
 
 ** Ejercicio - Solución
    :PROPERTIES:
@@ -285,34 +281,22 @@ $X = 3+5+2+2+8$
     :BEAMER_col: 0.4
     :END:
 
-+----------+----------+
-|Dirección | Dato     |
-+----------+----------+
-|  0x00    |   6      |
-+----------+----------+
-|  0x01    |   2      |
-+----------+----------+
-|  0x02    |   3      |
-+----------+----------+
-|  0x03    |   4      |
-+----------+----------+
-|  0x04    |   5      |
-+----------+----------+
-|  0x05    |   2      |
-+----------+----------+
-|  0x06    |   8      |
-+----------+----------+
-|  0x07    |   1      |
-+----------+----------+
-|  0x08    |   5      |
-+----------+----------+
-|  0x09    |   2      |
-+----------+----------+
-|  0x0A    |   1      |
-+----------+----------+
-|  0x0B    |   5      |
-+----------+----------+
-
+|-----------+------|
+| Dirección | Dato |
+|-----------+------|
+|      0x00 |    6 |
+|      0x01 |    2 |
+|      0x02 |    3 |
+|      0x03 |    4 |
+|      0x04 |    5 |
+|      0x05 |    2 |
+|      0x06 |    8 |
+|      0x07 |    1 |
+|      0x08 |    5 |
+|      0x09 |    2 |
+|      0x0A |    1 |
+|      0x0B |    5 |
+|-----------+------|
 * Electricidad
 ** Electricidad - Generación
 #+caption: Generación Eléctrica y Distribución
@@ -631,8 +615,9 @@ cargado con un voltaje $V_0$
 - **Impurezas comunes**: Fósforo (P), Arsénico (As), Antimonio (Sb) en Silicio
 - **Características**:
   - Exceso de electrones libres
-  - Portadores mayoritarios: electrones (n⁻)
-  - Portadores minoritarios: huecos (p⁺)
+  - Portadores mayoritarios: electrones (n$^-$)
+  - Portadores minoritarios: huecos (p$^+$)
+# ⁺
 *** tipoP                                                             :tipoP:
 :PROPERTIES:
 :BEAMER_col: 0.5
@@ -641,8 +626,8 @@ cargado con un voltaje $V_0$
 - **Impurezas comunes**: Boro (B), Aluminio (Al), Galio (Ga) en Silicio
 - **Características**:
   - Exceso de huecos libres
-  - Portadores mayoritarios: huecos (p⁺)
-  - Portadores minoritarios: electrones (n⁻)
+  - Portadores mayoritarios: huecos (p$^+$)
+  - Portadores minoritarios: electrones (n$^-$)
 ** Materiales tipo N y tipo P
 *** tipoN                                                             :tipoN:
 :PROPERTIES:
@@ -778,7 +763,7 @@ $$A \, NOR\, B = \lnot(A \lor B) = \overline{A \lor B}$$
 ** Leyes del Algebra de Boole
 \scriptsize
 |---------------------------------------------+---------------------------------------+-------------------|
-| +                                           | $\cdot$                               | Ley               |
+| ${+}$                                       | $\cdot$                               | Ley               |
 |---------------------------------------------+---------------------------------------+-------------------|
 | $A+0=A$                                     | $A\cdot 1=A$                          | Identidad         |
 | $A+1=1$                                     | $A\cdot 0 = 0$                        | Dominio           |
@@ -927,19 +912,18 @@ señal de reloj, generalmente. Ejemplos son:
 
 #+CAPTION: Ejercicio de tres variables
 #+NAME: tab-ejercicio
-+--+--+--+--+
-|A  B  C | F|
-+--+--+--+--+
-|0   0  0|0 |
-|0   0  1|0 |
-|0   1  0|1 |
-|0   1  1|1 |
-|1   0  0|0 |
-|1   0  1|0 |
-|1   1  0|1 |
-|1   1  1|0 |
-+--+--+--+--+
-
++--+--+--+-----+
+|A  B  C |**F**|
++--+--+--+-----+
+|0   0  0|0    |
+|0   0  1|0    |
+|0   1  0|**1**|
+|0   1  1|**1**|
+|1   0  0|0    |
+|1   0  1|0    |
+|1   1  0|**1**|
+|1   1  1|0    |
++--+--+--+-----+
 
 
 ** COMMENT Tarea

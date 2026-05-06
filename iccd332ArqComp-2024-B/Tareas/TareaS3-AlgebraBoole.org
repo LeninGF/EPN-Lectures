@@ -320,7 +320,5 @@ una variable conocida $y$ y la variable predicha
 $\hat{y}$. Alternativamente, puede usar ~\label~ y ~\eqref~ como se
 usan normalmente en \LaTeX.
 
-
-#+print_bibliography: 
-
 #+end_comment
+#+print_bibliography: 
