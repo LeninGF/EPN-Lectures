@@ -29,7 +29,7 @@
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage{amsmath}
 
-* Operaciones Lógicas e Instrucciones del Computador
+* Estructura del Computador
 
 ** Máquinas de Estados Finitos
    :PROPERTIES:
@@ -148,7 +148,7 @@ computador.
 - *Printed Circuit (PCB):* placa rígida y plana que sostiene e
   interconecta chips y otros componentes electrónicos. Típicamente de
   2 a 10 capas
-** Computadores Mult Núcleo
+** Computadores Multi Núcleo
 #+attr_latex: :height 0.8\textheight
 [[./images/ElementosComputadorMultiCore.png]]
 ** Componentes del Núcleo
@@ -298,6 +298,23 @@ $X = 3+5+2+2+8$
 |      0x0B |    5 |
 |-----------+------|
 * Electricidad
+** Circuito Eléctrico
+- Un *circuito eléctrico* es una red de componentes eléctricos o
+  electrónicos interconectados que proporciona uno o más caminos
+  cerrados para la circulación de la corriente eléctrica.
+- Todo circuito requiere de:
+  - *Fuente de energía*: suministra la fuerza electromotriz (e.g.,
+    batería, generador)
+  - *Conductores*: cables o pistas que transmiten la corriente
+  - *Carga*: elemento que consume la energía eléctrica (e.g.,
+    resistencia, motor, LED)
+- Los circuitos se analizan mediante *diagramas esquemáticos* que
+  utilizan símbolos normalizados (IEEE/IEC) para cada elemento.
+- Tipos según la conexión de sus elementos:
+  - *Serie*: misma corriente en todos los elementos
+  - *Paralelo*: mismo voltaje en todos los elementos
+  - *Mixto*: combinación de conexiones serie y paralelo
+
 ** Electricidad - Generación
 #+caption: Generación Eléctrica y Distribución
 #+attr_latex: scale=0.75
@@ -790,7 +807,6 @@ momento dado, es función únicamente de las entradas en ese instante.
   (POS)
 - El Teorema de Morgan permite hacer la conmutación de las dos
   representaciones.
-* Expresión de Funciones Booleanas en Min-Terms(SOP) y Max-Terms(POS)
 ** Representación de Min-Terms o Sumas de Productos (SOP)
 Sea $F(X_1,X_2, \cdot, X_n )$ la salida de un circuito lógico
 combinacional booleano que recibe como entradas $X_1,X_2, \cdot, X_n$, encontes:
