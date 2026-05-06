@@ -55,7 +55,7 @@
    :BEAMER_opt: allowframebreaks
    :END:
 
-- sistema integrado de dispositivos electrónicos que interactúa con
+- Sistema integrado de dispositivos electrónicos que interactúa con
   el entorno a través de dispositivos periféricos o líneas de
   comunicación y que procesa información.
 
