@@ -1,0 +1,302 @@
+
+#+TITLE: Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores
+#+SUBTITLE: ICCD332 Arquitectura de Computadores
+#+AUTHOR: [Nombres de los integrantes del grupo]
+#+DATE: [Fecha de entrega]
+#+OPTIONS: toc:nil num:t
+#+LANGUAGE: es
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: latexmk
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \usepackage{longtable}
+
+#+cite_export: biblatex
+#+LATEX_HEADER: \usepackage[backend=biber, style=ieee]{biblatex}
+#+BIBLIOGRAPHY: ../bibliography/bibliography.bib
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+
+* Instrucciones generales
+
+  Este taller se realiza en *grupos*. Cada integrante debe completar
+  individualmente el curso Cisco Networking Academy:
+  *Conceptos Básicos de Hardware de Computadora* y obtener su
+  certificado de completitud. 
+
+  *Entregables del grupo:*
+  - Resolución de éste archivo fuente ~.org~
+  - El PDF exportado desde Emacs ~M-x org-latex-export-to-pdf~
+  - Los certificados individuales de cada integrante (PDF o imagen)
+
+
+  *Entregable Individual(Tarea):*
+  -  Resolver el cuestionario individual en el aula virtual
+** Recursos
+Cree su usuario en la plataforma de /Cisco Networking Academy/. Use el
+siguiente enlace:
+
+[[https://www.netacad.com/es/courses/computer-hardware-basics?courseLang=en-US][Cisco Computer Hardware Basics]]
+
+Puede configurar según el idioma de su preferencia. El texto está
+disponible en Español. Los vídeos disponen de subtítulos en varios
+idiomas.
+
+* Parte A. Integrantes y certificados
+Para insertar la captura del certificado utilice YASnippet: Escriba
+~fig_~ seguido de ~C-TAB~. Esto produce ~#+caption~, ~#+attr_latex~ y
+~#+label~ que permiten colocar un encabezado a la imagen, controlar el
+escalado de la misma y una referencia. Finalmente inserte el enlace al
+archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
+1. *Integrante 1*
+   - *Nombre completo:*
+   - *Correo:*
+   - *Certificado adjunto:*
+     #+begin_example
+      #+caption: Certificado Integrante 1
+      #+attr_latex: scale=0.75
+      #+label: fig:certificado-integrante-1
+      [[./carpeta-certificados/certificado-integrante1.pdf]]
+     #+end_example
+2. *Integrante 2*
+   - *Nombre completo:*
+   - *Correo:*
+   - *Certificado adjunto:*
+     #+begin_src example
+      Siga las instrucciones para insertar la imagen usando YASnippet
+     #+end_src
+3. *Integrante 3*
+   - *Nombre completo:*
+   - *Usuario institucional:*
+   - *Correo:*
+   - *Certificado adjunto:* (sí / no)
+     #+begin_src example
+      Siga las instrucciones para insertar la imagen usando YASnippet
+     #+end_src
+     
+* Parte B. Cuestionario argumentado grupal
+
+Para cada pregunta:
+
+- Indique la alternativa escogida (letra).
+- Escriba una justificación técnica breve (3 a 6 líneas). Fundamente
+  su respuesta. Su insumo principal es el curso de Conceptos Básicos
+  de Hardware. Si usa otro material referenciar.
+- Discuta con el grupo de trabajo las opciones y la respuesta ¿Existió
+  consenso? ¿Cuáles fueron las principales discrepancias?
+
+*Criterio:* correcto/incorrecto + calidad del argumento técnico.
+
+** Pregunta 1
+Al instalar una CPU en un socket LGA, ¿por qué es crítico alinear el
+pin 1 de la CPU con el pin 1 del socket?
+
+a. Para que el sistema arranque con mayor rapidez 
+
+b. Para evitar daños en la CPU y el socket al insertar incorrectamente
+
+c. Porque el pin 1 es el único que conduce electricidad 
+
+d. Para que el disipador quede centrado automáticamente
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+** Pregunta 2
+Al montar la placa madre en el gabinete, ¿cuál es la función de los separadores (standoffs)?
+
+a. Sostener el peso de las tarjetas de expansión
+
+b. Evitar cortocircuitos entre la placa madre y el metal del gabinete
+
+c. Mejorar la ventilación de la placa madre
+
+d. Facilitar la alineación del panel de E/S trasero
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+
+** Pregunta 3
+Según el manual de ensamblaje de Cisco, ¿cuándo NO es necesario aplicar pasta térmica al instalar el disipador sobre la CPU?
+
+a. Cuando la CPU es de alto rendimiento
+
+b. Cuando el disipador ya incluye pasta térmica preaplicada
+
+c. Cuando la CPU tiene más de un año de uso
+
+d. Cuando el gabinete tiene buena ventilación
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+
+** Pregunta 4
+¿Por qué se recomienda usar pulsera antiestática y alfombrilla antiestática al manipular componentes internos?
+
+a. Para proteger al técnico de descargas de 220 V
+
+b. Para evitar que la electricidad estática dañe los componentes
+
+c. Para cumplir una norma estética del laboratorio
+
+d. Para que los tornillos no se magneticen
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+** Pregunta 5
+Si al iniciar la computadora por primera vez un LED del panel frontal no funciona, ¿qué indica el manual de Cisco?
+
+a. Reemplazar el conector por uno de repuesto
+
+b. Revisar el BIOS para habilitar el LED
+
+c. Quitar el conector, invertirlo y volver a conectarlo
+
+d. Desconectar y reconectar la fuente de poder
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+
+** Pregunta 6
+¿Por qué una GPU puede requerir un conector de alimentación PCIe adicional de la fuente de poder?
+
+a. Porque la ranura PCIe no transmite señal de video
+
+b. Porque las GPUs de alto rendimiento consumen más potencia de la que la ranura puede suministrar
+
+c. Porque el conector PCIe solo funciona con tarjetas de red
+
+d. Por el estándar de codificación de color de los cables SATA
+
+- /Alternativa escogida:/ [a completar]
+- /Justificación técnica:/ [a completar]
+- /Debate del grupo:/ [a completar]
+
+* Parte C. Mantenimiento de computadores
+
+** 3.1 Insumos para mantenimiento preventivo
+   Liste al menos seis insumos y describa para qué sirve cada
+   uno. Revise el siguiente [[https://youtu.be/3ri1BMV7XTM?si=bjYoDUUKuMWwj4Qg][vídeo]].
+
+   | Insumo | Uso principal |
+   |--------+---------------|
+   |        |               |
+   |        |               |
+   |        |               |
+   |        |               |
+   |        |               |
+   |        |               |
+
+** 3.2 Procedimiento de limpieza — Desktop
+   1.
+   2.
+   3.
+   4.
+   5.
+
+** 3.3 Procedimiento de limpieza — Laptop
+   1.
+   2.
+   3.
+   4.
+   5.
+
+* Parte D. Aprendizaje obtenido
+
+** Integrante 1 [Nombre]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
+   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
+
+** Integrante 2 [Nombre]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
+   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
+
+** Integrante 3 [Nombre]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
+   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
+     
+* Rúbrica de evaluación
+
+  | Criterio                               | Puntaje máximo |
+  |----------------------------------------+----------------|
+  | Certificados individuales completos    |             20 |
+  | Cuestionario: respuesta correcta (x8)  |             30 |
+  | Cuestionario: argumento técnico (x8)   |             30 |
+  | Mantenimiento (tabla + procedimientos) |             20 |
+  | TOTAL                                  |            100 |
+
+* ¿Cómo referenciar en Emacs?
+Para insertar una referencia a un recurso bibliográfico
+1. Puede actualizar el archivo ~../bibliography/bibliography.bib~
+2. Escribir en formato **BibTeX** el recurso bibliográfico
+3. Verifique la siguiente configuración al encabezado:
+   #+begin_src org
+   #+cite_export: biblatex
+   #+LATEX_HEADER: \usepackage[backend=biber, style=ieee]{biblatex}
+   #+BIBLIOGRAPHY: ../bibliography/bibliography.bib
+   #+end_src
+4. Usar ~M-x org-cite-insert~ para insertar una cita. Aparecerá una
+   lista. Use los cursores para seleccionar la cita. Ejecute ~C-RET~: /De acuerdo con
+   [cite:@ledin2022modern], la arquitectura ...../
+5. Revise que al final del documento exista ~#+print_bibliography:~
+6. **Sugerencia:** Para evitar repetir varias veces el proceso de
+   exportación, es recomendable cambiar el compilador de \LaTeX a
+   ~latexmk~. Para esto:
+   - ~sudo apt install latexmk~
+   - Revise en el encabezado del ~.org~ que el compilador escogido sea
+     ~#+LATEX_COMPILER: latexmk~. También puede modificar el archivo
+     ~init.el~ para indicar qué compilador se usa para exportar de
+     ~.org~ a /LaTeX/:
+     #+begin_src elisp
+;; 4.7b Proceso de compilación con latexmk para Org-export
+(with-eval-after-load 'ox-latex
+  (setq org-latex-pdf-process
+        '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f")))
+
+;; 4.7c Org-cite: biblatex como procesador para exportación LaTeX
+(with-eval-after-load 'oc
+  (setq org-cite-export-processors
+        '((latex biblatex)
+          (t basic))))
+
+     #+end_src
+* Verificación de Entregables [0%]:
+Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
+no. Si un ítem no pudo realizarse apunte en la siguiente sección las
+razones al respecto.
+- [ ] Los enlaces a los certificados en el documento ~.org~ funcionan.
+- [ ] Resolución completa del Cuestionario2.
+- [ ] Revisión del vídeo sobre mantenimiento a computador ASUS. 
+- [ ] Tutorial de Comandos Emacs realizado.
+- [ ] Lista de insumos para mantenimiento completa.
+- [ ] Procedimiento de mantenimiento para desktop completo.
+- [ ] Procedimiento de mantenimiento para laptop completo.
+- [ ] Revisión de ortografía con ~ispell-buffer~ en el buffer
+- [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
+- [ ] Subir al aula virutal archivo ~.org~ y ~.pdf~
+
+#+print_bibliography:
