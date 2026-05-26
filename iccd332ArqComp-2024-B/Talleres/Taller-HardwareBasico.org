@@ -87,12 +87,10 @@ archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
    - *Nombre completo:* Micaela Dannae Sagñay Iza
    - *Correo:* micaela.sagnay@epn.edu.ec
    - *Certificado adjunto:*  
-     #+begin_example
-      #+caption: Certificado Micaela Sagñay
-      #+attr_latex: scale=0.75
-      #+label: fig:certificado-micaela
-      ./certificado_SagñayMicaela.png
-     #+end_example
+     #+caption: Certificado Micaela Sagñay
+     #+attr_latex: scale=0.75
+     #+label: fig:certificado-micaela
+     [[./certificado-micaela.png]]
      
 * Parte B. Cuestionario argumentado grupal
 
@@ -236,7 +234,7 @@ d. Por el estándar de codificación de color de los cables SATA
 
 ** Integrante 3 [Micaela Sagñay]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Obtuve conocimientos fundamentales sobre el mantenimiento preventivo y correctivo tanto en computadoras de escritorio como en laptops, además de profundizar en la arquitectura interna de los componentes y las normativas de seguridad para el ensamblaje.]
-   - *¿Qué concepto corrigió o clarificó?* [Clarificó el funcionamiento a nivel de hardware de los componentes críticos como la memoria RAM y el procesador, además de corregir prácticas incorrectas de manipulación de componentes, adoptando técnicas adecuadas de limpieza y manejo de hardware.]
+   - *¿Qué concepto corrigió o clarificó?* [Clarifique el funcionamiento a nivel de hardware de los componentes críticos como la memoria RAM y el procesador, además de corregir prácticas incorrectas de manipulación de componentes, adoptando técnicas adecuadas de limpieza y manejo de hardware.]
      
 * Rúbrica de evaluación
 
