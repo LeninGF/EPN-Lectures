@@ -229,8 +229,7 @@ d. Por el estándar de codificación de color de los cables SATA
 
 ** Integrante 1 [Nombre]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
-   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
-
+   - *¿Qué concepto corrigió o clarificó?* [Respuesta
 ** Integrante 2 [Alex Flores]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Aprendí lo basico sobre mantenimiento tanto de PCs de escritorio como de laptops, tambien aprendi mas a fondo sobre los componentes, algunas buenas practicas de ensamblaje y limpieza de componentes]
    - *¿Qué concepto corrigió o clarificó?* [Me quedó mas claro como funcionan los componentes como RAM o procesador a nivel hardware, algunas practicas malas que tenia como claras en mi cabeza se aclararon y tambien corregi la manera de manipular los componentes]
