@@ -79,12 +79,10 @@ archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
       [[./carpeta-certificados/certificado-integrante1.pdf]]
      #+end_example
 2. *Integrante 2*
-   - *Nombre completo:*
-   - *Correo:*
-   - *Certificado adjunto:*
-     #+begin_src example
-      Siga las instrucciones para insertar la imagen usando YASnippet
-     #+end_src
+   - *Nombre completo:* Alex Sebastian Flores Torres
+   - *Correo:* alex.flores01@epn.edu.ec
+   - *Certificado adjunto:* [[./images/Computer_Hardware_Basics_certificate_falex8866-gmail-com_6d55080f-cb8a-497a-bf2d-629cb1e8bb21_page-0001.jpg]]
+     
 3. *Integrante 3*
    - *Nombre completo:*
    - *Usuario institucional:*
@@ -202,28 +200,28 @@ d. Por el estándar de codificación de color de los cables SATA
    Liste al menos seis insumos y describa para qué sirve cada
    uno. Revise el siguiente [[https://youtu.be/3ri1BMV7XTM?si=bjYoDUUKuMWwj4Qg][vídeo]].
 
-   | Insumo | Uso principal |
-   |--------+---------------|
-   |        |               |
-   |        |               |
-   |        |               |
-   |        |               |
-   |        |               |
-   |        |               |
+   | Insumo               | Uso principal                                    |
+   |----------------------+--------------------------------------------------|
+   | Aire comprimido      | Eliminar polvo de componentes y ventiladores     |
+   | Alcohol isopropílico | Limpiar componentes electrónicos sin dañarlos    |
+   | Brocha antiestática  | Retirar polvo de tarjetas y partes delicadas     |
+   | Pasta térmica        | Mejorar la transferencia de calor del procesador |
+   | Paño de microfibra   | Limpiar pantallas y superficies                  |
+   | Pulsera antiestática | Evitar descargas eléctricas en los componentes                                                 |
 
 ** 3.2 Procedimiento de limpieza — Desktop
-   1.
-   2.
-   3.
-   4.
-   5.
+   1.Apagar y desconectar el computador de la corriente.
+   2.Abrir el case con cuidado utilizando herramientas adecuadas.
+   3.Retirar el polvo interno usando aire comprimido y brocha antiestática.
+   4.Limpiar ventiladores, memoria RAM y demás componentes.
+   5.Cerrar el equipo y verificar su correcto funcionamiento.
 
 ** 3.3 Procedimiento de limpieza — Laptop
-   1.
-   2.
-   3.
-   4.
-   5.
+   1.Apagar la laptop y desconectar el cargador.
+   2.Retirar la tapa inferior cuidadosamente.
+   3.Limpiar ventiladores y salidas de aire con aire comprimido.
+   4.Limpiar teclado, pantalla y superficie externa con paño de microfibra.
+   5.Ensamblar nuevamente la laptop y comprobar su funcionamiento.
 
 * Parte D. Aprendizaje obtenido
 
@@ -231,9 +229,9 @@ d. Por el estándar de codificación de color de los cables SATA
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
    - *¿Qué concepto corrigió o clarificó?* [Respuesta]
 
-** Integrante 2 [Nombre]
-   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
-   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
+** Integrante 2 [Alex Flores]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Aprendí lo basico sobre mantenimiento tanto de PCs de escritorio como de laptops, tambien aprendi mas a fondo sobre los componentes, algunas buenas practicas de ensamblaje y limpieza de componentes]
+   - *¿Qué concepto corrigió o clarificó?* [Me quedó mas claro como funcionan los componentes como RAM o procesador a nivel hardware, algunas practicas malas que tenia como claras en mi cabeza se aclararon y tambien corregi la manera de manipular los componentes]
 
 ** Integrante 3 [Nombre]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
