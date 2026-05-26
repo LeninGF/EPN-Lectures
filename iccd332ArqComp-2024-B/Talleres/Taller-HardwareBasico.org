@@ -1,8 +1,8 @@
 
 #+TITLE: Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores
 #+SUBTITLE: ICCD332 Arquitectura de Computadores
-#+AUTHOR: [Nombres de los integrantes del grupo]
-#+DATE: [Fecha de entrega]
+#+AUTHOR: Alex Flores, Micaela Sagñay
+#+DATE: 26/05/2026
 #+OPTIONS: toc:nil num:t
 #+LANGUAGE: es
 
@@ -84,13 +84,15 @@ archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
    - *Certificado adjunto:* [[./images/Computer_Hardware_Basics_certificate_falex8866-gmail-com_6d55080f-cb8a-497a-bf2d-629cb1e8bb21_page-0001.jpg]]
      
 3. *Integrante 3*
-   - *Nombre completo:*
-   - *Usuario institucional:*
-   - *Correo:*
-   - *Certificado adjunto:* (sí / no)
-     #+begin_src example
-      Siga las instrucciones para insertar la imagen usando YASnippet
-     #+end_src
+   - *Nombre completo:* Micaela Dannae Sagñay Iza
+   - *Correo:* micaela.sagnay@epn.edu.ec
+   - *Certificado adjunto:*  
+     #+begin_example
+      #+caption: Certificado Micaela Sagñay
+      #+attr_latex: scale=0.75
+      #+label: fig:certificado-micaela
+      ./certificado_SagñayMicaela.png
+     #+end_example
      
 * Parte B. Cuestionario argumentado grupal
 
@@ -233,9 +235,9 @@ d. Por el estándar de codificación de color de los cables SATA
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Aprendí lo basico sobre mantenimiento tanto de PCs de escritorio como de laptops, tambien aprendi mas a fondo sobre los componentes, algunas buenas practicas de ensamblaje y limpieza de componentes]
    - *¿Qué concepto corrigió o clarificó?* [Me quedó mas claro como funcionan los componentes como RAM o procesador a nivel hardware, algunas practicas malas que tenia como claras en mi cabeza se aclararon y tambien corregi la manera de manipular los componentes]
 
-** Integrante 3 [Nombre]
-   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
-   - *¿Qué concepto corrigió o clarificó?* [Respuesta]
+** Integrante 3 [Micaela Sagñay]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Obtuve conocimientos fundamentales sobre el mantenimiento preventivo y correctivo tanto en computadoras de escritorio como en laptops, además de profundizar en la arquitectura interna de los componentes y las normativas de seguridad para el ensamblaje.]
+   - *¿Qué concepto corrigió o clarificó?* [Clarificó el funcionamiento a nivel de hardware de los componentes críticos como la memoria RAM y el procesador, además de corregir prácticas incorrectas de manipulación de componentes, adoptando técnicas adecuadas de limpieza y manejo de hardware.]
      
 * Rúbrica de evaluación
 
