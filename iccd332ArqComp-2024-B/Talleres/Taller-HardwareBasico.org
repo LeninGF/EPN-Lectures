@@ -1,7 +1,7 @@
 
 #+TITLE: Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores
 #+SUBTITLE: ICCD332 Arquitectura de Computadores
-#+AUTHOR: Alex Flores, Micaela Sagñay
+#+AUTHOR: Alex Flores, Micaela Sagñay, Molina Jhanavi
 #+DATE: 26/05/2026
 #+OPTIONS: toc:nil num:t
 #+LANGUAGE: es
@@ -69,15 +69,15 @@ Para insertar la captura del certificado utilice YASnippet: Escriba
 escalado de la misma y una referencia. Finalmente inserte el enlace al
 archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
 1. *Integrante 1*
-   - *Nombre completo:*
-   - *Correo:*
+   - *Nombre completo:* Jhanavi Abigail Molina Gómez
+   - *Correo:*jhanavi.molina@epn.edu.ec
    - *Certificado adjunto:*
      #+begin_example
-      #+caption: Certificado Integrante 1
+      #+caption: Certificado Molina Jhanavi
       #+attr_latex: scale=0.75
-      #+label: fig:certificado-integrante-1
-      [[./carpeta-certificados/certificado-integrante1.pdf]]
-     #+end_example
+      #+label: fig:certificado-jhanavi
+      [[file:Certificado_Cisco.jpg]]
+      
 2. *Integrante 2*
    - *Nombre completo:* Alex Sebastian Flores Torres
    - *Correo:* alex.flores01@epn.edu.ec
@@ -117,9 +117,14 @@ c. Porque el pin 1 es el único que conduce electricidad
 
 d. Para que el disipador quede centrado automáticamente
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ Literal B
+- /Justificación técnica:/ En los sockets los pines están en el socket, no en la
+  CPU, alinear correctamente el pin 1 nos garantiza que el procesador se asiente
+  sin forzar, evitando doblar o romper pines del socket.
+- /Debate del grupo:/ Algunos consideraron inicialmente la opción A o D pero las
+  pudimos descartar esas opciones porque la velocidad de arranque y la alineacion
+  del disipador dependen de factores distintos, y la opción C es falsa ya que todos
+  los pines conducen señales y energía.
 ** Pregunta 2
 Al montar la placa madre en el gabinete, ¿cuál es la función de los separadores (standoffs)?
 
@@ -131,11 +136,15 @@ c. Mejorar la ventilación de la placa madre
 
 d. Facilitar la alineación del panel de E/S trasero
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ B
+- /Justificación técnica:/ Los separadores elevan la placa madre y crean un espacio
+  entre sus pistas de cobre y soldaduras y la bandeja metalica del gabinete, esto previene
+  contactos electricos no deseados que podrían provocar cortocircuitos o daños a la placa madre.
+- /Debate del grupo:/ Hubo una discusión sobre la opción D ya que al instalar los separadores
+  en los agujeros correctos si ayuda a que los puertos traseros coincidan con la chapa E/S, pero
+  su razón de ser fundamental es aislar electricamente la placa del chasis.
 
-** Pregunta 3
+** Pregunta 3      
 Según el manual de ensamblaje de Cisco, ¿cuándo NO es necesario aplicar pasta térmica al instalar el disipador sobre la CPU?
 
 a. Cuando la CPU es de alto rendimiento
@@ -146,9 +155,15 @@ c. Cuando la CPU tiene más de un año de uso
 
 d. Cuando el gabinete tiene buena ventilación
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ B
+- /Justificación técnica:/ La pasta termica es necesaria para llenar las microimperfecciones entre la superficie de la CPU
+  y la base del disipador, mejorando la transferencia de calor, muchos disipadores comerciales incluyen una capa
+  preaplicada, aplicar pasta adicional sobre una ya existente puede crear una capa demasiado gruesa
+  reduciendo la eficiencia térmica o incluso causando derrames sobre el socket.
+- /Debate del grupo:/ Hubo un descarte entre todas las opciones excepto la B, la opcion A, los CPUS de alto rendimiento
+  si requiere pasta, en la opción C la antiguedad del CPU no es relevante, si se reinstala un disipador usado
+  si debe limpiarse y aplicar pasta nueva pero eso no es no aplicar, en la opcion D, la ventilacion del gabinete
+  no reemplaza la necesidad de contacto térmico adecuado.
 
 ** Pregunta 4
 ¿Por qué se recomienda usar pulsera antiestática y alfombrilla antiestática al manipular componentes internos?
@@ -225,9 +240,9 @@ d. Por el estándar de codificación de color de los cables SATA
 
 * Parte D. Aprendizaje obtenido
 
-** Integrante 1 [Nombre]
-   - *¿Qué conocimiento nuevo obtuvo del curso?* [Respuesta]
-   - *¿Qué concepto corrigió o clarificó?* [Respuesta
+** Integrante 1 [Jhanavi Molina]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* [Aprendí a identificar los componentes principales de una computadora como el CPU, memoria RAM, placa madre, disco duro y fuente de poder, tambien aprendí como se los ensambla correctamente.]
+   - *¿Qué concepto corrigió o clarificó?* [Entendí que la pasta térmica no es opcional, si no necesaria para que la CPU no se sobrecaliente, antes no sabía o no tenía claro el concepto de para que servia.]
 ** Integrante 2 [Alex Flores]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Aprendí lo basico sobre mantenimiento tanto de PCs de escritorio como de laptops, tambien aprendi mas a fondo sobre los componentes, algunas buenas practicas de ensamblaje y limpieza de componentes]
    - *¿Qué concepto corrigió o clarificó?* [Me quedó mas claro como funcionan los componentes como RAM o procesador a nivel hardware, algunas practicas malas que tenia como claras en mi cabeza se aclararon y tambien corregi la manera de manipular los componentes]
@@ -281,19 +296,19 @@ Para insertar una referencia a un recurso bibliográfico
           (t basic))))
 
      #+end_src
-* Verificación de Entregables [0%]:
+* Verificación de Entregables [100%]:
 Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
 no. Si un ítem no pudo realizarse apunte en la siguiente sección las
 razones al respecto.
-- [ ] Los enlaces a los certificados en el documento ~.org~ funcionan.
-- [ ] Resolución completa del Cuestionario2.
-- [ ] Revisión del vídeo sobre mantenimiento a computador ASUS. 
-- [ ] Tutorial de Comandos Emacs realizado.
-- [ ] Lista de insumos para mantenimiento completa.
-- [ ] Procedimiento de mantenimiento para desktop completo.
-- [ ] Procedimiento de mantenimiento para laptop completo.
-- [ ] Revisión de ortografía con ~ispell-buffer~ en el buffer
-- [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
-- [ ] Subir al aula virutal archivo ~.org~ y ~.pdf~
+- [X] Los enlaces a los certificados en el documento ~.org~ funcionan.
+- [X] Resolución completa del Cuestionario2.
+- [X] Revisión del vídeo sobre mantenimiento a computador ASUS. 
+- [X] Tutorial de Comandos Emacs realizado.
+- [X] Lista de insumos para mantenimiento completa.
+- [X] Procedimiento de mantenimiento para desktop completo.
+- [X] Procedimiento de mantenimiento para laptop completo.
+- [X] Revisión de ortografía con ~ispell-buffer~ en el buffer
+- [X] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
+- [X] Subir al aula virutal archivo ~.org~ y ~.pdf~
 
 #+print_bibliography:
