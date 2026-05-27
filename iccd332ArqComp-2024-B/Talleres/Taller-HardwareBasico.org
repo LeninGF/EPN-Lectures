@@ -1,7 +1,7 @@
 
 #+TITLE: Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores
 #+SUBTITLE: ICCD332 Arquitectura de Computadores
-#+AUTHOR: Alex Flores, Micaela Sagñay, Molina Jhanavi
+#+AUTHOR: Alex Flores, Micaela Sagñay, Molina Jhanavi, Jami Mateo
 #+DATE: 26/05/2026
 #+OPTIONS: toc:nil num:t
 #+LANGUAGE: es
@@ -15,7 +15,8 @@
 #+subtitle:
 #+latex_footnote_command: \footnote{%s%s}
 #+latex_engraved_theme:
-#+latex_compiler: latexmk
+#+LATEX_COMPILER: latexmk
+
 
 #+latex_header: \usepackage{fancyhdr}
 #+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
@@ -67,30 +68,45 @@ Para insertar la captura del certificado utilice YASnippet: Escriba
 ~fig_~ seguido de ~C-TAB~. Esto produce ~#+caption~, ~#+attr_latex~ y
 ~#+label~ que permiten colocar un encabezado a la imagen, controlar el
 escalado de la misma y una referencia. Finalmente inserte el enlace al
-archivo usando ~C-c C-l~ o usando ~[[./carpeta-certificados/cert-int1.pdf]]~
-1. *Integrante 1*
+archivo usando ~C-c C-l~ o usando
+~[[./carpeta-certificados/cert-int1.pdf]]~
+
+** Integrante 1
    - *Nombre completo:* Jhanavi Abigail Molina Gómez
-   - *Correo:*jhanavi.molina@epn.edu.ec
-   - *Certificado adjunto:*
-     #+begin_example
+   - *Correo:* jhanavi.molina@epn.edu.ec
+   - *Certificado adjunto:*    
       #+caption: Certificado Molina Jhanavi
-      #+attr_latex: scale=0.75
-      #+label: fig:certificado-jhanavi
+    #+attr_latex: scale=0.30
+    #+label: fig:certificado-jhanavi
       [[file:Certificado_Cisco.jpg]]
+     
       
-2. *Integrante 2*
+** Integrante 2
    - *Nombre completo:* Alex Sebastian Flores Torres
    - *Correo:* alex.flores01@epn.edu.ec
-   - *Certificado adjunto:* [[./images/Computer_Hardware_Basics_certificate_falex8866-gmail-com_6d55080f-cb8a-497a-bf2d-629cb1e8bb21_page-0001.jpg]]
+   - *Certificado adjunto:*
+      #+caption: Certificado Alex Flores
+    #+attr_latex: scale=0.30
+    #+label: fig:certificado-alex
+      [[./images/Certificado_Alex.jpg]]
      
-3. *Integrante 3*
+** Integrante 3
    - *Nombre completo:* Micaela Dannae Sagñay Iza
    - *Correo:* micaela.sagnay@epn.edu.ec
-   - *Certificado adjunto:*  
+   - *Certificado adjunto:*       
      #+caption: Certificado Micaela Sagñay
-     #+attr_latex: scale=0.75
-     #+label: fig:certificado-micaela
-     [[./certificado-micaela.png]]
+   #+attr_latex: scale=0.30
+   #+label: fig:certificado-micaela
+     [[./images/certificado-micaela.jpg]]
+
+** Integrante 4
+   - *Nombre completo:* Jami Tonato Mateo Israel
+   - *Correo:* mateo.jami@epn.edu.ec
+   - *Certificado adjunto:*     
+      #+caption: Certificado Jami Mateo
+    #+attr_latex: scale=0.30
+    #+label: fig:certificado-mateo
+    [[./images/Certificado_Mateo.jpg]]
      
 * Parte B. Cuestionario argumentado grupal
 
@@ -99,7 +115,7 @@ Para cada pregunta:
 - Indique la alternativa escogida (letra).
 - Escriba una justificación técnica breve (3 a 6 líneas). Fundamente
   su respuesta. Su insumo principal es el curso de Conceptos Básicos
-  de Hardware. Si usa otro material referenciar.
+  de Hardware. Si usa otro material debe referenciar.
 - Discuta con el grupo de trabajo las opciones y la respuesta ¿Existió
   consenso? ¿Cuáles fueron las principales discrepancias?
 
@@ -176,9 +192,19 @@ c. Para cumplir una norma estética del laboratorio
 
 d. Para que los tornillos no se magneticen
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ B
+- /Justificación técnica:/ La pulsera antiestática que está conectada
+  a tierra y la alfombrilla antiestática disipan de forma segura
+  cualquier diferencial de potencial, protegiendo los componentes
+  durante el manejo de los mismos, esto se enseña en el curso de Cisco
+  IT Essentials como una medida obligatoria antes e manipular hardware interno.
+- /Debate del grupo:/ En el grupo discutimos y estuvimos de acuerdo en
+  que la opción B era la correcta, se descartó la A porque la pulsera
+  antiestática no protege contra voltajes de red 220 V, para eso se
+  usan guantes dieléctricos y herramientas aisladas, se descartó la
+  opción C porque no es un tema estético, sino de seguridad del
+  hardware y se descartó la opción D porque los tornillos se
+  magnetizan por otros motivos, no por falta de antiestática.
 ** Pregunta 5
 Si al iniciar la computadora por primera vez un LED del panel frontal no funciona, ¿qué indica el manual de Cisco?
 
@@ -190,9 +216,20 @@ c. Quitar el conector, invertirlo y volver a conectarlo
 
 d. Desconectar y reconectar la fuente de poder
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ C
+- /Justificación técnica:/ Los LED del panel frontal tienen polaridad,
+  si se conectan al revés no se encienden pero no se dañan los
+  componentes, el manual de Cisco y los estándares de ensamblaje
+  indican que ante un LED que no funciona en el primer encendido, lo
+  primero es verificar la orientación del conector e invertirlo si es
+  necesario, los interruptores funcionan en cualquier orientación,
+  pero los LED si requieren polaridad correcta.
+- /Debate del grupo:/ Se descartó la opción A porque no existen
+  conectores de repuesto para el panel frontal, también se descartó la
+  opción B porque los LED del panel frontal no se
+  habilitan/deshabilitan desde el BIOS, son del hardware y por último,
+  se descartó la opción D porque desconectar la fuente de poder no
+  soluciona un problema de polaridad invertida en el conector del LED.
 
 ** Pregunta 6
 ¿Por qué una GPU puede requerir un conector de alimentación PCIe adicional de la fuente de poder?
@@ -205,9 +242,18 @@ c. Porque el conector PCIe solo funciona con tarjetas de red
 
 d. Por el estándar de codificación de color de los cables SATA
 
-- /Alternativa escogida:/ [a completar]
-- /Justificación técnica:/ [a completar]
-- /Debate del grupo:/ [a completar]
+- /Alternativa escogida:/ B
+- /Justificación técnica:/ La ranura PCle x16 puede suministrar hasta
+  75 vatios, sin embargo, las tarjetas gráficas de alto rendimiento
+  pueden consumir 150W, 250W o más, para cubrir esta demanda adicional
+  se necesitan conectores de alimentación PCle e 6 u 8 pines
+  directamente desde la fuente de poder. 
+- /Debate del grupo:/ Se descartó la opción A porque la ranura PCle sí
+  transmite señal de video solo que no a suficiente potencia, se
+  descartó la opción C porque el conector PCle de alimentación es para
+  gráficos no para tarjetas de red y se descartó la opción D porque el
+  código de color de cables SATA no tiene relación con conectores PCle
+  de GPU. 
 
 * Parte C. Mantenimiento de computadores
 
@@ -250,6 +296,22 @@ d. Por el estándar de codificación de color de los cables SATA
 ** Integrante 3 [Micaela Sagñay]
    - *¿Qué conocimiento nuevo obtuvo del curso?* [Obtuve conocimientos fundamentales sobre el mantenimiento preventivo y correctivo tanto en computadoras de escritorio como en laptops, además de profundizar en la arquitectura interna de los componentes y las normativas de seguridad para el ensamblaje.]
    - *¿Qué concepto corrigió o clarificó?* [Clarifique el funcionamiento a nivel de hardware de los componentes críticos como la memoria RAM y el procesador, además de corregir prácticas incorrectas de manipulación de componentes, adoptando técnicas adecuadas de limpieza y manejo de hardware.]
+
+** Integrante 4 [Mateo Jami]
+   - *¿Qué conocimiento nuevo obtuvo del curso?* En este curso, logré
+     aprender algo más que solo los principios básicos del hardware de
+     un ordenador ya que fue bastante interesante saber el tipo de
+     herramientas necesarias para los mantenimientos, junto con los
+     cuidados que hay que tener para evitar daños permanentes en los
+     componentes del ordenador y esperaría a futuro poder incrementar
+     las bases que ahora tengo del hardware del ordenador.
+   - *¿Qué concepto corrigió o clarificó?* No me quedaba del todo
+     claro el porque se utilizaban las conexiones a tierra en los
+     protectores antiestáticos y luego de aprobar el curso, usar su
+     material e investigar otros factores adicionales, logré
+     clarificar por completo la importancia de estas medidas de
+     protección al momento de manipular los componentes físicos del ordenador.
+     
      
 * Rúbrica de evaluación
 
