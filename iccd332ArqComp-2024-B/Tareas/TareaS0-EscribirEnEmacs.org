@@ -4,9 +4,9 @@
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Lógica Digital
-#+date: 2026-XX-XX Si escribes dd y le das ~C-TAB~ Emacs escribe la fecha por ti
-#+author: COLOQUE SU NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+date: 2026-06-01
+#+author: Jami Tonato Mateo Israel
+#+email: mateo.jami@epn.edu.ec
 #+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
@@ -86,10 +86,48 @@ Escriba sus argumentos lo mejor que pueda, guarde el documento .ORG y
 Suba el documento .ORG
 * Análisis Crítico
 ** De Chat-GPT, sus sesgos, nuestros sesgos y el Pensamiento Crítico:
-
-Escriba aquí su respuesta.
+Mi opinión sobre el vídeo es a favor de lo que menciona la autora, ya
+que, muchas veces solemos usar la inteligencia artificial
+para generar respuestas rápidas y, en muchas ocasiones, solemos creer
+que todas las respuestas que la IA nos arroja es la verdad absoluta y
+caemos en falacias y/o sesgos sin siquiera cuestionar fuentes o si lo
+que leemos es del todo cierto. Es verdad también que si no se le
+da un buen prompt a la IA, las respuestas que vamos a obtener, serán
+igual de mal elaboradas o "tontas" (como lo menciona la autora) ya que
+los modelos de IA, no están diseñados para crear ideas nuevas o tener
+la capacidad de imaginar o debatir sobre algún tema en general, pues
+estas son habilidades netamente ligadas a la capacidad humana del
+pensamiento y mas en específico, del pensamiento crítico, el cuál es
+descrito de forma no tan técnica como "la capacidad para pensar fuera
+de la caja", de no quedarse con lo primero que se lee o se sabe, sino
+mas bien, de siempre indagar profundamente en cualquier tema del cual
+se busque tener un conocimiento pleno y, al usar la IA para solo
+quedarse con lo primero que arroja, sin ir mas allá, se disminuye aun
+más la capacidad de pensamiento critico. Es por ello, que también
+comparto la posición de la autora de que, si se van a usar
+herramientas de IA, se lo haga de manera coherente y siempre aplicando
+la habilidad de pensamiento crítico para mejorar la capacidad de
+pensar mas allá y de forma mas compleja.
 ** G. Hinton sobre la IA y los Sistemas Económicos ¿Es la IA democratizable?
-Escriba aquí su respuesta.
+Esta pregunta es algo complicada y depende de muchos factores para
+determinar una respuesta afirmativa o negativa. Primero que todo,
+tengo claro que el sistema económico actual, por el cuál nos regimos
+en la mayoría del mundo, es aparentemente "sustentable" a largo plazo,
+pero la realidad es que, no es así, este modelo, basado en la
+acumulación, la explotación de recursos (tanto humanos, naturales y
+tecnológicos) y la separación en clases, no es sustentable e incluso
+teóricamente esta destinado a fracasar. Bajo este contexto y sabiendo
+también la situación política y económica actual, el hecho de que una
+herramienta tan "poderosa" como la IA sea "democratizable" (es decir,
+que sea del pueblo y en pro del mismo) si es necesario hacer la
+transición hacia el socialismo (idea que propone G. Hinton) ya que
+bajo este modelo económico, se priorizaría la equidad y el control de
+recursos de manera colectiva y no de forma privada. Por lo tanto, yo,
+estoy de acuerdo con la posición del "padre de la IA" de que la única
+solución real, para alcanzar un futuro utópico con las herramientas
+tecnológicas, en especial la IA, es bajo el modelo económico del
+socialismo, en el cuál la IA si sería democratizable y accesible en
+pro de todos.
 
 
 

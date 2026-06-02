@@ -1,0 +1,273 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{default}
+\author{Lenin G. Falconi}
+\date{2026-04-08}
+\title{S1 Sistemas de Numeración}
+\hypersetup{
+ pdfauthor={Lenin G. Falconi},
+ pdftitle={S1 Sistemas de Numeración},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.3 (Org mode 9.6.15)}, 
+ pdflang={Spanish}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\setcounter{tocdepth}{1}
+\tableofcontents
+\end{frame}
+
+
+\begin{frame}[label={sec:org96615ff}]{Sistemas de Numeración}
+\begin{block}{Concepto General de Número}
+\begin{itemize}
+\item Un número se puede representar como una cadena de dígitos
+\(b_{n-1} \dots b_2b_1b_0 \cdot b_{-1}b_{-2}\dots b_m\)
+\item La posición relativa \(i\) del dígito posee un \alert{peso} \(r^i\), donde \(r\)
+es la \alert{base} del sistema de numeración
+\item El alfabeto de dígitos posibles en una base \(r\) cumple:
+\(0 \leq b_i \leq r-1\)
+\end{itemize}
+
+Por tanto, un número \(N\) en base \(r\) se expresa como:
+
+$$N_r = \sum_{i=-m}^{n-1} b_i \times r^i$$
+\end{block}
+
+\begin{block}{Tipos de Sistemas de Numeración}
+\begin{center}
+\begin{tabular}{lr}
+Denominación & Base\\[0pt]
+\hline
+Decimal & 10\\[0pt]
+Octal & 8\\[0pt]
+Binario & 2\\[0pt]
+Hexadecimal & 16\\[0pt]
+\end{tabular}
+\end{center}
+\end{block}
+
+\begin{block}{Ejercicio 1: Conversión a Decimal}
+\begin{itemize}
+\item Escriba un número en base 7
+\item Escriba un número en base 4
+\item ¿Qué valor decimal corresponde a cada uno?
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org0353fa6}]{Sistema Decimal y Binario}
+\begin{block}{Sistema de Numeración Decimal}
+\begin{itemize}
+\item La base es \(r=10\)
+\item Los dígitos cumplen \(0 \leq b_i \leq 9\) y \(b_i \in \mathbb{Z}^+\)
+\end{itemize}
+
+Ejemplo:
+
+$$123.45 = 1\times10^2 + 2\times10^1 + 3\times10^0 + 4\times10^{-1} + 5\times10^{-2}$$
+\end{block}
+
+\begin{block}{Sistema de Numeración Binario}
+\begin{itemize}
+\item La base es \(r=2\)
+\item Los dígitos cumplen \(0 \leq b_i \leq 1\) y \(b_i \in \mathbb{Z}^+\)
+\item Equivalencias directas: \(0_2 = 0_{10}\) y \(1_2 = 1_{10}\)
+\end{itemize}
+
+Ejemplo:
+
+$$1101.01_2 = 1\times2^3 + 1\times2^2 + 0\times2^1 + 1\times2^0 + 0\times2^{-1} + 1\times2^{-2}$$
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orgddc683a}]{Conversión de Base r a Decimal}
+\begin{block}{Conversión \(N_r \rightarrow X_{10}\)}
+Sea \(N_r \rightarrow X_{10}\) la conversión de un número en base \(r\) a decimal.
+
+$$X_{10} = \sum_i b_i \times r^i$$
+\end{block}
+
+\begin{block}{Ejercicio 2: \(N_r \rightarrow X_{10}\)}
+\begin{itemize}
+\item \((4021.2)_5\)
+\item \((127.4)_8\)
+\item \((110101)_2\)
+\item \((B65F)_{16}\)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org786ab80}]{Conversión Decimal a Binario}
+\begin{block}{Parte Entera}
+Dado un número decimal, se aplica divisiones sucesivas entre 2:
+
+\begin{itemize}
+\item Sea \(N\) la parte entera decimal
+\item Dividir sucesivamente entre 2 y registrar residuos
+\item El número binario buscado = residuos leídos en \alert{orden inverso}
+\end{itemize}
+
+$$N = 2N_1 + R_0 \quad N_1 = 2N_2 + R_1 \quad \dots \quad N_{m-1} = 2N_m + R_{m-1}$$
+
+Entonces:
+
+$$N = 2^mN_m + 2^{m-1}R_{m-1} + \dots + 2^1R_1 + R_0$$
+\end{block}
+
+\begin{block}{Ejercicio 3: \(N_{10} \rightarrow X_r\)}
+\begin{enumerate}
+\item Convertir 41 a binario
+\item Convertir 153 a octal
+\item Convertir 256 a hexadecimal
+\end{enumerate}
+\end{block}
+
+\begin{block}{Parte Fraccionaria}
+Sea \(F = 0\cdot b_{-1}b_{-2}\dots\) la parte fraccionaria en binario.
+
+$$2F = b_{-1} + F_1$$
+
+Procedimiento:
+\begin{enumerate}
+\item Multiplique la fracción por la base y tome la \alert{parte entera}
+\item Repita con la nueva fracción resultante
+\item Detenga al llegar a 0 o alcanzar la precisión deseada
+\end{enumerate}
+\end{block}
+
+\begin{block}{Ejercicio 4: Parte Fraccionaria}
+\begin{enumerate}
+\item \((0.6875)_{10} \rightarrow X_2\)
+\item \((0.513)_{10} \rightarrow X_8\)
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org7e038f4}]{Conversión entre Binario, Octal y Hexadecimal}
+\begin{block}{Sistema Hexadecimal}
+La base es 16 y sus símbolos son:
+
+$$0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F$$
+
+Relaciones clave:
+
+$$2^3 = 8 \qquad 2^4 = 16$$
+\end{block}
+
+\begin{block}{Conversión Binario \(\rightarrow\) Octal}
+\begin{enumerate}
+\item Agrupar en bloques de \alert{3 bits} desde el punto decimal rellenando con 0
+\end{enumerate}
+
+Sea \(N_2 = 10101001.10111\):
+
+$$010\,101\,001.101\,110$$
+
+\begin{enumerate}
+\item Sustituir cada grupo por su equivalente octal
+\end{enumerate}
+
+$$\Rightarrow 251.56_8$$
+\end{block}
+
+\begin{block}{Conversión Binario \(\rightarrow\) Hexadecimal}
+\begin{enumerate}
+\item Agrupar en bloques de \alert{4 bits} desde el punto decimal rellenando con 0
+\end{enumerate}
+
+Sea \(N_2 = 10101001.10111\):
+
+$$1010\,1001.1011\,1000$$
+
+\begin{enumerate}
+\item Sustituir cada grupo por su equivalente hexadecimal
+\end{enumerate}
+
+$$\Rightarrow A9.B8_{16}$$
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:orge49928f},fragile]{Ordenes de Magnitud}
+ \begin{block}{Potencias de 2 para Unidades de Información}
+\begin{center}
+\begin{tabular}{lll}
+Potencia & Nombre & Valor\\[0pt]
+\hline
+\(2^0\) & bit & 1\\[0pt]
+\(2^3\) & byte & 8\\[0pt]
+\(2^{10}\) & Kilo & 1 024\\[0pt]
+\(2^{20}\) & Mega & 1 048 576\\[0pt]
+\(2^{30}\) & Giga & 1 073 741 824\\[0pt]
+\(2^{40}\) & Tera & \textasciitilde{}1.1 billones\\[0pt]
+\end{tabular}
+\end{center}
+\end{block}
+
+\begin{block}{Ejercicio 5: Órdenes de Magnitud}
+\begin{itemize}
+\item Verifique con Python los valores de la tabla anterior
+\end{itemize}
+
+\begin{verbatim}
+for nombre, pot in zip(['bit','byte','Kilo','Mega','Giga','Tera'],
+                       [0, 3, 10, 20, 30, 40]):
+    print(f"2^{pot:2d} -> {nombre:5s} = {2**pot}")
+\end{verbatim}
+
+\begin{verbatim}
+2^ 0 -> bit   = 1
+2^ 3 -> byte  = 8
+2^10 -> Kilo  = 1024
+2^20 -> Mega  = 1048576
+2^30 -> Giga  = 1073741824
+2^40 -> Tera  = 1099511627776
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\begin{frame}[label={sec:org11413e2},fragile]{Taller}
+ \begin{block}{Ejercicios Propuestos}
+\begin{enumerate}
+\item Función en Python: convierte un número en base \(r\) a decimal
+\item Función en Python: convierte decimal a binario
+\begin{itemize}
+\item separar parte entera y fraccionaria
+\end{itemize}
+\item Generalizar para convertir de decimal a base \(r\) arbitraria
+\end{enumerate}
+\end{block}
+
+\begin{block}{Plantilla Taller}
+\begin{verbatim}
+def numero_r_a_dec(numero: str, base: int):
+    resp = 0
+    # implementar
+    print(f"{numero} en base {base} = {resp} en base 10")
+
+def decimal_a_binario(numero: float):
+    entero = int(numero)
+    fraccion = numero - entero
+    # implementar parte entera y fraccionaria
+    pass
+
+def decimal_a_base_r(numero: float, base: int):
+    # generalizar decimal_a_binario para base r
+    pass
+\end{verbatim}
+\end{block}
+\end{frame}
+\end{document}
