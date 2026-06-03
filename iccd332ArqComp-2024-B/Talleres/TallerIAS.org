@@ -1,15 +1,16 @@
-#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: ':nil *:t -:t ::t <:t H:3 \\n:nil ^:t arch:headline
 #+options: author:t broken-links:nil c:nil creator:nil
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
-#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: TallerIAS
-#+author: Lenin G. Falconí
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+
+#+title: Taller — Máquina IAS / Von Neumann
+#+subtitle: ICCD332 Arquitectura de Computadores
+#+author: [Nombres de los integrantes del grupo]
 #+email: lenin.falconi@epn.edu.ec
+#+date: [Fecha de entrega]
 #+language: es
-#+select_tags: export
-#+exclude_tags: noexport
-#+creator: Emacs 27.1 (Org mode 9.3)
+#+creator: Emacs 27.1 (Org mode 9.7.5)
 #+cite_export: biblatex
 
 #+latex_class: article
@@ -18,147 +19,169 @@
 #+latex_header_extra:
 #+description:
 #+keywords:
-#+subtitle:
-#+latex_compiler: pdflatex
-#+date: \today
 #+latex_footnote_command: \footnote{%s%s}
+#+latex_compiler: pdflatex
 
 #+latex_header: \usepackage{fancyhdr}
 #+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
 #+latex_header: \usepackage{longtable}
 #+latex_header: \fancyhead[R]{}
-#+latex_header: \setlength\headheight{43.0pt} 
-
-#+bibliography: .././FormatoTareas/bibliography.bib
+#+latex_header: \setlength\headheight{43.0pt}
+#+LATEX_HEADER: \usepackage{tabularx}
 #+LATEX_HEADER: \usepackage[T1]{fontenc}
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage[spanish]{babel}
-#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa, style=apa]{biblatex}
+#+LATEX_HEADER: \usepackage[backend=biber,citestyle=apa,style=apa]{biblatex}
 
+#+BIBLIOGRAPHY: ../bibliography/bibliography.bib
 
 #+begin_export latex
-\fancyhead[C]{\includegraphics[scale=0.05]{.././FormatoTareas/logoEPN.jpg}\\
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
 ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
 ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 #+end_export
 
+* Objetivos
+
+- Comprender el ciclo de captación, decodificación y ejecución de la
+  máquina IAS (arquitectura Von Neumann).
+- Identificar y aplicar el conjunto de instrucciones IAS para traducir
+  código máquina a lenguaje ensamblador y a notación RTL.
+- Simular mentalmente la ejecución de un programa en la máquina IAS
+  para determinar el estado final de los registros.
+
+* Instrucciones
+
+Complete las solicitudes del taller y suba el archivo ~.org~ y ~.pdf~
+al aula virtual. Use las combinaciones de teclado para trabajar en Emacs.
 
 * Recursos
-Para este taller consulte el libro \citetitle{stallings2006}
-disponible en [[https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EgjH2RoedD5NuswqpOt8ExsB_DE052v9Rlrg0QpEtbimDg?e=WoqexR][EPN-SHAREPOINT(Clic Me)]] y use su WSL con Emacs para editar el archivo.
+
+Para este taller consulte el libro \citetitle{stallings2006esp}
+disponible en [[https://epnecuador-my.sharepoint.com/:f:/g/personal/lenin_falconi_epn_edu_ec/EgjH2RoedD5NuswqpOt8ExsB_DE052v9Rlrg0QpEtbimDg?e=WoqexR][EPN-SHAREPOINT (Clic aquí)]] y use su WSL con Emacs para editar el archivo.
+
 ** Observaciones y Recomendaciones
 - Tenga en cuenta la ruta a las imágenes y a la bibliografía. Se le
-recomienda que realice una clonación o un fork del repositorio de la
-clase a fin de que no tenga problemas generando el documento.
-- Instale \LaTeX completo en el computador que generará el archivo pdf.
-* Instrucciones
-Complete las solicitudes del taller y suba el archivo ~.ORG~ y ~.PDF~
-al aula virtual. Cuando trabaje en Emacs trate de utilizar las
-combinaciones de teclas para navegar por el documento.
+  recomienda que realice una clonación o un fork del repositorio de la
+  clase a fin de que no tenga problemas generando el documento.
+- Para la generación correcta de archivos la configuración básica debe
+  estar operativa y funcional (es decir, Emacs, \LaTeX).
 
-* Taller Máquina de Von Neuman
+* Taller: Máquina de Von Neumann
 
-La máquina de Von Neuman realiza operaciones en un ciclo repetitivo de
-captación y ejecución. Para esto, el computador IAS usa una memoria de
-40 bits. Cuando la memoria se usa numéricamente, se representa el
-número en complemento a 2, reservando el bit inicial para el
-signo. Cuando la memoria se usa para el registro de instrucciones, se
-divide en dos partes de 20 bits. Los 8 primeros bits de cada parte
-corresponden al /opcode/ y los restantes 12 bits de cada parte a la
-dirección (operando) desde la que se debe leer o a la que se debe
-escribir.
+La máquina de Von Neumann realiza operaciones en un ciclo repetitivo de
+*captación*, *decodificación* y *ejecución*. Para esto, el computador
+IAS usa una memoria de 40 bits. Cuando la memoria se usa
+numéricamente, el dato representa un número en complemento a 2; donde
+el bit inicial corresponde al signo. Cuando la memoria se usa para el
+registro de instrucciones, se divide en dos partes de 20 bits cada una. Los 8
+primeros bits de cada parte corresponden al /opcode/ y los restantes
+12 bits de cada parte a la /dirección (operando)/ desde la que se debe
+leer o a la que se debe escribir.
 
 ** Conjunto de Instrucciones IAS
-Complete la Tabla 2.1 de instrucciones del computador IAS
-[cite:@stallings2006 p.47] usando la notación RTL[fn:1]. Se suministra
-la Tabla en código \LaTeX para tal efecto. Edite el archivo en Emacs
-usando el modo principal ORG y cambie al modo \LaTeX para editar la
-Tabla. El cambio de modo se realiza usando ~M-x Latex-mode RET~ y para
-retornar al modo ~ORG~ haga ~M-x org-mode RET~
+
+Complete la Tabla \ref{tab:tablaISA-IAS}  de instrucciones del computador IAS
+[cite:@stallings2006esp p.47] usando la notación RTL[fn:1]. Se suministra
+la Tabla en código \LaTeX{} para tal efecto.
+
+Para editar la Tabla \ref{tab:tablaISA-IAS} ubíquese en
+el bloque ~#+begin_export latex~ y ejecute el comando ~C-c'~. Esto
+dividirá el buffer en dos ventanas. El cursor salta a la nueva ventana
+y le permite editar la tabla. Dentro de la nueva tabla el modo
+predominante cambiará automáticamente a \LaTeX, lo que le permite
+hacer cambios con la asistencia del IDE. Para salir y aceptar los
+cambios ejecute de nuevo ~C-c'~.
 
 - ~M~ equivale a /Alt/
 - ~x~ es la tecla /x/
-- ~RET~ es presionar /enter/
+- ~RET~ es presionar /Enter/
 
-Una vez activado el modo \LaTeX el siguiente código recibe colores
+Una vez activado el modo \LaTeX{} el siguiente código recibe colores
 sobre las palabras clave.
 
+#+begin_export latex
 \begin{table}[htbp]
-  \caption{Instrucciones Maquina IAS}
+  \caption{Instrucciones Máquina IAS}
   \label{tab:tablaISA-IAS}
   \centering
   \begin{tabular}{|cccc|}
     \hline
-    Opcode   & Opcode Hex &  Simbolo          & RTL \\ \hline
-    00001010 & 0x0A        &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
-    00001001 & 0x09        &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
+    Opcode   & Opcode Hex &  Símbolo          & RTL \\ \hline
+    00001010 & 0x0A       &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
+    00001001 & 0x09       &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
     00100001 & 0x21       &  STOR M(X)        & $[X]\leftarrow[AC]$\\
     00000010 & 0x02       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
     00000011 & 0x03       &  LOAD |M(X)|      & $[AC]\leftarrow|[X]|$\\
     00000100 & 0x04       &  LOAD -|M(X)|     & $[AC]\leftarrow-|[X]|$\\
     \hline
-    
   \end{tabular}
 \end{table}
+#+end_export
 
+#+begin_export latex
 \newpage
+#+end_export
 
 ** Ejercicio
 
 En la máquina IAS, las instrucciones se dividen en dos segmentos:
 i) izquierdo, desde el bit 0 a 19, y ii) derecho, desde el bit 20 al 39. Primero
-se ejecuta el lado izquierdo y  luego el derecho. El
-contador de programa inicia en la posición 300. El set de
+se ejecuta el lado izquierdo y luego el derecho. El
+contador de programa inicia en la posición $[PC] \leftarrow 300$. El conjunto de
 instrucciones del computador o ISA[fn:2] está definido en la Tabla
-\ref{tab:tablaISA-IAS}. A fin de terminar el programa se agrega la
+\ref{tab:tablaISA-IAS}. A fin de terminar el programa, se agrega la
 instrucción ~0x99~ que lleva al computador al estado de HALT. Conteste las
 siguientes preguntas considerando la Tabla [[tab:memoria-compu]] como el
-mapa de Memoria de la máquina y obtenga el programa en lenguaje ensamblador y en
-RTL. 
+mapa de memoria de la máquina y obtenga el programa en lenguaje ensamblador y en
+RTL.
 
- #+caption: Mapa de Memoria
- #+name: tab:memoria-compu
- |-----------+--------------+---------+--------------+---------|
- | Dirección | \(Opcode_1\) | \(X_1\) | \(Opcode_2\) | \(X_2\) |
- |-----------+--------------+---------+--------------+---------|
- |     0x300 |           01 |     940 |           06 |     941 |
- |     0x301 |           21 |     940 |           14 |     000 |
- |     0x302 |           21 |     941 |           99 |     000 |
- |       ... |          ... |     ... |          ... |     ... |
- |     0x940 |           00 |     000 |           00 |     005 |
- |     0x941 |           00 |     000 |           00 |     002 |
- |-----------+--------------+---------+--------------+---------|
- #+TBLFM: 
-
-
- #+begin_comment
- +---------+-------+-----+-------+-----+
-|Dirección|opcode1| x1  |opcode2|x2   |
-+---------+-------+-----+-------+-----+
-|300      |01     |940  |06     |941  |
-+---------+-------+-----+-------+-----+
-|301      |21     |940  |99     |000  |
-+---------+-------+-----+-------+-----+
-|...      |...    |...  |...    |...  |
-+---------+-------+-----+-------+-----+
-|940      |00     |000  |00     |005  |
-+---------+-------+-----+-------+-----+
-|941      |00     |000  |00     |002  |
-+---------+-------+-----+-------+-----+
- #+end_comment
-
+#+caption: Mapa de Memoria
+#+name: tab:memoria-compu
+|-----------+--------------+---------+--------------+---------|
+| Dirección | \(Opcode_1\) | \(X_1\) | \(Opcode_2\) | \(X_2\) |
+|-----------+--------------+---------+--------------+---------|
+|     0x300 |           01 |     940 |           06 |     941 |
+|     0x301 |           21 |     940 |           14 |     000 |
+|     0x302 |           21 |     941 |           02 |     940 |
+|     0x303 |           21 |     940 |           99 |     000 |
+|       ... |          ... |     ... |          ... |     ... |
+|     0x940 |           00 |     000 |           00 |     005 |
+|     0x941 |           00 |     000 |           00 |     002 |
+|-----------+--------------+---------+--------------+---------|
 
 *** Preguntas
 
 1. ¿Qué resultado se tiene al final en el registro del acumulador?
 
+   Respuesta:
+   $[AC] \leftarrow ???$
+
 2. ¿Se sobrescribe algún registro como resultado de la ejecución? Si
-   verdadero, indique qué registro y con qué valor.
+   es verdadero, indique qué registro y con qué valor.
+   Respuesta:
+   - $[940] \leftarrow ???$
+   - $[941] \leftarrow ???$
+   - $[AC] \leftarrow ???$
 
-3. ¿Cuál es el valor del bit del Carry?¿Qué operación modifica el bit?
+3. ¿Cuál es el valor del bit de Carry? ¿Qué operación modifica el bit?
+   Respuesta:
+   - $Carry = ???$
 
-*** Código Assembler:
+   - 
+
+*** Código RTL
+
+Escriba en notación de transferencia de registros el programa que
+ejecuta el computador IAS.
+
+ - $[AC] \leftarrow [940]$
+ - ...
+
+
+*** Código Assembler
+
 Escriba el código Assembler del programa que ejecuta el computador IAS.
 
 #+begin_src
@@ -166,16 +189,41 @@ LOAD M(940)
 
 #+end_src
 
-*** Código RTL
-Escriba en notación de transferencia de registros el programa que
-ejecuta el computador IAS
+* Equipo de Trabajo
 
-$[AC] \leftarrow [940]$
+Complete la información de los integrantes del grupo.
 
+|-----------------+-------------------------+-------------|
+| Nombre          | Email                   | Rol         |
+|-----------------+-------------------------+-------------|
+|                 |                         |             |
+|                 |                         |             |
+|                 |                         |             |
+|-----------------+-------------------------+-------------|
 
-#+print_bibliography: 
+* Verificación de Entregables [0%]
+
+Ejecute ~C-c C-c~ sobre los ítems de tarea según se hayan cumplido o
+no. Si un ítem no pudo realizarse, anote en la sección de problemas
+las razones.
+
+- [ ] Tabla de instrucciones IAS completada.
+- [ ] Preguntas del ejercicio respondidas.
+- [ ] Código RTL completo.
+- [ ] Código Assembler completo.
+- [ ] Revisión de ortografía con ~ispell-buffer~.
+- [ ] Exportación a PDF con ~M-x org-latex-export-to-pdf~.
+- [ ] Subir al aula virtual archivo ~.org~ y ~.pdf~.
+
+** Problemas con la tarea / logísticos
+
+- Tarea $X_1$ no pudo completarse debido a:
+- Tarea $X_2$ no pudo completarse debido a:
+
+#+print_bibliography:
 
 * Footnotes
-[fn:2]Instruction Set Architecture: los códigos de programación 
 
-[fn:1]Register Transfer Language o Lenguaje de Transferencia de Registros 
+[fn:1] Register Transfer Language o Lenguaje de Transferencia de Registros.
+
+[fn:2] Instruction Set Architecture: conjunto de instrucciones que la máquina IAS puede interpretar y ejecutar.
