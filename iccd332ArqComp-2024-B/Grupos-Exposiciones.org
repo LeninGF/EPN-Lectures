@@ -44,7 +44,7 @@
 Considere la Tabla [[tab:temas]] donde se indica los grupos y el tema de
 la exposición. Los archivos S8-Buses-del-Sistema.org,
 S9-Memoria-del-Sistema.org, S10-Memoria-Externa-del-Sistema.org,
-S11-SistemaES.org y S10-Soporte-SO.org contiene los diferentes subtemas a ser
+S11-SistemaES.org y S12-Soporte-SO.org contiene los diferentes subtemas a ser
 consultados por los estudiantes.
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|l|l|
 #+name: tab:temas
@@ -56,6 +56,6 @@ consultados por los estudiantes.
 | S11    | Memoria externa + RAID                  | S10-Memoria-Externa-del-Sistema.org | G5, G6              |
 | S13    | Módulos de E/S (prog., INT, DMA)        | S11-SistemaES.org                   | G7                  |
 | S14    | Canales y procesadores de E/S           | S11-SistemaES.org (restaurar)       | G8                  |
-| S15    | Soporte del SO: Mem. Virtual + VM + WSL | S10-Soporte-SO.org                   | G9                  |
+| S15    | Soporte del SO: Mem. Virtual + VM + WSL | S12-Soporte-SO.org                   | G9                  |
 
 #+print_bibliography:

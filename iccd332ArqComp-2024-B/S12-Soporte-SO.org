@@ -8,7 +8,7 @@
 #+beamer_outer_theme:
 #+beamer_header:
 
-#+title: S10 — Soporte del SO: Memoria Virtual, Máquinas Virtuales y WSL
+#+title: S12 — Soporte del SO: Memoria Virtual, Máquinas Virtuales y WSL
 #+date: 
 #+author: Lenin G. Falconí
 #+email: lenin.falconi@epn.edu.ec
