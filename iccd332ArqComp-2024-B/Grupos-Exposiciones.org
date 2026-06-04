@@ -1,0 +1,61 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Exposiciones
+#+date: 2026-06-03
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.6.15)
+#+cite_export: biblatex
+#+bibliography: ./bibliography/bibliography.bib
+#+latex_header: \usepackage[top=25mm, left=20mm, right=20mm]{geometry}
+#+latex_header: \usepackage{tabularx}
+#+latex_header: \usepackage{longtable}
+
+* Objetivos
+- Utilizar el esquema de aula invertida para la obtención de conocimiento.
+- Desarrollar habilidades blandas de coordinación, liderazgo, y responsabilidad.
+- Fomentar la discusión, expresión oral y escrita entre los estudiantes.
+* Instrucciones
+1. Conformar grupos de hasta 4 integrantes. En caso de desacuerdo, el
+   profesor asignará los grupos aleatoriamente.
+2. Consulte los temas usando como guía los archivos ~.org~ indicados y
+   la Tabla [[tab:temas]].
+3. Utilice principalmente como referencia los libros:
+   [cite:@stallings2022computer] y [cite:@stallings2006esp]. Recursos
+   adicionales deben ser fuentes académicas válidas.
+4. El grupo creará su presentación usando Emacs. Esta puede ser de
+   tipo Beamer o de tipo Revealjs
+5. El grupo creará a partir del archivo
+   [[file:FormatoTareas/TemplateNotasClase.org]] ayudas memoria/notas del tema.
+   Las notas deben seguir el sistema Cornell: incluya *preguntas* y
+   *respuestas* del tema expuesto en la sección «Preguntas y Términos
+   clave (Cue)».
+6. Los archivos serán compartidos con los integrantes de la clase.
+7. El grupo presentará de manera oral la exposición. Puede usar
+   recursos adicionales como scripts, programas, simulaciones, etc.
+
+* Recursos
+Considere la Tabla [[tab:temas]] donde se indica los grupos y el tema de
+la exposición. Los archivos S8-Buses-del-Sistema.org,
+S9-Memoria-del-Sistema.org, S10-Memoria-Externa-del-Sistema.org,
+S11-SistemaES.org y S10-Soporte-SO.org contiene los diferentes subtemas a ser
+consultados por los estudiantes.
+#+ATTR_LATEX: :environment tabularx :width \textwidth :align |l|X|l|l|
+#+name: tab:temas
+#+caption: Organización de Temas y Equipos de Trabajo
+| Semana | Bloque temático                         | Referencia .org                     | Equipos expositores |
+|--------+-----------------------------------------+-------------------------------------+---------------------|
+| S9     | Buses del sistema                       | S8-Buses-del-Sistema.org            | G1, G2              |
+| S10    | Memoria interna y cache                 | S9-Memoria-del-Sistema.org          | G3, G4              |
+| S11    | Memoria externa + RAID                  | S10-Memoria-Externa-del-Sistema.org | G5, G6              |
+| S13    | Módulos de E/S (prog., INT, DMA)        | S11-SistemaES.org                   | G7                  |
+| S14    | Canales y procesadores de E/S           | S11-SistemaES.org (restaurar)       | G8                  |
+| S15    | Soporte del SO: Mem. Virtual + VM + WSL | S10-Soporte-SO.org                   | G9                  |
+
+#+print_bibliography:
