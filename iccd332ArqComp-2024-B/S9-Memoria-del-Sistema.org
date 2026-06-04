@@ -40,8 +40,8 @@
   - \textcite{stallings2006esp}, 7ma edición, 2006, Español, Capítulo 5 y 6.
   - \textcite{stallings2022computer}, 11ava edición, 2022, English, Capítulos 4, 5 y 6.
 - Las tuplas (11, 136) significan: Edición 11, página 136 del PDF.
-- Las personas que exponen suben la presentación en formato ~.ORG~ y ~.PDF~
-- Las personas que atienden suben los apuntes de la clase de acuerdo al formato de toma de notas en ~.ORG~ y ~.PDF~
+- El grupo expone el tema y sube la presentación (~.ORG~ y ~.PDF~ para Beamer, o ~.ORG~ y ~.HTML~ para reveal.js)
+- El grupo sube las ayudas memoria/notas del tema usando la plantilla [[file:FormatoTareas/TemplateNotasClase.org]] (~.ORG~ y ~.PDF~)
 ** Diseño de las Diapositivas
 - Para diseñar sus diapositivas puede consultar cualquiera de las
   presentaciones ~.ORG~ desarrolladas por el profesor así como al
