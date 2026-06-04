@@ -74,6 +74,8 @@
 - Las arquitecturas actuales usan *pipelining*
 - *Pipelining* permite hacer un /overlap/ i.e.  captar una nueva
   instrucción antes que la anterior haya concluido.
+* La Memoria Principal
+** Concepto de Memoria
 *** Concepto de Memoria
 **** Texto                                                            :BMCOL:
      :PROPERTIES:
@@ -110,11 +112,12 @@
 *** Memoria del Computador IAS
 [[./images/ias_memory.png]]
 
-** Instruction Set Architecture
+* Instruction Set Architecture
+** Instruction Set Architecture (ISA)
 *** Instruction Set Architecture (ISA)
-    :PROPERTIES:
-    :BEAMER_opt: allowframebreaks
-    :END:
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
 Define:
 - Formato de Instrucciones
 - Opcodes
@@ -127,13 +130,10 @@ Define:
   ejecutable en versiones nuevas)
 - El incremento de la densidad de transistores permite ISA más
   complejos
-
+  
 * Lenguaje de Transferencia de Registros
 ** Lenguaje de Transferencia de Registros (RTL)
-   :PROPERTIES:
-   :BEAMER_opt: allowframebreaks
-   :END:
-
+*** Lenguaje de Transferencia de Registros (RTL)
 - Permite definir de manera sencilla las operaciones en el computador
 - No es un lenguaje ensamblador
 - No es un lenguaje de Programación
@@ -142,14 +142,14 @@ Define:
 - Se usa [ ] para indicar el contenido de una ubicación de memoria
 - El símbolo $\leftarrow$ se usa para indicar /transferencia de datos/
 
-
+*** Lenguaje de Transferencia de Registros (RTL)
 1. Suponga una pequeña memoria que tenga 4 bits para el bus de
    dirección ¿cuántas localidades puede almacenar?
 
 2. Estructure la tabla de memoria suponiendo que el contenido de la
    memoria será de máximo 8 bits.
 
-** Solución
+*** Solución
 
 Si las direcciones son de 4 bits, se puede almacenar hasta
 $2^{n=4}=16$ localidades.
@@ -178,7 +178,7 @@ $2^{n=4}=16$ localidades.
 
 En Hexadecimal tendríamos localidades desde la $0x0$ hasta la $0xF$
 
-** Lenguaje de Transferencia de Registros (RTL)
+*** Explicando la Notación RTL
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
@@ -201,18 +201,18 @@ Considere las siguientes operaciones:
   indirecto*. El valor a copiar en la localidad 4 es el contenido en
   la dirección definida por el contenido de la localidad 2.
 
-** Ejercicio
+*** Ejercicio de RTL
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
 
-*** Texto                                                             :BMCOL:
+**** Texto                                                            :BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
     :END:
 Considere la siguiente memoria abstracta. Obtenga: $X =
 3+[0x04]+[1+[0x03]]+[[0x0A]]+[[0x09]*3]$
-*** Tabla                                                       :BMCOL:Tabla:
+**** Tabla                                                      :BMCOL:Tabla:
     :PROPERTIES:
     :BEAMER_col: 0.4
     :END:
@@ -234,12 +234,12 @@ Considere la siguiente memoria abstracta. Obtenga: $X =
 |-----------+------|
 
 
-** Ejercicio - Solución
+*** Solución
    :PROPERTIES:
    :BEAMER_opt: allowframebreaks
    :END:
 
-*** Texto                                                             :BMCOL:
+**** Texto                                                            :BMCOL:
     :PROPERTIES:
     :BEAMER_col: 0.6
     :END:
@@ -247,7 +247,7 @@ Considere la siguiente memoria abstracta. Obtenga: $X =
 3+[0x04]+[1+[0x03]]+[[0x0A]]+[[0x09]*3]$
 
 $X = 3+5+2+2+8$
-*** Tabla                                                       :BMCOL:Tabla:
+**** Tabla                                                      :BMCOL:Tabla:
     :PROPERTIES:
     :BEAMER_col: 0.4
     :END:
@@ -329,7 +329,7 @@ Considere un computador de las siguientes características:
   %\caption{\label{fig:label} }
 \end{figure}
 
-*** Notación RTL Ejemplo
+*** Expresando el Ciclo de V. Neumann con RTL
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
 :END:
