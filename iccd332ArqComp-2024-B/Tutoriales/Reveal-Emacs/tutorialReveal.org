@@ -29,34 +29,34 @@
 ** @@html:<i class="fas fa-code"></i>@@ Encabezado mínimo
 Este es el bloque que debe ir al inicio de todo archivo ~.org~ para reveal:
 
-#+begin_src org
-#+OPTIONS: num:nil toc:nil timestamp:nil
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+REVEAL_THEME: dracula
-#+REVEAL_TRANS: slide
-#+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1
+#+begin_example
+,#+OPTIONS: num:nil toc:nil timestamp:nil
+,#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+,#+REVEAL_THEME: dracula
+,#+REVEAL_TRANS: slide
+,#+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1
 
-#+TITLE: Mi Presentación
-#+AUTHOR: Tu Nombre
-#+DATE: 2026
-#+LANGUAGE: es
-#+end_src
+,#+TITLE: Mi Presentación
+,#+AUTHOR: Tu Nombre
+,#+DATE: 2026
+,#+LANGUAGE: es
+#+end_example
 
 ** @@html:<i class="fas fa-cogs"></i>@@ Opciones de encabezado
-| Opción | Descripción | Ejemplo |
-|--------|-------------|---------|
-| ~REVEAL_ROOT~ | URL o ruta local de reveal.js | CDN o ~./reveal.js~ |
-| ~REVEAL_THEME~ | Tema visual | ~black~, ~white~, ~league~, ~sky~, ~beige~, ~simple~, ~serif~, ~blood~, ~night~, ~moon~, ~solarized~, ~dracula~ |
-| ~REVEAL_TRANS~ | Transición entre slides | ~slide~, ~convex~, ~concave~, ~zoom~, ~none~ |
-| ~REVEAL_PLUGINS~ | Plugins adicionales | ~(math)~ para ecuaciones |
-| ~REVEAL_INIT_OPTIONS~ | Configuración de reveal | tamaño, márgenes, escala |
+| Opción                | Descripción                   | Ejemplo                                                                                                         |
+|-----------------------+-------------------------------+-----------------------------------------------------------------------------------------------------------------|
+| ~REVEAL_ROOT~         | URL o ruta local de reveal.js | CDN o ~./reveal.js~                                                                                             |
+| ~REVEAL_THEME~        | Tema visual                   | ~black~, ~white~, ~league~, ~sky~, ~beige~, ~simple~, ~serif~, ~blood~, ~night~, ~moon~, ~solarized~, ~dracula~ |
+| ~REVEAL_TRANS~        | Transición entre slides       | ~slide~, ~convex~, ~concave~, ~zoom~, ~none~                                                                    |
+| ~REVEAL_PLUGINS~      | Plugins adicionales           | ~(math)~ para ecuaciones                                                                                        |
+| ~REVEAL_INIT_OPTIONS~ | Configuración de reveal       | tamaño, márgenes, escala                                                                                        |
 
 ** @@html:<i class="fas fa-calculator"></i>@@ Matemáticas: plugin MathJax
 Para escribir ecuaciones necesitás agregar al encabezado:
 
-#+begin_src org
-#+REVEAL_PLUGINS: (math)
-#+end_src
+#+begin_example
+,#+REVEAL_PLUGINS: (math)
+#+end_example
 
 Con esto, las ecuaciones en LaTeX se renderizan automáticamente:
 - Inline: ~\(E = mc^2\)~ produce \(E = mc^2\)
@@ -70,8 +70,7 @@ Con esto, las ecuaciones en LaTeX se renderizan automáticamente:
 - Un ~**~ (nivel 2) crea una *diapositiva* dentro de la sección.
 - Las secciones generan títulos visibles en la presentación.
 - Navegación: flechas ← → entre slides, ↑ ↓ entre secciones.
-
-#+begin_src org
+#+begin_example
 * Sección 1
 ** Diapositiva 1
 Contenido aquí...
@@ -80,18 +79,20 @@ Contenido aquí...
 Más contenido...
 * Sección 2
 ** Diapositiva 3
-#+end_src
+#+end_example
+
 
 ** @@html:<i class="fas fa-list-ul"></i>@@ Listas y viñetas
 Simplemente usá la sintaxis normal de Org-mode:
 
-#+begin_src org
+#+begin_example
 ** Título de la diapositiva
 - Elemento 1
 - Elemento 2
   - Sub-elemento anidado
 - Elemento 3
-#+end_src
+#+end_example
+
 
 * Fragmentos: Revelar por Partes
 ** @@html:<i class="fas fa-puzzle-piece"></i>@@ Fragmentos
@@ -113,37 +114,54 @@ Simplemente usá la sintaxis normal de Org-mode:
 ** @@html:<i class="fas fa-image"></i>@@ Insertar una imagen
 Para una imagen centrada con ancho definido:
 
-#+begin_src org
-#+ATTR_HTML: :width 60% :align center
+#+begin_example
+,#+ATTR_HTML: :width 60% :align center
 [[./figuras/mi-imagen.png]]
-#+end_src
+#+end_example
 
 - ~:width~ controla el tamaño (porcentaje o píxeles).
 - ~:align~ controla la posición (~center~, ~left~, ~right~).
 - La imagen puede ser local o URL remota.
 
 ** @@html:<i class="fas fa-columns"></i>@@ Texto a la izquierda, imagen a la derecha
-Para layouts de dos columnas usamos el estilo ~float~ de HTML:
+Para dos columnas usamos HTML con flexbox (más fiable que float en reveal.js):
 
-#+begin_src org
-** Mi diapositiva con columnas
-#+ATTR_HTML: :width 49% :style float:left;
-[[./figuras/emacsJoke.jpg]]
-
-#+ATTR_HTML: :width 49% :style float:right;
+#+begin_example
+,#+begin_export html
+<div style="display:flex; align-items:center; gap:30px;">
+<div style="flex:1;">
+,#+end_export
 - Acá va el texto.
 - Explicación de la imagen.
 - Notas adicionales.
-#+end_src
+,#+begin_export html
+</div>
+<div style="flex:0 0 45%;">
+,#+end_export
+[[./figuras/emacsJoke.jpg]]
+,#+begin_export html
+</div>
+</div>
+,#+end_export
+#+end_example
 
 ** @@html:<i class="fas fa-columns"></i>@@ Ejemplo real: Emacs
-#+ATTR_HTML: :width 49% :style float:left;
-[[../../images/emacsJoke.jpg]]
-
-#+ATTR_HTML: :width 49% :style float:right;
+#+begin_export html
+<div style="display:flex; align-items:center; gap:30px;">
+<div style="flex:1;">
+#+end_export
 - *Emacs*: el editor que lo hace todo.
 - Imagen a la izquierda, texto a la derecha.
-- Fácil de ajustar cambiando ~:width~.
+- Acá usamos flexbox, no float.
+#+begin_export html
+</div>
+<div style="flex:0 0 45%;">
+#+end_export
+[[../../images/emacsJoke.jpg]]
+#+begin_export html
+</div>
+</div>
+#+end_export
 
 * Código Fuente en Diapositivas
 ** @@html:<i class="fas fa-terminal"></i>@@ Bloques de código
@@ -168,24 +186,6 @@ print(greet("Arquitectura de Computadores"))
 - Shell (~shell~)
 - Emacs Lisp (~emacs-lisp~)
 - y muchos más que reconoce ~highlight.js~
-
-** @@html:<i class="fas fa-terminal"></i>@@ Código + resultado
-Separando en dos columnas, podés mostrar código y su salida:
-
-#+ATTR_HTML: :width 48% :style float:left;
-#+begin_src python
-def suma(a, b):
-    return a + b
-
-resultado = suma(3, 4)
-print(f"3 + 4 = {resultado}")
-#+end_src
-
-#+ATTR_HTML: :width 48% :style float:right;
-*Resultado:*
-#+begin_src text
-3 + 4 = 7
-#+end_src
 
 * Matemáticas con MathJax
 ** @@html:<i class="fas fa-superscript"></i>@@ Ecuaciones inline y display
@@ -226,20 +226,20 @@ Integral:
 
 Matriz:
 
-\[
+
 \begin{pmatrix}
 a_{11} & a_{12} \\
 a_{21} & a_{22}
 \end{pmatrix}
-\]
+
 
 * Iconos y Formato Especial
 ** @@html:<i class="fas fa-icons"></i>@@ Iconos Font Awesome
 Con el CSS de Font Awesome cargado en el encabezado:
 
-#+begin_src org
-#+REVEAL_EXTRA_CSS: https://use.fontawesome.com/releases/v5.15.4/css/all.css
-#+end_src
+#+begin_example
+,#+REVEAL_EXTRA_CSS: https://use.fontawesome.com/releases/v5.15.4/css/all.css
+#+end_example
 
 Insertás iconos así:
 
@@ -265,19 +265,31 @@ Cualquier tecnología suficientemente avanzada es indistinguible de la magia.
 Para generar el archivo ~.html~ desde Emacs:
 
 1. Abrí tu archivo ~.org~.
-2. Ejecutá: ~C-c C-e v v~
+2. Ejecutá: ~C-c C-e R B~
    - ~C-c C-e~ → menú de exportación.
-   - ~v~ → reveal.js.
-   - ~v~ → exportar a archivo HTML.
-3. El ~.html~ se genera en la misma carpeta.
-4. Abrí el ~.html~ en el navegador: ~C-c C-e v b~ (exportar y abrir).
+   - ~R~ → Reveal.js (R mayúscula).
+   - ~B~ → exportar a archivo y abrir en navegador.
+3. Alternativa por comando: ~M-x org-reveal-export-to-html-and-browse~
+4. El ~.html~ se genera en la misma carpeta.
+
+** @@html:<i class="fas fa-exclamation-triangle"></i>@@ Si el navegador no abre
+#+ATTR_REVEAL: :frag (appear)
+- En *WSL* (Windows): verificá que ~wslview~ esté instalado (~sudo apt install wslu~).
+- Alternativa WSL: usá ~explorer.exe~ como browser:
+  #+begin_example
+  ,#+begin_src emacs-lisp
+  (setq browse-url-generic-program "explorer.exe")
+  (setq browse-url-browser-function 'browse-url-generic)
+  ,#+end_src
+  #+end_example
+- En *Linux* nativo: ~xdg-open~ viene por defecto y debería funcionar.
+- Si nada funciona, abrí el ~.html~ manualmente desde el explorador de archivos.
 
 ** @@html:<i class="fas fa-keyboard"></i>@@ Atajos de exportación
-| Atajo | Acción |
-|-------|--------|
-| ~C-c C-e v v~ | Exportar a ~.html~ |
-| ~C-c C-e v b~ | Exportar y abrir en navegador |
-| ~C-c C-e v h~ | Exportar a HTML (copia en el buffer) |
+| Atajo | Comando equivalente | Acción |
+|-------|---------------------|--------|
+| ~C-c C-e R B~ | ~org-reveal-export-to-html-and-browse~ | Exportar y abrir en navegador |
+| ~C-c C-e R R~ | ~org-reveal-export-to-html~ | Exportar a ~.html~ |
 
 * Referencia
 ** @@html:<i class="fas fa-book"></i>@@ Ejemplo completo
