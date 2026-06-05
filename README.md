@@ -80,6 +80,7 @@ presentación de bienvenida (`Welcome.org`, `.pdf`).
 |----------|-------------------|
 | Assembler (ejemplos `.s`) | `Assembler/` |
 | Presentaciones Beamer con Emacs | `Beamer-Emacs/tutorialBeamer.org`, `.pdf` |
+| Presentaciones Reveal.js con Emacs | `Reveal-Emacs/tutorialReveal.org` |
 | Configuración Java, Python y Emacs | `ConfiguracionJavaPythonEmacs/` |
 | Crear sitio web con Org-mode | `Org-Website/Org-Website.org`, `.pdf` |
 | Intro a Pandas y Numpy | `IntroPandasNumpy.ipynb` |
