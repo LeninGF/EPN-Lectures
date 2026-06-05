@@ -2,7 +2,6 @@
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+REVEAL_THEME: dracula
 #+REVEAL_TRANS: slide
-#+REVEAL_PLUGINS: (math)
 #+REVEAL_EXTRA_CSS: https://use.fontawesome.com/releases/v5.15.4/css/all.css
 #+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1, minScale:0.2, maxScale:1.2
 
@@ -48,19 +47,14 @@ Este es el bloque que debe ir al inicio de todo archivo ~.org~ para reveal:
 | ~REVEAL_ROOT~         | URL o ruta local de reveal.js | CDN o ~./reveal.js~                                                                                             |
 | ~REVEAL_THEME~        | Tema visual                   | ~black~, ~white~, ~league~, ~sky~, ~beige~, ~simple~, ~serif~, ~blood~, ~night~, ~moon~, ~solarized~, ~dracula~ |
 | ~REVEAL_TRANS~        | Transición entre slides       | ~slide~, ~convex~, ~concave~, ~zoom~, ~none~                                                                    |
-| ~REVEAL_PLUGINS~      | Plugins adicionales           | ~(math)~ para ecuaciones                                                                                        |
+| ~REVEAL_PLUGINS~      | Plugins adicionales (reemplaza defaults: markdown, zoom, notes) | ~(math)~ — pero MathJax ya viene por defecto, no hace falta |
 | ~REVEAL_INIT_OPTIONS~ | Configuración de reveal       | tamaño, márgenes, escala                                                                                        |
 
-** @@html:<i class="fas fa-calculator"></i>@@ Matemáticas: plugin MathJax
-Para escribir ecuaciones necesitás agregar al encabezado:
-
-#+begin_example
-#+REVEAL_PLUGINS: (math)
-#+end_example
-
-Con esto, las ecuaciones en LaTeX se renderizan automáticamente:
+** @@html:<i class="fas fa-calculator"></i>@@ Matemáticas con MathJax
+MathJax se carga automáticamente — no necesitás agregar nada al encabezado.
+Las ecuaciones se escriben con notación LaTeX estándar de Org-mode:
 - Inline: ~\(E = mc^2\)~ produce \(E = mc^2\)
-- Display: ~\[ \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2} \]~
+- Display: ~\[ ... \]~ centra la ecuación en su propia línea
 - Más ejemplos en la sección de matemáticas.
 
 * Estructura de Diapositivas
@@ -168,7 +162,7 @@ Para dos columnas usamos HTML con flexbox (más fiable que float en reveal.js):
 ** @@html:<i class="fas fa-terminal"></i>@@ Bloques de código
 Los bloques ~#+begin_src~ de Org-mode se exportan con resaltado de sintaxis:
 
-#+begin_src python
+#+begin_src python :results output :exports both
 import numpy as np
 
 def greet(name):
@@ -177,6 +171,9 @@ def greet(name):
 
 print(greet("Arquitectura de Computadores"))
 #+end_src
+
+#+RESULTS:
+: Hola, Arquitectura de Computadores!
 
 *Salida:*
 #+begin_example
@@ -195,7 +192,7 @@ Hola, Arquitectura de Computadores!
 
 * Matemáticas con MathJax
 ** @@html:<i class="fas fa-superscript"></i>@@ Ecuaciones inline y display
-Con ~#+REVEAL_PLUGINS: (math)~ en el encabezado:
+MathJax se carga automáticamente — no requiere configuración adicional:
 
 - *Inline*: ~\(a^2 + b^2 = c^2\)~ produce \(a^2 + b^2 = c^2\)
 - *Display*: ~\[ ... \]~ centra la ecuación en su propia línea:
