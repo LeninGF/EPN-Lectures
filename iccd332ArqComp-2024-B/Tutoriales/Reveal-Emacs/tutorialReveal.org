@@ -30,16 +30,16 @@
 Este es el bloque que debe ir al inicio de todo archivo ~.org~ para reveal:
 
 #+begin_example
-,#+OPTIONS: num:nil toc:nil timestamp:nil
-,#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-,#+REVEAL_THEME: dracula
-,#+REVEAL_TRANS: slide
-,#+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1
+#+OPTIONS: num:nil toc:nil timestamp:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_THEME: dracula
+#+REVEAL_TRANS: slide
+#+REVEAL_INIT_OPTIONS: width:1200, height:900, margin: 0.1
 
-,#+TITLE: Mi Presentación
-,#+AUTHOR: Tu Nombre
-,#+DATE: 2026
-,#+LANGUAGE: es
+#+TITLE: Mi Presentación
+#+AUTHOR: Tu Nombre
+#+DATE: 2026
+#+LANGUAGE: es
 #+end_example
 
 ** @@html:<i class="fas fa-cogs"></i>@@ Opciones de encabezado
@@ -55,7 +55,7 @@ Este es el bloque que debe ir al inicio de todo archivo ~.org~ para reveal:
 Para escribir ecuaciones necesitás agregar al encabezado:
 
 #+begin_example
-,#+REVEAL_PLUGINS: (math)
+#+REVEAL_PLUGINS: (math)
 #+end_example
 
 Con esto, las ecuaciones en LaTeX se renderizan automáticamente:
@@ -70,15 +70,16 @@ Con esto, las ecuaciones en LaTeX se renderizan automáticamente:
 - Un ~**~ (nivel 2) crea una *diapositiva* dentro de la sección.
 - Las secciones generan títulos visibles en la presentación.
 - Navegación: flechas ← → entre slides, ↑ ↓ entre secciones.
-#+begin_example
-* Sección 1
-** Diapositiva 1
-Contenido aquí...
 
-** Diapositiva 2
-Más contenido...
-* Sección 2
-** Diapositiva 3
+#+begin_example
+ * Sección 1
+ ** Diapositiva 1
+ Contenido aquí...
+
+ ** Diapositiva 2
+ Más contenido...
+ * Sección 2
+ ** Diapositiva 3
 #+end_example
 
 
@@ -86,11 +87,11 @@ Más contenido...
 Simplemente usá la sintaxis normal de Org-mode:
 
 #+begin_example
-** Título de la diapositiva
-- Elemento 1
-- Elemento 2
-  - Sub-elemento anidado
-- Elemento 3
+ ** Título de la diapositiva
+ - Elemento 1
+ - Elemento 2
+   - Sub-elemento anidado
+ - Elemento 3
 #+end_example
 
 
@@ -115,7 +116,7 @@ Simplemente usá la sintaxis normal de Org-mode:
 Para una imagen centrada con ancho definido:
 
 #+begin_example
-,#+ATTR_HTML: :width 60% :align center
+#+ATTR_HTML: :width 60% :align center
 [[./figuras/mi-imagen.png]]
 #+end_example
 
@@ -127,22 +128,22 @@ Para una imagen centrada con ancho definido:
 Para dos columnas usamos HTML con flexbox (más fiable que float en reveal.js):
 
 #+begin_example
-,#+begin_export html
+#+begin_export html
 <div style="display:flex; align-items:center; gap:30px;">
 <div style="flex:1;">
-,#+end_export
+#+end_export
 - Acá va el texto.
 - Explicación de la imagen.
 - Notas adicionales.
-,#+begin_export html
+#+begin_export html
 </div>
 <div style="flex:0 0 45%;">
-,#+end_export
+#+end_export
 [[./figuras/emacsJoke.jpg]]
-,#+begin_export html
+#+begin_export html
 </div>
 </div>
-,#+end_export
+#+end_export
 #+end_example
 
 ** @@html:<i class="fas fa-columns"></i>@@ Ejemplo real: Emacs
@@ -176,6 +177,11 @@ def greet(name):
 
 print(greet("Arquitectura de Computadores"))
 #+end_src
+
+*Salida:*
+#+begin_example
+Hola, Arquitectura de Computadores!
+#+end_example
 
 ** @@html:<i class="fas fa-terminal"></i>@@ Lenguajes soportados
 #+ATTR_REVEAL: :frag (appear)
@@ -238,7 +244,7 @@ a_{21} & a_{22}
 Con el CSS de Font Awesome cargado en el encabezado:
 
 #+begin_example
-,#+REVEAL_EXTRA_CSS: https://use.fontawesome.com/releases/v5.15.4/css/all.css
+#+REVEAL_EXTRA_CSS: https://use.fontawesome.com/releases/v5.15.4/css/all.css
 #+end_example
 
 Insertás iconos así:
@@ -277,10 +283,10 @@ Para generar el archivo ~.html~ desde Emacs:
 - En *WSL* (Windows): verificá que ~wslview~ esté instalado (~sudo apt install wslu~).
 - Alternativa WSL: usá ~explorer.exe~ como browser:
   #+begin_example
-  ,#+begin_src emacs-lisp
+  #+begin_src emacs-lisp
   (setq browse-url-generic-program "explorer.exe")
   (setq browse-url-browser-function 'browse-url-generic)
-  ,#+end_src
+  #+end_src
   #+end_example
 - En *Linux* nativo: ~xdg-open~ viene por defecto y debería funcionar.
 - Si nada funciona, abrí el ~.html~ manualmente desde el explorador de archivos.
