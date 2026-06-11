@@ -1,0 +1,331 @@
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+
+#+title: Latches y Flip-Flops
+#+subtitle: ICCD332 — Arquitectura de Computadores
+#+date: [Fecha de entrega]
+#+author: [Nombres de los integrantes del grupo]
+#+email: [Coloque el email de líder de grupo]
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONFIGURACIÓN BEAMER
+# Para activar el modo Beamer ejecute:  M-x org-beamer-mode
+# Para exportar a PDF ejecute:          M-x org-beamer-export-to-pdf
+# ─────────────────────────────────────────────────────────────────────────────
+#+options: H:2
+#+latex_class: beamer
+#+columns: %45ITEM %10BEAMER_env(Env) %10BEAMER_act(Act) %4BEAMER_col(Col) %8BEAMER_opt(Opt)
+#+beamer_theme: Madrid
+#+beamer_color_theme:
+#+beamer_font_theme:
+#+beamer_inner_theme:
+#+beamer_outer_theme:
+#+beamer_header:
+
+#+bibliography: ../bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other]{biblatex}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{xcolor}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# INSTRUCCIONES PARA EL GRUPO (leer antes de comenzar)
+#
+# OBJETIVO: Crear una presentación en Emacs Org-mode + Beamer explicando los
+#           conceptos de Latches y Flip-Flops a partir del video:
+#
+#   https://youtu.be/JEPmmHYD_Ss?si=GWVx3Kj8el1FyktM
+#
+# TIEMPO ESTIMADO: 1 hora 15 minutos
+#   - 35 min  →  Ver el video y tomar notas
+#   - 35 min  →  Completar las diapositivas en Emacs
+#   -  5 min  →  Exportar a PDF con M-x org-beamer-export-to-pdf
+#
+# ENTREGABLES:
+#   1. Este archivo .org con el contenido completado
+#   2. El archivo .pdf generado desde Emacs
+#
+# REGLAS DE EDICIÓN:
+#   - NO modifique los títulos de sección ni las propiedades BEAMER.
+#   - Reemplace cada bloque de instrucción (entre corchetes [ ]) con su
+#     propio contenido.
+#   - Los comentarios que inician con '#' son guías; no aparecen en el PDF.
+#   - Para referencias use  [cite:@stallings2022eng  p.438]
+# ─────────────────────────────────────────────────────────────────────────────
+
+* Introducción
+
+** Latches y Flip-Flops
+# INSTRUCCIÓN: Complete los datos del grupo y no modifique la estructura.
+
+*** Grupo                                                              :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.48
+:END:
+
+- *Integrantes:*
+  - [Nombre 1]
+  - [Nombre 2]
+  - [Nombre 3 — si aplica]
+- *Fecha:* [DD/MM/AAAA USE YASNIPPET dd C-TAB]
+- *Curso:* ICCD332 — Arquitectura de Computadores
+
+*** Fuente                                                             :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.52
+:END:
+
+- *Video de referencia:*
+  [[https://youtu.be/JEPmmHYD_Ss?si=GWVx3Kj8el1FyktM][Circuitos Secuenciales]]
+
+- *Bibliografía de apoyo:*
+  - [cite:@stallings2022eng] en página 438 del PDF
+
+  - [cite:@stallings2006esp] en página 758 del PDF
+
+** ¿Por qué son importantes los circuitos de memoria?
+# INSTRUCCIÓN: Responda los dos puntos con sus propias palabras.
+
+- [Punto 1: ¿qué diferencia a un circuito combinacional de uno secuencial?
+  Incluya la ecuación  Q(t+1) = f(entradas, Q(t))]
+- [Punto 2: Para el funcionamiento de un computador con arquitectura
+  de Von Neumann, ¿se requiere de lógica secuencial? Explique su respuesta.]
+
+* Latches
+
+** Latch SR con Puertas NOR
+# INSTRUCCIÓN: Explique el Latch SR implementado con puertas NOR.
+#   - Describa las entradas S (Set) y R (Reset) y las salidas Q y Q'.
+#   - Identifique los cuatro estados posibles.
+#   - Explique por qué S=1, R=1 es un estado PROHIBIDO.
+#   - Complete la tabla de verdad reemplazando cada [?].
+
+*** Funcionamiento                                                     :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- [Descripción breve: cómo se construye con 2 puertas NOR]
+- Estado SET:      $S=1,\,R=0 \;\Rightarrow\; Q=[?]$
+- Estado RESET:    $S=0,\,R=1 \;\Rightarrow\; Q=[?]$
+- Estado HOLD:     $S=0,\,R=0 \;\Rightarrow\; Q=[?]$
+- Estado \textcolor{red}{PROHIBIDO}: $S=1,\,R=1$
+
+*** Tabla de Verdad                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+# Reemplace [?] y [nombre] con los valores y nombres de estado correctos.
+| $S$ | $R$ | $Q$ | $\overline{Q}$ | Estado    |
+|-----+-----+-----+----------------+-----------|
+|  0  |  0  | [?] | [?]            | [nombre]  |
+|  0  |  1  | [?] | [?]            | [nombre]  |
+|  1  |  0  | [?] | [?]            | [nombre]  |
+|  1  |  1  | [?] | [?]            | Prohibido |
+
+** Latch SR con Puertas NAND
+# INSTRUCCIÓN: Explique la variante NAND del Latch SR.
+#   - ¿Qué cambia respecto a la versión NOR? (lógica activa en bajo)
+#   - Las entradas se notan S' y R' (activas en BAJO).
+#   - ¿Cuál es ahora la combinación PROHIBIDA?
+#   - Complete la tabla de verdad.
+
+*** Diferencia clave con NOR                                           :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- [Descripción breve: cómo se construye con 2 puertas NAND]
+- Entradas activas en \textcolor{blue}{bajo}:
+  $\overline{S}$ y $\overline{R}$
+- Estado \textcolor{red}{PROHIBIDO}: $\overline{S}=[?],\;\overline{R}=[?]$
+- [¿Por qué la lógica se invierte respecto a NOR?]
+
+*** Tabla de Verdad NAND                                               :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+| $\overline{S}$ | $\overline{R}$ | $Q$ | Estado    |
+|----------------+----------------+-----+-----------|
+| [?]            | [?]            | [?] | [nombre]  |
+| [?]            | [?]            | [?] | [nombre]  |
+| [?]            | [?]            | [?] | [nombre]  |
+| [?]            | [?]            | [?] | Prohibido |
+
+** Latch SR con Habilitación
+# INSTRUCCIÓN: Explique qué agrega la señal de habilitación (Enable, EN) al Latch SR.
+#   - Cuando EN=0, las entradas S y R no tienen efecto: ¿por qué?
+#   - Cuando EN=1, el latch funciona como un SR normal.
+#   - ¿Qué puertas adicionales se agregan al circuito?
+#   - Complete la tabla de verdad ampliada con la columna EN.
+
+*** Funcionamiento                                                     :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- Se agrega una señal de control: *Enable* ($EN$)
+- $EN=0$: entradas bloqueadas → $Q(t+1)=[?]$
+- $EN=1$: funciona como Latch SR normal
+- [¿Qué tipo de puertas adicionales se usan para implementar EN?]
+
+*** Tabla de Verdad                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+| $EN$ | $S$ | $R$ | $Q(t+1)$ | Estado    |
+|------+-----+-----+----------+-----------|
+|  0   |  X  |  X  | [?]      | [nombre]  |
+|  1   |  0  |  0  | [?]      | [nombre]  |
+|  1   |  0  |  1  | [?]      | [nombre]  |
+|  1   |  1  |  0  | [?]      | [nombre]  |
+|  1   |  1  |  1  | [?]      | Prohibido |
+
+** Latch D con Habilitación
+# INSTRUCCIÓN: Explique el Latch D derivado del Latch SR con habilitación.
+#   - ¿Qué conexión entre S y R elimina el estado prohibido?¿Por qué?  (pista: R = S')
+#   - La única entrada de dato pasa a llamarse D.
+#   - Describa los modos transparente (EN=1) y retención (EN=0).
+#   - Complete la tabla de verdad.
+
+*** Descripción                                                        :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- Se obtiene haciendo $R = \overline{D}$ en el Latch SR con EN
+- Elimina el estado \textcolor{red}{prohibido}
+- $EN=1$ (transparente): $Q(t+1)=[?]$
+- $EN=0$ (retención):    $Q(t+1)=[?]$
+- [¿Por qué se dice que es «transparente» cuando EN=1?]
+
+*** Tabla de Verdad                                                    :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+| $EN$ | $D$ | $Q(t+1)$ | Estado      |
+|------+-----+----------+-------------|
+|  0   |  X  | [?]      | [nombre]    |
+|  1   |  0  | [?]      | [nombre]    |
+|  1   |  1  | [?]      | [nombre]    |
+
+* Flip-Flop D
+
+** Flip-Flop D: Disparo por Flanco
+# INSTRUCCIÓN: Explique la diferencia fundamental entre el Latch D y el FF D.
+#   - Latch D: sensible al NIVEL de EN.
+#   - FF D: sensible al FLANCO (edge-triggered) de la señal de reloj CLK.
+#   - Defina flanco de subida (↑) y flanco de bajada (↓).
+#   - Explique por qué el disparo por flanco evita problemas de carreras
+#     (race conditions / glitches).
+#   - Indique la ecuación de siguiente estado y complete la tabla.
+
+*** Latch D vs. FF D                                                   :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- *Latch D:* activo mientras $EN=[?]$
+- *FF D:*    activo solo en el [flanco de subida ↑ / bajada ↓] de CLK
+- Ventaja: evita [race conditions / glitches] porque la ventana de
+  captura es [infinitamente corta / larga]
+- Ecuación:
+  \[Q(t+1) = D \quad \text{(en el flanco de CLK)}\]
+
+*** Tabla de Excitación                                                :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+| $D$ | $Q(t+1)$ | Estado   |
+|-----+----------+----------|
+|  0  | [?]      | [nombre] |
+|  1  | [?]      | [nombre] |
+
+** El Circuito Integrado 74LS74
+# INSTRUCCIÓN: Describa el CI 74LS74, que es un FF D real de la familia TTL.
+#   - ¿Cuántos Flip-Flops D contiene un solo encapsulado 74LS74?
+#   - Identifique y explique cada pin: D, CLK, PRE (preset), CLR (clear),
+#     Q y Q' (complemento).
+#   - ¿Cuál es la función de PRE y CLR? ¿Son síncronos o asíncronos?
+#   - Mencione la familia lógica (TTL, Low-power Schottky) y un dato de
+#     voltaje/corriente relevante del datasheet.
+#   - Si desea, incluya una imagen del pinout descargada bajo licencia libre.
+
+*** Descripción del CI                                                 :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+
+- Contiene [?] Flip-Flops D en un encapsulado DIP-14
+- Pines de cada FF:
+  - *D*:   [función]
+  - *CLK*: disparo por [flanco ↑ / ↓]
+  - *PRE*: [función, activo en alto/bajo]
+  - *CLR*: [función, activo en alto/bajo]
+  - *Q* y $\overline{Q}$: [salidas]
+- PRE y CLR son [síncronos / asíncronos]: actúan [con / sin] el reloj
+
+*** Tabla de Función                                                   :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+
+# Complete con los valores del datasheet del 74LS74
+| PRE | CLR | CLK | $D$ | $Q$  | $\overline{Q}$ |
+|-----+-----+-----+-----+------+----------------|
+|  0  |  1  |  X  |  X  | [?]  | [?]            |
+|  1  |  0  |  X  |  X  | [?]  | [?]            |
+|  0  |  0  |  X  |  X  | [?]  | [?]            |
+|  1  |  1  |  ↑  |  0  | [?]  | [?]            |
+|  1  |  1  |  ↑  |  1  | [?]  | [?]            |
+
+* Conclusiones
+
+** Lo que aprendimos y hacia dónde seguir
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+# INSTRUCCIÓN: Redacte las conclusiones del grupo sobre lo estudiado.
+#   - Resuma la progresión lógica que vieron: SR → SR+EN → Latch D → FF D → 74LS74
+#   - Destaque cuál fue el concepto más importante  para su grupo.
+#   - Luego complete los bloques de investigación sugeridos abajo.
+
+*Progresión estudiada:*
+
+#+begin_center
+SR (NOR/NAND) $\;\longrightarrow\;$ SR + Habilitación $\;\longrightarrow\;$
+Latch D $\;\longrightarrow\;$ Flip-Flop D $\;\longrightarrow\;$ 74LS74
+#+end_center
+
+*Conclusión del grupo:*
+- [Escriba aquí en 2–3 frases qué concepto les pareció más importante
+  y por qué la distinción Latch vs. Flip-Flop es relevante para un
+  diseñador de sistemas digitales.]
+
+
+* Referencias
+
+** Referencias
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+# Las referencias se generan automáticamente desde bibliography.bib.
+# Asegúrese de que todas las citas [cite:@...] del documento correspondan
+# a entradas válidas del archivo .bib.
+
+#+print_bibliography:
