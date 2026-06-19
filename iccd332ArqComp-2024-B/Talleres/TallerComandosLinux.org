@@ -4,9 +4,9 @@
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Taller de Comandos Linux
-#+date: 2024-07-
-#+author: COLOQUE SU NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+date: 2026-06-19
+#+author: NOMBRE DE LOS INTEGRANTES
+#+email: EMAIL - LIDER GRUPO
 #+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
@@ -53,12 +53,34 @@ ejercicios llenando los comandos adecuados dentro de los bloques de
 código de Emacs Org. Los resultados de la ejecución se obtienen
 haciendo ~C-c C-c~
 
-Para todos los ejercicios se sugiere o bien usar directamente un
+Para todos los ejercicios se sugiere usar directamente un
 distro de /Linux/ o el /WSL/ configurado para la clase de
-/Arquitectura de Computadores/.
+/Arquitectura de Computadores/. Ejecute los comandos en la terminal de
+Linux. Copie los comandos usados a este archivo.
+
+Si se ha utilizado IA para consultar temas referentes al desarrollo de
+código en el punto [[#sec:problema]], adjunte el archivo ~.md~ con el
+reporte de los diferentes prompts y respuestas dadas por la IA.
+
+** Ejecución desde Emacs
+
+Si desea ejecutar los comandos desde Emacs debe observar que los
+comandos del ~shell~ de Linux se ejecutarán desde la ubicación del
+archivo ~.org~. Por tanto, controle la ubicación de ~home~ en los
+bloques de código. Para ejecutar los bloques de código ejecute: ~C-c C-c~. 
+
+* Comandos de Linux
+:PROPERTIES:
+:CUSTOM_ID: problema-proyecto
+:END:
+Para este taller descargaremos los datos del /Fashion-Mnist/, un
+dataset popular para la prueba de algoritmos de machine learning. Al
+final, el dataset quedará organizado para ser aprovechado para
+entrenar un modelo.
 
 1. Utilice ~cd~ para localizarse en la posición de home de su usuario y
    verifique ejecutando el comando ~pwd~
+
    #+begin_src shell :exports both
      
    #+end_src
@@ -100,46 +122,60 @@ distro de /Linux/ o el /WSL/ configurado para la clase de
 
    #+end_src
 7. Los archivos anteriores están comprimidos. Investigue como
-   descomprimir usando el comando ~tar~. Si es necesario realice la
+   descomprimir usando el comando ~gunzip~. Si es necesario realice la
    instalación del comando. Descomprima los archivos en sus
    respectivas carpetas. Apunte el comando utilizado para la descompresión.
    #+begin_src shell :exports both
 
    #+end_src
-8. Una vez completa la descompresión, elimine los archivos
-   .gz. Verifique las carpetas finales usando ~ls~
+
+8. Mueva recursivamente las carpetas ~/Train y ~/Test dentro de ~/FashionData
    #+begin_src shell :exports both
 
    #+end_src
-9. Mueva recursivamente las carpetas ~/Train y ~/Test dentro de ~/FashionData
+
+9. Verifique la estructura de la carpeta ~/FashionData usando el
+   comando ~tree~
    #+begin_src shell :exports both
 
    #+end_src
-   
-10. Se desea realizar un registro climatológico de la ciudad de
-    Quito. Para esto, escriba un script de Python/Java que permita
-    obtener datos climatológicos desde el API de
-    [[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud de Quito como
-    (-0.2299, -78.5249), respectivamente. Los resultados obtenidos de
-    la consulta al API se escriben en un archivo
-    /clima-quito-hoy.csv/. Cada ejecución del script debe almacenar
-    nuevos datos en el archivo. Investigue sobre *crontab* y utilícelo
-    para obtener datos del API de /openweathermap/ cada 5 minutos
-    mediante la ejecución de un archivo ejecutable denominado
-    /get-weather.sh/. Verifique los resultados. Todas las operaciones
-    se realizan en Linux o en el WSL. Las etapas del problema se
-    subdividen en:
-    1. Crear su API gratuito en [[https://openweathermap.org/current#one][openweathermap]]
-    2. Escribir un script en Python/Java que realice la consulta al API
-       y escriba los resultados en /clima-quito-hoy.csv/
+
+
+
+* Problema
+:PROPERTIES:
+:CUSTOM_ID: sec:problema
+:END:
+
+Se desea realizar un registro climatológico de la ciudad de
+Quito. Para esto, escriba un script de Python/Java que permita obtener datos climatológicos desde el API de
+[[https://openweathermap.org/current#one][openweathermap]]. Considere la latitud y la longitud de Quito como
+(-0.2299, -78.5249), respectivamente. Los resultados obtenidos de
+la consulta al API se escriben en un archivo
+/clima-quito-hoy.csv/. Cada ejecución del script debe almacenar
+nuevos datos en el archivo. Investigue sobre *crontab* y utilícelo
+para obtener datos del API de /openweathermap/ cada 5 minutos
+mediante la ejecución de un archivo ejecutable denominado
+/get-weather.sh/. Verifique los resultados. Todas las operaciones
+se realizan en Linux o en el WSL. Las etapas del problema se
+subdividen en:
+    
+1. Crear su API gratuito en [[https://openweathermap.org/current#one][openweathermap]]
+2. Escribir un script en Python/Java que realice la consulta al API y
+   escriba los resultados en /clima-quito-hoy.csv/
        
-       #+begin_src python :exports both
+   #+begin_src python :exports both
 
-       #+end_src
-    3. Desarrollar un ejecutable /get-weather.sh/ para ejecutar el
-       programa Python/Java.
-       #+begin_src shell :exports both
-       #+end_src
-    4. Configurar Crontab para la adquisición de datos. Escriba el
-       comando configurado.
+   #+end_src
+
+3. Desarrollar un ejecutable /get-weather.sh/ para ejecutar el
+   programa Python/Java.
+
+   #+begin_src shell :exports both
+
+
+   #+end_src
+
+4. Configurar Crontab para la adquisición de datos. Escriba el comando
+   configurado.
        
