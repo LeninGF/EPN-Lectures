@@ -140,7 +140,8 @@ porque no todas funcionan.
    #+end_src
    
 4. Estructurar el archivo org
-#+begin_src org
+
+#+begin_example
 #+TITLE: A Novel Method for XYZ
 #+AUTHOR: Jane Doe, John Smith
 #+DATE: \today
@@ -165,29 +166,28 @@ This paper proposes a groundbreaking approach to XYZ...
 #+cite_export: biblatex
 
 #+LATEX: \IEEEkeywords{Machine Learning, Optimization, Algorithms, Data Science}
-
-* Introduction
-\label{sec:intro}
+ * Introduction\label{sec:intro}
 Prior work [[cite:key1]] has focused on...
+ * Methodology
+ * * Algorithm
 
-* Methodology
-** Algorithm
 \begin{equation}
 y = \sum_{i=0}^n \alpha_i x_i
 \end{equation}
 
-* Results
+ * Results
 #+CAPTION: Performance comparison.
 [[file:results.png]]
 
-* References
-#+print_bibliography: 
+ * References
+ #+print_bibliography:
+
+#+end_example
 
 
+* Instalar Emacs más Actual
 
-#+end_src 
-
-* Instalar Emacs más Actual Por defecto, al instalar con ~sudo apt-get
+Por defecto, al instalar con ~sudo apt-get
 install emacs~, se obtiene la versión compatible que tiene el sistema operativo.
 Sin embargo, es posible instalar una versión más actualizada de Emacs siguiendo
 los siguientes pasos --aun no he probado--:
@@ -210,4 +210,48 @@ los siguientes pasos --aun no he probado--:
    #+end_src
 
 La versión más actualizada podría usarse para aprovechar funcionalidades de IA
-potenciada con agentes.
+potenciada con agentes. Alternativamente se puede usar ~snap~
+
+#+begin_src shell
+sudo snap install emacs --classic
+#+end_src
+
+~--classic~ es necesario para que Emacs tenga acceso completo al sistema de archivos.
+* Actualización de Paquetes en Emacs
+
+La actualización en Emacs realiza una compilación de los archivos
+nuevos para el funcionamiento de los paquetes. Esta acción puede
+generar conflictos. Recientemente, detallo el problema que se tuvo con
+el paquete ~jupyter~ y cómo se puede solucionar. Estimo que la
+resolución de conflictos similares ha de ser parecida.
+
+1. Remover los paquetes que tienen el problema: Esto se puede detectar
+   ya sea porque al usar el paquete no hay el comportamiento debido y
+   antes sí funcionaba o por errores que se presenten durante el
+   inicio de Emacs. Es adecuado revisar problemas posibles usando
+   ~emacs --debug init~.
+   #+begin_src elisp
+    M-x package-delete RET jupyter RET
+    M-x package-delete RET zmq RET
+   #+end_src
+2. El comando anterior borrará los directorios asociados con el
+   paquete. Sin embargo, se sugiere borrar el cache y los directorios
+   por si quedan archivos:
+   #+begin_src shell
+    ls ~/.emacs.d/elpa/ | grep -E 'jupyter|zmq'
+    rm -rf ~/.emacs.d/elpa/jupyter-* ~/.emacs.d/elpa/zmq-*
+   #+end_src
+3. Limpiar el cache
+   #+begin_src shell
+    rm -rf ~/.emacs.d/eln-cache
+    # or, depending on your Emacs version/build:
+    rm -rf ~/.cache/emacs/eln-cache
+   #+end_src
+
+   o desde Emacs con
+   #+begin_src elisp
+    M-x describe-variable RET native-comp-eln-load-path
+   #+end_src
+4. Cierre y reinicie Emacs. Si dispone de un archivo ~init.el~, los
+   paquetes volverán a ser instalados.
+
