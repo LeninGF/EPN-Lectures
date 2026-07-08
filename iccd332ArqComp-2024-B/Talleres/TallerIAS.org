@@ -108,13 +108,28 @@ sobre las palabras clave.
   \centering
   \begin{tabular}{|cccc|}
     \hline
-    Opcode   & Opcode Hex &  Símbolo          & RTL \\ \hline
-    00001010 & 0x0A       &  LOAD MQ          & $[AC]\leftarrow[MQ]$\\
-    00001001 & 0x09       &  LOAD MQ, M(X)    & $[MQ]\leftarrow[X]$\\
-    00100001 & 0x21       &  STOR M(X)        & $[X]\leftarrow[AC]$\\
-    00000010 & 0x02       &  LOAD M(X)        & $[AC]\leftarrow[X]$\\
-    00000011 & 0x03       &  LOAD |M(X)|      & $[AC]\leftarrow|[X]|$\\
-    00000100 & 0x04       &  LOAD -|M(X)|     & $[AC]\leftarrow-|[X]|$\\
+    Opcode   & Opcode Hex  &  Símbolo         & RTL \\ \hline
+    00001010 & 0x0A        &  LOAD MQ         & $[AC]\leftarrow[MQ]$\\
+    00001001 & 0x09        & LOAD MQ, M(X)    & $[MQ] \leftarrow [M(X)]$ \\
+    00100001 & 0x21        & STOR M(X)        & $[M(X)] \leftarrow [AC]$ \\
+    00000001 & 0x01        & LOAD M(X)        & $[AC] \leftarrow [M(X)]$ \\
+    00000010 & 0x02        & LOAD -M(X)       & $[AC] \leftarrow -[M(X)]$ \\
+    00000011 & 0x03        & LOAD |M(X)|      & $[AC] \leftarrow |[M(X)]|$ \\
+    00000100 & 0x04        & LOAD -|M(X)|     & $[AC] \leftarrow -|[M(X)]|$ \\
+    00001101 & 0x0D        & JUMP M(X,0:19)   & $PC \leftarrow X(0:19)$ \\
+    00001110 & 0x0E        & JUMP M(X,20:39)  & $PC \leftarrow X(20:39)$ \\
+    00001111 & 0x0F        & JUMP +M(X,0:19)  & $if \ [AC] \ge 0 \ then \ [PC] \leftarrow X(0:19)$ \\
+    00010000 & 0x10        & JUMP +M(X,20:39) & $if \ [AC] \ge 0 \ then \ [PC] \leftarrow X(20:39)$ \\
+    00000101 & 0x05        & ADD M(X)         & $[AC] \leftarrow [AC] + [M(X)]$ \\
+    00000111 & 0x07        & ADD |M(X)|       & $[AC] \leftarrow [AC] + |[M(X)]|$ \\
+    00000110 & 0x06        & SUB M(X)         & $[AC] \leftarrow [AC] - [M(X)]$ \\
+    00001000 & 0x08        & SUB |M(X)|       & $[AC] \leftarrow [AC] - |[M(X)]|$ \\
+    00001011 & 0x0B        & MUL M(X)         & $[AC, MQ] \leftarrow [MQ] \times [M(X)]$ \\
+    00001100 & 0x0C        & DIV M(X)         & $[MQ] \leftarrow [AC] \div [M(X)], \ [AC] \leftarrow [AC] \pmod{[M(X)]}$ \\
+    00010100 & 0x14        & LSH              & $[AC] \leftarrow [AC] \times 2$ \\
+    00010101 & 0x15        & RSH              & $[AC] \leftarrow [AC] \div 2$ \\
+    00010010 & 0x12        & STOR M(X,8:19)   & $[M(X)](8:19) \leftarrow [AC](28:39)$ \\
+    00010011 & 0x13        & STOR M(X,28:39)  & $[M(X)](28:39) \leftarrow [AC](28:39)$ \\ 
     \hline
   \end{tabular}
 \end{table}

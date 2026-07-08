@@ -1,0 +1,418 @@
+% Created 2026-05-26 Tue 21:14
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{longtable}
+\fancyhead[R]{}
+\setlength\headheight{43.0pt}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{/home/santiago_proanio/Guit_Hub_ICCD332/iccd332ArqComp-2024-B/bibliography/bibliography.bib}
+\author{Santiago Proaño, Martín Pérez, Ariel Montufar, Damian Haro}
+\date{26-05-2026}
+\title{Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores\\\medskip
+\large ICCD332 Arquitectura de Computadores }
+\hypersetup{
+ pdfauthor={Santiago Proaño, Martín Pérez, Ariel Montufar, Damian Haro},
+ pdftitle={Taller - Conceptos Básicos de Hardware y Ensamblaje de Computadores},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.3 (Org mode 9.6.15)}, 
+ pdflang={Spanish}}
+\begin{document}
+
+\maketitle
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+
+
+\section{Instrucciones generales}
+\label{sec:org3bd3419}
+
+Este taller se realiza en \textbf{grupos}. Cada integrante debe completar
+individualmente el curso Cisco Networking Academy:
+\textbf{Conceptos Básicos de Hardware de Computadora} y obtener su
+certificado de completitud. 
+
+\textbf{Entregables del grupo:}
+\begin{itemize}
+\item Resolución de éste archivo fuente \texttt{.org}
+\item El PDF exportado desde Emacs \texttt{M-x org-latex-export-to-pdf}
+\item Los certificados individuales de cada integrante (PDF o imagen)
+\end{itemize}
+
+
+\textbf{Entregable Individual(Tarea):}
+\begin{itemize}
+\item Resolver el cuestionario individual en el aula virtual
+\end{itemize}
+\subsection{Recursos}
+\label{sec:orgb2d7889}
+Cree su usuario en la plataforma de \emph{Cisco Networking Academy}. Use el
+siguiente enlace:
+
+\href{https://www.netacad.com/es/courses/computer-hardware-basics?courseLang=en-US}{Cisco Computer Hardware Basics}
+
+Puede configurar según el idioma de su preferencia. El texto está
+disponible en Español. Los vídeos disponen de subtítulos en varios
+idiomas.
+
+\section{Parte A. Integrantes y certificados}
+\label{sec:org0bd92ca}
+Para insertar la captura del certificado utilice YASnippet: Escriba
+\texttt{fig\_} seguido de \texttt{C-TAB}. Esto produce \texttt{\#+caption}, \texttt{\#+attr\_latex} y
+\texttt{\#+label} que permiten colocar un encabezado a la imagen, controlar el
+escalado de la misma y una referencia. Finalmente inserte el enlace al
+archivo usando \texttt{C-c C-l} o usando \texttt{[[./carpeta-certificados/cert-int1.pdf]]}
+\begin{enumerate}
+\item \textbf{Integrante 1}
+\begin{itemize}
+\item \textbf{Nombre completo:}
+Santiago Javier Proaño Yépez
+\item \textbf{Correo:}
+santiago.proano01@epn.edu.ec
+\item \textbf{Certificado adjunto:}
+\end{itemize}
+\end{enumerate}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{Certificados/ComputerHardwareBasicsUpdate20260526-30-crici5.pdf}
+\caption{\label{fig:org9bdf7f6}Certificado Integrante 1}
+\end{figure}
+\begin{enumerate}
+\item \textbf{Integrante 2}
+\begin{itemize}
+\item \textbf{Nombre completo:}
+Martín Pérez Reinoso
+\item \textbf{Correo:}
+martin.perez02@epn.edu.ec
+\item \textbf{Certificado adjunto:}
+\end{itemize}
+\end{enumerate}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{Certificados/Computer_Hardware_Basics_certificate_MartínPérez.jpg.jpeg}
+\caption{\label{fig:org9ae6949}Certificado Integrante 2}
+\end{figure}     
+\begin{enumerate}
+\item \textbf{Integrante 3}
+\begin{itemize}
+\item \textbf{Nombre completo:}
+Damian Matias Haro Caceres
+\item \textbf{Correo:}
+damian.haro@epn.edu.ec
+\item \textbf{Certificado adjunto:}
+\end{itemize}
+\end{enumerate}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{Certificados/Computer_Hardware_Basics_certificate_damimati2000-gmail-com_9a630ea9-6aa1-438a-bd15-eeaa0d6d785a_Damian.pdf}
+\caption{\label{fig:org0022283}Certificado Integrante 3}
+\end{figure}
+\begin{enumerate}
+\item \textbf{Integrante 4}
+\begin{itemize}
+\item \textbf{Nombre completo:}
+Ariel Montufar Bermeo
+\item \textbf{Correo:}
+ariel.montufar@epn.edu.ec
+\item \textbf{Certificado adjunto:}
+\end{itemize}
+\end{enumerate}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{Certificados/Computer_Hardware_Basics_certificate_arielmontufar-outlook-com_ec4f1618-2497-4071-83e2-f79c627792f7_Ariel_Montufar.pdf}
+\caption{\label{fig:org153b290}Certificado Integrante 4}
+\end{figure}
+
+\section{Parte B. Cuestionario argumentado grupal}
+\label{sec:orgaffacfe}
+Para cada pregunta:
+
+\begin{itemize}
+\item Indique la alternativa escogida (letra).
+\item Escriba una justificación técnica breve (3 a 6 líneas). Fundamente
+su respuesta. Su insumo principal es el curso de Conceptos Básicos
+de Hardware. Si usa otro material referenciar.
+\item Discuta con el grupo de trabajo las opciones y la respuesta ¿Existió
+consenso? ¿Cuáles fueron las principales discrepancias?
+\end{itemize}
+
+\textbf{Criterio:} correcto/incorrecto + calidad del argumento técnico.
+
+\subsection{Pregunta 1}
+\label{sec:orgc22ac9b}
+Al instalar una CPU en un socket LGA, ¿por qué es crítico alinear el
+pin 1 de la CPU con el pin 1 del socket?
+
+a. Para que el sistema arranque con mayor rapidez 
+
+b. Para evitar daños en la CPU y el socket al insertar incorrectamente
+
+c. Porque el pin 1 es el único que conduce electricidad 
+
+d. Para que el disipador quede centrado automáticamente
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} b
+\item \emph{Justificación técnica:} Porque al instalar el procesador en una orientación que no es la correcta, la presión del mecanismo puede llegar a doblar o romper de forma irreversible los pines expuestos del socket LGA, y dañar los puntos de contacto planos de la CPU, quedando inutilizables.
+\item \emph{Debate del grupo:} Se descartó la opción a, ya que la orientación no afecta la velocidad del software. La opción c tampoco es porque la mayoría de los pines conducen electricidad y datos. La d es incorrecta porque el centrado del disipador depende del sistema de anclaje de la placa base, no de la orientación. Entonces la opción b es la correcta.
+\end{itemize}
+\subsection{Pregunta 2}
+\label{sec:org309bfe6}
+Al montar la placa madre en el gabinete, ¿cuál es la función de los separadores (standoffs)?
+
+a. Sostener el peso de las tarjetas de expansión
+
+b. Evitar cortocircuitos entre la placa madre y el metal del gabinete
+
+c. Mejorar la ventilación de la placa madre
+
+d. Facilitar la alineación del panel de E/S trasero
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} b
+\item \emph{Justificación técnica:} La función de los separadores es evitar que la placa madre haga contacto directo con el gabinete, ya que la placa madre tiene soldaduras expuestas y el gabinete está hecho de metal conductor. Si ambos hicieran contacto directo, se generarían varios cortocircuitos.
+\item \emph{Debate del grupo:} La opción a se descartó porque no están diseñados para soportar el peso de las tarjetas. La opción c y la opción d sonaban coherente, pero no es la función de los separadores, ya que la altura que generan los separadores ayuda indirectamente a la alineación, pero algunos gabinetes vienen con los separadores integrados, entonces se descartan. Queda la opción b como la correcta.
+\end{itemize}
+
+\subsection{Pregunta 3}
+\label{sec:orge2c428f}
+Según el manual de ensamblaje de Cisco, ¿cuándo NO es necesario aplicar pasta térmica al instalar el disipador sobre la CPU?
+
+a. Cuando la CPU es de alto rendimiento
+
+b. Cuando el disipador ya incluye pasta térmica preaplicada
+
+c. Cuando la CPU tiene más de un año de uso
+
+d. Cuando el gabinete tiene buena ventilación
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} b
+\item \emph{Justificación técnica:} Muchos disipadores modernos tienen con una capa de pasta térmica preaplicada de forma uniforme em su base. El añadir más pasta térmica es contraproducente, ya que ponerla en exceso crearía una barrera gruesa que dificultaría el paso del calor desde el procesador al disipador.
+\item \emph{Debate del grupo:} Se descartó la opción a porque las CPUs de alto rendimiento generan más calor y requieren pasta térmica de calidad. La opción c y la opción d no quitan que sea necesaria la pasta térmica. Además, en clase se vio un video correspondiente a esto, por lo que la respuesta era claramente la b.
+\end{itemize}
+
+\subsection{Pregunta 4}
+\label{sec:orga2666bf}
+¿Por qué se recomienda usar pulsera antiestática y alfombrilla antiestática al manipular componentes internos?
+
+a. Para proteger al técnico de descargas de 220 V
+
+b. Para evitar que la electricidad estática dañe los componentes
+
+c. Para cumplir una norma estética del laboratorio
+
+d. Para que los tornillos no se magneticen
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} b
+\item \emph{Justificación técnica:} Porque muchos de los componentes electrónicos internos (como CPU, RAM y placa madre) utilizan circuitos integrados que tienen semiconductores muy sensibles a una descarga electrostática, la cual se puede generar por el cuerpo humano al acumular miles de voltios de electricidad estática por fricción, causando que se daños instantáneos o fallas difíciles de identificar.
+\item \emph{Debate del grupo:} Se descartó la opción a porque la pulsera antiestática no está hecha para proteger contra corrientes letales de 220V. La opción c tiene razón, pero no solo es una norma ni apariencia, está hecha con el fin de proteger a los componentes. La opción d es completamente falsa y no tiene nada que ver.
+\end{itemize}
+\subsection{Pregunta 5}
+\label{sec:org686ae05}
+Si al iniciar la computadora por primera vez un LED del panel frontal no funciona, ¿qué indica el manual de Cisco?
+
+a. Reemplazar el conector por uno de repuesto
+
+b. Revisar el BIOS para habilitar el LED
+
+c. Quitar el conector, invertirlo y volver a conectarlo
+
+d. Desconectar y reconectar la fuente de poder
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} c
+\item \emph{Justificación técnica:} Según el manual de Cisco, los LED del panel frontal dependen de la polaridad correcta del conector. Si un LED no enciende al iniciar la computadora por primera vez, normalmente significa que el conector está invertido, por lo que la corriente no circula. La solución recomendada es retirarlo, girarlo y volverlo a conectar correctamente.
+\item \emph{Debate del grupo:} Se descartó la opción a porque el reemplazar un conector es una medida extrema que no resuelve nada si el LED simplemente está al revés. La opción b es incorrecta ya que la BIOS no controla directamente los LED básicos del panel frontal. Y la opción d no puede ser porque no corrige la polaridad de un conector específico del panel frontal.
+\end{itemize}
+\subsection{Pregunta 6}
+\label{sec:orga7e8ca6}
+¿Por qué una GPU puede requerir un conector de alimentación PCIe adicional de la fuente de poder?
+
+a. Porque la ranura PCIe no transmite señal de video
+
+b. Porque las GPUs de alto rendimiento consumen más potencia de la que la ranura puede suministrar
+
+c. Porque el conector PCIe solo funciona con tarjetas de red
+
+d. Por el estándar de codificación de color de los cables SATA
+
+\begin{itemize}
+\item \emph{Alternativa escogida:} b
+\item \emph{Justificación técnica:} Las ranuras PCIe de la placa madre tiene un limite para el suministro de energía el cual no abastece a la tarjeta gráfica. Las GPU requieren mayor consumo para el procesamiento de gráficos por lo que es necesario conectar cables suplementarios desde la fuente de poder para cubrir eso.
+\item \emph{Debate del grupo:} Se descartó la opción a porque la ranura PCIe si transmite los datos para la señal de video. La opción c es incorrecta ya que el conector PCIe no solo funciona con tarjetas de red sino que también admite tarjetas de otros tipos. Y la opción d no es porque los cables SATA se usan en discos duros o SSDs y sus entandares de color no tienen nada que ver.
+\end{itemize}
+\section{Parte C. Mantenimiento de computadores}
+\label{sec:org9c97716}
+
+\subsection{3.1 Insumos para mantenimiento preventivo}
+\label{sec:org85a23be}
+Liste al menos seis insumos y describa para qué sirve cada
+uno. Revise el siguiente \href{https://youtu.be/3ri1BMV7XTM?si=bjYoDUUKuMWwj4Qg}{vídeo}.
+\begin{center}
+\begin{tabular}{ll}
+Insumo & Uso principal\\[0pt]
+\hline
+Espátula plástica & Para separar y destrabar la carcasa plástica del equipo\\[0pt]
+ & sin rayar o marcar los componentes externos\\[0pt]
+Aspiradora / Soplador & Para retirar el polvo superficial acumulado y las pelusas\\[0pt]
+ & sueltas sobre el PCB y las tapas\\[0pt]
+Alcohol isopropílico & Remover los restos de pasta térmica y masillas viejas\\[0pt]
+Papel para faginar (libre de pelusa) & Para limpiar superficies delicadas de los chips sin\\[0pt]
+ & dejar residuos (en conjunto con el alcohol isopropílico)\\[0pt]
+Espuma limpiadora & Remover la suciedad profunda y acumulada en áreas de\\[0pt]
+ & difícil acceso\\[0pt]
+Cepillo de cerdas suaves & Remover polvo y residuos de compuestos térmicos\\[0pt]
+ & endurecidos entre pequeños componentes del PCB sin dañarlos\\[0pt]
+Cinta Kapton & Cinta resistente a altas temperaturas, se coloca para sellar\\[0pt]
+ & la unión entre ventilador y disipador\\[0pt]
+Pasta térmica y Thermal Putty & Rellenan las imperfecciones microscópicas entre los chips\\[0pt]
+ & (CPU/GPU/VRAM) y el bloque metálico\\[0pt]
+ & \\[0pt]
+\end{tabular}
+\end{center}
+
+\subsection{3.2 Procedimiento de limpieza — Desktop}
+\label{sec:orgb260216}
+\begin{enumerate}
+\item Apagar el equipo por completo, desconectar el cable de alimentación de la corriente eléctrica y retirar las tapas laterales del gabinete quitando los tornillos traseros.
+\item Utilizar aire comprimido o una aspiradora junto con un cepillo de cerdas suaves para quitar las acumulaciones de polvo del fondo del gabinete, rejillas de ventilación y sobre la superficie de los componentes principales.
+\item Sostener firmemente las aspas de los ventiladores para evitar que giren libremente y dañen sus ejes, limpiándolas de forma individual con un cepillo o paño húmedo.
+\item Desmontar con cuidado el disipador de calor de la CPU, limpiar la pasta térmica seca de las superficies con alcohol isopropílico y aplicar una nueva capa delgada de pasta térmica antes de volver a colocarlo.
+\item Reinstalar las tapas laterales asegurándolas con sus respectivos tornillos y limpiar el exterior del gabinete usando un paño de microfibra con espuma limpiadora para remover suciedad superficial.
+\end{enumerate}
+
+\subsection{3.3 Procedimiento de limpieza — Laptop}
+\label{sec:org70ddcd2}
+Depende de la laptop que se vaya a limpiar, se debe investigar previamente, pero en el video se usa una ASUS
+\begin{enumerate}
+\item Retirar todos los tornillos de la tapa inferior y remover la tapa utilizando una espátula plástica para soltar las trabas de presión laterales de forma segura.
+\item Desconectar inmediatamente el flex de alimentación de la batería de la placa madre (PCB) para evitar cortocircuitos accidentales y realizar una aspiración inicial del polvo adherido en el área superficial.
+\item Retirar en orden los tornillos que fijan los tubos de cobre conductores y los ventiladores, desenchufando con sumo cuidado los delicados conectores eléctricos de los coolers antes de retirar el disipador.
+\item Limpiar las aspas de los ventiladores utilizando espuma limpiadora, cepillo y alcohol. Remover minuciosamente los residuos de pasta térmica y masilla vieja endurecida de los chips y el disipador empleando papel sin pelusa, para luego aplicar masilla térmica (thermal putty) en las memorias VRAM y pasta térmica de alta calidad sobre el procesador y chip gráfico.
+\item Volver a montar el bloque disipador ajustando los tornillos según el orden numérico grabado en el metal, reconectar la batería, cerrar a presión la tapa posterior con sus tornillos correspondientes y limpiar el teclado, pantalla y superficies exteriores usando un paño de microfibra y espuma con pH balanceado.
+\end{enumerate}
+\section{Parte D. Aprendizaje obtenido}
+\label{sec:orgf032c19}
+
+\subsection{Integrante 1 Santiago Proaño}
+\label{sec:orgece2a4b}
+\begin{itemize}
+\item \textbf{¿Qué conocimiento nuevo obtuvo del curso?} Aprendí la forma correcta de desamblar una computadora de escritorio sin dañar los componentes internos, cosa que para mi era una caja negra antes de realizar el curso, por lo que gracias a este curso tengo más confianza a la hora de intentar reparar o limpiar mi computadora de escritorio sin preocuparme por que no funcione luego.
+\item \textbf{¿Qué concepto corrigió o clarificó?} Mejoré mi conocimiento en redes inalámbricas, mas específicamente en redes personales como las comunicaciones bluethooth, pues antes no tenia idea de que estas comunicaciones tenían una clasificación, y me preguntaba por que algunos de mis dispositivos tenían mas alcance que otros, ahora ya se el por que y en que rangos debería tener estos dispositivos.
+\end{itemize}
+
+\subsection{Integrante 2  Martín Pérez}
+\label{sec:org64330f2}
+\begin{itemize}
+\item \textbf{¿Qué conocimiento nuevo obtuvo del curso?} El curso me permitió obtener mayor conocimiento sobre el ensamblaje y desensamblaje de una PC de manera muy detallada, con tutoriales paso a paso, algunos cuidados que se deben tener con los componentes y herramientas útiles para esto. Además, conocí mucho más del hardware de los dispositivos portátiles, celulares, relojes inteligentes y otros dispositivos más. Sin olvidar los protocolos de seguridad y prevención de incendios.
+\item \textbf{¿Qué concepto corrigió o clarificó?} Clarifiqué mi enfoque acerca del mantenimiento que se debe tener con los dispositivos que usamos a diario y cómo limpiarlos de manera superficial. Me hizo darme cuenta de lo diferentes que son las arquitecturas físicas para cada dispositivo dependiendo de su uso y en qué ambientes se los requiere o usa mayormente.
+\end{itemize}
+
+\subsection{Integrante 3 (Damián Haro)}
+\label{sec:org92e55df}
+\begin{itemize}
+\item \textbf{¿Qué conocimiento nuevo obtuvo del curso?} Este curso sobre el hardware fue fructífero para la obtención de nueva información sobre el ensamblaje y desamblaje de dispositivos portátiles y su adecuado mantenimiento, incluyendo información sobre otros muchos dispositivos que aportan un distinto uso en la vida cotidiana.
+\item \textbf{¿Qué concepto corrigió o clarificó?} Este curso pudo resolver mi duda principalmente sobre distintos elementos dentro de una computadora portatil y su gran importancia, junto con hacer darme cuenta que es mucho más complejo su mantenimiento y limpieza de lo que consideraba inicialmente
+\end{itemize}
+
+\subsection{Integrante 4 (Ariel Montufar)}
+\label{sec:org1c76f2e}
+\begin{itemize}
+\item \textbf{¿Qué conocimiento nuevo obtuvo del curso?} El curso me fue util para comprender el funcionamiento y componentes de los distintos dispositivos móviles que son comúnmente usados especialmente por aquellos que seguimos la carrera de software. Tambien fue posible rellenar lagunas sobre conocimientos que estaban incompletos. Por último aprendí de los riesgos que puede conllevar manejar los componentes internos de estos dispositivos si no se maneja con el debido cuidado.
+\item \textbf{¿Qué concepto corrigió o clarificó?} Corregí sobre el cuidado que conllevan los dispositivos pues lo tenia muy a la ligera y no manipulaba estos con la debida delicadeza. Clarifique que si no se tratan con cuidado ni se usan las herramientas adecuadas puede terminar averiándose el dispositivo. Además de que existen productos diseñados específicamente para la limpieza de estos componentes tecnológicos.
+\end{itemize}
+
+\section{Rúbrica de evaluación}
+\label{sec:org0a92247}
+
+\begin{center}
+\begin{tabular}{lr}
+Criterio & Puntaje máximo\\[0pt]
+\hline
+Certificados individuales completos & 20\\[0pt]
+Cuestionario: respuesta correcta (x8) & 30\\[0pt]
+Cuestionario: argumento técnico (x8) & 30\\[0pt]
+Mantenimiento (tabla + procedimientos) & 20\\[0pt]
+TOTAL & 100\\[0pt]
+\end{tabular}
+\end{center}
+
+\section{¿Cómo referenciar en Emacs?}
+\label{sec:orgdad5b46}
+Para insertar una referencia a un recurso bibliográfico
+\begin{enumerate}
+\item Puede actualizar el archivo \texttt{../bibliography/bibliography.bib}
+\item Escribir en formato \textbf{\textbf{BibTeX}} el recurso bibliográfico
+\item Verifique la siguiente configuración al encabezado:
+\begin{verbatim}
+   #+cite_export: biblatex
+   #+LATEX_HEADER: \usepackage[backend=biber, style=ieee]{biblatex}
+   #+BIBLIOGRAPHY: ../bibliography/bibliography.bib
+\end{verbatim}
+\item Usar \texttt{M-x org-cite-insert} para insertar una cita. Aparecerá una
+lista. Use los cursores para seleccionar la cita. Ejecute \texttt{C-RET}: \emph{De acuerdo con
+\autocite{ledin2022modern}, la arquitectura \ldots{}..}
+\item Revise que al final del documento exista \texttt{\#+print\_bibliography:}
+\item \textbf{\textbf{Sugerencia:}} Para evitar repetir varias veces el proceso de
+exportación, es recomendable cambiar el compilador de \LaTeX a
+\texttt{latexmk}. Para esto:
+\begin{itemize}
+\item \texttt{sudo apt install latexmk}
+\item Revise en el encabezado del \texttt{.org} que el compilador escogido sea
+\texttt{\#+LATEX\_COMPILER: latexmk}. También puede modificar el archivo
+\texttt{init.el} para indicar qué compilador se usa para exportar de
+\texttt{.org} a \emph{\LaTeX{}}:
+\begin{verbatim}
+;; 4.7b Proceso de compilación con latexmk para Org-export
+(with-eval-after-load 'ox-latex
+  (setq org-latex-pdf-process
+        '("latexmk -f -pdf -%latex -interaction=nonstopmode -output-directory=%o %f")))
+
+;; 4.7c Org-cite: biblatex como procesador para exportación LaTeX
+(with-eval-after-load 'oc
+  (setq org-cite-export-processors
+        '((latex biblatex)
+          (t basic))))
+
+\end{verbatim}
+\end{itemize}
+\end{enumerate}
+\section{Verificación de Entregables [100\%]:}
+\label{sec:org0c245b0}
+Ejecute \texttt{C-c C-c} sobre los ítems de tarea según se hayan cumplido o
+no. Si un ítem no pudo realizarse apunte en la siguiente sección las
+razones al respecto.
+\begin{itemize}
+\item[{$\boxtimes$}] Los enlaces a los certificados en el documento \texttt{.org} funcionan.
+\item[{$\boxtimes$}] Resolución completa del Cuestionario2.
+\item[{$\boxtimes$}] Revisión del vídeo sobre mantenimiento a computador ASUS.
+\item[{$\boxtimes$}] Tutorial de Comandos Emacs realizado.
+\item[{$\boxtimes$}] Lista de insumos para mantenimiento completa.
+\item[{$\boxtimes$}] Procedimiento de mantenimiento para desktop completo.
+\item[{$\boxtimes$}] Procedimiento de mantenimiento para laptop completo.
+\item[{$\boxtimes$}] Revisión de ortografía con \texttt{ispell-buffer} en el buffer
+\item[{$\boxtimes$}] Generación de Archivo PDF \texttt{M-x org-latex-export-to-pdf}
+\item[{$\boxtimes$}] Subir al aula virutal archivo \texttt{.org} y \texttt{.pdf}
+\end{itemize}
+
+\printbibliography
+\end{document}

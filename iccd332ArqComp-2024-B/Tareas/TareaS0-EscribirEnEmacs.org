@@ -4,9 +4,9 @@
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Lógica Digital
-#+date: 2026-XX-XX Si escribes dd y le das ~C-TAB~ Emacs escribe la fecha por ti
-#+author: COLOQUE SU NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+date: 2026-17-04
+#+author: Santiago Javier Proaño Yépez
+#+email: santiago.proano01@epn.edu.ec
 #+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
@@ -87,9 +87,24 @@ Suba el documento .ORG
 * Análisis Crítico
 ** De Chat-GPT, sus sesgos, nuestros sesgos y el Pensamiento Crítico:
 
-Escriba aquí su respuesta.
+Sinceramente, yo quería encontrar algún punto con el que debatirle a
+la autora del vídeo pero, no la encuentro, tiene razón en lo que dice,
+en vez de pedirle a chat GPT que refuerce lo que nosotros creemos no vamos
+a aprender ni a mejorar nuestro pensamiento, por tanto, deberíamos ser
+más imparciales a la hora de hacer las preguntas y más críticos al
+momento de leer las respuestas.
 ** G. Hinton sobre la IA y los Sistemas Económicos ¿Es la IA democratizable?
-Escriba aquí su respuesta.
+Concuerdo con lo que dijo el profesor, de que, esta eminencia de la
+tecnología no es una persona experimentada en la política ni economía,
+por lo que su opinión en vez de estar marcada por la experiencia y el
+conocimiento esta basado en sesgos, ahora, personalmente soy fiel
+partidario del capitalismo, pese a que hablo desde la ignorancia, creo
+que las ganancias o el uso de la IA no se limita a las grandes
+empresas, gente común y corriente puede hacer uso de estas
+herramientas para ayudarles en la creación de su propia empresa, lo
+que no solo le da un trabajo a esta persona, sino también a más
+gente. En síntesis, no creo que el capitalismo sea el fin del mundo,
+sino mas bien una oportunidad para mejorar.
 
 
 
