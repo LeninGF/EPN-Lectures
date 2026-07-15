@@ -1,0 +1,194 @@
+/* ============================================================
+   Estilo para la página "Representación IEEE 754"
+   Fuentes: Google Fonts (Inter para texto, JetBrains Mono para
+   números/binarios). Enlazar en el <head> junto a este CSS.
+   ============================================================ */
+
+:root {
+  --color-fondo: #0f172a;
+  --color-superficie: #1e293b;
+  --color-borde: #334155;
+  --color-texto: #e2e8f0;
+  --color-texto-suave: #94a3b8;
+  --color-acento: #38bdf8;
+  --color-acento-hover: #0ea5e9;
+  --color-exito: #34d399;
+  --radio: 10px;
+  --sombra: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+body {
+  background: linear-gradient(160deg, var(--color-fondo) 0%, #111827 100%);
+  color: var(--color-texto);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+#content, .content, #org-div-home-and-up ~ * {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+h1.title, h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  border-bottom: 2px solid var(--color-acento);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-top: 2.5rem;
+  border-left: 4px solid var(--color-acento);
+  padding-left: 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  margin-top: 1.8rem;
+}
+
+p {
+  color: var(--color-texto);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--color-acento);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-acento);
+}
+
+a:hover {
+  color: var(--color-acento-hover);
+}
+
+ /* Fórmulas en bloque (\[ ... \]) — sí llevan caja */
+mjx-container[display="true"] {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.2rem 1rem !important;
+  margin: 1.2rem 0 !important;
+  overflow-x: auto;
+  display: block !important;
+}
+
+/* Fórmulas en línea (\( ... \)) — sin caja, fluyen con el párrafo */
+mjx-container:not([display="true"]) {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block !important;
+  vertical-align: middle;
+}
+
+
+/* Tablas (usadas en tu representación S | E | M) */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+table th, table td {
+  border: 1px solid var(--color-borde);
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  background: var(--color-superficie);
+}
+
+table th {
+  background: #273449;
+  color: var(--color-acento);
+}
+
+/* Panel del conversor interactivo */
+#conversor-ieee754 {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.8rem;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+#conversor-ieee754 input[type="number"],
+#conversor-ieee754 input[type="text"] {
+  background: #0b1220;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  color: var(--color-texto);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  padding: 0.7rem 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#conversor-ieee754 input:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+#conversor-ieee754 button {
+  background: var(--color-acento);
+  color: #06121f;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#conversor-ieee754 button:hover {
+  background: var(--color-acento-hover);
+}
+
+#conversor-ieee754 button:active {
+  transform: scale(0.97);
+}
+
+#conversor-ieee754 p {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+}
+
+#conversor-ieee754 span {
+  color: var(--color-exito);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* Tabla de contenidos que genera Org (toc:t) */
+#table-of-contents {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+#table-of-contents a {
+  border-bottom: none;
+}

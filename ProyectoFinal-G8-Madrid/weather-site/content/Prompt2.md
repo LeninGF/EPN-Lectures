@@ -1,0 +1,7 @@
+Actúa como un experto en desarrollo frontend y Emacs Org-mode. Ya tengo mi archivo .org completamente redactado para mi proyecto universitario, esta adjunto en archivoOrg.md. La exportación a HTML funciona perfectamente y la lógica que escribí en JavaScript para la conversión a IEEE 754 opera sin errores.
+
+Necesito tu ayuda con dos requerimientos puntuales:
+
+1. Mejora estética (CSS): Quiero que la página web resultante se vea moderna, profesional y muy atractiva visualmente. Indícame cómo puedo inyectar estilos CSS directamente desde mi archivo .org (por ejemplo, mediante el uso de #+HTML_HEAD: o bloques de estilo). Dame un diseño que mejore la tipografía, los fondos, el espaciado y la apariencia de los inputs/botones de mi script interactivo. Restricción absoluta: No debes reescribir, alterar ni sugerir cambios en mi contenido de texto, estructura de Org-mode o lógica de JavaScript. Limítate estrictamente a proveer el código CSS y explicarme cómo insertarlo.
+
+2. Problema de renderizado de LaTeX: Dentro de mi documento .org incluí un bloque de LaTeX para unas fórmulas matemáticas, pero al exportar el documento a HTML, estas fórmulas no se ven en el navegador. Explícame de forma clara por qué el exportador nativo ignora o no renderiza estos bloques en HTML y dime el paso a paso exacto para solucionarlo (por ejemplo, cómo habilitar o configurar MathJax en la cabecera de mi archivo .org).

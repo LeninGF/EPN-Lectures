@@ -1,19 +1,86 @@
-#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
-#+options: author:t broken-links:nil c:nil creator:nil
-#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
-#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
-#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: Representación IEEE 754 de una coma flotante
-#+HTML_HEAD: <link rel="preconnect" href="https://fonts.googleapis.com">
-#+HTML_HEAD: <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-#+language: es
-#+select_tags: export
-#+exclude_tags: noexport
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<!-- 2026-07-15 Wed 09:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Representación IEEE 754 de una coma flotante</title>
+<meta name="author" content="Jososo" />
+<meta name="generator" content="Org Mode" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Representación IEEE 754 de una coma flotante</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga3807f8">1. El estándar IEEE 754 para dato climáticos</a>
+<ul>
+<li><a href="#org97e90df">1.1. Representación</a></li>
+<li><a href="#org73a6340">1.2. En 32 bits</a>
+<ul>
+<li><a href="#org44a3c6c">1.2.1. El exponente</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge6b6044">2. Transformación</a>
+<ul>
+<li><a href="#orgf6d9d89">2.1. Decimal a binario</a></li>
+<li><a href="#org49a11df">2.2. Binario a hexadecimal</a></li>
+</ul>
+</li>
+<li><a href="#org352f3be">3. Conversión para el usuario</a></li>
+<li><a href="#org4f3d370">4. Referencias</a></li>
+</ul>
+</div>
+</div>
+<p>
 #+crea
 tor: Emacs 27.1 (Org mode 9.7.5)
-#+cite_export:
-* El estándar IEEE 754 para dato climáticos
+</p>
+<div id="outline-container-orga3807f8" class="outline-2">
+<h2 id="orga3807f8"><span class="section-number-2">1.</span> El estándar IEEE 754 para dato climáticos</h2>
+<div class="outline-text-2" id="text-1">
+<p>
 Según IEEE, este estándar proporciona métodos para transformar la coma
 flotante aritmética de forma decimal a binaria y viceversa, junto con
 sus respectivas condiciones y funcionamiento por
@@ -21,83 +88,146 @@ defecto. Permitiéndonos transformar datos climáticos, pues estos no
 siempre son enteros ni siempre positivos,  a binarios y
 viceversa, y por consiguiente a hexadecimal. Pero ¿Cómo se representa
 el estándar IEEE 754?
-** Representación
+</p>
+</div>
+<div id="outline-container-org97e90df" class="outline-3">
+<h3 id="org97e90df"><span class="section-number-3">1.1.</span> Representación</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
 Para su representación binaria se define como:
 \[
 \pm M \times B^{\pm E}
 \]
 Donde:
-$\pm$ es el signo del número.
-$M$ es la mantisa, es decir la parte significativa.
-$B$ la base.
-$E$ exponente de forma sesgada.
+\(\pm\) es el signo del número.
+\(M\) es la mantisa, es decir la parte significativa.
+\(B\) la base.
+\(E\) exponente de forma sesgada.
+</p>
 
+<p>
 En binario quedaría representado como:
+</p>
 
+<p>
 \[
 \pm 1.bbb \dots b \times 2^-{\pm E}
 \]
+</p>
+</div>
+</div>
 
-** En 32 bits
+<div id="outline-container-org73a6340" class="outline-3">
+<h3 id="org73a6340"><span class="section-number-3">1.2.</span> En 32 bits</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
 En este caso para la representación del estándar IEEE 754 se utilizan
 32 bits, divididos de la siguiente forma:
+</p>
 
-- 1 Bit para el signo.
-- 8 Bits para el exponente sesgado.
-- 23 Bits para la mantisa.
-*** El exponente
+<ul class="org-ul">
+<li>1 Bit para el signo.</li>
+<li>8 Bits para el exponente sesgado.</li>
+<li>23 Bits para la mantisa.</li>
+</ul>
+</div>
+<div id="outline-container-org44a3c6c" class="outline-4">
+<h4 id="org44a3c6c"><span class="section-number-4">1.2.1.</span> El exponente</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
 Para sesgar el exponente se aplica la siguiente formula:
+</p>
 
+<p>
 \[
 2^{k - 1} - 1 + E
 \]
+</p>
 
-Donde $k$ es el número de bits del exponente.
-* Transformación
-** Decimal a binario
+<p>
+Donde \(k\) es el número de bits del exponente.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge6b6044" class="outline-2">
+<h2 id="orge6b6044"><span class="section-number-2">2.</span> Transformación</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgf6d9d89" class="outline-3">
+<h3 id="orgf6d9d89"><span class="section-number-3">2.1.</span> Decimal a binario</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
 Entendiendo la teoría que hay por detrás podemos calcular y
 transformar el siguiente dato en binario teniendo en cuenta 32 bits.
+</p>
 
+<p>
 \[ - 28.75 C^{\circ}\]
+</p>
 
 
-- Primero determinamos el bit del signo, siendo  1 negativo y 0
-  positivo, en este caso el bit del signo iría con 1
-- Convertimos el 28.75 a binario si el signo
+<ul class="org-ul">
+<li>Primero determinamos el bit del signo, siendo  1 negativo y 0
+positivo, en este caso el bit del signo iría con 1</li>
+<li>Convertimos el 28.75 a binario si el signo</li>
+</ul>
 
+<p>
 \[
 1 1 1 0 0 , 1 1
 \]
+</p>
 
-- Normalizamos al valor.
+<ul class="org-ul">
+<li>Normalizamos al valor.</li>
+</ul>
 
+<p>
 \[
 1 , 1 1 0 0 1 1 \times 2^{4}
 \]
+</p>
 
 
--  Sesgamos el exponente
+<ul class="org-ul">
+<li>Sesgamos el exponente</li>
+</ul>
 
+<p>
 \[
 127 + 4 = 131
 \]
+</p>
 
 
-- Transformamos a binario
+<ul class="org-ul">
+<li>Transformamos a binario</li>
+</ul>
 
+<p>
 \[
  1 0 0 0 0 0 1 1
 \]
+</p>
 
 
-- Completamos a mantisa hasta los 23 bits 
+<ul class="org-ul">
+<li>Completamos a mantisa hasta los 23 bits</li>
+</ul>
 
+<p>
 \[
 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 \]
+</p>
 
-- Representación final
+<ul class="org-ul">
+<li>Representación final</li>
+</ul>
 
+<p>
 \[\begin{array}{|c|c|c|}
 \hline
 1 & 10000011 & 11001100000000000000000 \\
@@ -105,11 +235,19 @@ transformar el siguiente dato en binario teniendo en cuenta 32 bits.
 S & E & M \\
 \hline
 \end{array}\]
+</p>
+</div>
+</div>
 
-** Binario a hexadecimal
+<div id="outline-container-org49a11df" class="outline-3">
+<h3 id="org49a11df"><span class="section-number-3">2.2.</span> Binario a hexadecimal</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
 Teniendo el numero en el estándar IEEE 754 tomamos bloques de 4 en 4 y
 transformamos dichos bloques en hexadecimal.
+</p>
 
+<p>
 \[\begin{array}{|c|c|c|c|c|c|c|c|}
 \hline
 1100 & 0001 & 1110 & 0110 & 0000 & 0000 & 0000 & 0000 \\
@@ -117,17 +255,26 @@ transformamos dichos bloques en hexadecimal.
 C & 1 & E & 6 & 0 & 0 & 0 & 0 \\
 \hline
 \end{array}\]
+</p>
 
 
+<p>
 Es decir:
+</p>
 
 
+<p>
 \[
 0 \times C1E60000
 \]
+</p>
+</div>
+</div>
+</div>
 
-* Conversión para el usuario
-#+begin_export html
+<div id="outline-container-org352f3be" class="outline-2">
+<h2 id="org352f3be"><span class="section-number-2">3.</span> Conversión para el usuario</h2>
+<div class="outline-text-2" id="text-3">
 <div id="conversor-ieee754">
   <input type="number" id="inputDecimal" step="any" placeholder="Ingrese un decimal">
   <button id="btnDecToBin">Convertir</button>
@@ -243,9 +390,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-#+end_export
+</div>
+</div>
 
-* Referencias
-- [[https://standards.ieee.org/ieee/754/6210/][Página web estandar IEEE 754]]
-- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/S2-AritmeticaDigital.pdf][Presentacion S2 - Aritemtia Digital de Lenin G. Falconi]]
-- [[https://epnecuador.sharepoint.com/:b:/s/ICCD332-ArquitecturaComputadores/IQAW6rp_S4--SrjYcLjs0e3hATfrZInsTw6HWB966yLZvnE?e=1T5KIs][Libro de wiliam stallings "Compter Organization and Achitecture" 7th Ed (Esp)]]
+<div id="outline-container-org4f3d370" class="outline-2">
+<h2 id="org4f3d370"><span class="section-number-2">4.</span> Referencias</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="https://standards.ieee.org/ieee/754/6210/">Página web estandar IEEE 754</a></li>
+<li><a href="https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/S2-AritmeticaDigital.pdf">Presentacion S2 - Aritemtia Digital de Lenin G. Falconi</a></li>
+<li><a href="https://epnecuador.sharepoint.com/:b:/s/ICCD332-ArquitecturaComputadores/IQAW6rp_S4--SrjYcLjs0e3hATfrZInsTw6HWB966yLZvnE?e=1T5KIs">Libro de wiliam stallings "Compter Organization and Achitecture" 7th Ed (Esp)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Jososo</p>
+<p class="date">Created: 2026-07-15 Wed 09:57</p>
+</div>
+</body>
+</html>
