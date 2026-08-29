@@ -5,8 +5,8 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
 #+title: Lógica Digital
 #+date: 2026-XX-XX Si escribes dd y le das ~C-TAB~ Emacs escribe la fecha por ti
-#+author: COLOQUE SU NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+author: Jhanavi Molina
+#+email: jhanavi.molina@epn.edu.ec
 #+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
@@ -86,10 +86,18 @@ Escriba sus argumentos lo mejor que pueda, guarde el documento .ORG y
 Suba el documento .ORG
 * Análisis Crítico
 ** De Chat-GPT, sus sesgos, nuestros sesgos y el Pensamiento Crítico:
-
-Escriba aquí su respuesta.
-** G. Hinton sobre la IA y los Sistemas Económicos ¿Es la IA democratizable?
-Escriba aquí su respuesta.
+Para mí chat gpt es una herramienta de ayuda en varios campos, sea en el
+ámbito académico o en el ámbito personal, en este caso lo que explica el vídeo
+es que si no sabemos como utilizar esta herramienta y mucho menos formular
+bien nuestras preguntas para poder consultar a esta herramienta, nos va a dar
+respuestas erróneas y sin sentido, ya que si no le das un buen prompt a la IA
+mucho menos te va a dar una respuesta buena, ya que la IA exagera mucho las cosas
+o a veces las alucina.
+** G. Hinton sobre la IA y los Sistemas Económicos ¿Es la IA democratizable
+Siento que el problema no es el socialismo si no las personas, ya que nos facilitan
+una herramienta bastante útil hoy en día, y cada uno debemos de saber como la vamos
+a utilizar y como la vamos a manejar, hoy en día sabemos que los líderes socialistas
+tienen el poder de todo, y eso lo convierten en dictadura.
 
 
 
