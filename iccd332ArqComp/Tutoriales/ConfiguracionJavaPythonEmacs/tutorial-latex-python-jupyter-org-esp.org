@@ -23,7 +23,7 @@ ecuaciones, código, imágenes y texto.
 
 Es necesario que tu sistema operativo Linux o WSL ejecute Python dentro de una
 distribución /Anaconda/ o /Miniforge/ que gestione los paquetes de Python
-requeridos. Sigue los pasos introducidos en [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][este repositorio de Github]].
+requeridos. Sigue los pasos introducidos en [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tutoriales/Beamer-Emacs/tutorialBeamer.org][este repositorio de Github]].
 
 * Escribiendo Python en un Documento Org
 Para escribir una sección de código Python dentro de un documento Org, utilice:

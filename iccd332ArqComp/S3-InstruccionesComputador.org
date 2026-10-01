@@ -624,7 +624,7 @@ gobierna una carga de alta corriente, con aislamiento galvánico total.
     :BEAMER_col: 0.6
     :END:
 [[./images/notGate.png]]
-[[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp-2024-B/Simulaciones][Not_Gate_Simulation.slx]]
+[[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp/Simulaciones][Not_Gate_Simulation.slx]]
 ** Compuertas Lógicas
 *** Texto                                                             :BMCOL:
     :PROPERTIES:

@@ -75,8 +75,8 @@ ARQUITECTURA DE COMPUTADORES}
 Puede consultar los siguientes recursos en Internet y en el
 Repositorio Git de la clase
 - Este trabajo
-- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/ConfiguracionJavaPythonEmacs/ConfiguracionJavaPythonEmacs.org][Tutorial de Python y Java en Emacs]]
-- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/ConfiguracionJavaPythonEmacs/tutorial-latex-python-jupyter-org-esp.org][Tutorial LaTeX Python e Emacs]]
+- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tutoriales/ConfiguracionJavaPythonEmacs/ConfiguracionJavaPythonEmacs.org][Tutorial de Python y Java en Emacs]]
+- [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tutoriales/ConfiguracionJavaPythonEmacs/tutorial-latex-python-jupyter-org-esp.org][Tutorial LaTeX Python e Emacs]]
 - [[https://github.com/prspth/python-cheat-sheet][The only Python cheatsheet you will ever need]]
 - [[https://github.com/gto76/python-cheatsheet/tree/main][Comprehensive Python Cheatsheet]]
 - Capítulo 2 del Libro /Practical Computer Architecture with Python

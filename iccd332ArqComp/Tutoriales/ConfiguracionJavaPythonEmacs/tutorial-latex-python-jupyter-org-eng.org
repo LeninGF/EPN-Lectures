@@ -23,7 +23,7 @@ code, images and text.
 
 It is necessary that your Linux or WSL Operative System runs python
 inside an /Anaconda/ or /Miniforge/ distribution that handles the
-Python packages needed. Follow the steps introduced in [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][this Github
+Python packages needed. Follow the steps introduced in [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tutoriales/Beamer-Emacs/tutorialBeamer.org][this Github
 repository]] .
 
 * Writing Python inside Org Document

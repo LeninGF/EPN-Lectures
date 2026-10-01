@@ -362,7 +362,7 @@ ls -lha | grep emacs
 9. Escriba el destino en ~/home/<<User>>/.emacs.d/init.el~. Sustituya
    con <<User>> con su Usuario
 
-10. Copie el contenido del archivo desde [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/configEmacs/init.el][Github]]. Use ~C-y~
+10. Copie el contenido del archivo desde [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/configEmacs/init.el][Github]]. Use ~C-y~
     para pegar en el archivo creado. Guarde los cambios con ~C-x C-s~.
 
 11. Personalice el archivo con las características personales suyas y
@@ -813,7 +813,7 @@ conda clean --all --yes
 :PROPERTIES:
 :BEAMER_col: 0.6
 :END:
-[[file:/mnt/d/entea/Lectures/iccd332ArqComp-2024-B/images/conda-clean.png]]
+[[file:/mnt/d/entea/Lectures/iccd332ArqComp/images/conda-clean.png]]
 ** Eliminar un entorno de Conda
 Para eliminar el entorno es necesario primero salir de él con el
 comando ~conda deactivate~. Una vez que esta desactivado:

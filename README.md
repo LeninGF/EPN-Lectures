@@ -11,7 +11,7 @@ Jupyter para laboratorios prácticos.
 
 ## Estructura del curso
 
-Todo el material está dentro de [`iccd332ArqComp-2024-B/`](iccd332ArqComp-2024-B/).
+Todo el material está dentro de [`iccd332ArqComp/`](iccd332ArqComp/).
 
 ### Diapositivas de clase
 
@@ -142,7 +142,7 @@ Si querés seguridad usá `v1.0.0`. Si querés las mejoras más recientes, usá 
 
 **Ver el historial completo:**
 ```bash
-git log --oneline --decorate -- iccd332ArqComp-2024-B/configEmacs/init.el
+git log --oneline --decorate --follow -- iccd332ArqComp/configEmacs/init.el
 ```
 
 **Ver el contenido de una versión sin modificar nada:**
@@ -188,7 +188,7 @@ git diff v1.0.0 v1.2.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
    ```
 2. Copiar el `init.el` a tu configuración de Emacs:
    ```bash
-   cp iccd332ArqComp-2024-B/configEmacs/init.el ~/.emacs.d/init.el
+   cp iccd332ArqComp/configEmacs/init.el ~/.emacs.d/init.el
    ```
 3. Abrir cualquier `.org` en Emacs y exportar con `C-c C-e l p` (LaTeX → PDF).
 4. Para los notebooks, usar Jupyter Lab o VS Code.

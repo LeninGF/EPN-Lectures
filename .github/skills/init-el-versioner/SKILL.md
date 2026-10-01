@@ -1,6 +1,6 @@
 ---
 name: init-el-versioner
-description: "Versiona el archivo iccd332ArqComp-2024-B/configEmacs/init.el siguiendo la convención del repositorio EPN-Lectures: revisa los cambios, propone el número de versión (vX.Y.Z), crea el commit 'init.el: vX.Y.Z — …' y el tag anotado vX.Y.Z, y actualiza README.md para reflejar la versión más reciente. Usar cuando el usuario pida versionar, commitear, etiquetar, hacer release o subir de versión el init.el de Emacs, o actualizar la tabla de versiones del README."
+description: "Versiona el archivo iccd332ArqComp/configEmacs/init.el siguiendo la convención del repositorio EPN-Lectures: revisa los cambios, propone el número de versión (vX.Y.Z), crea el commit 'init.el: vX.Y.Z — …' y el tag anotado vX.Y.Z, y actualiza README.md para reflejar la versión más reciente. Usar cuando el usuario pida versionar, commitear, etiquetar, hacer release o subir de versión el init.el de Emacs, o actualizar la tabla de versiones del README."
 argument-hint: "Describe opcionalmente los cambios del init.el (o el número de versión si ya lo conoces)."
 ---
 
@@ -11,13 +11,13 @@ Automatiza el versionado de la configuración de Emacs (`init.el`) del repositor
 ## Cuándo usarla
 
 - El usuario pide "versionar init.el", "commitear el init.el", "nueva versión del init.el", "etiquetar init.el", "release del init.el" o similar.
-- Hay cambios sin commitear en `iccd332ArqComp-2024-B/configEmacs/init.el`.
+- Hay cambios sin commitear en `iccd332ArqComp/configEmacs/init.el`.
 - El usuario pide actualizar la tabla de versiones de `README.md`.
 
 ## Reglas fijas (convención del repo)
 
 - **Repo root**: detectarlo siempre con `git rev-parse --show-toplevel`; no asumir la ruta.
-- **Archivo versionado**: `iccd332ArqComp-2024-B/configEmacs/init.el`
+- **Archivo versionado**: `iccd332ArqComp/configEmacs/init.el`
 - **README a actualizar**: `README.md` (raíz del repo)
 - **Mensaje de commit**: `init.el: vX.Y.Z — <resumen breve de cambios>`
 - **Tag**: anotado, apuntando al commit del init.el:
@@ -39,8 +39,8 @@ Usar ese directorio como `<repo>` en todos los comandos (`git -C <repo> ...`).
 ### Paso 1 — Verificar cambios en init.el
 
 ```bash
-git -C <repo> status --short -- iccd332ArqComp-2024-B/configEmacs/init.el
-git -C <repo> diff -- iccd332ArqComp-2024-B/configEmacs/init.el
+git -C <repo> status --short -- iccd332ArqComp/configEmacs/init.el
+git -C <repo> diff -- iccd332ArqComp/configEmacs/init.el
 ```
 
 - Si no hay cambios: informar "init.el no tiene cambios sin commitear" y detenerse.
@@ -62,7 +62,7 @@ git -C <repo> tag -l 'v*' | sort -V | tail -n 1
 ### Paso 3 — Commit del init.el
 
 ```bash
-git -C <repo> add iccd332ArqComp-2024-B/configEmacs/init.el
+git -C <repo> add iccd332ArqComp/configEmacs/init.el
 git -C <repo> diff --cached --stat   # verificar: solo init.el en staging
 git -C <repo> commit -m "init.el: vX.Y.Z — <resumen>"
 ```
@@ -86,9 +86,9 @@ Leer `README.md` y, en la sección "Cambiar entre versiones de `init.el`":
    - Agregar al final de la tabla: `| \`vX.Y.Z\` | **Última** | <descripción breve> |`
 3. **Frase de recomendación**: actualizar "Si querés las mejoras más recientes, usá \`vX.Y.Z\`." con el nuevo tag.
 4. **Comandos de ejemplo**: actualizar al nuevo tag solo los ejemplos que muestran la "versión más reciente":
-   - `git show vX.Y.Z:iccd332ArqComp-2024-B/configEmacs/init.el`
-   - `git checkout vX.Y.Z -- iccd332ArqComp-2024-B/configEmacs/init.el`
-   - `git diff v1.0.0 vX.Y.Z -- iccd332ArqComp-2024-B/configEmacs/init.el` (mantener `v1.0.0` como versión estable salvo que el usuario indique lo contrario)
+   - `git show vX.Y.Z:iccd332ArqComp/configEmacs/init.el`
+   - `git checkout vX.Y.Z -- iccd332ArqComp/configEmacs/init.el`
+   - `git diff v1.0.0 vX.Y.Z -- iccd332ArqComp/configEmacs/init.el` (mantener `v1.0.0` como versión estable salvo que el usuario indique lo contrario)
 5. No tocar el resto del README.
 
 ### Paso 6 — Commit del README (separado)

@@ -243,7 +243,7 @@ usar Simulink. Para esto
 2. En la ficha /home/ seleccionar /Simulink/
 3. Se abre una pantalla en la que puede seleccionar abrir un modelo en
    blanco (Blank Model) o abrir un archivo. Puede encontrar archivos
-   en [[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp-2024-B/Simulaciones][GitHub]]
+   en [[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp/Simulaciones][GitHub]]
 4. Para colocar los elementos necesarios puede dar doble clic en
    cualquier parte del área de trabajo y a lo que se despliegue el
    cuadro de búsqueda de bloques escriba el nombre de un bloque que

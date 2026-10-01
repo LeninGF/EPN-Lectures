@@ -45,7 +45,7 @@
 ** Diseño de las Diapositivas
 - Para diseñar sus diapositivas puede consultar cualquiera de las
   presentaciones ~.ORG~ desarrolladas por el profesor así como al
-  archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp-2024-B/Tutoriales/Beamer-Emacs/tutorialBeamer.org][tutorialBeamer.org]] en el repositorio de la clase.
+  archivo [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tutoriales/Beamer-Emacs/tutorialBeamer.org][tutorialBeamer.org]] en el repositorio de la clase.
 - Recuerde que los archivos ~.ORG~ son archivos de texto así que los
   puede copiar y sustituir por su texto propio.
 ** Sobre este Documento
