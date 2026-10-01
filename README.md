@@ -165,6 +165,11 @@ git checkout v1.0.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 git diff v1.0.0 v1.2.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 ```
 
+> **Nota:** los tags `v0.1.0`–`v1.2.0` apuntan a commits anteriores al cambio de nombre
+> de la carpeta (de `iccd332ArqComp-2024-B` a `iccd332ArqComp`). Por eso los ejemplos con
+> tags usan la ruta antigua `iccd332ArqComp-2024-B/`. La ruta actual del archivo es
+> `iccd332ArqComp/configEmacs/init.el`.
+
 ---
 
 ## Formato de archivos
