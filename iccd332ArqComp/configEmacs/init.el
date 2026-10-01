@@ -1,4 +1,5 @@
 ;;; init.el --- Emacs Configuration
+;; Version: 1.2.1
 
 ;;; Commentary:
 ;; This configuration is tailored for Org-mode, Python, Jupyter, Java, and LaTeX development.
