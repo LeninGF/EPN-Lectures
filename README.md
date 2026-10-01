@@ -127,7 +127,7 @@ con **git tags** para poder volver a cualquier versión anterior (ver sección s
 
 ## Cambiar entre versiones de `init.el`
 
-El archivo `configEmacs/init.el` tiene cinco versiones identificadas con tags:
+El archivo `configEmacs/init.el` tiene seis versiones identificadas con tags:
 
 | Tag | Rol | Descripción |
 |-----|-----|-------------|
@@ -135,9 +135,10 @@ El archivo `configEmacs/init.el` tiene cinco versiones identificadas con tags:
 | `v0.2.0` | — | Expansión significativa (Jun 2025) |
 | `v0.3.0` | — | Configuración ampliada (Jun 2025) |
 | `v1.0.0` | **Estable** | Versión probada: deeper-blue, elpy básico, ein (Nov 2025) |
-| `v1.1.0` | **Última** | Doom themes, emacs-jupyter, org-present, ox-reveal, latexmk (Jun 2025) |
+| `v1.1.0` | — | Doom themes, emacs-jupyter, org-present, ox-reveal, latexmk (Jun 2025) |
+| `v1.2.0` | **Última** | Comentarios bilingües EN/ES, gptel Copilot, rutas genéricas (Sep 2026) |
 
-Si querés seguridad usá `v1.0.0`. Si querés las mejoras más recientes, usá `v1.1.0`.
+Si querés seguridad usá `v1.0.0`. Si querés las mejoras más recientes, usá `v1.2.0`.
 
 **Ver el historial completo:**
 ```bash
@@ -146,12 +147,12 @@ git log --oneline --decorate -- iccd332ArqComp-2024-B/configEmacs/init.el
 
 **Ver el contenido de una versión sin modificar nada:**
 ```bash
-git show v1.1.0:iccd332ArqComp-2024-B/configEmacs/init.el
+git show v1.2.0:iccd332ArqComp-2024-B/configEmacs/init.el
 ```
 
 **Usar la versión más reciente** (reemplaza tu `init.el` actual):
 ```bash
-git checkout v1.1.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
+git checkout v1.2.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 ```
 
 **Volver a la versión estable:**
@@ -161,7 +162,7 @@ git checkout v1.0.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 
 **Comparar dos versiones:**
 ```bash
-git diff v1.0.0 v1.1.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
+git diff v1.0.0 v1.2.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 ```
 
 ---
