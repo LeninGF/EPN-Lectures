@@ -1,21 +1,32 @@
-;;; initel.el --- Emacs Configuration
+;;; init.el --- Emacs Configuration
 
 ;;; Commentary:
 ;; This configuration is tailored for Org-mode, Python, Jupyter, Java, and LaTeX development.
 ;; It includes packages for enhanced functionality such as autocompletion, version control,
 ;; and spell checking.
+;; ES: Esta configuración adapta Emacs para Org-mode, Python, Jupyter, Java y LaTeX.
 
 ;;; AuthSource for Apis
+;; EN: Loads credentials (API keys, passwords) from ~/.authinfo.
+;; ES: Carga credenciales (claves API, contraseñas) desde ~/.authinfo.
+;; EN: Example ~/.authinfo line:  machine api.example.com login myuser password mysecret
+;; ES: Ejemplo de línea en ~/.authinfo:  machine api.example.com login myuser password mysecret
+;; EN: Prefer ~/.authinfo.gpg (GPG-encrypted) for secrets.
+;; ES: Prefiere ~/.authinfo.gpg (cifrado con GPG) para los secretos.
 (require 'auth-source)
 (setq auth-sources '("~/.authinfo.gpg" "~/.authinfo"))
 
 ;;; ============================================================
 ;;; 1. Initialization and Basic Setup
 ;;; ============================================================
+;; EN: Basic setup: your name/email, package archives, history.
+;; ES: Configuración básica: nombre/correo, repositorios de paquetes, historial.
 
 ;; 1.1 User Information
-(setq user-full-name "Lenin G. Falconí"
-      user-mail-address "lenin.falconi@epn.edu.ec")
+;; EN: Replace with your own name and email.
+;; ES: Reemplaza con tu propio nombre y correo.
+(setq user-full-name "USER NAME GOES HERE"
+      user-mail-address "my.email@epn.edu.ec")
 
 ;; 1.2 Package Management
 (require 'package)
@@ -55,6 +66,8 @@
 ;;; ============================================================
 ;;; 2. Core Functionality and UI
 ;;; ============================================================
+;; EN: Editor UI: smart indentation and line numbers.
+;; ES: Interfaz del editor: indentación inteligente y números de línea.
 
 ;; 2.1 Indentation
 (electric-indent-mode 1)
@@ -66,6 +79,8 @@
 ;;; ============================================================
 ;;; 3. Text and Document Editing
 ;;; ============================================================
+;; EN: Text editing: auto-fill and spell-check.
+;; ES: Edición de texto: relleno automático y corrección ortográfica.
 
 ;; 3.1 Auto-fill Mode for Org
 (add-hook 'org-mode-hook #'auto-fill-mode)
@@ -80,6 +95,8 @@
 ;;; ============================================================
 ;;; 4. Org Mode Configuration
 ;;; ============================================================
+;; EN: Org mode: Babel code blocks, Jupyter, LaTeX export, presentations.
+;; ES: Org mode: bloques Babel, Jupyter, exportación LaTeX, presentaciones.
 
 ;; 4.1 Org Mode Basics (loads default Org Mode 9.6.15)
 ;; To update to latest Org (requires Emacs 30):
@@ -128,7 +145,9 @@
   :ensure t)
 
 ;; 4.5 Python for Org-Babel
-(setq org-babel-python-command "/home/leningfe/miniforge3/envs/tfmlenv/bin/python")
+;; EN: Change this path to your own Python.
+;; ES: Cambia esta ruta a tu propio Python.
+(setq org-babel-python-command "/home/{USER_NAME}/miniforge3/envs/tfmlenv/bin/python")
 
 ;; 4.7 LaTeX in Org Mode
 (require 'ox-latex)
@@ -190,6 +209,8 @@
 ;;; ============================================================
 ;;; 5. Python Development — 
 ;;; ============================================================
+;; EN: Python IDE: Elpy, virtualenvs, IPython shell, linting (Flycheck).
+;; ES: IDE de Python: Elpy, virtualenvs, shell IPython, linting (Flycheck).
 ;; ---------------------------------------------------------------------
 ;; 5.1 Elpy — full Python IDE in Emacs
 ;; ---------------------------------------------------------------------
@@ -199,10 +220,14 @@
   :init
   (elpy-enable)
   :config
-  ;; Point to your conda environment
-  (setq elpy-rpc-python-command "/home/leningfe/miniforge3/envs/tfmlenv/bin/python")
-  (setq python-shell-interpreter "/home/leningfe/miniforge3/envs/tfmlenv/bin/ipython"
+  ;; EN: Point these paths to your conda environment.
+  ;; ES: Apunta estas rutas a tu entorno de conda.
+  (setq elpy-rpc-python-command "/home/{USER-NAME}/miniforge3/envs/{ENVIRONMENT-NAME}/bin/python")
+  (setq python-shell-interpreter "/home/{USER-NAME}/miniforge3/envs/{ENVIRONMENT-NAME}/bin/ipython"
         python-shell-interpreter-args "-i --simple-prompt")
+  ;; EN: Pop up the Python shell automatically after C-c C-c so results are visible.
+  ;; ES: Muestra la shell de Python automáticamente tras C-c C-c para ver los resultados.
+  (setq elpy-shell-display-buffer-after-send t)
   (setq elpy-eldoc-show-current-function t)
   (setq elpy-rpc-timeout 2)   ; uncomment if completions are slow
   (setq elpy-eldoc-show-current-function t)
@@ -228,10 +253,10 @@
 ;; 5.2 Virtual environment management (for pyvenv-working)
 ;; ---------------------------------------------------------------------
 ;; check elpy state with M-x elpy-config follow recommendations 
-(setenv "WORKON_HOME" "/home/leningfe/miniforge3/envs/")
+(setenv "WORKON_HOME" "/home/{USER_NAME}/miniforge3/envs/")
 
 ;; 5.6 Python shell (IPython)
-(setq python-shell-interpreter "/home/leningfe/miniforge3/envs/tfmlenv/bin/ipython"
+(setq python-shell-interpreter "/home/{USER-NAME}/miniforge3/envs/tfmlenv/bin/ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; 5.7 Flycheck — real-time linting (pyright errors appear here too)
@@ -241,6 +266,8 @@
 ;;; ============================================================
 ;;; 6. Code Completion — Company
 ;;; ============================================================
+;; EN: Company: code-completion popup.
+;; ES: Company: menú emergente de autocompletado.
 
 ;; 6.1 Company Mode
 (use-package company
@@ -275,6 +302,8 @@
 ;;; ============================================================
 ;;; 7. Yasnippet
 ;;; ============================================================
+;; EN: Yasnippet: expand keywords into code templates.
+;; ES: Yasnippet: expande palabras clave en plantillas de código.
 
 ;; 7.1 Yasnippet setup
 (use-package yasnippet
@@ -291,6 +320,8 @@
 ;;; ============================================================
 ;;; 8. Jupyter — EIN
 ;;; ============================================================
+;; EN: EIN: Jupyter notebooks inside Emacs.
+;; ES: EIN: notebooks de Jupyter dentro de Emacs.
 
 (use-package ein
   :ensure t
@@ -304,6 +335,8 @@
 ;;; ============================================================
 ;;; 9. LaTeX Configuration
 ;;; ============================================================
+;; EN: LaTeX: AUCTeX + RefTeX + latexmk.
+;; ES: LaTeX: AUCTeX + RefTeX + latexmk.
 
 ;; 9.1 AUCTeX
 (unless (package-installed-p 'auctex)
@@ -364,6 +397,8 @@
 ;;; ============================================================
 ;;; 10. Java Development — LSP (jdtls via lsp-java)
 ;;; ============================================================
+;; EN: Java: LSP (jdtls) + debugger (dap-mode).
+;; ES: Java: LSP (jdtls) + depurador (dap-mode).
 
 ;; lsp-mode is already loaded in section 5; these packages extend it for Java.
 
@@ -385,7 +420,7 @@
 (use-package dap-java :ensure nil) ; bundled with lsp-java
 
 ;; 10.1 lsp-java-boot lenses (Spring Boot hints)
-(require 'lsp-java-boot)
+;; (require 'lsp-java-boot)
 (add-hook 'lsp-mode-hook  #'lsp-lens-mode)
 ;; (add-hook 'java-mode-hook #'lsp-java-boot-lens-mode) ; uncomment for Spring Boot
 
@@ -393,6 +428,8 @@
 ;;; ============================================================
 ;;; 11. Version Control
 ;;; ============================================================
+;; EN: Git: Magit interface + spell-check in commits.
+;; ES: Git: interfaz Magit + corrección en commits.
 
 ;; 11.1 Spell checking in commit messages
 (add-hook 'log-edit-hook (lambda () (flyspell-mode 1)))
@@ -416,6 +453,8 @@
 ;;; ============================================================
 ;;; 12. Helm Configuration
 ;;; ============================================================
+;; EN: Helm: fuzzy search; which-key: keybinding hints.
+;; ES: Helm: búsqueda difusa; which-key: ayuda de atajos de teclado.
 ;;; added which key to have support when trying to find commands for latex
 (use-package which-key
   :ensure t
@@ -439,6 +478,8 @@
 ;;; ============================================================
 ;;; 13. Auto-update Packages
 ;;; ============================================================
+;; EN: Auto-update packages every 30 days (asks first).
+;; ES: Actualiza paquetes cada 30 días (pregunta antes).
 
 (use-package auto-package-update
   :ensure t
@@ -456,41 +497,45 @@
 ;;; 14. GPTel — LLM integration
 ;;; https://github.com/karthink/gptel
 ;;; ============================================================
+;; EN: gptel: chat with LLMs (Copilot / DeepSeek).
+;; ES: gptel: chat con LLMs (Copilot / DeepSeek).
 
 ;;  Set up Copilot as Primary LLM and DeepSeek as secondary
-;; (use-package gptel
-;;   :ensure t
-;;   :config
-;;   ;; (setq gptel-default-mode 'org-mode) ; comment for Markdown-free chat
-;;   (setq gptel-log-level 'debug)
-;;   (setq gptel-model   'gpt-4.1
-;;         gptel-backend (gptel-make-gh-copilot "Copilot"))
-;;   (gptel-make-deepseek "DeepSeek" :stream t :key gptel-api-key)
-;;   (gptel-make-gh-copilot "Copilot")
-;;   ;; Uncomment to add Claude or other backends:
-;;   ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
-;;   )
-
-;; Set up DeepSeek as Primary LLM and Copilot as Secondary
-
 (use-package gptel
   :ensure t
   :config
   ;; (setq gptel-default-mode 'org-mode) ; comment for Markdown-free chat
   (setq gptel-log-level 'debug)
-  (setq gptel-model 'deepseek-chat
-	gptel-backend (gptel-make-deepseek "Deepseek"
-			:stream t
-			:key gptel-api-key))
-  (gptel-make-gh-copilot "Copilot")
-  ;; Uncomment to add Claude or other backends:
-  ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
-)
+  (setq gptel-model   'gpt-4.1
+        gptel-backend (gptel-make-gh-copilot "Copilot"))
+;;   (gptel-make-deepseek "DeepSeek" :stream t :key gptel-api-key)
+;;   (gptel-make-gh-copilot "Copilot")
+;;   ;; Uncomment to add Claude or other backends:
+;;   ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
+  )
+
+;; Set up DeepSeek as Primary LLM and Copilot as Secondary
+
+;; (use-package gptel
+;;   :ensure t
+;;   :config
+;;   ;; (setq gptel-default-mode 'org-mode) ; comment for Markdown-free chat
+;;   (setq gptel-log-level 'debug)
+;;   (setq gptel-model 'deepseek-chat
+;; 	gptel-backend (gptel-make-deepseek "Deepseek"
+;; 			:stream t
+;; 			:key gptel-api-key))
+;;   (gptel-make-gh-copilot "Copilot")
+;;   ;; Uncomment to add Claude or other backends:
+;;   ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
+;; )
 
 ;;; ============================================================
 ;;; 15. WSL Browser
 ;;; Requires: sudo apt install wslu
 ;;; ============================================================
+;; EN: Open links with the Windows browser (WSL: wslview).
+;; ES: Abre enlaces con el navegador de Windows (WSL: wslview).
 
 (setq browse-url-generic-program  "wslview")
 (setq browse-url-browser-function 'browse-url-generic)
@@ -499,43 +544,55 @@
 ;;; ============================================================
 ;;; 16. Doom Emacs Themes
 ;;; ============================================================
-;;Disable ansi color names vector and custom-enabled-themes
+;; EN: Doom themes: optional dark themes, disabled by default.
+;; ES: Temas Doom: temas oscuros opcionales, desactivados por defecto.
+;;Disable custom-enabled-themes
+;; Doom themes / Temas Doom:
+;;   EN: Doom: uncomment the doom-themes and nerd-icons blocks below, then uncomment `custom-safe-themes' and comment out `custom-enabled-themes' (section 17).
+;;   ES: Doom: descomenta los bloques doom-themes y nerd-icons de abajo, luego descomenta `custom-safe-themes' y comenta `custom-enabled-themes' (sección 17).
+;;   EN: Default: leave everything as is — deeper-blue stays active.
+;;   ES: Default: déjalo todo como está — deeper-blue sigue activo.
+;; (use-package doom-themes
+;;   :ensure t
+;;   :custom
+;;   ;; Global settings (defaults)
+;;   (doom-themes-enable-bold t)   ; if nil, bold is universally disabled
+;;   (doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   ;; for treemacs users
+;;   (doom-themes-treemacs-theme "doom-homage-black") ; use "doom-colors" for less minimal icon theme ; doom-ir-black ; doom-atom
+;;   :config
+;;   (load-theme 'doom-homage-black t)		;doom-1337
 
-(use-package doom-themes
-  :ensure t
-  :custom
-  ;; Global settings (defaults)
-  (doom-themes-enable-bold t)   ; if nil, bold is universally disabled
-  (doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; for treemacs users
-  (doom-themes-treemacs-theme "doom-homage-black") ; use "doom-colors" for less minimal icon theme ; doom-ir-black ; doom-atom
-  :config
-  (load-theme 'doom-homage-black t)		;doom-1337
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (nerd-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (nerd-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;; (use-package nerd-icons
+;;   :ensure t
+;; )
 
-(use-package nerd-icons
-  :ensure t
-)
 ;;; ============================================================
 ;;; 17. Customizations (managed by Custom — do not edit by hand)
 ;;; ============================================================
+;; EN: Auto-generated by Emacs Custom: theme, dictionary, installed packages.
+;; ES: Generado por Custom de Emacs: tema, diccionario, paquetes instalados.
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("6963de2ec3f8313bb95505f96bf0cf2025e7b07cefdb93e3d2e348720d401425" "f4d1b183465f2d29b7a2e9dbe87ccc20598e79738e5d29fc52ec8fb8c576fcfd" "be0d9f0e72a4ebc4a59c382168921b082b4dc15844bdaf1353c08157806b3321" "f6ea954a9544b0174a876d195387f444da441535ee88c7fb0fc346af08b0d228" "19d62171e83f2d4d6f7c31fc0a6f437e8cec4543234f0548bad5d49be8e344cd" "3613617b9953c22fe46ef2b593a2e5bc79ef3cc88770602e7e569bbd71de113b" "87fa3605a6501f9b90d337ed4d832213155e3a2e36a512984f83e847102a42f4" default))
- '(ispell-dictionary "american")
+ ;; Doom themes / Temas de Doom:
+ ;;   EN: uncomment `custom-safe-themes' below and comment out `custom-enabled-themes'.
+ ;;   ES: descomenta `custom-safe-themes' (abajo) y comenta `custom-enabled-themes'.
+ ;; '(custom-safe-themes '(default))
+ '(custom-enabled-themes '(deeper-blue)) 
+ '(ispell-dictionary "castellano")
  '(package-selected-packages
    '(zmq auctex ein nerd-icons doom-themes ox-reveal company-quickhelp lsp-pyright org-present json-mode markdown-preview-mode yaml-mode gptel helm-flyspell auto-complete-auctex company-auctex auctex-lua auto-package-update helm-bibtex company-reftex htmlize csv-mode csv simple-httpd calc-at-point org elpygen babel helm-lsp helm projectile lsp-javacomp flycheck which-key lsp-ui lsp-java lsp-mode magit company-emoji ac-math auto-complete yasnippet-snippets markdown-mode gnu-elpa-keyring-update elpy ob-ipython use-package)))
 (custom-set-faces
