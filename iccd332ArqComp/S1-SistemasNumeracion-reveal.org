@@ -146,6 +146,48 @@ $$1010\,1001.1011\,1000$$
 
 $$\Rightarrow A9.B8_{16}$$
 
+* Conversiones Numéricas usando Python
+** Conversión de Decimal a Binario, Octal y Hexadecimal en Python
+
+Para realizar conversiones de números enteros en base 10 a binario, octal y
+hexadecimal en Python podemos usar ~bin~,
+~oct~, o ~hex~, respectivamente:
+#+begin_src python :results output :exports both
+X = 131
+X_2 = bin(X)
+X_8 = oct(X)
+X_16 = hex(X)
+print(f"f{X} en BINARIO equivale a {X_2}")
+print(f"f{X} en OCTAL equivale a {X_8}")
+print(f"f{X} en HEXADECIMAL equivale a {X_16}")
+#+end_src
+
+#+RESULTS:
+: f131 en BINARIO equivale a 0b10000011
+: f131 en OCTAL equivale a 0o203
+: f131 en HEXADECIMAL equivale a 0x83
+** Conversión base  a DEC en Python
+
+En este caso se coloca la cifra como una cadena dentro de ~int~ y se
+especifica la base del número
+#+begin_src python :results output :exports both
+X_2 = '10000011'
+X_8 = '203'
+X_16 = '83'
+X_5 = '1234'
+
+print(f"{X_2} BINARIO  equivale a {int(X_2,2)} DEC" )
+print(f"{X_8} OCTAL  equivale a {int(X_8,8)} DEC" )
+print(f"{X_2} HEX  equivale a {int(X_16,16)} DEC" )
+print(f"{X_5} BASE 5  equivale a {int(X_5,5)} DEC" )
+#+end_src
+
+#+RESULTS:
+: 10000011 BINARIO  equivale a 131 DEC
+: 203 OCTAL  equivale a 131 DEC
+: 10000011 HEX  equivale a 131 DEC
+: 1234 BASE 5  equivale a 194 DEC
+
 * Ordenes de Magnitud
 ** Potencias de 2 para Unidades de Información
 | Potencia  | Nombre | Valor        |

@@ -36,28 +36,29 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#/slide-org18490c2">Sistemas de Numeración</a></li>
-<li><a href="#/slide-orgdd8c47d">Sistema Decimal y Binario</a></li>
-<li><a href="#/slide-org4647318">Conversión de Base r a Decimal</a></li>
-<li><a href="#/slide-orgfac04fa">Conversión Decimal a Binario</a></li>
-<li><a href="#/slide-org9234e90">Conversión entre Binario, Octal y Hexadecimal</a></li>
-<li><a href="#/slide-org154ce2c">Ordenes de Magnitud</a></li>
-<li><a href="#/slide-org6b403c3">Taller</a></li>
+<li><a href="#/slide-org0e59ada">Sistemas de Numeración</a></li>
+<li><a href="#/slide-org36a8c56">Sistema Decimal y Binario</a></li>
+<li><a href="#/slide-orga84c989">Conversión de Base r a Decimal</a></li>
+<li><a href="#/slide-org2bb0c03">Conversión Decimal a Binario</a></li>
+<li><a href="#/slide-org91c63e0">Conversión entre Binario, Octal y Hexadecimal</a></li>
+<li><a href="#/slide-org65d3c13">Conversiones Numéricas usando Python</a></li>
+<li><a href="#/slide-org2016705">Ordenes de Magnitud</a></li>
+<li><a href="#/slide-orgfc29880">Taller</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org18490c2">
-<h2 id="org18490c2">Sistemas de Numeración</h2>
-<div class="outline-text-2" id="text-org18490c2">
+<section id="slide-org0e59ada">
+<h2 id="org0e59ada">Sistemas de Numeración</h2>
+<div class="outline-text-2" id="text-org0e59ada">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6c0e793">
-<h3 id="org6c0e793">Concepto General de Número</h3>
+<section id="slide-org2e4a883">
+<h3 id="org2e4a883">Concepto General de Número</h3>
 <ul>
 <li>Un número se puede representar como una cadena de dígitos
 \(b_{n-1} \dots b_2b_1b_0 \cdot b_{-1}b_{-2}\dots b_m\)</li>
@@ -79,8 +80,8 @@ Por tanto, un número \(N\) en base \(r\) se expresa como:
 </section>
 </section>
 <section>
-<section id="slide-orga451828">
-<h3 id="orga451828">Tipos de Sistemas de Numeración</h3>
+<section id="slide-org9ef87bf">
+<h3 id="org9ef87bf">Tipos de Sistemas de Numeración</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -121,8 +122,8 @@ Por tanto, un número \(N\) en base \(r\) se expresa como:
 </section>
 </section>
 <section>
-<section id="slide-org32f3687">
-<h3 id="org32f3687">Ejercicio 1: Conversión a Decimal</h3>
+<section id="slide-org12a3578">
+<h3 id="org12a3578">Ejercicio 1: Conversión a Decimal</h3>
 <ul>
 <li class="fragment appear">Escriba un número en base 7</li>
 <li class="fragment appear">Escriba un número en base 4</li>
@@ -133,15 +134,15 @@ Por tanto, un número \(N\) en base \(r\) se expresa como:
 </section>
 </section>
 <section>
-<section id="slide-orgdd8c47d">
-<h2 id="orgdd8c47d">Sistema Decimal y Binario</h2>
-<div class="outline-text-2" id="text-orgdd8c47d">
+<section id="slide-org36a8c56">
+<h2 id="org36a8c56">Sistema Decimal y Binario</h2>
+<div class="outline-text-2" id="text-org36a8c56">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgfef2b00">
-<h3 id="orgfef2b00">Sistema de Numeración Decimal</h3>
+<section id="slide-org22b86f4">
+<h3 id="org22b86f4">Sistema de Numeración Decimal</h3>
 <ul>
 <li>La base es \(r=10\)</li>
 <li>Los dígitos cumplen \(0 \leq b_i \leq 9\) y \(b_i \in \mathbb{Z}^+\)</li>
@@ -159,8 +160,8 @@ Ejemplo:
 </section>
 </section>
 <section>
-<section id="slide-org522bd39">
-<h3 id="org522bd39">Sistema de Numeración Binario</h3>
+<section id="slide-orgb28108d">
+<h3 id="orgb28108d">Sistema de Numeración Binario</h3>
 <ul>
 <li>La base es \(r=2\)</li>
 <li>Los dígitos cumplen \(0 \leq b_i \leq 1\) y \(b_i \in \mathbb{Z}^+\)</li>
@@ -179,15 +180,15 @@ Ejemplo:
 </section>
 </section>
 <section>
-<section id="slide-org4647318">
-<h2 id="org4647318">Conversión de Base r a Decimal</h2>
-<div class="outline-text-2" id="text-org4647318">
+<section id="slide-orga84c989">
+<h2 id="orga84c989">Conversión de Base r a Decimal</h2>
+<div class="outline-text-2" id="text-orga84c989">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org788952e">
-<h3 id="org788952e">Conversión \(N_r \rightarrow X_{10}\)</h3>
+<section id="slide-orgcb89638">
+<h3 id="orgcb89638">Conversión \(N_r \rightarrow X_{10}\)</h3>
 <p>
 Sea \(N_r \rightarrow X_{10}\) la conversión de un número en base \(r\) a decimal.
 </p>
@@ -199,8 +200,8 @@ Sea \(N_r \rightarrow X_{10}\) la conversión de un número en base \(r\) a deci
 </section>
 </section>
 <section>
-<section id="slide-orge06670a">
-<h3 id="orge06670a">Ejercicio 2: \(N_r \rightarrow X_{10}\)</h3>
+<section id="slide-org3c9b784">
+<h3 id="org3c9b784">Ejercicio 2: \(N_r \rightarrow X_{10}\)</h3>
 <ul>
 <li class="fragment appear">\((4021.2)_5\)</li>
 <li class="fragment appear">\((127.4)_8\)</li>
@@ -212,15 +213,15 @@ Sea \(N_r \rightarrow X_{10}\) la conversión de un número en base \(r\) a deci
 </section>
 </section>
 <section>
-<section id="slide-orgfac04fa">
-<h2 id="orgfac04fa">Conversión Decimal a Binario</h2>
-<div class="outline-text-2" id="text-orgfac04fa">
+<section id="slide-org2bb0c03">
+<h2 id="org2bb0c03">Conversión Decimal a Binario</h2>
+<div class="outline-text-2" id="text-org2bb0c03">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org32099b2">
-<h3 id="org32099b2">Parte Entera</h3>
+<section id="slide-org65de6d4">
+<h3 id="org65de6d4">Parte Entera</h3>
 <p>
 Dado un número decimal, se aplica divisiones sucesivas entre 2:
 </p>
@@ -247,8 +248,8 @@ Entonces:
 </section>
 </section>
 <section>
-<section id="slide-orgf2a104c">
-<h3 id="orgf2a104c">Ejercicio 3: \(N_{10} \rightarrow X_r\)</h3>
+<section id="slide-org8ac4c71">
+<h3 id="org8ac4c71">Ejercicio 3: \(N_{10} \rightarrow X_r\)</h3>
 <ol>
 <li class="fragment appear">Convertir 41 a binario</li>
 <li class="fragment appear">Convertir 153 a octal</li>
@@ -259,8 +260,8 @@ Entonces:
 </section>
 </section>
 <section>
-<section id="slide-orga89db98">
-<h3 id="orga89db98">Parte Fraccionaria</h3>
+<section id="slide-orgf8f8c4c">
+<h3 id="orgf8f8c4c">Parte Fraccionaria</h3>
 <p>
 Sea \(F = 0\cdot b_{-1}b_{-2}\dots\) la parte fraccionaria en binario.
 </p>
@@ -282,8 +283,8 @@ Procedimiento:
 </section>
 </section>
 <section>
-<section id="slide-org6939859">
-<h3 id="org6939859">Ejercicio 4: Parte Fraccionaria</h3>
+<section id="slide-org65adba4">
+<h3 id="org65adba4">Ejercicio 4: Parte Fraccionaria</h3>
 <ol>
 <li class="fragment appear">\((0.6875)_{10} \rightarrow X_2\)</li>
 <li class="fragment appear">\((0.513)_{10} \rightarrow X_8\)</li>
@@ -293,15 +294,15 @@ Procedimiento:
 </section>
 </section>
 <section>
-<section id="slide-org9234e90">
-<h2 id="org9234e90">Conversión entre Binario, Octal y Hexadecimal</h2>
-<div class="outline-text-2" id="text-org9234e90">
+<section id="slide-org91c63e0">
+<h2 id="org91c63e0">Conversión entre Binario, Octal y Hexadecimal</h2>
+<div class="outline-text-2" id="text-org91c63e0">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc3c362e">
-<h3 id="orgc3c362e">Sistema Hexadecimal</h3>
+<section id="slide-org8dbdde1">
+<h3 id="org8dbdde1">Sistema Hexadecimal</h3>
 <p>
 La base es 16 y sus símbolos son:
 </p>
@@ -321,8 +322,8 @@ Relaciones clave:
 </section>
 </section>
 <section>
-<section id="slide-org97b21b7">
-<h3 id="org97b21b7">Conversión Binario &rarr; Octal</h3>
+<section id="slide-org85c18fd">
+<h3 id="org85c18fd">Conversión Binario &rarr; Octal</h3>
 <ol>
 <li>Agrupar en bloques de <b>3 bits</b> desde el punto decimal rellenando con 0</li>
 
@@ -348,8 +349,8 @@ Sea \(N_2 = 10101001.10111\):
 </section>
 </section>
 <section>
-<section id="slide-org2e7f4ae">
-<h3 id="org2e7f4ae">Conversión Binario &rarr; Hexadecimal</h3>
+<section id="slide-org99e3360">
+<h3 id="org99e3360">Conversión Binario &rarr; Hexadecimal</h3>
 <ol>
 <li>Agrupar en bloques de <b>4 bits</b> desde el punto decimal rellenando con 0</li>
 
@@ -375,15 +376,79 @@ Sea \(N_2 = 10101001.10111\):
 </section>
 </section>
 <section>
-<section id="slide-org154ce2c">
-<h2 id="org154ce2c">Ordenes de Magnitud</h2>
-<div class="outline-text-2" id="text-org154ce2c">
+<section id="slide-org65d3c13">
+<h2 id="org65d3c13">Conversiones Numéricas usando Python</h2>
+<div class="outline-text-2" id="text-org65d3c13">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org2c6ac37">
-<h3 id="org2c6ac37">Potencias de 2 para Unidades de Información</h3>
+<section id="slide-orgd0efd18">
+<h3 id="orgd0efd18">Conversión de Decimal a Binario, Octal y Hexadecimal en Python</h3>
+<p>
+Para realizar conversiones de números enteros en base 10 a binario, octal y
+hexadecimal en Python podemos usar <code>bin</code>,
+<code>oct</code>, o <code>hex</code>, respectivamente:
+</p>
+<div class="org-src-container">
+
+<pre   ><code class="python" >X = 131
+X_2 = bin(X)
+X_8 = oct(X)
+X_16 = hex(X)
+print(f"f{X} en BINARIO equivale a {X_2}")
+print(f"f{X} en OCTAL equivale a {X_8}")
+print(f"f{X} en HEXADECIMAL equivale a {X_16}")
+</code></pre>
+</div>
+
+<pre class="example">
+f131 en BINARIO equivale a 0b10000011
+f131 en OCTAL equivale a 0o203
+f131 en HEXADECIMAL equivale a 0x83
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-org006e874">
+<h3 id="org006e874">Conversión base  a DEC en Python</h3>
+<p>
+En este caso se coloca la cifra como una cadena dentro de <code>int</code> y se
+especifica la base del número
+</p>
+<div class="org-src-container">
+
+<pre   ><code class="python" >X_2 = '10000011'
+X_8 = '203'
+X_16 = '83'
+X_5 = '1234'
+
+print(f"{X_2} BINARIO  equivale a {int(X_2,2)} DEC" )
+print(f"{X_8} OCTAL  equivale a {int(X_8,8)} DEC" )
+print(f"{X_2} HEX  equivale a {int(X_16,16)} DEC" )
+print(f"{X_5} BASE 5  equivale a {int(X_5,5)} DEC" )
+</code></pre>
+</div>
+
+<pre class="example">
+10000011 BINARIO  equivale a 131 DEC
+203 OCTAL  equivale a 131 DEC
+10000011 HEX  equivale a 131 DEC
+1234 BASE 5  equivale a 194 DEC
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-org2016705">
+<h2 id="org2016705">Ordenes de Magnitud</h2>
+<div class="outline-text-2" id="text-org2016705">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org50350b9">
+<h3 id="org50350b9">Potencias de 2 para Unidades de Información</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -443,8 +508,8 @@ Sea \(N_2 = 10101001.10111\):
 </section>
 </section>
 <section>
-<section id="slide-org9ba5e45">
-<h3 id="org9ba5e45">Ejercicio 5: Órdenes de Magnitud</h3>
+<section id="slide-orgf5d2b01">
+<h3 id="orgf5d2b01">Ejercicio 5: Órdenes de Magnitud</h3>
 <ul>
 <li>Verifique con Python los valores de la tabla anterior</li>
 
@@ -470,15 +535,15 @@ Sea \(N_2 = 10101001.10111\):
 </section>
 </section>
 <section>
-<section id="slide-org6b403c3">
-<h2 id="org6b403c3">Taller</h2>
-<div class="outline-text-2" id="text-org6b403c3">
+<section id="slide-orgfc29880">
+<h2 id="orgfc29880">Taller</h2>
+<div class="outline-text-2" id="text-orgfc29880">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org0e3b4dc">
-<h3 id="org0e3b4dc">Ejercicios Propuestos</h3>
+<section id="slide-org0c9bf67">
+<h3 id="org0c9bf67">Ejercicios Propuestos</h3>
 <ol>
 <li class="fragment appear">Función en Python: convierte un número en base \(r\) a decimal</li>
 <li class="fragment appear">Función en Python: convierte decimal a binario
@@ -493,8 +558,8 @@ Sea \(N_2 = 10101001.10111\):
 </section>
 </section>
 <section>
-<section id="slide-orgf20c70f">
-<h3 id="orgf20c70f">Plantilla Taller</h3>
+<section id="slide-org2504931">
+<h3 id="org2504931">Plantilla Taller</h3>
 <div class="org-src-container">
 
 <pre   ><code class="python" >def numero_r_a_dec(numero: str, base: int):
