@@ -3,11 +3,11 @@
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
-#+title: Tarea S1 - Sistemas de Numeracion
+#+title: Tarea S1 - Sistemas de Numeración
 #+date: 2026-04-08
 #+author: COLOQUE SU NOMBRE
 #+email: lenin.falconi@epn.edu.ec
-#+language: Espanol
+#+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
 #+creator: Emacs 27.1 (Org mode 9.7.5)
@@ -37,37 +37,45 @@
 
 #+begin_export latex
 \fancyhead[C]{\includegraphics[scale=0.05]{.././images/logoEPN.jpg}\\
-ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
 ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 #+end_export
 
 * Objetivos de Aprendizaje
-- Aplicar conversiones entre sistemas de numeracion
-- Consolidar la conversion entre base $r$ y base 10
+- Aplicar conversiones entre sistemas de numeración
+- Consolidar la conversión entre base $r$ y base 10
 - Resolver conversiones de parte entera y fraccionaria
-- Practicar implementacion de algoritmos en Python
+- Practicar implementación de algoritmos en Python
 
 * Instrucciones
 1. Resolver todos los ejercicios y mostrar procedimiento
-2. Cuando se solicite programacion, incluir codigo y evidencia de ejecucion
+2. Cuando se solicite programación, incluir código y evidencia de ejecución
 3. Entregar archivo .org y PDF exportado
 
+** Edición y ejecución de bloques de código Python
+1. Ubique el cursor sobre el bloque de código que desea modificar.
+2. Presione ~C-c '~ para abrir el editor del bloque de código.
+3. Edite el script e incorpore las operaciones necesarias para resolver el ejercicio.
+4. Presione nuevamente ~C-c '~ para guardar los cambios y regresar al documento principal.
+5. Para ejecutar el bloque de código, sitúe el cursor dentro de él y presione ~C-c C-c~.
+6. Verifique que los resultados obtenidos coincidan con los cálculos realizados manualmente.
+
 * Ejercicios Propuestos
-1. Conversion de numero en base $r$ a decimal.
-   - Escriba un numero en base 7
-   - Escriba un numero en base 4
+1. Conversión de número en base $r$ a decimal.
+   - Escriba un número en base 7
+   - Escriba un número en base 4
    - Determine su equivalente en decimal
 
 
 #+begin_src jupyter-python :session t :results output :exports both
-X_7 = 'Escribe el numero como float'
-print(f"Numero en base 7: {X_7}")
+X_7 = 'Escribe el número como float'
+print(f"Número en base 7: {X_7}")
 
 #+end_src
 
 #+RESULTS:
-: Numero en base 7: 123.456
+: Número en base 7: 123.456
 
 2. Conversiones $N_r \rightarrow X_{10}$.
    - $(4021.2)_5$
@@ -76,8 +84,8 @@ print(f"Numero en base 7: {X_7}")
    - $(B65F)_{16}$
 
 
-Si $N_r >0$, ¿Qué Ecuación puedo usar para concer su valor equivalente
-en base Dec? Escribe la Ecuación usando 
+Si $N_r >0$, ¿Qué ecuación puedo usar para conocer su valor equivalente
+en base decimal? Escribe la ecuación usando \LaTeX
 
 
 #+begin_export latex
@@ -98,7 +106,7 @@ print(f"{N} en base {r} equivale a {X}")
 #+RESULTS:
 : 4021.2 en base 5 equivale a 511.4
 
-3. Conversiones de un numero entero $N_{10} \rightarrow X_r$.
+3. Conversiones de un número entero $N_{10} \rightarrow X_r$.
    - Convertir 41 a binario
    - Convertir 153 a octal
    - Convertir 256 a hexadecimal
@@ -106,13 +114,13 @@ print(f"{N} en base {r} equivale a {X}")
 N_10 = 41
 r = 2
 X =  
-print(f"El número {N_10} equivale a {X} en Binario (base {r})")
+print(f"El número {N_10} equivale a {X} en binario (base {r})")
 #+end_src
 
 #+RESULTS:
-: El número 41 equivale a 0b101001 en Binario (base 2)
+: El número 41 equivale a 0b101001 en binario (base 2)
 
-4. Conversion de parte fraccionaria de un numero en sistema decimal a
+4. Conversión de parte fraccionaria de un número en sistema decimal a
    una base \(r\).
    - $(0.6875)_{10} \rightarrow X_2$
    - $(0.513)_{10} \rightarrow X_8$
@@ -120,12 +128,12 @@ print(f"El número {N_10} equivale a {X} en Binario (base {r})")
 N_10 = 0.6875
 r = 2
 X =  
-print(f"El número {N_10} equivale a {X} en Binario (base {r})")
+print(f"El número {N_10} equivale a {X} en binario (base {r})")
 #+end_src
 
-5. Taller de programacion.
-   - Construir una funcion en Python que convierta un numero en base $r$ a decimal
-   - Construir una funcion en Python que convierta decimal a binario, separando parte entera y fraccionaria
+5. Taller de programación.
+   - Construir una función en Python que convierta un número en base $r$ a decimal
+   - Construir una función en Python que convierta decimal a binario, separando parte entera y fraccionaria
    - Generalizar el programa para convertir de decimal a base $r$
 
 
