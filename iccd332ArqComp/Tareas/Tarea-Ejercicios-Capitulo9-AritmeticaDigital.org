@@ -2,6 +2,7 @@
 #+AUTHOR: Lenin G. Falconí
 #+DATE: 2026-04-24
 #+email: lenin.falconi@epn.edu.ec
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
 #+OPTIONS: toc:2 num:t
 #+STARTUP: overview
 
@@ -30,7 +31,7 @@ y \(x \in \mathbb{Z}\) tal que
 
 
 Definimos la representación en complemento a la base disminuida
-((r-1)-complement) como
+\(r-1\) como
 #+begin_export latex
 \begin{equation}
   \label{eq:r_minus1_complement}

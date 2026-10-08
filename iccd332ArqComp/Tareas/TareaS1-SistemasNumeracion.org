@@ -1,0 +1,147 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
+#+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
+#+title: Tarea S1 - Sistemas de Numeracion
+#+date: 2026-04-08
+#+author: COLOQUE SU NOMBRE
+#+email: lenin.falconi@epn.edu.ec
+#+language: Espanol
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.7.5)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{.././images/logoEPN.jpg}\\
+ESCUELA POLITECNICA NACIONAL\\FACULTAD DE INGENIERIA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+* Objetivos de Aprendizaje
+- Aplicar conversiones entre sistemas de numeracion
+- Consolidar la conversion entre base $r$ y base 10
+- Resolver conversiones de parte entera y fraccionaria
+- Practicar implementacion de algoritmos en Python
+
+* Instrucciones
+1. Resolver todos los ejercicios y mostrar procedimiento
+2. Cuando se solicite programacion, incluir codigo y evidencia de ejecucion
+3. Entregar archivo .org y PDF exportado
+
+* Ejercicios Propuestos
+1. Conversion de numero en base $r$ a decimal.
+   - Escriba un numero en base 7
+   - Escriba un numero en base 4
+   - Determine su equivalente en decimal
+
+
+#+begin_src jupyter-python :session t :results output :exports both
+X_7 = 'Escribe el numero como float'
+print(f"Numero en base 7: {X_7}")
+
+#+end_src
+
+#+RESULTS:
+: Numero en base 7: 123.456
+
+2. Conversiones $N_r \rightarrow X_{10}$.
+   - $(4021.2)_5$
+   - $(127.4)_8$
+   - $(110101)_2$
+   - $(B65F)_{16}$
+
+
+Si $N_r >0$, ¿Qué Ecuación puedo usar para concer su valor equivalente
+en base Dec? Escribe la Ecuación usando 
+
+
+#+begin_export latex
+\begin{equation}
+  \label{eq:systemnum}
+  X_{dec} = 
+\end{equation}
+#+end_export
+
+#+begin_src jupyter-python :session t :results output :exports both
+N = 4021.2
+r = 5
+X = 
+print(f"{N} en base {r} equivale a {X}")
+
+#+end_src
+
+#+RESULTS:
+: 4021.2 en base 5 equivale a 511.4
+
+3. Conversiones de un numero entero $N_{10} \rightarrow X_r$.
+   - Convertir 41 a binario
+   - Convertir 153 a octal
+   - Convertir 256 a hexadecimal
+#+begin_src jupyter-python :session t :results output :exports both
+N_10 = 41
+r = 2
+X =  
+print(f"El número {N_10} equivale a {X} en Binario (base {r})")
+#+end_src
+
+#+RESULTS:
+: El número 41 equivale a 0b101001 en Binario (base 2)
+
+4. Conversion de parte fraccionaria de un numero en sistema decimal a
+   una base \(r\).
+   - $(0.6875)_{10} \rightarrow X_2$
+   - $(0.513)_{10} \rightarrow X_8$
+#+begin_src jupyter-python :session t :results output :exports both
+N_10 = 0.6875
+r = 2
+X =  
+print(f"El número {N_10} equivale a {X} en Binario (base {r})")
+#+end_src
+
+5. Taller de programacion.
+   - Construir una funcion en Python que convierta un numero en base $r$ a decimal
+   - Construir una funcion en Python que convierta decimal a binario, separando parte entera y fraccionaria
+   - Generalizar el programa para convertir de decimal a base $r$
+
+
+#+begin_src python :session :results output :exports both
+def numero_r_a_dec(numero: str, base: int):
+    resp = 0
+    # implementar
+    print(f"{numero} en base {base} = {resp} en base 10")
+
+def decimal_a_binario(numero: float):
+    entero = int(numero)
+    fraccion = numero - entero
+    # implementar parte entera y fraccionaria
+    pass
+
+def decimal_a_base_r(numero: float, base: int):
+    # generalizar decimal_a_binario para base r
+    pass
+#+end_src
