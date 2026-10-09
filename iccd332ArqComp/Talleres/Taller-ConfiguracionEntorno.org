@@ -42,8 +42,8 @@ ARQUITECTURA DE COMPUTADORES}
 * Objetivos
 
 - Configurar y validar el entorno de trabajo para la asignatura de Arquitectura de Computadores en Linux o WSL.
-- Verificar la instalacion de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
-- Documentar evidencias tecnicas mediante capturas y comandos ejecutados.
+- Verificar la instalación de herramientas base: mamba/anaconda (Python), Emacs y \LaTeX.
+- Documentar evidencias técnicas mediante capturas y comandos ejecutados.
 
 * Instrucciones
 
@@ -57,7 +57,7 @@ ARQUITECTURA DE COMPUTADORES}
 6. Verifique que en las distintas secciones de este archivo esté
    identificado con nombre e email el aporte del estudiante.
 
-Si require insertar una imagen, crear una carpeta ~images~ y colocar
+Si requiere insertar una imagen, crear una carpeta ~images~ y colocar
 la imagen dentro. Para llamar la imagen desde Emacs use ~C-c C-l~ y
 busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 
@@ -67,7 +67,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
 * Actividades
 ** Configuración de WSL con Ubuntu, \LaTeX, Python e Emacs
 
-1. Verificacion de entorno mamba/anaconda
+1. Verificación de entorno mamba/anaconda
    1. Active WSL (si aplica) y su entorno de trabajo.
    2. Ejecute ~mamba info~ con ~C-c C-c~ dentro del bloque de código.
    3. Si el comando falla, active un entorno con ~mamba activate iccd332~ e intente de nuevo.
@@ -79,7 +79,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+RESULTS:
 
 
-2. Verificacion de Python
+2. Verificación de Python
    1. Active el entorno ~iccd332~ para abrir Emacs con ~mamba activate iccd332~.
    2. Ejecute ~python --version~ en la consola y desde Emacs.
 
@@ -90,7 +90,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+RESULTS:
    : Python 3.9.23
 
-3. Verificacion de Emacs
+3. Verificación de Emacs
    Ejecute ~emacs --version~ en la consola y desde Emacs.
 
    #+begin_src shell :exports both :results verbatim
@@ -100,7 +100,7 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+RESULTS:
 
 
-4. Verificacion de LaTeX
+4. Verificación de LaTeX
    Ejecute ~latex --version~ en la consola y desde Emacs.
 
    #+begin_src shell :exports both :results verbatim
@@ -110,12 +110,12 @@ busque el archivo o escriba:Puede insertar una imagen con la sintaxis:
    #+RESULTS:
 
 
-5. Registro de problemas y solucion aplicada
+5. Registro de problemas y solución aplicada
 
-Complete la siguiente tabla si tuvo errores durante la configuracion:
+Complete la siguiente tabla si tuvo errores durante la configuración:
 
 #+ATTR_LATEX: :environment tabularx :width \textwidth :align lXX
-| *Herramienta* | *Problema observado* | *Solucion aplicada* |
+| *Herramienta* | *Problema observado* | *Solución aplicada* |
 |---------------+----------------------+---------------------|
 |               |                      |                     |
 |               |                      |                     |
@@ -239,8 +239,8 @@ Para consultar lo que hace un comando ejecute:
    ayuda. Presione las teclas del comando. Por ejemplo, ~C-x C-f~
 3. Emacs abrirá un nuevo buffer con la descripción del comando.
 4. Cambie al buffer de la ayuda con ~C-x o~
-5. Seleccione el primer parrafo de ayuda ubicando el cursor al inicio
-   del parrafo y activando la marcación de texto con
+5. Seleccione el primer párrafo de ayuda ubicando el cursor al inicio
+   del párrafo y activando la marcación de texto con
    ~C-SPC~. Seleccione avanzando por palabras ~M-f~ o directamente
    toda la linea ~C-e~
 6. Una vez seleccionado, copie el texto con ~M-w~.
@@ -284,7 +284,7 @@ razones al respecto.
   identificado el líder.
 - [ ] Revisión de ortografía con ~ispell~ en el buffer
 - [ ] Generación de Archivo PDF ~M-x org-latex-export-to-pdf~
-- [ ] Subir al aula virutal archivo ~.org~ y ~.pdf~
+- [ ] Subir al aula virtual archivo ~.org~ y ~.pdf~
 ** Problemas con la Tarea/logísticos:
 - Tarea $X_1$ no pudo completarse debido a
 - Tarea $X_2$ no pudo completarse debido a
