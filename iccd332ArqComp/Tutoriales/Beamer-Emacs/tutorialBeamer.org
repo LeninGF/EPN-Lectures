@@ -163,6 +163,25 @@ Se requiere realizar los siguientes ajustes para que Emacs opere:
       #+begin_src shell
         sudo apt install texlive-latex-extra
       #+end_src
+** Paquetes adicionales de \LaTeX
+Una vez terminada la instalación principal de \LaTeX instale los
+siguientes complementos para no tener problemas en la generación de
+archivos PDF desde emacs
+#+begin_src shell
+sudo apt-get install texlive-xetex
+#+end_src
+
+#+begin_src shell
+sudo apt install texlive-bibtex-extra biber
+#+end_src
+
+#+begin_src shell
+sudo apt install latexmk
+#+end_src
+
+#+begin_src shell
+sudo apt install texlive-lang-spanish
+#+end_src
 4. Instalar Python
 5. Configurar el archivo en ~/.emacs.d/init.el
 * Instalación Python
