@@ -127,7 +127,7 @@ con **git tags** para poder volver a cualquier versión anterior (ver sección s
 
 ## Cambiar entre versiones de `init.el`
 
-El archivo `configEmacs/init.el` tiene siete versiones identificadas con tags:
+El archivo `configEmacs/init.el` tiene ocho versiones identificadas con tags:
 
 | Tag | Rol | Descripción |
 |-----|-----|-------------|
@@ -137,9 +137,10 @@ El archivo `configEmacs/init.el` tiene siete versiones identificadas con tags:
 | `v1.0.0` | **Estable** | Versión probada: deeper-blue, elpy básico, ein (Nov 2025) |
 | `v1.1.0` | — | Doom themes, emacs-jupyter, org-present, ox-reveal, latexmk (Jun 2025) |
 | `v1.2.0` | — | Comentarios bilingües EN/ES, gptel Copilot, rutas genéricas (Sep 2026) |
-| `v1.2.1` | **Última** | Agrega `;; Version` al encabezado (Sep 2026) |
+| `v1.2.1` | — | Agrega `;; Version` al encabezado (Sep 2026) |
+| `v1.3.0` | **Última** | Sección 0: configuración inicial (entorno Python, datos personales); sección 14 bilingüe con Copilot/DeepSeek (Oct 2026) |
 
-Si querés seguridad usá `v1.0.0`. Si querés las mejoras más recientes, usá `v1.2.1`.
+Si querés seguridad usá `v1.0.0`. Si querés las mejoras más recientes, usá `v1.3.0`.
 
 **Ver el historial completo:**
 ```bash
@@ -148,12 +149,12 @@ git log --oneline --decorate --follow -- iccd332ArqComp/configEmacs/init.el
 
 **Ver el contenido de una versión sin modificar nada:**
 ```bash
-git show v1.2.1:iccd332ArqComp/configEmacs/init.el
+git show v1.3.0:iccd332ArqComp/configEmacs/init.el
 ```
 
 **Usar la versión más reciente** (reemplaza tu `init.el` actual):
 ```bash
-git checkout v1.2.1 -- iccd332ArqComp/configEmacs/init.el
+git checkout v1.3.0 -- iccd332ArqComp/configEmacs/init.el
 ```
 
 **Volver a la versión estable:**
@@ -163,7 +164,7 @@ git checkout v1.0.0 -- iccd332ArqComp-2024-B/configEmacs/init.el
 
 **Comparar dos versiones:**
 ```bash
-git diff v1.2.0 v1.2.1 -- iccd332ArqComp-2024-B/configEmacs/init.el iccd332ArqComp/configEmacs/init.el
+git diff v1.2.1 v1.3.0 -- iccd332ArqComp-2024-B/configEmacs/init.el iccd332ArqComp/configEmacs/init.el
 ```
 
 > **Nota:** los tags `v0.1.0`–`v1.2.0` apuntan a commits anteriores al cambio de nombre
