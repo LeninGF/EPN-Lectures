@@ -1,11 +1,44 @@
 ;;; init.el --- Emacs Configuration
-;; Version: 1.2.1
+;; Version: 1.3.0
 
 ;;; Commentary:
 ;; This configuration is tailored for Org-mode, Python, Jupyter, Java, and LaTeX development.
 ;; It includes packages for enhanced functionality such as autocompletion, version control,
 ;; and spell checking.
 ;; ES: Esta configuración adapta Emacs para Org-mode, Python, Jupyter, Java y LaTeX.
+
+;;; ============================================================
+;;; 0. First-time setup / Configuración inicial
+;;; ============================================================
+;; EN: 1. Personal data: replace the placeholders in lines 62-63
+;;     (user-full-name / user-mail-address, section 1.1).
+;; ES: 1. Datos personales: reemplaza los marcadores de las líneas 62-63
+;;     (user-full-name / user-mail-address, sección 1.1).
+;;
+;; EN: 2. Python environment: run one of these in a terminal to find it:
+;;       mamba env list      (or: conda env list)
+;;     The output shows the full path, for example:
+;;       /home/<your-user>/miniforge3/envs/<your-env>
+;;     so:  {USER} = <your-user>    {ENVIRONMENT} = <your-env>
+;;     (if your installation lives in miniconda3/anaconda3, adjust that part too).
+;; ES: 2. Entorno de Python: ejecuta uno de estos en una terminal para ubicarlo:
+;;       mamba env list      (o: conda env list)
+;;     La salida muestra la ruta completa, por ejemplo:
+;;       /home/<tu-usuario>/miniforge3/envs/<tu-entorno>
+;;     es decir:  {USER} = <tu-usuario>    {ENVIRONMENT} = <tu-entorno>
+;;     (si tu instalación está en miniconda3/anaconda3, ajusta también esa parte).
+;;
+;; EN: 3. Replace {USER} and {ENVIRONMENT} in these lines of THIS version:
+;; ES: 3. Reemplaza {USER} y {ENVIRONMENT} en estas líneas de ESTA versión:
+;;       line  section  setting
+;;       184   4.5      org-babel-python-command
+;;       259   5.1      elpy-rpc-python-command
+;;       260   5.1      python-shell-interpreter
+;;       290   5.2      (setenv "WORKON_HOME" ...)
+;;       293   5.6      python-shell-interpreter   (overrides line 260)
+;;
+;; EN: Restart Emacs and verify with M-x elpy-config (section 5).
+;; ES: Reinicia Emacs y verifica con M-x elpy-config (sección 5).
 
 ;;; AuthSource for Apis
 ;; EN: Loads credentials (API keys, passwords) from ~/.authinfo.
@@ -146,9 +179,9 @@
   :ensure t)
 
 ;; 4.5 Python for Org-Babel
-;; EN: Change this path to your own Python.
-;; ES: Cambia esta ruta a tu propio Python.
-(setq org-babel-python-command "/home/{USER_NAME}/miniforge3/envs/tfmlenv/bin/python")
+;; EN: Change this path to your own Python (see section 0 for the placeholders).
+;; ES: Cambia esta ruta a tu propio Python (ver la sección 0 para los marcadores).
+(setq org-babel-python-command "/home/{USER}/miniforge3/envs/{ENVIRONMENT}/bin/python")
 
 ;; 4.7 LaTeX in Org Mode
 (require 'ox-latex)
@@ -221,10 +254,10 @@
   :init
   (elpy-enable)
   :config
-  ;; EN: Point these paths to your conda environment.
-  ;; ES: Apunta estas rutas a tu entorno de conda.
-  (setq elpy-rpc-python-command "/home/{USER-NAME}/miniforge3/envs/{ENVIRONMENT-NAME}/bin/python")
-  (setq python-shell-interpreter "/home/{USER-NAME}/miniforge3/envs/{ENVIRONMENT-NAME}/bin/ipython"
+  ;; EN: Point these paths to your conda environment (see section 0).
+  ;; ES: Apunta estas rutas a tu entorno de conda (ver la sección 0).
+  (setq elpy-rpc-python-command "/home/{USER}/miniforge3/envs/{ENVIRONMENT}/bin/python")
+  (setq python-shell-interpreter "/home/{USER}/miniforge3/envs/{ENVIRONMENT}/bin/ipython"
         python-shell-interpreter-args "-i --simple-prompt")
   ;; EN: Pop up the Python shell automatically after C-c C-c so results are visible.
   ;; ES: Muestra la shell de Python automáticamente tras C-c C-c para ver los resultados.
@@ -254,10 +287,10 @@
 ;; 5.2 Virtual environment management (for pyvenv-working)
 ;; ---------------------------------------------------------------------
 ;; check elpy state with M-x elpy-config follow recommendations 
-(setenv "WORKON_HOME" "/home/{USER_NAME}/miniforge3/envs/")
+(setenv "WORKON_HOME" "/home/{USER}/miniforge3/envs/")
 
 ;; 5.6 Python shell (IPython)
-(setq python-shell-interpreter "/home/{USER-NAME}/miniforge3/envs/tfmlenv/bin/ipython"
+(setq python-shell-interpreter "/home/{USER}/miniforge3/envs/{ENVIRONMENT}/bin/ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
 ;; 5.7 Flycheck — real-time linting (pyright errors appear here too)
@@ -501,35 +534,104 @@
 ;; EN: gptel: chat with LLMs (Copilot / DeepSeek).
 ;; ES: gptel: chat con LLMs (Copilot / DeepSeek).
 
-;;  Set up Copilot as Primary LLM and DeepSeek as secondary
+
+;;; ============================================================
+;;; 14.1 GPTel — Copilot primary, DeepSeek secondary
+;;; ============================================================
+;; EN: Copilot is the default backend and DeepSeek stays registered as
+;; secondary. Log in to Copilot once with M-x gptel-gh-login.
+;; ES: Copilot es el backend por defecto y DeepSeek queda registrado
+;; como secundario. Inicia sesión en Copilot una vez con
+;; M-x gptel-gh-login.
+;;
+;; EN: Only ONE of the two gptel blocks (14.1 and 14.1b) may be
+;; uncommented: the last `gptel-backend' assignment wins.
+;; ES: Solo UNO de los dos bloques de gptel (14.1 y 14.1b) puede estar
+;; descomentado: la última asignación a `gptel-backend' gana.
+
 (use-package gptel
   :ensure t
   :config
   ;; (setq gptel-default-mode 'org-mode) ; comment for Markdown-free chat
   (setq gptel-log-level 'debug)
-  (setq gptel-model   'gpt-4.1
-        gptel-backend (gptel-make-gh-copilot "Copilot"))
-;;   (gptel-make-deepseek "DeepSeek" :stream t :key gptel-api-key)
-;;   (gptel-make-gh-copilot "Copilot")
-;;   ;; Uncomment to add Claude or other backends:
-;;   ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
-  )
+  ;; EN: 1. Copilot is the default backend (log in once with M-x gptel-gh-login).
+  ;; ES: 1. Copilot es el backend por defecto (inicia sesión una vez con M-x gptel-gh-login).
+  (setq gptel-backend (gptel-make-gh-copilot "Copilot"))
 
-;; Set up DeepSeek as Primary LLM and Copilot as Secondary
+  ;; EN: 2. Model used by Copilot, as a symbol (e.g. gpt-4o, gpt-4.1, claude-sonnet-4.5).
+  ;; ES: 2. Modelo que usará Copilot, como símbolo (p. ej. gpt-4o, gpt-4.1, claude-sonnet-4.5).
+  (setq gptel-model 'gpt-4o)
+  ;; --------------------------------------------------------------------------------
+  ;; Alternative or secondary backends / Backends alternativos o secundarios
+  ;; --------------------------------------------------------------------------------
+  ;; EN: Uncomment to REGISTER DeepSeek as secondary. Registering does NOT
+  ;; change the default; switch with C-u before gptel-send (or M-x gptel-menu)
+  ;; and pick the model with the "-m" key.
+  ;; ES: Quita el comentario para REGISTRAR DeepSeek como secundario. Registrarlo
+  ;; NO cambia el backend por defecto; cambia con C-u antes de gptel-send (o
+  ;; M-x gptel-menu) y elige el modelo con la tecla "-m".
+  ;; (gptel-make-deepseek "DeepSeek" :stream t :key 'gptel-api-key)
+  ;; EN: Uncomment to add Claude or other backends.
+  ;; ES: Quita el comentario para agregar Claude u otros backends.
+  ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
+ )
+
+;; ------------------------------------------------------------------
+;; 14.1b Alternative: DeepSeek primary, Copilot secondary
+;; ------------------------------------------------------------------
+;; EN: Uncomment this block and comment out the one above. Keep the
+;; DeepSeek key in ~/.authinfo as:
+;;   machine api.deepseek.com login apikey password sk-...
+;; ES: Descomenta este bloque y comenta el anterior. Guarda la clave de
+;; DeepSeek en ~/.authinfo así:
+;;   machine api.deepseek.com login apikey password sk-...
 
 ;; (use-package gptel
 ;;   :ensure t
 ;;   :config
 ;;   ;; (setq gptel-default-mode 'org-mode) ; comment for Markdown-free chat
 ;;   (setq gptel-log-level 'debug)
-;;   (setq gptel-model 'deepseek-chat
-;; 	gptel-backend (gptel-make-deepseek "Deepseek"
-;; 			:stream t
-;; 			:key gptel-api-key))
+;;   ;; EN: 1. DeepSeek as the default backend. ":key" is REQUIRED: gptel's
+;;   ;;       DeepSeek header sends no credentials without it.
+;;   ;; ES: 1. DeepSeek como backend por defecto. ":key" es OBLIGATORIO: la
+;;   ;;       cabecera DeepSeek de gptel no envía credenciales sin él.
+;;   (setq gptel-model 'deepseek-flash
+;;         gptel-backend (gptel-make-deepseek "DeepSeek"
+;;                         :stream t
+;;                         :key 'gptel-api-key))
+;;   ;; EN: 2. Register Copilot as secondary (this does NOT change the
+;;   ;;       default); run M-x gptel-gh-login once to authorize it.
+;;   ;; ES: 2. Registra Copilot como secundario (esto NO cambia el backend
+;;   ;;       por defecto); ejecuta M-x gptel-gh-login una vez para autorizarlo.
 ;;   (gptel-make-gh-copilot "Copilot")
-;;   ;; Uncomment to add Claude or other backends:
+;;   ;; EN: Uncomment to add Claude or other backends.
+;;   ;; ES: Quita el comentario para agregar Claude u otros backends.
 ;;   ;; (gptel-make-anthropic "Claude" :stream t :key "your-api-key")
-;; )
+;;   )
+
+;; -------------------------------------------------------------
+;; 14.2 Inline completion assistant (copilot.el) / Asistente de autocompletado en línea
+;; -------------------------------------------------------------
+;; EN: Uncomment to enable inline ghost text autocompletion. copilot.el is a
+;; separate MELPA package (not installed by default) that needs Node.js 22+
+;; and a GitHub Copilot account.
+;; ES: Descomenta para habilitar el autocompletado fantasma en línea. copilot.el
+;; es un paquete MELPA aparte (no se instala por defecto) que requiere
+;; Node.js 22+ y una cuenta de GitHub Copilot.
+;;
+;; EN: IMPORTANT: after uncommenting and restarting Emacs, run these two
+;; commands the first time: 1. M-x copilot-install-server  2. M-x copilot-login
+;; ES: IMPORTANTE: si descomentas este bloque y reinicias Emacs, ejecuta
+;; estos dos comandos la primera vez: 1. M-x copilot-install-server  2. M-x copilot-login
+
+;; (use-package copilot
+;;   :ensure t
+;;   :hook (prog-mode . copilot-mode)
+;;   :bind (:map copilot-completion-map
+;;               ("<tab>" . 'copilot-accept-completion)
+;;               ("TAB" . 'copilot-accept-completion)
+;;               ("C-<right>" . 'copilot-accept-completion-by-word)))
+
 
 ;;; ============================================================
 ;;; 15. WSL Browser
