@@ -142,8 +142,8 @@ cambiar de contexto entre aplicaciones.
 ** Procedimiento de Configuración en Windows
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
-:CUSTOM_ID: procedimiento-windows
 :END:
+<<como-instalar-windows>>
 
 Se requiere realizar los siguientes ajustes para que Emacs opere:
 
@@ -293,8 +293,8 @@ Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
 ** Configuración Emacs
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
-:CUSTOM_ID: configEmacs
 :END:
+<<config-emacs>>
 
 - El archivo init.el puede generar instalaciones y activaciones para
   emacs por lo que se sugiere reiniciar emacs para que las
@@ -442,7 +442,7 @@ adicionales. Caso contrario se ejecuta.
   señalado en [[#install-python][Instalación Python]]
 - Emacs :: Se realiza directamente los comandos en  en el punto 3.
 - \LaTeX :: Se realiza directamente los comandos en
-  [[id:procedimiento-windows][Configuración e Instalación Windows]] en el punto 2.
+  [[como-instalar-windows][Configuración e Instalación Windows]] en el punto 2.
 
 En Linux **no** es necesario instalar **WSL**
 ** Instalación de Corrector Ortográfico
@@ -723,7 +723,7 @@ with its own headline, is displayed in a block:
 ** Configurar Org-Babel Python
 
 Consiste en editar el archivo ~/.emacs.d/init.el para que emacs tenga
-el comportamiento deseado. Para instrucciones referirse al slide [[#configEmacs][Configuración Emacs]]
+el comportamiento deseado. Para instrucciones referirse al slide [[config-emacs][Configuración Emacs]]
 
 Este slide muestra cómo hacer una referencia a otra sección
 
@@ -785,10 +785,11 @@ Desde un prompt de Windows realice las siguientes operaciones desde un Powershel
    #+begin_src shell
    wsl --import Ubuntu-22.04 D:\WSL\Ubuntu22 D:\WSL\ubuntu22.tar --version 2
    #+end_src
-** Comprimir un distro de WSL
+** Comprimir/Respaldar un distro de WSL
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
 :END:
+<<respaldo-wsl>>
 Realice las siguientes operaciones desde un Powershell
 1. Terminar WSL completamente
    #+begin_src shell
@@ -812,6 +813,175 @@ wsl --unregister <Nombre Distro>
 
 Para esto, el distro debe estar detenido y su nombre localizado. Esto
 último lo puede derivar con el comando ~wsl -l -v~ desde Powershell
+** Actualizar el Distro a una versión nueva: requisitos y respaldo
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+El siguiente procedimiento debe hacerse con cuidado y con un respaldo
+de la información ya que puede conllevar la pérdida de datos si no
+finaliza con éxito.
+
+El objetivo es actualizar el distro de una version LTS inferior a una
+superior (e.g. 22.04 a 24.04).
+
+1. Antes de comenzar, realizar el procedimiento de
+   [[respaldo-wsl][respaldo de la distribución WSL]].
+
+2. En PowerShell de Windows, consultar las distribuciones:
+
+   #+begin_src powershell :eval never
+   wsl --list --verbose
+   #+end_src
+
+   - Identificar el nombre exacto de la distribución.
+   - La columna =VERSION= debe mostrar =2=.
+   - Si muestra =1=, detener este procedimiento: primero se debe
+     convertir la distribución a WSL 2.
+
+3. Abrir la terminal de Ubuntu y comprobar su versión:
+
+   #+begin_src shell :eval never
+   cat /etc/os-release
+   #+end_src
+
+   Para este procedimiento debe indicar =VERSION_ID="22.04"=.
+   Si ya indica =24.04=, no es necesario realizar esta actualización.
+
+** Actualización de Ubuntu: comprobar systemd
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+=systemd= es el administrador de servicios de Linux. Debe estar
+habilitado para seguir el procedimiento de actualización de Ubuntu
+en WSL.
+
+1. Dentro de Ubuntu, ejecutar:
+
+   #+begin_src shell :eval never
+   ps -p 1 -o comm=
+   #+end_src
+
+2. Interpretar el resultado:
+   - Si devuelve =systemd=, omitir el apartado de habilitación y
+     continuar con la actualización.
+   - Si devuelve otro nombre, seguir el apartado siguiente.
+
+** Actualización de Ubuntu: habilitar systemd si es necesario
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+Realizar este apartado solamente si la comprobación anterior no
+devolvió =systemd=.
+
+1. En PowerShell, comprobar la versión del programa WSL:
+
+   #+begin_src powershell :eval never
+   wsl --version
+   #+end_src
+
+   El soporte de systemd requiere WSL 0.67.6 o posterior.
+   Esta versión del programa no es lo mismo que la columna
+   =VERSION= de =wsl --list --verbose=.
+
+   Si WSL es anterior o no reconoce el comando, actualizarlo:
+
+   #+begin_src powershell :eval never
+   wsl --update
+   #+end_src
+
+2. Dentro de Ubuntu, abrir su archivo de configuración:
+
+   #+begin_src shell :eval never
+   sudo nano /etc/wsl.conf
+   #+end_src
+
+3. Añadir lo siguiente, conservando las demás configuraciones:
+
+   #+begin_src conf :eval never
+   [boot]
+   systemd=true
+   #+end_src
+
+   Si ya existe la sección =[boot]=, añadir o modificar
+   =systemd=true= dentro de ella; no duplicar la sección.
+
+4. Guardar y cerrar Nano: =Ctrl+O=, =Enter= y =Ctrl+X=.
+
+5. Guardar cualquier trabajo abierto en otras distribuciones WSL.
+   En PowerShell, detener WSL:
+
+   #+begin_src powershell :eval never
+   wsl --shutdown
+   #+end_src
+
+   Este comando detiene todas las distribuciones WSL en ejecución.
+
+6. Volver a abrir Ubuntu y comprobar:
+
+   #+begin_src shell :eval never
+   ps -p 1 -o comm=
+   #+end_src
+
+   Debe devolver =systemd=. Si no lo hace, no continuar con la
+   actualización hasta resolver este requisito.
+
+** Actualización de Ubuntu: ejecutar y verificar
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+1. Dentro de Ubuntu, actualizar los paquetes de la versión actual:
+
+   #+begin_src shell :eval never
+   sudo apt update && sudo apt full-upgrade -y
+   #+end_src
+
+   Esperar a que termine correctamente. Si presenta errores,
+   resolverlos antes de continuar.
+
+2. Iniciar la actualización de versión:
+
+   #+begin_src shell :eval never
+   sudo do-release-upgrade
+   #+end_src
+
+   Confirmar que el destino propuesto sea Ubuntu 24.04 y seguir
+   las instrucciones. No interrumpir el proceso.
+
+3. Al finalizar, seguir las instrucciones de reinicio del
+   actualizador. Si es necesario reiniciar la instancia desde
+   PowerShell, usar:
+
+   #+begin_src powershell :eval never
+   wsl --terminate "NOMBRE_DE_LA_DISTRIBUCION"
+   #+end_src
+
+   Sustituir =NOMBRE_DE_LA_DISTRIBUCION= por el nombre obtenido
+   con =wsl --list --verbose=. Después, volver a abrir Ubuntu.
+
+4. Verificar el resultado dentro de Ubuntu:
+
+   #+begin_src shell :eval never
+   cat /etc/os-release
+   ps -p 1 -o comm=
+   #+end_src
+
+   Los resultados esperados son:
+   - =VERSION_ID="24.04"=.
+   - =systemd= como proceso principal.
+
+   El nombre registrado de la distribución en WSL puede seguir
+   siendo el anterior; comprobar la versión con =os-release=.
+
+5. Probar las herramientas habituales: Emacs, exportación de
+   documentos Org a PDF y los entornos de Python.
+
+*** Documentación
+- [[https://ubuntu.com/wsl/docs/stable/howto/upgrade-ubuntu/][Ubuntu: actualizar Ubuntu en WSL]]
+- [[https://learn.microsoft.com/en-us/windows/wsl/systemd][Microsoft: habilitar systemd en WSL]]
+
 * Funciones avanzadas de Anaconda
 Los entornos de anaconda crecen con la instalación de paquetes y
 librerías. A fin de evitar descargar nuevamente de internet, anaconda

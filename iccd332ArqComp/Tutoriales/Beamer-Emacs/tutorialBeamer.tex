@@ -1,0 +1,1101 @@
+% Created 2026-10-15 Thu 12:50
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2500}{-}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=magenta, urlcolor=red}
+\RequirePackage{fancyvrb}
+\setbeamercolor{titlelike}{fg=white}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
+\usetheme{Warsaw}
+\usecolortheme{}
+\usefonttheme{}
+\useinnertheme{}
+\useoutertheme{}
+\author{Lenin G. Falconí}
+\date{2024-04-27}
+\title{Presentaciones Latex con Emacs}
+\hypersetup{
+ pdfauthor={Lenin G. Falconí},
+ pdftitle={Presentaciones Latex con Emacs},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.6.27)}, 
+ pdflang={Spanish}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+
+
+\section{¿Qué es Emacs?}
+\label{sec:orgaf099d7}
+\begin{frame}[allowframebreaks]{Un entorno de programación extensible y personalizable}
+\begin{itemize}
+\item No es simplemente un editor de texto.
+\item Es un \alert{intérprete de Lisp} diseñado para la computación interactiva.
+\item Un entorno de trabajo que evoluciona contigo.
+\item "El sistema operativo dentro de tu sistema operativo".
+\item Filosofía: Proveer un entorno autocontenido y altamente adaptable
+para la manipulación de texto y datos estructurados.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Filosofía: Plataforma vs. Producto}
+\begin{itemize}
+\item \alert{\alert{VS Code:}} Un producto con decisiones predefinidas por terceros.
+\item \alert{\alert{Emacs:}} Una plataforma donde tú escribes el comportamiento del software.
+\item \alert{\alert{Inversión:}} Tu configuración evoluciona contigo por décadas; no caduca.
+\item \alert{\alert{Contexto único:}} "Everything in Emacs" para reducir el cambio de
+aplicaciones.
+\end{itemize}
+
+Es un ecosistema que puede ser personalizado a tu estilo de trabajo,
+con el principio \emph{Everything in Emacs} que reduce la necesidad de
+cambiar de contexto entre aplicaciones.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{El Corazón: Elisp (Emacs Lisp)}
+\begin{itemize}
+\item Casi todo lo que ves en Emacs está escrito en Elisp.
+\item Puedes evaluar código en tiempo real.
+\item No necesitas reiniciar el editor para aplicar cambios profundos.
+\item \alert{Ejemplo:} ¿Quieres que el editor se comporte distinto al guardar un archivo? Escribe una función y conéctala a un "hook".
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Conceptos Clave de Operación}
+ \begin{itemize}
+\item \alert{\alert{Búferes y Ventanas:}} La unidad de trabajo es el búfer (archivo, proceso, ayuda).
+\item \alert{\alert{Modalidad sin modos estrictos:}} Operación directa complementada con "modos menores".
+\item \alert{\alert{Comandos por teclado:}} Uso intensivo de \texttt{M-x} y \texttt{C-x} para ejecutar funciones Elisp.
+\item \alert{\alert{Documentación integrada:}} Ayuda instantánea con \texttt{C-h k} (teclas) y \texttt{C-h f} (funciones).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Emacs en el contexto académico y de desarrollo}
+ \begin{itemize}
+\item \alert{\alert{Redacción técnica:}} Modo \alert{Org} e Integración con \LaTeX y BibTeX (RefTeX).
+\item \alert{\alert{Software Libre:}} Garantiza libertad de uso, estudio y
+modificación (GNU GPL).
+\item \alert{\alert{Gestión bibliográfica:}} Herramientas como \texttt{org-ref} para investigadores.
+\item Soporte nativo para decenas de lenguajes de programación.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{La Joya de la Corona: Org-mode}
+ \begin{itemize}
+\item Mucho más que "tomar notas": un ecosistema de productividad completo.
+\item \alert{\alert{Gestión:}} Tareas (GTD), agendas y calendarios (\texttt{org-agenda}).
+\item \alert{\alert{Exportación:}} Genera PDFs, HTML y diapositivas (como esta) desde un solo origen.
+\item \alert{\alert{Literate Programming:}} Documentos que mezclan texto, ecuaciones y código ejecutable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{¿Qué más puede hacer Emacs?}
+\begin{itemize}
+\item \emph{Edición de código}: Completado inteligente (company-mode),
+verificación de sintaxis (flycheck), navegación (lsp-mode).
+\item \emph{Gestión de proyectos} (projectile, magit).
+\item \emph{Composición de documentos} (Org mode, AUCTeX).
+\item \emph{Correo y noticias} (mu4e, gnus).
+\item \emph{Agenda y calendario} (org-agenda).
+\item \emph{Shell integrada} (eshell, term, vterm).
+\item \emph{Navegación web} (eww).
+\item \emph{Personalización total}: Desde atajos de teclado hasta la
+creación de nuevas aplicaciones dentro de Emacs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Conclusión: ¿Qué es Emacs?}
+\begin{itemize}
+\item Emacs no es solo un editor;
+\item Su curva de aprendizaje es pronunciada, pero su retorno en
+productividad y control es enorme.
+\item \alert{\alert{VS Code:}} Gratificación instantánea, pero techo de personalización bajo.
+\item \alert{\alert{Emacs:}} Frustración inicial, pero techo de personalización infinito.
+\item Se trata de disfrutar el proceso de "construir tu propia herramienta".
+\item Si buscas una herramienta que simplemente funcione de salida, quédate en VS Code.
+\item Si buscas una herramienta que sea una \alert{\alert{extensión de tu
+pensamiento}} y estás dispuesto a aprender, Emacs es el destino
+final.
+\end{itemize}
+\end{frame}
+\section{Objetivos}
+\label{sec:org9b4c2cd}
+\begin{frame}[label={sec:org8bb6b11},fragile]{Objetivos con Emacs}
+ \begin{itemize}
+\item En este curso, nos enfocaremos en usar Emacs  para la creación de
+presentaciones y artículos académicos con \LaTeX, aprovechando el modo Org
+como interfaz unificada. Esto ahorra el uso de la sintaxis de
+\LaTeX, reservándola para requerimientos especiales.
+\item También abordaremos el concepto de \emph{literate programming} y cómo
+\texttt{Org} permite crear documentos que involucran: texto, código y
+ecuaciones matemáticas.
+\end{itemize}
+\end{frame}
+
+\section{Configuración e Instalación en Windows}
+\label{sec:org1215567}
+\begin{frame}[fragile,allowframebreaks]{Procedimiento de Configuración en Windows}
+ \label{org3f7c0a5}
+
+Se requiere realizar los siguientes ajustes para que Emacs opere:
+
+\begin{enumerate}
+\item Instalar WSL o un distro de Linux: Se pueden seguir los pasos de la
+\href{https://learn.microsoft.com/es-es/windows/wsl/install}{Guía de Instalación}
+\item Instalar Emacs:
+\begin{verbatim}
+        sudo apt-get update
+        sudo apt install emacs
+\end{verbatim}
+\item Instalar \LaTeX{} (básica o completa):
+\begin{verbatim}
+	sudo apt install texlive-full
+\end{verbatim}
+Existen otras opciones para Latex que consumen menos recursos (ver
+\href{https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux}{enlace}):
+\begin{verbatim}
+        sudo apt install texlive-latex-extra
+\end{verbatim}
+\end{enumerate}
+\end{frame}
+\begin{frame}[label={sec:org98938e2},fragile]{Paquetes adicionales de \LaTeX}
+ Una vez terminada la instalación principal de \LaTeX instale los
+siguientes complementos para no tener problemas en la generación de
+archivos PDF desde emacs
+\begin{verbatim}
+sudo apt-get install texlive-xetex
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt install texlive-bibtex-extra biber
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt install latexmk
+\end{verbatim}
+
+\begin{verbatim}
+sudo apt install texlive-lang-spanish
+\end{verbatim}
+\begin{enumerate}
+\item Instalar Python
+\item Configurar el archivo en \textasciitilde{}/.emacs.d/init.el
+\end{enumerate}
+\end{frame}
+\section{Instalación Python}
+\label{sec:org487af33}
+\begin{frame}[fragile,allowframebreaks]{Instalación de Python}
+ Para instalar python se utilizará el entorno de anaconda o
+mamba. Existen recomendaciones en favor de mamba. La dirección del
+repositorio de Github se encuentra en el enlace \href{https://github.com/conda-forge/miniforge/}{miniforge}
+
+\begin{enumerate}
+\item Abra el subsistema  de Linux para Windows: \href{https://learn.microsoft.com/es-es/windows/wsl/install}{guía de instalación}
+
+\item Descargue e instale Mamba: \href{https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86\_64.sh}{Descargar ejecutable desde github}
+\begin{verbatim}
+     wget colocar/direccion/archivo_sh_Linux_x86_64
+     sudo chmod +x Miniforge3-Linux-x86_64
+     ./Miniforge3-Linux-x86_64
+\end{verbatim}
+\item Siga los pasos que indica el instalador y reinicie el shell con
+\texttt{source \textasciitilde{}/.bashrc} o saliendo de wsl con \texttt{exit} y volviendo a
+ingresar desde el \texttt{CMD} de windows con \texttt{wsl -d <Nombre del Distro>}
+\item Cree un entorno con las \texttt{python=3.14} para instalar las librerías a utilizar
+\begin{verbatim}
+     mamba create --name iccd332 python=3.14
+\end{verbatim}
+\item Para activar el entorno puede usar \texttt{conda activate iccd332} o
+\texttt{mamba activate iccd332}. Sin embargo,
+\end{enumerate}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Trouble Shooting Mamba Activate}
+ Puede suceder que al ejecutar el comando \texttt{mamba activate} se presente el siguiente error
+\begin{verbatim}
+  'mamba' is running as a subprocess and can't modify the parent shell.
+Thus you must initialize your shell before using activate and deactivate.
+
+To initialize the current bash shell, run:
+    $ eval "$(mamba shell hook --shell bash)"
+and then activate or deactivate with:
+    $ mamba activate
+To automatically initialize all future (bash) shells, run:
+    $ mamba shell init --shell bash --root-prefix=~/.local/share/mamba
+If your shell was already initialized, reinitialize your shell with:
+    $ mamba shell reinit --shell bash
+Otherwise, this may be an issue. In the meantime you can run commands. See:
+    $ mamba run --help
+
+Supported shells are {bash, zsh, csh, posix, xonsh, cmd.exe, powershell, fish, nu}.
+critical libmamba Shell not initialized
+\end{verbatim}
+
+En este caso se sugiere ejecutar el siguiente comando para poder usar
+el comando. Sin embargo, la dirección debe coincidir con la dirección
+en donde está instalado el \texttt{miniforge}. Para saber en donde está
+instalado el miniforge ejecute:
+\begin{verbatim}
+conda env list
+\end{verbatim}
+
+\begin{verbatim}
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /home/leningfe/miniforge3
+pyt-eqa-fge              /home/leningfe/miniforge3/envs/pyt-eqa-fge
+pyt-ml                   /home/leningfe/miniforge3/envs/pyt-ml
+tfmlenv              *   /home/leningfe/miniforge3/envs/tfmlenv
+whatsapp-osint           /home/leningfe/miniforge3/envs/whatsapp-osint
+
+\end{verbatim}
+
+Para mi caso la dirección es \texttt{/home/leningfe/miniforge3}. Que también
+puede escribirse como \texttt{\textasciitilde{}/miniforge3}. En consecuencia, desde el
+terminal ejecute:
+\begin{verbatim}
+  mamba shell init --shell bash --root-prefix=~/miniforge3
+\end{verbatim}
+
+Una vez ejecutado reinicie el shell o ejecute \texttt{source
+\textasciitilde{}/.bashrc}. Puede reiniciar saliendo de wsl con \texttt{exit} y luego \texttt{wsl
+-{}-{}shutdown}, si se abrió sesión de wsl desde un CMD de Windows
+\end{frame}
+\begin{frame}[label={sec:org3b6ff89},fragile]{Paquetes recomendados de Instalación Python}
+ Instalar los siguientes paquetes para disponer del shell avanzado
+de Ipython y el complemento \alert{rise} para convertir un jupyter-notebook
+en una presentación tipo reveal.js
+
+\begin{verbatim}
+mamba install ipython
+mamba install jupyter
+pip install jupyterlab-rise
+\end{verbatim}
+\end{frame}
+\begin{frame}[label={sec:org0bfbf0d},fragile]{Librerías para Exportar Jupyter Notebook a PDF}
+ Para exportar un cuaderno de Jupyter a PDF se requiere que el Sistema
+Operativo de Linux disponga de la librería Pandoc:
+\begin{verbatim}
+sudo apt-get install pandoc
+\end{verbatim}
+También, si la instalación de \LaTeX se hizo con librerías mínimas, es
+necesario disponer de \texttt{xelatex}
+\begin{verbatim}
+sudo apt-get install texlive-xetex
+\end{verbatim}
+
+Con esto la exportación del cuaderno a PDF se realiza haciendo clic en
+\alert{\emph{File/Save and Export Notebook As/PDF}}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Configuración Emacs}
+ \label{org454b557}
+
+\begin{itemize}
+\item El archivo init.el puede generar instalaciones y activaciones para
+emacs por lo que se sugiere reiniciar emacs para que las
+configuraciones surtan efecto
+\item El comportamiento de Emacs es completamente configurable por el
+usuario a través del archivo \textasciitilde{}/.emacs.d/init.el
+\item El directorio \texttt{/.emacs.d/} se genera la primera vez que abre
+emacs. Debe crear el archivo \texttt{init.el} dentro de éste.
+\item Para que no exista conflictos en el uso de la configuración revise
+si existe alternativamente el archivo oculto \texttt{.emacs} en la raíz del
+sistema operativo. Para esto use el comando \texttt{ls -lha} desde la
+posición de \texttt{home}. Por ejemplo, debe existir únicamente el
+directorio \texttt{.emacs.d}:
+\end{itemize}
+
+\begin{verbatim}
+cd
+pwd
+ls -lha | grep emacs
+\end{verbatim}
+
+\begin{itemize}
+\item Si existe el archivo \texttt{.emacs} borrarlo con \texttt{rm .emacs} desde la
+posición de  home
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Configuración Emacs Archivo y creación de archivo init.el}
+ \begin{enumerate}
+\item Ubíquese en la raíz de Ubuntu \texttt{cd}
+\item Verifique que se encuentra en la raíz de su sistema con el comando
+\texttt{pwd}. Por ejemplo:
+\begin{verbatim}
+   cd
+   pwd
+\end{verbatim}
+
+\item Abra emacs desde la línea de comandos de Ubuntu(WSL)\textasciitilde{}emacs \&\textasciitilde{}
+
+\item Verifique la presencia de archivos ocultos con el comando \texttt{ls -la}
+desde la raíz (i.e. \texttt{/home/leningfe})
+
+\item Si existe un archivo \texttt{.emacs} bórrelo usando
+\begin{verbatim}
+     rm .emacs
+\end{verbatim}
+
+\item Verifique que existe únicamente la carpeta \texttt{.emacs.d/}
+\begin{verbatim}
+   cd 
+   pwd
+   ls -lha | grep emacs
+\end{verbatim}
+
+\begin{verbatim}
+/home/leningfe
+drwx------ 13 leningfe leningfe 4.0K Oct 15 12:33 .emacs.d
+-rw-r--r--  1 leningfe leningfe 157M Apr  9  2025 emacs-config-backup.tar.gz
+drwxr-xr-x  2 leningfe leningfe 4.0K Sep 30 15:05 emacs-init-files
+\end{verbatim}
+
+\item Abra Emacs con \texttt{emacs \&} desde la raíz
+
+\item Cree el archivo \texttt{init.el} haciendo \texttt{C-x C-f}
+
+\item Escriba el destino en \texttt{/home/<{}<{}User>{}>{}/.emacs.d/init.el}. Sustituya
+con \label{orgae61dc5} con su Usuario
+
+\item Copie el contenido del archivo desde \href{https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/configEmacs/init.el}{Github}. Use \texttt{C-y}
+para pegar en el archivo creado. Guarde los cambios con \texttt{C-x C-s}.
+
+\item Personalice el archivo con las características personales suyas y
+de su máquina.
+
+\item Puede cerrar y reiniciar Emacs para inciar la instalación. Si no
+desea salir, puede desencadenar la instalación haciendo \texttt{M-x eval-buffer}
+\end{enumerate}
+\end{frame}
+
+\section{Comandos básicos de Emacs}
+\label{sec:org0554ccf}
+\begin{frame}[fragile,allowframebreaks]{Comandos básicos de Emacs}
+ Emacs utiliza las teclas \texttt{CTRL} y \texttt{ALT}, en combinación con otras para
+desencadenar acciones y comportamientos. Abreviamos \texttt{CTRL} con \texttt{C} y
+\texttt{ALT}, que se conoce como \texttt{META}, con la letra \texttt{M}.
+
+Se sugiere que revise el Tutorial Integrado en Emacs para
+familiarizarse con el sistema. Este tutorial está disponible en
+español ejecutando el comando \texttt{M-x help-with-tutorial-spec-language}.
+
+Para ejecutar un comando compuesto no es necesario mantener presionada
+la combinación de teclas. Usted notará en la barra inferior que cuando
+ha presionado una combinación, Emacs responde indicando el comando y
+aguardando a que complete si es que el comando requiere de
+adicionales. Caso contrario se ejecuta.
+
+
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+Comando & Acción & Comando & Acción \\
+\hline
+C-x C-s & guardar & C-x C-c & Salir Emacs \\
+\hline
+C-n & siguiente renglón & C-p & anterior renglón \\
+\hline
+C-f & avanza un carácter & C-b & atrás un carácter \\
+\hline
+M-f & avanza una palabra & M-b & atrás una palabra \\
+\hline
+C-a & ir a inicio & C-e & ir al fin \\
+\hline
+C-SPC & selecciona región & C-g & cancelar comando \\
+\hline
+C-d & Borrar un carácter & M-d & borrar palabra \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+\begin{frame}[label={sec:org85329d3}]{Referencias Web para Comandos Emacs}
+\begin{itemize}
+\item \href{https://quickref.me/emacs.html}{Emacs Cheat Sheet English}
+\item \href{https://cheatography.com/peraza00/cheat-sheets/emacs-guide/\#google\_vignette}{Emacs Cheat Sheet Español}
+\item \href{https://www.gnu.org/software/emacs/tour/}{Emacs Tour}
+\item \href{https://orgmode.org/manuals.html}{Manual de Documentos Org}
+\end{itemize}
+\end{frame}
+\section{Configuración en Linux}
+\label{sec:org6a313fb}
+\begin{frame}[label={sec:org8ef5bd1}]{Configuración en Linux}
+\begin{description}
+\item[{Python}] Se realiza directamente la descarga del Miniforge conforme a lo
+señalado en \hyperlink{sec:org487af33}{Instalación Python}
+\item[{Emacs}] Se realiza directamente los comandos en  en el punto 3.
+\item[{\LaTeX}] Se realiza directamente los comandos en
+\hyperlink{org3f7c0a5}{Configuración e Instalación Windows} en el punto 2.
+\end{description}
+
+En Linux \alert{\alert{no}} es necesario instalar \alert{\alert{WSL}}
+\end{frame}
+\begin{frame}[label={sec:org4be19a7},fragile]{Instalación de Corrector Ortográfico}
+ Para la corrección ortográfica se requiere de la librería \texttt{aspell}. Esta se puede instalar de la siguiente manera en Linux
+\begin{verbatim}
+sudo apt install aspell aspell-en aspell-es
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Habilitación de Elpy}
+ \begin{itemize}
+\item Elpy es un paquete de Emacs para edición de scripts de
+Python. Permite completar el código de manera automática, acceder a
+documentación, etc.
+
+\item Su auto configuración inicia si creamos un archivo \texttt{.py}. Al hacerlo
+pedirá instalar dependencias necesarias. Esta pregunta aparecerá en
+la parte inferior en la barra de estado de Emacs y debe contestarla
+afirmativamente con una \texttt{y}.
+
+\item Para revisar el estado de la configuración de Elpy ejecute \texttt{M-x
+  elpy-config}. Este comando abrirá un buffer en el que indicará el
+entorno virtual utilizado, las versiones de python y también si hace
+falta instalar alguna paquetería adicional.
+
+\item En el archivo de configuración \texttt{init.el} es importante definir el
+\texttt{path} a la carpeta de entornos de \alert{Anaconda}. Para ser cuál es la
+carpeta de los entornos ejecute el comando \texttt{mamba info -{}-{}envs}:
+\end{itemize}
+
+\begin{verbatim}
+mamba env list
+\end{verbatim}
+
+\begin{verbatim}
+  Name            Active  Path                                         
+─────────────────────────────────────────────────────────────────────────
+  base                    /home/leningfe/miniforge3                    
+  pyt-eqa-fge             /home/leningfe/miniforge3/envs/pyt-eqa-fge   
+  pyt-ml                  /home/leningfe/miniforge3/envs/pyt-ml        
+  tfmlenv         *       /home/leningfe/miniforge3/envs/tfmlenv       
+  whatsapp-osint          /home/leningfe/miniforge3/envs/whatsapp-osint
+\end{verbatim}
+
+
+
+En el archivo \texttt{init.el} debe personalizar con su dirección respectiva
+agregando por ejemplo
+
+\begin{verbatim}
+(setenv "WORKON_HOME" "/home/leningfe/miniforge3/envs/")
+\end{verbatim}
+
+Reinicie Emacs y luego ejecute \texttt{M-x pyvenv-workon} y seleccione el
+entorno de \alert{Anaconda} que se usará para trabajar con Python. Si
+ejecuta de nuevo el diagnóstico de Elpy, notará que ya no está con
+\texttt{None} en la declaración de \textasciitilde{}Virtualenv\textasciitilde{}/
+
+Instale la paquetería sugerida en el diagnóstico.
+\end{frame}
+
+\section{Integración de IA en Emacs GPTEL}
+\label{sec:orgd47657e}
+\begin{frame}[fragile,allowframebreaks]{Habilitación de Modelos Grandes de Lenguaje o LLM}
+ \begin{enumerate}
+\item Disponer de una cuenta en GitHub. La configuración del archivo
+\texttt{init.el} hace uso por defecto de \texttt{CoPilot}
+\item Instalar \texttt{wslview} a fin de que en el primer uso del Chat se pueda
+habilitar el uso de \texttt{CoPilot} en el dispositivo: \texttt{sudo apt install wslu}
+\item Instalar el paquete para modo de MarkDown. Los archivos de chat con
+las \texttt{LLM} se guardan por defecto en formato \texttt{MarkDown}. Sin
+embargo, si existiera problema, se pueden modificar para que se
+guarden en archivo \texttt{.org}. Para esto puede ejecutar:
+\begin{enumerate}
+\item \texttt{M-x package-install RET}
+\item busca el paquete \texttt{markdown-mode}
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Utilización de Modelos Grandes de Lenguaje o LLM}
+ El paquete que realiza la conexión entre \texttt{Emacs} y los diferentes
+\texttt{LLMs} es \texttt{GPTEL}. Para iniciar un chat y configurarlo puede ejecutar:
+\texttt{M-x gptel-menu}. Se abrirá un menú en donde podrá configurar el
+funcionamiento del sistema, cambiar de \texttt{LLM} y configurar desde donde
+se envía el prompt y dónde se obtiene la respuesta.
+
+Una sesión de chat se puede grabar \texttt{C-x C-s} y se puede restablecer
+abriendo el archivo y activando \texttt{M-x gptel-mode}.
+\end{frame}
+
+\section{Configuración e Instalación en MacOS}
+\label{sec:org51c5e2c}
+\begin{frame}[fragile,allowframebreaks]{Configuración en MacOS (Instalar Brew)}
+ \begin{enumerate}
+\item \alert{Instalar \texttt{brew}:}
+\begin{itemize}
+\item Utilizar el comando de la página de HomeBrew
+\item El comando identifica la arquitectura del sistema automáticamente
+\item Seguir las indicaciones en pantalla
+\end{itemize}
+\end{enumerate}
+
+\begin{verbatim}
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+\end{verbatim}
+
+\begin{enumerate}
+\item Para que \texttt{brew} sea reconocido por el sistema operativo ejecutar:
+\end{enumerate}
+
+\begin{verbatim}
+ echo >> /Users/delta/.zprofile
+ echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/delta/.zprofile
+ eval "$(/usr/local/bin/brew shellenv)"
+\end{verbatim}
+
+\begin{enumerate}
+\item Verificar que \texttt{brew} está funcionado en el sistema usando los
+comandos:
+\end{enumerate}
+\begin{verbatim}
+  which brew
+\end{verbatim}
+
+\begin{verbatim}
+  brew --version
+\end{verbatim}
+\end{frame}
+\begin{frame}[label={sec:org13c2d8d},fragile]{Instalar \LaTeX en MacOS}
+ Usando \texttt{brew} proceder a la instalación completa de \LaTeX mediante
+el comando:
+
+\begin{verbatim}
+  brew install --cask mactex
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:org2b8496b},fragile]{Instalar Emacs en MacOS}
+ Utilizar el comando:
+
+\begin{verbatim}
+ brew install --cask emacs
+\end{verbatim}
+
+Se debe asegurar que Emacs detecte la instalación de \LaTeX
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Instalar Python en Mamba en MacOS}
+ \begin{enumerate}
+\item Instalar \texttt{wget} o usar e comando \texttt{curl} para descargar el archivo
+\end{enumerate}
+\begin{verbatim}
+  brew install wget
+\end{verbatim}
+\begin{enumerate}
+\item Ejecutar el siguiente comando disponible en el GitHub de Miniforge:
+\end{enumerate}
+\begin{verbatim}
+  wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+\end{verbatim}
+\begin{verbatim}
+  curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+\end{verbatim}
+\begin{enumerate}
+\item Verificar la dirección de descarga del archivo
+\item Usar \texttt{chmod +x} seguido del nombre del archivo descargado para
+convertirlo en ejecutable
+\item Realice la ejecución del script de instalación
+\item Siga los pasos en pantalla de igual manera  Windows/Linux
+\item Reinicie el terminal para observar si \texttt{Mamba} está instalado
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Configuración de Teclado para Emacs}
+ Dado que el teclado de MacOs es diferente, es necesario que el archivo
+de configuración \texttt{\textasciitilde{}/.emacs.d/init.el} permita el uso adecuado de
+\texttt{Command} como \texttt{Alt} o \texttt{Meta} y desactivar el \texttt{Option} a fin de poder
+obtener los caracteres especiales del teclado.
+
+\begin{enumerate}
+\item Crear o editar el archivo \texttt{\textasciitilde{}/.emacs.d/init.el}
+\item Insertar en el archivo la configuración siguiente:
+\begin{verbatim}
+     (setq mac-command-modifier 'meta)
+     (setq mac-option-modifier 'none)
+\end{verbatim}
+\item Guardar el archivo \texttt{C-x C-s}
+\item Evaluar el buffer \texttt{M-x eval-buffer} o reiniciar Emacs
+\end{enumerate}
+\end{frame}
+\begin{frame}[label={sec:orgcdfb0ca},fragile]{Instalar paquetes adicionales}
+ Puede usar \texttt{brew} para instalar componentes adicionales como pandoc
+
+\begin{verbatim}
+  brew install pandoc
+\end{verbatim}
+\end{frame}
+
+\section{Presentaciones con Emacs}
+\label{sec:orgc5d0ba6}
+\begin{frame}[fragile,allowframebreaks]{Hacer una presentación en Emacs}
+ \begin{enumerate}
+\item Abrir emacs ejecuntando `emacs` desde la línea de comandos
+\item Genere un archivo de extensión .org
+\begin{itemize}
+\item C-x C-f
+\item presentacion.org
+\end{itemize}
+\item Active el modo org para beamer: M-x org-beamer-mode
+\item Coloque el encabezado por defecto y el de beamer
+\begin{itemize}
+\item C-c C-e \# default
+\item C-c C-e \# beamer
+\alert{\alert{Observar:}} el encabezado de beamer sólo se
+activa si el \alert{\alert{modo org-beamer}} está habilitado
+\end{itemize}
+\item En opciones, cambiar H:1 a H:2 para que los títulos se interpreten
+como Secciones de la presentación y las Subsecciones como título de
+la presentación
+\item Utilice el sistema de marcas de Emacs para escribir la presentación
+\item * Sección/Título
+\item ** Título Presentación/Subtítulo
+\item Una palabra encerrada entre ** equivale a `**negrita**`
+\item Una palabra encerrada entre / equivale a `/cursiva/`
+\item En el shell, instale el diccionario de español para la corrección ortográfica
+\begin{verbatim}
+     sudo apt install aspell aspell-es
+\end{verbatim}
+\item Puede cambiar de diccionario en el buffer usando M-x ispell-change-dictionary
+\item Puede activar un modo de revisión al vuelo: M-x flyspell-mode
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Algunos Hacks}
+\begin{itemize}
+\item Para insertar propiedades: C-c C-x p
+\item Para insertar código: C-c C-,
+\item Para insertar código: M-x org-insert-template-structures y escoge la opción s
+\item Para insertar un tag: C-c C-c
+\item Para insertar un link: M-x org-insert-link
+\item Para generar el archivo pdf: org-beamer-export-to-pdf
+\end{itemize}
+\end{frame}
+
+\section{Diapositivas de Ejemplo Arq Computadores}
+\label{sec:org92b4d5c}
+\begin{frame}[label={sec:orgfd7e305}]{El Computador}
+Un computador es un sistema complejo conformado por varios subsistemas
+electrónicos. Para poder estudiarlo se adopta la perspectiva de
+entender su organización y su arquitectura. En general un computador
+puede hacer las siguientes operaciones:
+
+\begin{itemize}
+\item procesar información
+\item almacenar información
+\item comunicarse con periféricos de entrada/salida i.e. E/S
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org8e8f4eb}]{El CPU}
+La arquitectura principal usada en los computadores es la Von
+Neumann. El componente principal del sistema es el CPU, o unidad de
+procesamiento central, que es un micro chip. El mismo está formado de:
+
+\begin{itemize}
+\item Unidad Aritmética Lógica: ALU
+\item Unidad de control
+\item Registros
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgd6093d8}]{A more complex slide}
+This slide illustrates the use of Beamer blocks.  The following text,
+with its own headline, is displayed in a block:
+
+\begin{theorem}[Org mode increases productivity]
+\begin{itemize}
+\item org mode means not having to remember \LaTeX{} commands.
+\item it is based on ascii text which is inherently portable.
+\item Emacs!
+\item \(\int e^{-st}f(t)dt\)
+
+\hfill \(\qed\)
+\end{itemize}
+\end{theorem}
+\end{frame}
+
+\begin{frame}[label={sec:orgd343a7f}]{Two Columns}
+\begin{columns}
+\begin{column}{0.4\columnwidth}
+\begin{itemize}
+\item this slide consists of two columns
+\item the first (left) column has no heading and consists of text
+\item second (right) column has an image and is enclosed in an
+\alert{example} block
+\end{itemize}
+\end{column}
+\begin{column}{0.6\columnwidth}
+\begin{example}[Another block]
+\begin{center}
+\includegraphics[width=.6\textwidth]{../../images/computer.png}
+\end{center}
+\end{example}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[label={sec:org601ea05}]{Configurar Org-Babel Python}
+Consiste en editar el archivo \textasciitilde{}/.emacs.d/init.el para que emacs tenga
+el comportamiento deseado. Para instrucciones referirse al slide \hyperlink{org454b557}{Configuración Emacs}
+
+Este slide muestra cómo hacer una referencia a otra sección
+\end{frame}
+
+\begin{frame}[label={sec:org31a1f4d},fragile]{Babel}
+ \begin{columns}
+\begin{column}{0.45\columnwidth}
+\begin{block}{Python code}
+\begin{verbatim}
+import numpy as np
+def greet(name):
+    return f"Hello {name}"
+
+return greet("Alice")
+\end{verbatim}
+\end{block}
+\end{column}
+
+\begin{column}{0.4\columnwidth}
+\begin{block}{The output}
+Hello Alice
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Funciones avanzadas de WSL}
+\label{sec:org3b917ca}
+
+\begin{frame}[label={sec:org622dc5f}]{Funciones avanzadas de WSL}
+El uso de espacio de por parte de WSL cambia
+dinámicamente. Especialmente, en proyectos de \emph{machine learning}. Para
+mitigar esta opción hay las siguientes opciones:
+
+\begin{enumerate}
+\item Mover el distro de WSL a otra unidad de disco
+\item Comprimir el espacio que ocupa el distro en el disco
+\item Eliminar el distro
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Mover el distro de WSL}
+ Desde un prompt de Windows realice las siguientes operaciones desde un Powershell
+\begin{enumerate}
+\item Exportar el distro a otra unidad de disco
+\begin{verbatim}
+   wsl --export Ubuntu-22.04 D:\WSL\ubuntu22.tar
+\end{verbatim}
+\item Desinstalar el distro de la unidad \texttt{C:} (Windows)
+\begin{verbatim}
+   wsl --unregister Ubuntu-22.04
+\end{verbatim}
+\item Importar de nuevo desde la nueva unidad \texttt{D:}
+\begin{verbatim}
+   wsl --import Ubuntu-22.04 D:\WSL\Ubuntu22 D:\WSL\ubuntu22.tar --version 2
+\end{verbatim}
+\end{enumerate}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Comprimir/Respaldar un distro de WSL}
+ \label{org4afddf5}
+Realice las siguientes operaciones desde un Powershell
+\begin{enumerate}
+\item Terminar WSL completamente
+\begin{verbatim}
+   wsl --shutdown
+\end{verbatim}
+\item Abrir \texttt{diskpart} en un Powershell
+\begin{verbatim}
+   diskpart
+\end{verbatim}
+\item Seleccionar el archivo virtual que contiene el distro. Para esto
+debe ubicar la ruta al archivo ext4.vhdx del distro
+\begin{verbatim}
+    select vdisk file="C:\Users\<YourUser>\AppData\Local\Packages\CanonicalGroupLimited...Ubuntu22.04...\LocalState\ext4.vhdx"
+    compact vdisk
+\end{verbatim}
+\end{enumerate}
+\end{frame}
+\begin{frame}[label={sec:org8947e26},fragile]{Eliminar el Distro}
+ Para eliminar el distro sólo ejecutamos desde un Powershell:
+\begin{verbatim}
+wsl --unregister <Nombre Distro>
+\end{verbatim}
+
+Para esto, el distro debe estar detenido y su nombre localizado. Esto
+último lo puede derivar con el comando \texttt{wsl -l -v} desde Powershell
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Actualizar el Distro a una versión nueva: requisitos y respaldo}
+ El siguiente procedimiento debe hacerse con cuidado y con un respaldo
+de la información ya que puede conllevar la pérdida de datos si no
+finaliza con éxito.
+
+El objetivo es actualizar el distro de una version LTS inferior a una
+superior (e.g. 22.04 a 24.04).
+
+\begin{enumerate}
+\item Antes de comenzar, realizar el procedimiento de
+\hyperlink{org4afddf5}{respaldo de la distribución WSL}.
+
+\item En PowerShell de Windows, consultar las distribuciones:
+
+\begin{verbatim}
+   wsl --list --verbose
+\end{verbatim}
+
+\begin{itemize}
+\item Identificar el nombre exacto de la distribución.
+\item La columna \texttt{VERSION} debe mostrar \texttt{2}.
+\item Si muestra \texttt{1}, detener este procedimiento: primero se debe
+convertir la distribución a WSL 2.
+\end{itemize}
+
+\item Abrir la terminal de Ubuntu y comprobar su versión:
+
+\begin{verbatim}
+   cat /etc/os-release
+\end{verbatim}
+
+Para este procedimiento debe indicar \texttt{VERSION\_ID}"22.04"\texttt{.
+   Si ya indica =24.04}, no es necesario realizar esta actualización.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Actualización de Ubuntu: comprobar systemd}
+ \texttt{systemd} es el administrador de servicios de Linux. Debe estar
+habilitado para seguir el procedimiento de actualización de Ubuntu
+en WSL.
+
+\begin{enumerate}
+\item Dentro de Ubuntu, ejecutar:
+
+\begin{verbatim}
+   ps -p 1 -o comm=
+\end{verbatim}
+
+\item Interpretar el resultado:
+\begin{itemize}
+\item Si devuelve \texttt{systemd}, omitir el apartado de habilitación y
+continuar con la actualización.
+\item Si devuelve otro nombre, seguir el apartado siguiente.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Actualización de Ubuntu: habilitar systemd si es necesario}
+ Realizar este apartado solamente si la comprobación anterior no
+devolvió \texttt{systemd}.
+
+\begin{enumerate}
+\item En PowerShell, comprobar la versión del programa WSL:
+
+\begin{verbatim}
+   wsl --version
+\end{verbatim}
+
+El soporte de systemd requiere WSL 0.67.6 o posterior.
+Esta versión del programa no es lo mismo que la columna
+\texttt{VERSION} de \texttt{wsl -{}-{}list -{}-{}verbose}.
+
+Si WSL es anterior o no reconoce el comando, actualizarlo:
+
+\begin{verbatim}
+   wsl --update
+\end{verbatim}
+
+\item Dentro de Ubuntu, abrir su archivo de configuración:
+
+\begin{verbatim}
+   sudo nano /etc/wsl.conf
+\end{verbatim}
+
+\item Añadir lo siguiente, conservando las demás configuraciones:
+
+\begin{verbatim}
+   [boot]
+   systemd=true
+\end{verbatim}
+
+Si ya existe la sección \texttt{[boot]}, añadir o modificar
+\texttt{systemd=true} dentro de ella; no duplicar la sección.
+
+\item Guardar y cerrar Nano: \texttt{Ctrl+O}, \texttt{Enter} y \texttt{Ctrl+X}.
+
+\item Guardar cualquier trabajo abierto en otras distribuciones WSL.
+En PowerShell, detener WSL:
+
+\begin{verbatim}
+   wsl --shutdown
+\end{verbatim}
+
+Este comando detiene todas las distribuciones WSL en ejecución.
+
+\item Volver a abrir Ubuntu y comprobar:
+
+\begin{verbatim}
+   ps -p 1 -o comm=
+\end{verbatim}
+
+Debe devolver \texttt{systemd}. Si no lo hace, no continuar con la
+actualización hasta resolver este requisito.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Actualización de Ubuntu: ejecutar y verificar}
+ \begin{enumerate}
+\item Dentro de Ubuntu, actualizar los paquetes de la versión actual:
+
+\begin{verbatim}
+   sudo apt update && sudo apt full-upgrade -y
+\end{verbatim}
+
+Esperar a que termine correctamente. Si presenta errores,
+resolverlos antes de continuar.
+
+\item Iniciar la actualización de versión:
+
+\begin{verbatim}
+   sudo do-release-upgrade
+\end{verbatim}
+
+Confirmar que el destino propuesto sea Ubuntu 24.04 y seguir
+las instrucciones. No interrumpir el proceso.
+
+\item Al finalizar, seguir las instrucciones de reinicio del
+actualizador. Si es necesario reiniciar la instancia desde
+PowerShell, usar:
+
+\begin{verbatim}
+   wsl --terminate "NOMBRE_DE_LA_DISTRIBUCION"
+\end{verbatim}
+
+Sustituir \texttt{NOMBRE\_DE\_LA\_DISTRIBUCION} por el nombre obtenido
+con \texttt{wsl -{}-{}list -{}-{}verbose}. Después, volver a abrir Ubuntu.
+
+\item Verificar el resultado dentro de Ubuntu:
+
+\begin{verbatim}
+   cat /etc/os-release
+   ps -p 1 -o comm=
+\end{verbatim}
+
+Los resultados esperados son:
+\begin{itemize}
+\item \texttt{VERSION\_ID}"24.04"=.
+\item \texttt{systemd} como proceso principal.
+\end{itemize}
+
+El nombre registrado de la distribución en WSL puede seguir
+siendo el anterior; comprobar la versión con \texttt{os-release}.
+
+\item Probar las herramientas habituales: Emacs, exportación de
+documentos Org a PDF y los entornos de Python.
+\end{enumerate}
+
+\begin{block}{Documentación}
+\begin{itemize}
+\item \href{https://ubuntu.com/wsl/docs/stable/howto/upgrade-ubuntu/}{Ubuntu: actualizar Ubuntu en WSL}
+\item \href{https://learn.microsoft.com/en-us/windows/wsl/systemd}{Microsoft: habilitar systemd en WSL}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Funciones avanzadas de Anaconda}
+\label{sec:org73ebe5a}
+Los entornos de anaconda crecen con la instalación de paquetes y
+librerías. A fin de evitar descargar nuevamente de internet, anaconda
+almacena las descargas en el disco. Esto ocupa demasiado espacio, por
+lo que es recomendable limpiar el cache, los logs y paquetes no
+usados.
+\begin{frame}[label={sec:org9a68bb4},fragile]{Comandos de Limpieza para Conda}
+ Ejecute el siguiente comando para eliminar \texttt{tarballs}, limpiar el
+cache, logs y paquetes no usados.
+\begin{columns}
+\begin{column}{0.4\columnwidth}
+\begin{verbatim}
+conda clean --all --yes
+\end{verbatim}
+\end{column}
+\begin{column}{0.6\columnwidth}
+\begin{center}
+\includegraphics[width=.9\linewidth]{/mnt/d/entea/Lectures/iccd332ArqComp/images/conda-clean.png}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}[label={sec:org69436cc},fragile]{Eliminar un entorno de Conda}
+ Para eliminar el entorno es necesario primero salir de él con el
+comando \texttt{conda deactivate}. Una vez que esta desactivado:
+\begin{verbatim}
+conda deactivate
+conda remove --name myenv --all
+\end{verbatim}
+Reemplace \texttt{myenv} con el nombre del entorno. Esto borrará toda la
+información del entorno.
+\end{frame}
+\begin{frame}[label={sec:org8f080ce},fragile]{Crear un backup del entorno}
+ Para replicar resultados es importante trabajar con los mismos
+paquetes (incluyendo las versiones específicas de los mismos). Esto se
+puede lograr exportando a un archivo \texttt{YAML}:
+\begin{verbatim}
+conda activate myenv
+conda env export > myenv.yml
+\end{verbatim}
+
+Note que las versiones de los paquetes cambian con el sistema
+operativo por lo que si el proyecto trabaja en un S.O. Windows, las
+versiones no serán las mismas que se instalan en un S.O. Linux. Una
+alternativa para evitar este problema y garantizar replicación es
+trabajar con \texttt{Docker}.
+
+Verifique que el archivo contenga tanto los paquetes de \texttt{pip} como los
+de \texttt{anaconda}. 
+\end{frame}
+\begin{frame}[label={sec:orgbc837b1},fragile]{Crear un entorno desde YAML}
+ \begin{verbatim}
+conda env create -f myenv.yml
+\end{verbatim}
+Para verificar los paquetes instalados o restituidos use
+\begin{verbatim}
+conda list
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile,allowframebreaks]{Entorno Anaconda Portable}
+ El entorno se puede exportar como archivo portable para moverlo a otro
+sistema operativo (de igual naturaleza) con:
+\begin{verbatim}
+conda pack -n myenv -o myenv.tar.gz
+\end{verbatim}
+Para restituirlo:
+\begin{verbatim}
+mkdir -p ~/envs/myenv
+tar -xzf myenv.tar.gz -C ~/envs/myenv
+source ~/envs/myenv/bin/activate
+\end{verbatim}
+\alert{\alert{Importante}} debe estar instalado en el entorno el paquete \texttt{conda
+  pack}. Se puede instalar de las siguientes maneras:
+\begin{verbatim}
+    conda install -c conda-forge conda-pack
+    mamba install conda-pack
+    pip install conda-pack
+\end{verbatim}
+\end{frame}
+\end{document}
