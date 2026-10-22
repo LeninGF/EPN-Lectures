@@ -293,7 +293,73 @@ Escriba un programa que determine si la palabra ~"reconocer"~ es palíndroma.
 
 #+RESULTS:
 
+* Parte 3: Sistemas de Numeración
+** Problema 1
+Dada una cadena de \(n\) bits en complemento a 2, escriba una función
+que permita calcular el valor decimal con signo equivalente. Observe
+que un número entero en base 10 \(N_{10}\) de \(n\) bits en
+complemento a 2 se representa por:
+\[
+-2^{n-1}\times b_{n-1} +
+\sum_{i=0}^{n-2}b_i\times 2^i
+\]
 
+Pruebe su resultado con las cadenas:
+- '10010011'
+- '11111111'
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+** Problema 2
+El complemento a 1 (complemento a la base disminuida en binario) de
+una cadena de \(n\) bits se obtiene invirtiendo cada bit: los ~0~
+pasan a ser ~1~ y los ~1~ pasan a ser ~0~. Escriba un programa que
+dada una cadena binaria calcule e imprima su complemento a 1.
+
+Pruebe su resultado con las cadenas:
+- '10010011'
+- '11111111'
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+** Problema 3
+Dada una cadena de 32 bits que representa un número en el estándar
+IEEE 754 de precisión simple, escriba un programa que calcule su valor
+decimal. Considere únicamente casos normales (exponente entre 1 y 254).
+Recuerde que el valor se obtiene con:
+\[
+(-1)^s \times 1.m \times 2^{e-127}
+\]
+donde \(s\) es el bit de signo, \(e\) es el exponente sesgado de 8
+bits y \(m\) es la fracción almacenada en los 23 bits de la mantisa.
+
+Pruebe su resultado con las cadenas:
+- '01000001001000000000000000000000'
+- '11000001001000000000000000000000'
+- '01000001010101100000000000000000'
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
+
+** Problema 4
+Dado un entero con signo \(N\) y un número de bits \(n\), escriba un
+programa que obtenga la representación en complemento a 2 de \(N\)
+como una cadena de \(n\) bits. Para números negativos puede convertir
+\(|N|\) a binario, completar con ceros a la izquierda hasta \(n\)
+bits, invertir los bits (complemento a 1) y sumar 1.
+
+Pruebe su resultado con:
+- \(N = -109\) con \(n = 8\)
+- \(N = 5\) con \(n = 8\)
+
+#+begin_src python :results output :exports both
+# Escriba aquí su solución
+#+end_src
 
 * Equipo de Trabajo
 Complete la información de los integrantes del grupo e indique el líder.
@@ -309,6 +375,7 @@ Complete la información de los integrantes del grupo e indique el líder.
 * Verificación de Entregables [0%]
 - [ ] Parte 1 completada.
 - [ ] Parte 2 completada.
+- [ ] Parte 3 completada.
 - [ ] Cuestionario de 10 preguntas respondido en el aula virtual.
 - [ ] Uso de ~C-c '~ para editar bloques practicado.
 - [ ] Ejecución de bloques con ~C-c C-c~ verificada.
