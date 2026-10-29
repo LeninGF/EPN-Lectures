@@ -3,10 +3,10 @@
 #+options: d:(not "LOGBOOK") date:t e:t email:nil expand-links:t f:t
 #+options: inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:nil todo:t |:t
-#+title: Lógica Digital
-#+date: 2026-XX-XX Si escribes dd y le das ~C-TAB~ Emacs escribe la fecha por ti
+#+title: Lógica y Pensamiento Crítico
+#+date: 2026-XX-XX Si escribes dd y das ~C-TAB~ Emacs escribe la fecha por ti
 #+author: COLOQUE SU NOMBRE
-#+email: lenin.falconi@epn.edu.ec
+#+email: COLOQUE SU EMAIL
 #+language: Español
 #+select_tags: export
 #+exclude_tags: noexport
@@ -49,15 +49,20 @@ ARQUITECTURA DE COMPUTADORES}
 
 * Instrucciones:
 
-- Esta tarea se desarrolla en clase.
+# - Esta tarea se desarrolla en clase.
 - Utilice este documento para completarla.
 - Personalice el documento con sus datos.
-- Revise los vídeos expuestos en clase:
+- Revise los vídeos siguientes:
   - [[https://www.tiktok.com/@candeliousfang/video/7481760034465041686?is_from_webapp=1&sender_device=pc&web_id=7619429614976304647][video1-chatgpt-pensamiento-critico]]
   - [[https://www.tiktok.com/@dannyelcomunista/video/7497360238153190662?is_from_webapp=1&sender_device=pc&web_id=7619429614976304647][¿Qué dijo Hinton sobre democratizar la IA?]]
-- Redacte una opinión, de preferencia informada, en la que discuta las
-  ideas presentadas en ambos vídeos. Use la mejor puntuación y
-  ortografía posibles.
+- Lea el documento de introducción a la Lógica en [[https://epnecuador.sharepoint.com/:b:/r/sites/ICCD332-ArquitecturaComputadores/Documentos%20compartidos/Forms/AllItems.aspx?id=%2Fsites%2FICCD332%2DArquitecturaComputadores%2FDocumentos%20compartidos%2FAnuncios%20Clase%202026B%2Fpapers%2Fprincipios%5Fde%5Flogica%5Fcap1%5Fresumen%2Epdf&parent=%2Fsites%2FICCD332%2DArquitecturaComputadores%2FDocumentos%20compartidos%2FAnuncios%20Clase%202026B%2Fpapers&p=true&share=cQpxnR0rOjyNQ6RNK%5FyEiKpwEgUCSTRv2cCSxOf8bxerZrwP2A][EPN-OneDrive]]. Puede
+  leer el resumen.
+- Aplique el pensamiento crítico y redacte una opinión informada en la
+  que discuta las ideas presentadas en ambos vídeos.Cuide la
+  puntuación y la ortografía.
+- Lea cualquiera de los documentos sobre /lógica/ y redacte brevemente
+  un párrafo discutiendo la importancia de la lógica y su
+  aplicabilidad tanto en la academia como en la vida diaria.
 - Una vea terminado suba el archivo ~.org~.
 - Opcionalmente exporte a ~PDF~ y suba el ~.pdf~
 * Invalidaciones de la nota
@@ -89,6 +94,8 @@ Suba el documento .ORG
 
 Escriba aquí su respuesta.
 ** G. Hinton sobre la IA y los Sistemas Económicos ¿Es la IA democratizable?
+Escriba aquí su respuesta.
+* Lógica
 Escriba aquí su respuesta.
 
 
