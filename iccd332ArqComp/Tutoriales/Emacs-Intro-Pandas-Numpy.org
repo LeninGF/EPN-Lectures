@@ -1,0 +1,652 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Emacs-Intro-Pandas-Numpy
+#+date: 2026-07-01
+#+author: COLOQUE SU NOMBRE
+#+email: COLOQUE SU EMAIL
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.6.15)
+#+cite_export:
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_footnote_command: \footnote{%s%s}
+#+latex_engraved_theme:
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt} 
+
+#+bibliography: ../bibliography/bibliography.bib
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{../images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+* Tutorial Pandas
+
+- *Profesor:* Lenin G. Falconí
+- *Fecha:* 2026-01-12
+
+En este cuaderno se presentan algunas de las funciones básicas de ~Pandas~ y
+~Numpy~.
+
+* Numpy Pandas y Matplotlib
+
+/Numpy/ es la librearía de Python para cálculo científico matricial. Se
+pueden declarar matrices de cualquier tamaño y realizar operaciones
+matemáticas sobre ellas. Los objetos de /Numpy/ son esencialmente
+numéricos. En /pandas/, en cambio, se puede trabajar tipos de datos
+distintos pudiendo de esta manera enlazar con bases de datos.
+
+/Matplotlib/ es la librería de Python para la creación de
+gráficos numéricos como: barras, pasteles, tipo caja, entre
+otros. También permite presentar imágenes.
+
+* Instalación
+
+Para instalar tenemos las siguientes alternativas dependiendo de si
+usamos ~mamba~ o ~pip~. Para esta clase se sugiere usar ~mamba~. Para
+éste caso, es necesario que el entorno este activado (e.g. ~iccd332~)
+
+#+begin_src shell
+mamba install numpy pandas matplotlib jupyter ipython
+#+end_src
+
+#+begin_src shell
+pip install numpy pandas
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+# !pip install numpy pandas matplotlib seaborn scikit-learn
+#+end_src
+
+** Configuración Emacs
+Para que este tutorial puede ejecutarse desde Emacs es necesario
+utilizar la última configuración disponible en [[https://github.com/LeninGF/EPN-Lectures/tree/main/iccd332ArqComp/configEmacs][configEmacs/init.el]] del
+repositorio de GitHub. En todo caso en su archivo ~init.el~ verifique
+que tiene las siguientes configuraciones habilitadas:
+
+#+begin_src elisp
+;; 4.4 emacs-jupyter
+(use-package jupyter
+  :ensure t
+  :after org
+  :config
+  ;; Images from Jupyter results are saved in the "images" subfolder by default
+  (setq jupyter-org-resource-container "images")
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   (append org-babel-load-languages '((jupyter . t))))
+  ;; Enable Jupyter autocompletion directly in the Org buffer
+  ;; (add-hook 'org-mode-hook #'jupyter-org-interaction-mode)
+  )
+;; emacs-jupyter seems to require zmq
+;; sudo apt-get install -y libzmq3-dev pkg-config autoconf automake libtool
+(use-package zmq
+  :ensure t)
+#+end_src
+
+La configuración mostrada instala el paquete ~emacs-jupyter~ que
+permite usar el archivo .org como un cuaderno de jupyter. Sin embargo,
+para los gráficos, como perdemos el dinamismo de un servidor web, se
+generan de manera estática grabándose automáticamente en la carpeta
+/images/.
+
+** Comportamiento de un bloque de código
+El comportamiento de las celdas de código dentro del archivo .org
+queda determinado por la firma del bloque. Por ejemplo si un bloque
+contiene las opciones ~jupyter-python :session test :exports both~, se
+indica a Emacs que use jupyter para interpretar el código de python,
+creando una sesión denominada *test* y
+que los resultados obtenidos se exporten tanto a consola como al
+documento. Esto genera que aparezca un bloque con los resultados.
+
+El bloque de código se inserta con ~C-c C-,~ opción ~src~. El
+comportamiento luego queda definido por las demás opciones.
+
+#+begin_example
+#+begin_src jupyter-python :session test :exports both
+print("hola mundo")
+#+end_src
+#+end_example
+
+**Importante**
+/A fin de que se podamos usar las valores almacenados en las variables
+a lo largo del documento .org, es importante que cada bloque use el
+mismo nombre de sesión. Caso contrario Emacs creará distintas sesiones
+y en cada una de ellas estarán disponibles sus respectivas variables./
+** Edición de Código en un bloque
+Para editar el código usando Elpy puede usar ~C-c'~. Esto divide el
+buffer en dos pantallas y activa en la nueva los modos respectivos
+para atender los requerimientos de python. No obstante, una desventaja
+es que en esta ventana no se puede contar con completar el código de
+variables declaradas antes del código siendo editado.
+
+Una vez que ha terminado de editar el código salga con ~C-c'~.
+* Numpy
+Haremos una breve introducción a operaciones fundamentales con
+`numpy`. En este caso se declaran, un vector unidimensional, una
+matriz de dos dimensiones y una de tres dimensiones con valores
+aleatorios.
+
+#+begin_src jupyter-python :session t :exports both
+import numpy as np
+np.random.seed(45)
+x1 = np.random.randint(0, 10, size=5)
+print(x1)
+print(x1.shape)
+x2 = np.random.randint(10, size=(3,4))
+print(x2)
+print(x2.shape)
+x3 = np.random.randint(10, size=(3,4,5))
+print(x3)
+print(x3.shape)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[3 0 5 3 4]
+(5,)
+[[9 8 1 5]
+ [9 6 8 7]
+ [8 5 2 8]]
+(3, 4)
+[[[1 6 4 8 4]
+  [6 4 9 1 6]
+  [8 8 1 6 0]
+  [4 9 8 0 9]]
+
+ [[2 6 7 0 0]
+  [2 9 2 6 0]
+  [9 6 0 8 8]
+  [0 6 7 8 5]]
+
+ [[1 3 7 5 9]
+  [3 2 7 7 4]
+  [9 9 9 9 7]
+  [2 7 9 4 5]]]
+(3, 4, 5)
+#+end_example
+
+Para acceder a valores particulares de un vector o matriz se utiliza la indexación.
+
+#+begin_src jupyter-python :session t :exports both
+x3[1,2,3]
+#+end_src
+
+* Operaciones matemáticas
+
+#+begin_src jupyter-python :session t :exports both
+a = np.random.randint(10, size=10)
+b = np.random.randint(10, size=10)
+c = a+b
+print(f"a:{a}, {a.shape}")
+print(f"b:{b}, {b.shape}")
+print(f"c:{c}, {c.shape}")
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+d = a*b # multiplicación elemento a elemento
+print(f"d:{d}, {d.shape}")
+#+end_src
+
+* Productos Matriciales
+
+Sea una Matriz $A$ de $3\times 4$ y otra $B$ de $4\times 1$, obtenga la
+multiplicación matricial $C = A\times B$ con valores enteros aleatorios desde
+$-100$ hasta $100$. Revise como usaría ~np.random.randint~.
+
+#+begin_src jupyter-python :session t :exports both
+A = np.random.randint(-100,100,size=(3,4))
+B = np.random.randint(-100,100,size=(4,1))
+C = A.dot(B)  # Producto matricial
+print(f"A:{A}, {A.shape}")
+print(f"B:{B}, {B.shape}")
+print(f"C:{C}, {C.shape}")
+#+end_src
+
+** Ejercicio
+
+Un perceptron es el modelo más simple para una red neuronal artificial. Consta
+de una sóla neurona. La neurona se conecta directamente a un vector de
+características $\mathbf{x} \in \mathbb{R}^N$ i.e.
+$\mathbf{x}=(x_1,x_2, \cdots, x_N)$. La salida se computa aplicando una función
+de activación a la suma ponderada de las entradas $\mathbf{x}$ por pesos
+asociados a cada entrada más un valor de sesgo $b$. Es decir:
+
+$$
+z = f\left(\sum w_i\cdot x_i+b\right)
+$$
+
+Considere $N=5$. Declare un vector de valores aleatorios enteros entre $0$ y
+$10$ de tamaño $5$ para $\mathbf{x}$ y una matriz de pesos aleatorios reales con
+rango $[0,1]$. Para la función de activación considere una sigmoide
+$\theta(x)=\frac{1}{1+e^{-x}}$. Proponga una solución que use el producto
+matricial. Para $b$ tome un valor aleatorio real entre $0$ y $1$.
+
+- Para $\mathbf{x}$ plantee un vector columna ~(5,1)~.
+- Para $w$ plantee un vector de forma ~(1,5)~.
+- Aplique la multiplicación matricial ~np.matmul(w,x)+b~.
+- Aplique la función sigmoide al valor obtenido en el paso anterior.
+
+$$
+z = \theta \left ( W^{1\times 5} \times X^{5\times 1}\right)
+$$
+
+#+begin_src jupyter-python :session t :exports both
+# x = np.random.randint(??, size=(??))
+# w = np.random.random((??))
+# b = np.random.random(??)
+print(f"x:{x}\nshape:{x.shape}")
+print(f"w:{w}\nshape:{w.shape}")
+z0 = np.matmul(w,x)  # Producto punto
+z = 1/(1+np.exp(-(z0)))  # Función de activación sigmoide
+print(f"z:{z}\nshape:{z.shape}")
+#+end_src
+
+Para cortar o truncar un dato numpy se ha de seguir el formato
+~x[start:stop:step]~.
+
+#+begin_src jupyter-python :session t :exports both
+A[1:2, 2:4]
+#+end_src
+
+Se puede obtener algunas características dado una matriz numpy.
+
+#+begin_src jupyter-python :session t :exports both
+A.max()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+A.min()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+A.mean()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+A.flatten()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+np.argmax(A.flatten())
+#+end_src
+
+Podemos graficar funciones matemáticas.
+
+#+begin_src jupyter-python :session t :results file :exports both
+import matplotlib.pyplot as plt
+x = np.linspace(-3*np.pi, 3*np.pi, 1000)
+y = np.sin(x)/x
+plt.figure(figsize=(8,4))
+plt.plot(x, y)
+plt.title("Sinc Function")
+plt.xlabel("x")
+plt.ylabel("sinc(x)")
+plt.grid()
+out_file = "images/sinc_function.png"
+plt.savefig(out_file, dpi=150, bbox_inches="tight")
+plt.close()
+out_file
+#+end_src
+
+** Ejercicio
+
+Dibuja las funciones matemáticas siguientes usando ~matplotlib~ y ~numpy~.
+Cambie el número de puntos o muestras en $x$.
+
+- $f(x) = x^2$
+- $f(x) = \ln(x)$
+- $\theta(x) = \frac{1}{1+e^{-x}}$
+
+#+begin_src jupyter-python :session t :exports both
+# Coloque su respuesta aqui.
+# Qué sucede si existe un valor indefinido de la función?
+#+end_src
+
+* Pandas
+
+Se procede a leer un archivo ~csv~ como un ~dataframe~. Por defecto este tipo
+de dato crea una matriz con índices. De esta manera un dato se puede localizar
+por un índice y una columna.
+
+#+begin_src jupyter-python :session t :exports both
+import pandas as pd
+#+end_src
+
+** Construyendo un objeto Dataframe
+
+~Pandas~ puede construir un ~dataframe~ a partir de información organizada en un
+diccionario. Por ejemplo, considere que se desea crear un dataset con los
+siguientes datos:
+
+- Nombre
+- Cédula
+- Edad
+- Sexo
+- Ingresos
+- Profesión
+
+#+begin_src jupyter-python :session t :exports both
+datos = {
+    "Nombre": ["Ana Pérez", "Luis Gómez", "María Torres", "Carlos Sánchez", "Sofía Herrera"],
+    "Cédula": ["0102030405", "1102233445", "2203344556", "3304455667", "4405566778"],
+    "Edad": [28, 35, 42, 30, 25],
+    "Sexo": ["F", "M", "F", "M", "F"],
+    "Ingresos": [1200.50, 2500.00, 1800.75, 2100.00, 1500.25],
+    "Profesión": ["Ingeniera", "Abogado", "Doctora", "Profesor", "Diseñadora"]
+}
+#+end_src
+
+Convertimos en un dataframe de la siguiente manera.
+
+#+begin_src jupyter-python :session t :exports both
+datos_df = pd.DataFrame(datos)
+datos_df.shape
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+datos_df
+#+end_src
+
+** Funciones Lambda
+
+Mediante funciones ~lambda~ se puede aplicar operaciones matemáticas y
+transformaciones a los datos que disponemos. Considere el siguiente ~dataframe~
+que contiene una sola columna con números del $0$ al $9$.
+
+#+begin_src jupyter-python :session t :exports both
+dictA = {"X":np.arange(10)}
+dfA = pd.DataFrame(dictA)
+dfA
+#+end_src
+
+Se puede obtener $Y  = X^2$ usando una función ~lambda~ y creando una nueva
+columna.
+
+#+begin_src jupyter-python :session t :exports both
+dfA["Y"] = dfA["X"].apply(lambda x: x**2)
+dfA
+#+end_src
+
+También podemos obtener algunas características matemáticas de la columna, de la
+siguiente manera.
+
+#+begin_src jupyter-python :session t :exports both
+dfA.Y.min()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+dfA.Y.max()
+#+end_src
+
+$\mu$ para la columna $Y$ es:
+
+#+begin_src jupyter-python :session t :exports both
+dfA.Y.mean()
+#+end_src
+
+$\sigma$ para la columna $Y$ es:
+
+#+begin_src jupyter-python :session t :exports both
+dfA.Y.std()
+#+end_src
+
+*** Ejercicio
+
+Cree una nueva columna $Z$ con el resultado de
+$\frac{Y-\mu}{\sigma}$, usando ~lambda~.
+
+#+begin_src jupyter-python :session t :exports both
+# dfA["Z"] = dfA["Y"].apply(lambda y: ???)
+dfA
+#+end_src
+
+** Lectura de Archivos CSV y Procesamiento
+
+#+begin_src jupyter-python :session t :exports both
+# Adecue el path según su sistema de archivos u organización de datos.
+path = '/mnt/d/Datasets/robos/datosEpnRobosDesagregados2.csv'
+df = pd.read_csv(path)
+df.describe()
+#+end_src
+
+Podemos determinar el tamaño de la matriz de datos.
+
+#+begin_src jupyter-python :session t :exports both
+df.shape
+#+end_src
+
+Conocer las columnas del dataset.
+
+#+begin_src jupyter-python :session t :exports both
+df.columns
+#+end_src
+
+Conocer qué columnas tienen elementos vacíos.
+
+#+begin_src jupyter-python :session t :exports both
+df.isna().sum()
+#+end_src
+
+Conocer el tipo de datos auto-detectado por pandas.
+
+#+begin_src jupyter-python :session t :exports both
+df.dtypes
+#+end_src
+
+Presentar una muestra de los primeros 5 datos.
+
+#+begin_src jupyter-python :session t :exports both
+df.head()
+#+end_src
+
+Una muestra de los últimos 5 datos.
+
+#+begin_src jupyter-python :session t :exports both
+df.tail()
+#+end_src
+
+Una muestra aleatoria de datos.
+
+#+begin_src jupyter-python :session t :exports both
+df.sample(5)
+#+end_src
+
+Se observa que los tipos de dato no han sido detectados de la mejor manera. De
+ahí que sea conveniente hacer conversiones para adecuarlos o leer nuevamente el
+dataset directamente con las modificaciones pertinentes si estas se conocen a
+priori.
+
+#+begin_src jupyter-python :session t :exports both
+df['NDD_OFUSCADA'] = df['NDD_OFUSCADA'].astype('str')
+df['NDD_OFUSCADA'] = df['NDD_OFUSCADA'].str.zfill(10)
+#+end_src
+
+- Descomente la primera línea y comente la línea 3. Se debe producir un error
+  por una fecha con día 00.
+- Comente la línea 1 y descomente la línea 3. Se pasa por alto el error.
+- El código subsiguiente en las líneas 5 y 6 permite crear columnas con los
+  valores de año de incidente y mes de incidente. Por defecto se crean como
+  ~float~.
+
+#+begin_src jupyter-python :session t :exports both
+# df.FECHA_INCIDENTE = pd.to_datetime(df.FECHA_INCIDENTE, format='%Y-%m-%d')
+# La anterior producira un error
+df.FECHA_INCIDENTE = pd.to_datetime(df.FECHA_INCIDENTE, format='%Y-%m-%d', errors='coerce')
+# Con el formato correcto, extraemos el año
+df['AÑO_INCIDENTE'] = df.FECHA_INCIDENTE.dt.year.astype('Int64')
+df['MES_INCIDENTE'] = df.FECHA_INCIDENTE.dt.month.astype('Int64')
+#+end_src
+
+*** Ejercicio
+
+El artículo se refiere al tipo penal así que no debe ser un número entero.
+
+Convierte el tipo de dato.
+
+** Estadística básica
+
+Cada registro en el dataset es una denuncia de robo. La siguiente instrucción
+permite contar cuántas denuncias por el delito de Robo.
+
+#+begin_src jupyter-python :session t :exports both
+df.DELITO.value_counts()
+#+end_src
+
+De igual manera, si ahora se quiere la cuenta según la provincia:
+
+#+begin_src jupyter-python :session t :exports both
+df.PROVINCIA_INCIDENTE.value_counts()
+#+end_src
+
+Completando el comando anterior, se puede fácilmente hacer un gráfico de barras.
+
+#+begin_src jupyter-python :session t :results file :exports both
+import matplotlib.pyplot as plt
+ax = df.PROVINCIA_INCIDENTE.value_counts().plot(
+    kind='bar', figsize=(10,5), title='Número de robos por provincia'
+)
+ax.set_xlabel('Provincia')
+ax.set_ylabel('Número de robos')
+fig = ax.get_figure()
+out_file = "images/robos_por_provincia.png"
+fig.savefig(out_file, dpi=150, bbox_inches='tight')
+plt.close(fig)
+out_file
+#+end_src
+
+Se puede usar ~groupby~ para agrupar la cuenta según otra variable.
+
+#+begin_src jupyter-python :session t :exports both
+df.groupby('AÑO_INCIDENTE')['PROVINCIA_INCIDENTE'].value_counts()
+#+end_src
+
+** Obtención de un subconjunto de datos
+
+Utilizando condiciones booleanas se puede *filtrar* la información. Se puede
+construir filtros más complejos anidando condiciones. El siguiente filtro guarda
+en ~df_quito~ toda la información del cantón Quito.
+
+#+begin_src jupyter-python :session t :exports both
+df_quito = df[df.CANTON_INCIDENTE == 'QUITO']
+df_quito.shape
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+df_quito.groupby('AÑO_INCIDENTE')['MODALIDAD_DESAGREGACION'].value_counts()
+#+end_src
+
+Se desea obtener los datos para el cantón Quito sólo del año 2022.
+
+#+begin_src jupyter-python :session t :exports both
+df["AÑO_INCIDENTE"].unique()
+#+end_src
+
+#+begin_src jupyter-python :session t :exports both
+df_quito_2022 = df[(df["CANTON_INCIDENTE"]=="QUITO") & (df["AÑO_INCIDENTE"]==2022)]
+df_quito_2022.shape
+#+end_src
+
+** Tabla cruzada
+
+Se puede obtener una tabla que obtenga la cuenta de desagregaciones del delito
+de robo por año.
+
+#+begin_src jupyter-python :session t :exports both
+pd.crosstab(df_quito.MODALIDAD_DESAGREGACION, df_quito.AÑO_INCIDENTE, margins=True, margins_name="TOTAL")
+#+end_src
+
+Si la tabla anterior se normaliza y se combina con un espectro de colores se
+puede obtener un mapa de calor.
+
+#+begin_src jupyter-python :session t :results file :exports both
+import seaborn as sns
+tabla = pd.crosstab(
+    df_quito.MODALIDAD_DESAGREGACION,
+    df_quito.AÑO_INCIDENTE
+)
+plt.figure(figsize=(10,6))
+sns.heatmap(tabla, annot=True, fmt="d", cmap="YlGnBu")
+plt.title("Mapa de calor de incidentes por modalidad y año")
+out_file = "images/quito_mapa_calor_abs.png"
+plt.savefig(out_file, dpi=150, bbox_inches='tight')
+plt.close()
+out_file
+#+end_src
+
+Se puede normalizar la tabla según el total de cada fila o el total por
+columnas.
+
+#+begin_src jupyter-python :session t :results file :exports both
+tabla_norm = tabla.div(tabla.sum(axis=1), axis=0)
+plt.figure(figsize=(10,6))
+sns.heatmap(tabla_norm, annot=True, cmap="YlGnBu", fmt=".2f")
+out_file = "images/quito_mapa_calor_norm_fila.png"
+plt.savefig(out_file, dpi=150, bbox_inches='tight')
+plt.close()
+out_file
+#+end_src
+
+Se puede normalizar con respecto a la columna (i.e. por año).
+
+#+begin_src jupyter-python :session t :results file :exports both
+tabla_norm = tabla.div(tabla.sum(axis=0), axis=1)
+plt.figure(figsize=(10,6))
+sns.heatmap(tabla_norm, annot=True, cmap="YlOrRd", fmt=".2f")
+out_file = "images/quito_mapa_calor_norm_columna.png"
+plt.savefig(out_file, dpi=150, bbox_inches='tight')
+plt.close()
+out_file
+#+end_src
+
+Se puede normalizar con respecto al total de la tabla cruzada.
+
+#+begin_src jupyter-python :session t :results file :exports both
+tabla_norm = (tabla - tabla.min().min()) / (tabla.max().max() - tabla.min().min())
+plt.figure(figsize=(10,6))
+sns.heatmap(tabla_norm, cmap="coolwarm")
+out_file = "images/quito_mapa_calor_minmax.png"
+plt.savefig(out_file, dpi=150, bbox_inches='tight')
+plt.close()
+out_file
+#+end_src
+
+*** Ejercicio
+
+- Obtener un sub-dataframe con los datos del cantón Esmeraldas. Imprima el
+  ~shape~ del resultado.
+- Obtenga un sub-dataframe con los datos del cantón Esmeraldas para el año
+  2018.
+- Obtenga una tabla cruzada con los datos del cantón Esmeraldas que devuelva la
+  cuenta de desagregaciones de robo por año.
+- Obtenga un mapa de calor a partir del resultado anterior.
+
+#+begin_src jupyter-python :session t :exports both
+
+#+end_src
+
