@@ -1,0 +1,586 @@
+% Created 2026-11-04 Wed 21:53
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\fancyhead[R]{}
+\setlength\headheight{43.0pt}
+\makeatletter
+\newcommand{\kc}[2]{\makebox[1.2cm][c]{\rule[-0.55cm]{0pt}{1.2cm}\in@{,#1,}{,#2,}\ifin@ 1\else 0\fi}}
+\makeatother
+\newcommand{\kmapthree}[1]{\begin{center}\begin{tabular}{c|*{4}{c|}}\multicolumn{1}{c}{$A\backslash BC$}&\multicolumn{1}{c}{00}&\multicolumn{1}{c}{01}&\multicolumn{1}{c}{11}&\multicolumn{1}{c}{10}\\\cline{2-5} 0&\kc{0}{#1}&\kc{1}{#1}&\kc{3}{#1}&\kc{2}{#1}\\\cline{2-5} 1&\kc{4}{#1}&\kc{5}{#1}&\kc{7}{#1}&\kc{6}{#1}\\\cline{2-5}\end{tabular}\end{center}}
+\newcommand{\kmapfour}[1]{\begin{center}\begin{tabular}{c|*{4}{c|}}\multicolumn{1}{c}{$AB\backslash CD$}&\multicolumn{1}{c}{00}&\multicolumn{1}{c}{01}&\multicolumn{1}{c}{11}&\multicolumn{1}{c}{10}\\\cline{2-5} 00&\kc{0}{#1}&\kc{1}{#1}&\kc{3}{#1}&\kc{2}{#1}\\\cline{2-5} 01&\kc{4}{#1}&\kc{5}{#1}&\kc{7}{#1}&\kc{6}{#1}\\\cline{2-5} 11&\kc{12}{#1}&\kc{13}{#1}&\kc{15}{#1}&\kc{14}{#1}\\\cline{2-5} 10&\kc{8}{#1}&\kc{9}{#1}&\kc{11}{#1}&\kc{10}{#1}\\\cline{2-5}\end{tabular}\end{center}}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, ]{babel}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{/mnt/d/entea/Lectures/iccd332ArqComp/bibliography/bibliography.bib}
+\author{COLOQUE SU NOMBRE}
+\date{2026-11-04}
+\title{Tarea de Ejercicios de Circuitos Digitales Combinatorios}
+\hypersetup{
+ pdfauthor={COLOQUE SU NOMBRE},
+ pdftitle={Tarea de Ejercicios de Circuitos Digitales Combinatorios},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.7.5)}, 
+ pdflang={Español}}
+\begin{document}
+
+\maketitle
+\fancyhead[C]{\includegraphics[scale=0.05]{.././images/logoEPN.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+
+\section{Objetivos de Aprendizaje}
+\label{sec:org2fa20b7}
+\begin{itemize}
+\item Obtener funciones booleanas en forma SOP y POS a partir de tablas de verdad.
+\item Simplificar funciones booleanas con álgebra de Boole y mapas de Karnaugh.
+\item Diseñar circuitos combinacionales: sumador binario y lógica de control.
+\item Aplicar el complemento a 2 y el bit de signo para comparar magnitudes
+(modelado de un ascensor).
+\item Ejercitar el uso de Emacs Org-mode, \LaTeX{} y la exportación a PDF.
+\end{itemize}
+
+\section{Instrucciones}
+\label{sec:orgce12107}
+\begin{enumerate}
+\item Escriba todas las expresiones matemáticas en \LaTeX{} en los espacios
+provistos (reemplace los símbolos \texttt{???} o complete los renglones vacíos).
+\item En los desarrollos algebraicos, cada línea del entorno \texttt{align*} es un
+paso de la reducción. Debajo, liste las \textbf{propiedades del álgebra de
+Boole} usadas.
+\item En los ejercicios de simplificación algebraica debe \emph{además}
+simplificar con \textbf{mapa de Karnaugh} y comparar ambos resultados.
+\item Los circuitos se entregan como captura de simulación (Matlab/Logisim)
+insertada con:
+ \texttt{[[file:images/mi\_circuito.png]]}.
+\item Suba al aula virtual su archivo \texttt{.org} y el \texttt{.pdf} generado.
+\end{enumerate}
+
+\section{Guía Emacs: \LaTeX{} y mapas de Karnaugh}
+\label{sec:orga946249}
+\subsection{Ver las fórmulas dentro de Emacs}
+\label{sec:org4e9ce28}
+Ubique el cursor sobre una fórmula y ejecute \texttt{C-c C-x C-l}
+(\texttt{org-latex-preview}) para ver su vista previa sin generar el PDF.
+Ejecute el mismo comando para ocultarla. Para generar el PDF use
+\texttt{M-x org-latex-export-to-pdf}.
+
+\subsection{Símbolos útiles de álgebra de Boole}
+\label{sec:org72a22b7}
+\begin{center}
+\begin{tabular}{lll}
+Operación & Código \LaTeX{} & Resultado\\[0pt]
+\hline
+NOT (negación) & \texttt{\textbackslash{}bar\{A\}} & \(\bar{A}\)\\[0pt]
+NOT de expresión & \texttt{\textbackslash{}overline\{A+B\}} & \(\overline{A+B}\)\\[0pt]
+XOR & \texttt{A \textbackslash{}oplus B} & \(A \oplus B\)\\[0pt]
+AND / OR & \texttt{AB}, \texttt{A+B} & \(AB\), \(A+B\)\\[0pt]
+\end{tabular}
+\end{center}
+
+\subsection{Desarrollos alineados con \texttt{align*}}
+\label{sec:org2a26ac7}
+Para alinear los pasos de una reducción respecto del signo \texttt{=} use \texttt{\&=}
+al inicio de cada línea y \texttt{\textbackslash{}\textbackslash{}} al final (excepto la última). Anote a la
+derecha la propiedad con \texttt{\textbackslash{}text\{\}} si lo desea:
+
+\begin{verbatim}
+\begin{align*}
+  F &= ABD + \bar{A}B\bar{C}D \\
+    &= BD\,(A + \bar{A}\bar{C}) \\
+    &= \dots
+\end{align*}
+\end{verbatim}
+
+Resultado:
+
+\begin{align*}
+  F &= ABD + \bar{A}B\bar{C}D \\
+    &= BD\,(A + \bar{A}\bar{C}) \\
+    &= \dots
+\end{align*}
+
+\subsection{Dibujar un mapa K con \LaTeX{}}
+\label{sec:org7901487}
+Esta tarea ya define dos comandos en el encabezado que dibujan mapas
+con las columnas en \textbf{código Gray} (00, 01, 11, 10):
+
+\begin{itemize}
+\item \texttt{\textbackslash{}kmapthree\{lista\}}: mapa de 3 variables (\(A\) filas; \(BC\) columnas).
+\item \texttt{\textbackslash{}kmapfour\{lista\}}: mapa de 4 variables (\(AB\) filas; \(CD\) columnas).
+\end{itemize}
+
+Se insertan dentro de un bloque de exportación (ya están colocados en
+cada ejercicio).
+
+\textbf{Cómo llenar el mapa.} En cada ejercicio encontrará el comando con las
+llaves vacías, por ejemplo \texttt{\textbackslash{}kmapthree\{\}}. Usted debe:
+
+\begin{enumerate}
+\item Determinar los \textbf{min-términos} donde \(F=1\) (en una tabla de verdad,
+el número de fila en decimal; para una expresión, evalúela o
+expándala hasta min-términos). Con \(A\) como bit más significativo,
+\(m_6=110_2\) corresponde a \(A=1,B=1,C=0\).
+\item Escribir esos números \textbf{dentro de las llaves}, separados por comas y
+\textbf{sin espacios}.
+\item Exportar o previsualizar: el comando coloca un 1 en las celdas de la
+lista y un 0 en las demás, y ordena las columnas en \textbf{código Gray}
+(00, 01, 11, 10).
+\end{enumerate}
+
+Ejemplo (función distinta a las de la tarea): para
+\(F=\sum m(1,3,4)\) se escribe
+
+\begin{verbatim}
+#+begin_export latex
+\kmapthree{1,3,4}
+#+end_export
+\end{verbatim}
+
+y se obtiene
+
+\kmapthree{1,3,4}
+
+Con 4 variables funciona igual; por ejemplo \texttt{\textbackslash{}kmapfour\{0,2,8,10\}}
+dibuja \(F=\sum m(0,2,8,10)\).
+
+Las agrupaciones no se dibujan automáticamente (no se generalizan de
+forma eficiente): bajo el mapa liste los grupos formados y el término
+que genera cada uno, y finalmente la función simplificada con
+\texttt{align*}.
+
+\emph{Opcional:} el paquete \texttt{karnaugh-map} (requiere \texttt{tikz}) dibuja mapas
+con agrupaciones coloreadas. Añádalo con
+\texttt{\#+latex\_header: \textbackslash{}usepackage\{karnaugh-map\}} y use el entorno
+\texttt{karnaugh-map} (consulte la documentación del paquete con \texttt{texdoc karnaugh-map}).
+
+\section{Parte A. Álgebra de Boole}
+\label{sec:orgb653e82}
+\subsection{Ejercicio 1: Compuerta XOR en SOP}
+\label{sec:orge8e8ba0}
+A partir de la tabla de verdad de la compuerta OR exclusiva de dos
+entradas obtenga la función booleana como suma de productos (SOP,
+min-términos). Complete la tabla y la expresión.
+
+\begin{center}
+\begin{tabular}{rrl}
+A & B & \(A \oplus B\)\\[0pt]
+\hline
+0 & 0 & \\[0pt]
+0 & 1 & \\[0pt]
+1 & 0 & \\[0pt]
+1 & 1 & \\[0pt]
+\end{tabular}
+\end{center}
+
+\textbf{Respuesta (SOP):}
+
+$$A \oplus B = ???$$
+
+\subsection{Ejercicio 2: Compuerta XOR en POS}
+\label{sec:org789d16e}
+Para el ejercicio anterior obtenga la representación como producto de
+sumas (POS, max-términos).
+
+\textbf{Respuesta (POS):}
+
+$$A \oplus B = ???$$
+
+\subsection{Ejercicio 3: Implementación con NAND}
+\label{sec:org1a382ca}
+¿Puede representar la XOR usando solamente compuertas NAND? Aplique las
+leyes de De Morgan, recordando que una NAND es una AND negada
+(\(\overline{AB}\)). Desarrolle los pasos hasta obtener una expresión
+únicamente con NAND y dibuje el circuito.
+
+\textbf{Respuesta:}
+
+\begin{align*}
+  A \oplus B &= \bar{A}B + A\bar{B} \\
+             &= \\
+             &=
+\end{align*}
+
+\textbf{Propiedades del álgebra de Boole usadas:}
+\begin{enumerate}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\end{enumerate}
+
+\textbf{Circuito (captura o descripción):}
+
+\subsection{Ejercicio 4: Simplificación algebraica I y mapa K}
+\label{sec:org266823e}
+Simplifique \(F = ACD+\bar{A}BCD\).
+
+\textbf{a) Con álgebra de Boole:}
+
+\begin{align*}
+  F &= ACD+\bar{A}BCD \\
+    &= \\
+    &=
+\end{align*}
+
+\textbf{Propiedades del álgebra de Boole usadas} (indique el paso en que se usa cada una):
+\begin{enumerate}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\end{enumerate}
+
+\textbf{b) Con mapa de Karnaugh (4 variables).} Escriba los min-términos
+donde \(F=1\) dentro de las llaves de \texttt{\textbackslash{}kmapfour\{\}}:
+
+\kmapfour{}
+
+Min-términos: \(F=\sum m(\ldots)\)
+
+Grupos formados y término que genera cada uno:
+
+\begin{align*}
+  G_1 &= \\
+  G_2 &=
+\end{align*}
+
+\begin{align*}
+  F_{\text{Karnaugh}} &=
+\end{align*}
+
+\textbf{c) Compare:} ¿coinciden los resultados de (a) y (b)? Comente.
+
+\textbf{Respuesta:}
+
+\vspace{1.5cm}
+
+\subsection{Ejercicio 5: Simplificación algebraica II y mapa K}
+\label{sec:org40cad12}
+Simplifique \(F=ABC+A\bar{B}\,\overline{\bar{A}\bar{C}}\).
+
+\textbf{a) Con álgebra de Boole:}
+
+\begin{align*}
+  F &= ABC+A\bar{B}\,\overline{\bar{A}\bar{C}} \\
+    &= \\
+    &=
+\end{align*}
+
+\textbf{Propiedades del álgebra de Boole usadas:}
+\begin{enumerate}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\item Propiedad \ldots{}
+\end{enumerate}
+
+\textbf{b) Con mapa de Karnaugh (3 variables).} Obtenga los min-términos de
+la expresión original y escríbalos dentro de las llaves de \texttt{\textbackslash{}kmapthree\{\}}:
+
+\kmapthree{}
+
+Min-términos: \(F=\sum m(\ldots)\)
+
+Grupos formados y término que genera cada uno:
+
+\begin{align*}
+  G_1 &= \\
+  G_2 &=
+\end{align*}
+
+\begin{align*}
+  F_{\text{Karnaugh}} &=
+\end{align*}
+
+\textbf{c) Compare:} ¿coinciden los resultados de (a) y (b)? Comente.
+
+\textbf{Respuesta:}
+
+\vspace{1.5cm}
+
+\section{Parte B. Tablas de verdad y mapas de Karnaugh}
+\label{sec:orgcbd1e57}
+\subsection{Ejercicio 6: SOP desde tabla de verdad}
+\label{sec:org57fa48d}
+A partir de la tabla de verdad de tres variables obtenga la
+representación en SOP.
+
+\begin{table}[htbp]
+\caption{\label{tab:org1e03ec0}Ejercicio de tres variables}
+\centering
+\begin{tabular}{rrrr}
+A & B & C & F\\[0pt]
+\hline
+0 & 0 & 0 & 0\\[0pt]
+0 & 0 & 1 & 0\\[0pt]
+0 & 1 & 0 & 1\\[0pt]
+0 & 1 & 1 & 1\\[0pt]
+1 & 0 & 0 & 0\\[0pt]
+1 & 0 & 1 & 0\\[0pt]
+1 & 1 & 0 & 1\\[0pt]
+1 & 1 & 1 & 0\\[0pt]
+\end{tabular}
+\end{table}
+
+\textbf{Respuesta:}
+
+\begin{align*}
+  F(A,B,C) &= \sum m(\ldots) \\
+           &=
+\end{align*}
+
+\subsection{Ejercicio 7: Simplificación con mapa de Karnaugh}
+\label{sec:org49ffa02}
+Usando mapas de Karnaugh simplifique la función de la tabla del
+Ejercicio 6 y dibuje el circuito resultante.
+
+Escriba los min-términos de \(F\) (Ej. 6) dentro de las llaves:
+
+\kmapthree{}
+
+Grupos formados:
+
+\begin{align*}
+  G_1 &= \\
+  G_2 &=
+\end{align*}
+
+\begin{align*}
+  F_{\text{simplificada}} &=
+\end{align*}
+
+\textbf{Circuito:}
+
+\subsection{Ejercicio 8: Karnaugh y simulación}
+\label{sec:org0e8cae6}
+Dada la siguiente tabla de verdad, simplifique utilizando un mapa de
+Karnaugh, obtenga el circuito combinacional y simule el resultado.
+
+\begin{table}[htbp]
+\caption{\label{tab:org320d085}Ejercicio 8}
+\centering
+\begin{tabular}{rrrr}
+A & B & C & F\\[0pt]
+\hline
+0 & 0 & 0 & 1\\[0pt]
+0 & 0 & 1 & 1\\[0pt]
+0 & 1 & 0 & 0\\[0pt]
+0 & 1 & 1 & 1\\[0pt]
+1 & 0 & 0 & 0\\[0pt]
+1 & 0 & 1 & 1\\[0pt]
+1 & 1 & 0 & 0\\[0pt]
+1 & 1 & 1 & 1\\[0pt]
+\end{tabular}
+\end{table}
+
+Escriba los min-términos de \(F\) dentro de las llaves:
+
+\kmapthree{}
+
+Grupos formados:
+
+\begin{align*}
+  G_1 &= \\
+  G_2 &=
+\end{align*}
+
+\begin{align*}
+  F_{\text{simplificada}} &=
+\end{align*}
+
+\textbf{Captura de la simulación:}
+
+\begin{verbatim}
+[[file:images/ejercicio8.png]]
+\end{verbatim}
+
+\section{Parte C. Sumador binario}
+\label{sec:orgdfe4b0f}
+\subsection{Ejercicio 9: Sumador completo en cascada}
+\label{sec:org336fd1f}
+Obtenga un circuito combinacional que realice la suma binaria. Considere
+que el sumador se resuelve integrando en cascada varias etapas que
+suman los dígitos de los sumandos y el acarreo, que inicia en 0.
+Consulte \autocite{stallings2006esp}, páginas PDF 777 a 780 y
+\autocite{stallings2022eng}, páginas 435 a 438.
+
+\begin{enumerate}
+\item Complete la tabla de verdad de una etapa (sumador completo).
+
+\begin{center}
+\begin{tabular}{rrrll}
+\(A_i\) & \(B_i\) & \(C_i\) & \(S_i\) & \(C_{i+1}\)\\[0pt]
+\hline
+0 & 0 & 0 &  & \\[0pt]
+0 & 0 & 1 &  & \\[0pt]
+0 & 1 & 0 &  & \\[0pt]
+0 & 1 & 1 &  & \\[0pt]
+1 & 0 & 0 &  & \\[0pt]
+1 & 0 & 1 &  & \\[0pt]
+1 & 1 & 0 &  & \\[0pt]
+1 & 1 & 1 &  & \\[0pt]
+\end{tabular}
+\end{center}
+
+\item Deduzca las expresiones booleanas reducidas (use mapas K de 3 variables).
+
+\begin{align*}
+  S_i     &= \\
+  C_{i+1} &=
+\end{align*}
+
+\item Implemente el circuito en Matlab (o Logisim), simule e inserte la captura.
+
+\begin{verbatim}
+   [[file:images/sumador.png]]
+\end{verbatim}
+
+\item Extienda el diseño a un sumador de 4 bits en cascada. Dibuje el
+diagrama de bloques.
+\end{enumerate}
+
+\section{Parte D. Modelado de un ascensor}
+\label{sec:org5f797b2}
+\subsection{Ejercicio 10: Lógica de control de un ascensor de 10 pisos}
+\label{sec:org2572d94}
+Se desea modelar la lógica combinacional de un ascensor de \textbf{10 pisos}
+(pisos 0 a 9). El sistema recibe:
+
+\begin{itemize}
+\item \(P_{act}\): piso actual (4 bits, \(P_3P_2P_1P_0\), valores 0 a 9).
+\item \(P_{dest}\): piso destino (4 bits, \(D_3D_2D_1D_0\), valores 0 a 9).
+\end{itemize}
+
+y debe generar tres salidas: \textbf{SUBIR}, \textbf{BAJAR} y \textbf{DETENER}.
+
+\textbf{Idea de diseño.} La diferencia \(\Delta = P_{dest}-P_{act}\) se calcula
+con un sumador y el complemento a 2:
+\[
+\Delta = P_{dest} + \overline{P_{act}} + 1 = P_{dest} + C_2(P_{act}).
+\]
+Como \(\Delta \in [-9,9]\), se requieren \textbf{5 bits} (extensión de signo de
+los operandos a 5 bits). El \textbf{bit de signo} \(\Delta_4\) indica el sentido:
+
+\begin{itemize}
+\item \(\Delta_4 = 1\) (negativo): el destino está por debajo, el ascensor \textbf{baja}.
+\item \(\Delta_4 = 0\) y \(\Delta \neq 0\): el destino está por encima, \textbf{sube}.
+\item \(\Delta = 0\): el ascensor ya está en el piso, \textbf{se detiene}.
+\end{itemize}
+
+\subsubsection{10.1 Representación}
+\label{sec:org456e05d}
+Complete la tabla con la representación en 5 bits (complemento a 2) de
+\(-P_{act}\) y de \(\Delta\).
+
+\begin{center}
+\begin{tabular}{rrllll}
+\(P_{act}\) & \(P_{dest}\) & \(C_2(P_{act})\) (5 bits) & \(\Delta\) (5 bits) & \(\Delta_4\) & Acción\\[0pt]
+\hline
+3 & 7 &  &  &  & \\[0pt]
+8 & 2 &  &  &  & \\[0pt]
+5 & 5 &  &  &  & \\[0pt]
+0 & 9 &  &  &  & \\[0pt]
+9 & 0 &  &  &  & \\[0pt]
+\end{tabular}
+\end{center}
+
+\subsubsection{10.2 Complemento a 2 y sumador}
+\label{sec:org248029a}
+Dibuje el diagrama de bloques del circuito que calcula \(\Delta\):
+inversores sobre \(P_{act}\), sumador de 5 bits en cascada (Ejercicio 9) y
+acarreo de entrada \(C_0=1\).
+
+\subsubsection{10.3 Detector de cero y salidas}
+\label{sec:org9723b55}
+Obtenga las expresiones de las salidas en función de los bits de
+\(\Delta\) (\(\Delta_4\ldots\Delta_0\)).
+
+\begin{align*}
+  \text{CERO}    &= \\
+  \text{BAJAR}   &= \\
+  \text{SUBIR}   &= \\
+  \text{DETENER} &=
+\end{align*}
+
+\subsubsection{10.4 Circuito completo}
+\label{sec:org0226364}
+Dibuje el circuito combinacional completo (complemento a 2, sumador,
+detector de cero y salidas) y simule al menos los cinco casos de la
+tabla de 10.1. Inserte la captura.
+
+\subsubsection{10.5 Análisis}
+\label{sec:org45c2269}
+a) ¿Por qué es insuficiente usar solo 4 bits para \(\Delta\)? Dé un
+   ejemplo con pisos concretos.
+
+\textbf{Respuesta:}
+
+\vspace{1.5cm}
+
+b) Las combinaciones con valores 10 a 15 no son válidas. Proponga cómo
+   tratarlas (condiciones \emph{don't care} o señal de error) y su efecto en
+   la simplificación.
+
+\textbf{Respuesta:}
+
+\vspace{1.5cm}
+
+c) ¿Qué elementos secuenciales harían falta para que el ascensor
+   \emph{memorice} las solicitudes y el piso actual?
+
+\textbf{Respuesta:}
+
+\vspace{1.5cm}
+
+\section{Rúbrica de evaluación}
+\label{sec:orgde0b760}
+\begin{center}
+\begin{tabular}{lr}
+Criterio & Puntaje máximo\\[0pt]
+\hline
+Parte A: Álgebra de Boole y mapas K (Ej. 1-5) & 30\\[0pt]
+Parte B: Tablas de verdad y Karnaugh (Ej. 6-8) & 20\\[0pt]
+Parte C: Sumador binario (Ej. 9) & 15\\[0pt]
+Parte D: Ascensor (Ej. 10) & 30\\[0pt]
+Presentación, uso de Org-mode/\LaTeX{} y PDF & 5\\[0pt]
+TOTAL & 100\\[0pt]
+\end{tabular}
+\end{center}
+
+\section{Verificación de Entregables [0\%]:}
+\label{sec:org97c0854}
+\begin{itemize}
+\item[{$\square$}] Todos los ejercicios resueltos y justificados en \LaTeX{}
+\item[{$\square$}] Propiedades del álgebra de Boole listadas en cada simplificación
+\item[{$\square$}] Capturas de simulaciones insertadas
+\item[{$\square$}] Revisión de ortografía con \texttt{ispell-buffer}
+\item[{$\square$}] Generación de PDF \texttt{M-x org-latex-export-to-pdf}
+\item[{$\square$}] Subir al aula virtual \texttt{.org} y \texttt{.pdf}
+\end{itemize}
+
+\subsection{Problemas con la Tarea/logísticos:}
+\label{sec:org2db2d0f}
+\begin{itemize}
+\item Ejercicio \(X_1\) no pudo completarse debido a
+\end{itemize}
+
+\section{Referencias}
+\label{sec:orgbd05b6e}
+\printbibliography
+\end{document}

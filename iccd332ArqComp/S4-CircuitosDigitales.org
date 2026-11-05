@@ -30,6 +30,7 @@
 #+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+LATEX_HEADER: \usepackage[spanish]{babel}
 #+LATEX_HEADER: \usepackage[backend=biber,style=ieee,autolang=other,maxcitenames=99, maxbibnames=99]{biblatex}
+#+LATEX_HEADER: \usepackage{karnaugh-map}
 
 * Circuitos Digitales
 # ** Máquinas de Estados Finitos
@@ -66,6 +67,62 @@
 :BEAMER_col: 0.5
 :END:
 [[./images/mapaK.png]]
+** Ubicación de los Min-Términos en el Mapa K
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+*** texto                                                       :texto:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+- El subíndice $i$ de $m_i$ es el valor decimal de la combinación
+  binaria de las entradas (con $A$ como bit más significativo).
+- Las filas y columnas siguen el *código Gray* (00, 01, 11, 10): entre
+  celdas vecinas cambia un solo bit, por eso son adyacentes.
+- Los bordes opuestos del mapa también son adyacentes (el mapa es
+  cíclico), p.ej. $m_0$ y $m_2$.
+*** Mapa de 3 variables                                              :Mapa3:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+#+begin_export latex
+\begin{center}
+\scalebox{0.9}{%
+\begin{karnaugh-map}[4][2][1][$C$][$B$][$A$]
+  \terms{0}{$m_0$} \terms{1}{$m_1$} \terms{2}{$m_2$} \terms{3}{$m_3$}
+  \terms{4}{$m_4$} \terms{5}{$m_5$} \terms{6}{$m_6$} \terms{7}{$m_7$}
+\end{karnaugh-map}}
+\end{center}
+#+end_export
+** Ubicación de los Min-Términos en el Mapa K
+*** texto                                                       :texto:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.45
+:END:
+- El subíndice $i$ de $m_i$ es el valor decimal de la combinación
+  binaria de las entradas (con $A$ como bit más significativo).
+- Las filas y columnas siguen el *código Gray* (00, 01, 11, 10): entre
+  celdas vecinas cambia un solo bit, por eso son adyacentes.
+- Los bordes opuestos del mapa también son adyacentes (el mapa es
+  cíclico), p.ej. $m_0$ y $m_2$.
+
+*** Mapa de 4 variables                                              :Mapa4:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.55
+:END:
+#+begin_export latex
+\begin{center}
+\scalebox{0.8}{%
+\begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+  \terms{0}{$m_0$} \terms{1}{$m_1$} \terms{2}{$m_2$} \terms{3}{$m_3$}
+  \terms{4}{$m_4$} \terms{5}{$m_5$} \terms{6}{$m_6$} \terms{7}{$m_7$}
+  \terms{8}{$m_8$} \terms{9}{$m_9$} \terms{10}{$m_{10}$} \terms{11}{$m_{11}$}
+  \terms{12}{$m_{12}$} \terms{13}{$m_{13}$} \terms{14}{$m_{14}$} \terms{15}{$m_{15}$}
+\end{karnaugh-map}}
+\end{center}
+#+end_export
+# *** Observaciones                                                   :Obs:
+
 ** Procedimiento Mapas K para Min-Terms
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -178,11 +235,11 @@ sistema
     \hline
     I & $S_p$ & $S_v$ & $S_m$ & F \\ \hline
     1 & 0 & 0 & 0 & 0 \\
-    1 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & \textbf{1} \\
     1 & 0 & 1 & 0 & 0 \\
-    1 & 0 & 1 & 1 & 1 \\
+    1 & 0 & 1 & 1 & \textbf{1} \\
     1 & 1 & 0 & 0 & 0 \\
-    1 & 1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 & \textbf{1} \\
     1 & 1 & 1 & 0 & 0 \\
     1 & 1 & 1 & 1 & 0 \\ \hline
     
@@ -192,18 +249,30 @@ sistema
 Para simplificar se usa el Mapa de Karnaugh como se muestra en la
 Tabla \ref{tab-mapak}
 
+# \begin{table}
+#   \label{tab-mapak}
+#   \caption{Mapa de Karnaugh}
+#   \begin{tabular}{|l|c|c|c|c|}
+#     \hline
+#     {} & \multicolumn{4}{c|}{$S_v$, $S_m$}\\\hline
+#     I,$S_p$ & 00 & 01 & 11 &10 \\ \hline
+#     00 & {} & {} & {} & {} \\ \hline
+#     01 & {} & {} & {} & {} \\ \hline
+#     11 & {} & 1 & {} & {} \\ \hline
+#     10 & {} & 1 & 1 & {} \\ \hline
+#   \end{tabular}
+# \end{table}
+
 \begin{table}
-  \label{tab-mapak}
+  \centering
+  \begin{karnaugh-map}[4][4][1][$S_m$][$S_v$][$S_p$][$I$]
+    \minterms{9,11,13}
+    \autoterms[0]
+    \implicant{13}{9}
+    \implicant{9}{11}
+  \end{karnaugh-map}
   \caption{Mapa de Karnaugh}
-  \begin{tabular}{|l|c|c|c|c|}
-    \hline
-    {} & \multicolumn{4}{c|}{$S_v$, $S_m$}\\\hline  
-    I,$S_p$ & 00 & 01 & 11 &10 \\ \hline
-    00 & {} & {} & {} & {} \\ \hline
-    01 & {} & {} & {} & {} \\ \hline
-    11 & {} & 1 & {} & {} \\ \hline
-    10 & {} & 1 & 1 & {} \\ \hline
-  \end{tabular}
+  \label{tab-mapak}
 \end{table}
 
 En el Mapa se puede formar dos grupos de 2 (contando filas y columnas
