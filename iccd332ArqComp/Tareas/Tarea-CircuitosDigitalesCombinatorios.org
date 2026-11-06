@@ -169,7 +169,38 @@ con agrupaciones coloreadas. Añádalo con
 ~#+latex_header: \usepackage{karnaugh-map}~ y use el entorno
 ~karnaugh-map~ (consulte la documentación del paquete con ~texdoc karnaugh-map~).
 
-* Parte A. Álgebra de Boole
+* Parte A. Electrotecnia
+** Ejercicio P1: Descarga del Condensador
+Para el circuito RC serie, la ecuación diferencial de la carga del
+condensador es
+
+$$E = v_C + RC\frac{dv_C}{dt}$$
+
+Para el caso de la descarga, parta de $E=0$ y de una tensión inicial
+$v_C(0)=V_0$. Resuelva la ecuación diferencial y obtenga $v_C(t)$ e
+$i(t)$, recordando que $i = C\frac{dv_C}{dt}$.
+
+*Respuesta:*
+
+\begin{align*}
+  v_C(t) &= \text{???} \\
+  i(t) &= \text{???}
+\end{align*}
+
+** Ejercicio P2: Valor Eficaz (RMS)
+Calcule el valor eficaz de una señal sinusoidal de tensión
+$v(t)=V_{\mathrm{max}}\sin(\omega t)$ con periodo $T=\frac{2\pi}{\omega}$,
+resolviendo
+
+$$V_{\mathrm{RMS}} = \sqrt{\frac{1}{T}\int_0^T V_{\mathrm{max}}^2 \sin^2(\omega t)\,dt}$$
+
+*Respuesta:*
+
+\begin{align*}
+  V_{\mathrm{RMS}} &= \text{???}
+\end{align*}
+
+* Parte B. Álgebra de Boole
 ** Ejercicio 1: Circuitos Digitales
 A partir del circuito combinacional de la Figura [[fig:circuito-tarea]] obtenga la expresión
 booleana correspondiente y la tabla de verdad
@@ -369,7 +400,7 @@ Grupos formados y término que genera cada uno:
 
 \vspace{1.5cm}
 
-* Parte B. Tablas de verdad y mapas de Karnaugh
+* Parte C. Tablas de verdad y mapas de Karnaugh
 ** Ejercicio 7: Tablas de verdad en SOP y POS
 Obtenga la tabla de verdad para cada función:
 
@@ -522,7 +553,7 @@ remueva ~#+begin_src org~ y ~#+end_src~ para insertar la imagen en el pdf.
 [[file:]]
 #+end_src
 
-* Parte C. Sumador binario
+* Parte D. Sumador binario
 ** Ejercicio 11: Sumador completo en cascada
 Obtenga un circuito combinacional que realice la suma binaria. Considere
 que el sumador se resuelve integrando en cascada varias etapas que
@@ -575,7 +606,7 @@ Consulte [cite:@stallings2006esp], páginas PDF 777 a 780 y
    [[file:]]
    #+end_src
 
-* Parte D. Modelado de un ascensor
+* Parte E. Modelado de un ascensor
 ** Ejercicio 12: Lógica de control de un ascensor de N pisos
 #+caption: Diagrama del Control de un Ascensor
 #+attr_latex: scale=0.75 :placement [h!]
@@ -693,10 +724,11 @@ en el PDF. La captura ha de mostrar un caso de prueba y sus salidas.
 * Rúbrica de evaluación
 | Criterio                                        | Puntaje máximo |
 |-------------------------------------------------+----------------|
-| Parte A: Álgebra de Boole y mapas K (Ej. 1-6)   |             30 |
-| Parte B: Tablas de verdad y Karnaugh (Ej. 7-10) |             20 |
-| Parte C: Sumador binario (Ej. 11)               |             15 |
-| Parte D: Ascensor (Ej. 12)                      |             30 |
+| Parte A: Repaso de Electricidad (Ej. P1-P2)     |             10 |
+| Parte B: Álgebra de Boole y mapas K (Ej. 1-6)   |             25 |
+| Parte C: Tablas de verdad y Karnaugh (Ej. 7-10) |             20 |
+| Parte D: Sumador binario (Ej. 11)               |             15 |
+| Parte E: Ascensor (Ej. 12)                      |             25 |
 | Presentación, uso de Org-mode/\LaTeX{} y PDF    |              5 |
 | TOTAL                                           |            100 |
 
