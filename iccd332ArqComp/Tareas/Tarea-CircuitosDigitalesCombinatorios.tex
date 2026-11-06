@@ -1,4 +1,4 @@
-% Created 2026-11-04 Wed 21:53
+% Created 2026-11-06 Fri 10:25
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -48,7 +48,7 @@ ARQUITECTURA DE COMPUTADORES}
 \thispagestyle{fancy}
 
 \section{Objetivos de Aprendizaje}
-\label{sec:org2fa20b7}
+\label{sec:orga634296}
 \begin{itemize}
 \item Obtener funciones booleanas en forma SOP y POS a partir de tablas de verdad.
 \item Simplificar funciones booleanas con álgebra de Boole y mapas de Karnaugh.
@@ -59,7 +59,7 @@ ARQUITECTURA DE COMPUTADORES}
 \end{itemize}
 
 \section{Instrucciones}
-\label{sec:orgce12107}
+\label{sec:org08ea41d}
 \begin{enumerate}
 \item Escriba todas las expresiones matemáticas en \LaTeX{} en los espacios
 provistos (reemplace los símbolos \texttt{???} o complete los renglones vacíos).
@@ -68,23 +68,23 @@ paso de la reducción. Debajo, liste las \textbf{propiedades del álgebra de
 Boole} usadas.
 \item En los ejercicios de simplificación algebraica debe \emph{además}
 simplificar con \textbf{mapa de Karnaugh} y comparar ambos resultados.
-\item Los circuitos se entregan como captura de simulación (Matlab/Logisim)
-insertada con:
- \texttt{[[file:images/mi\_circuito.png]]}.
+\item En los espacios para circuitos, inserte la imagen de su dibujo o
+simulación (Matlab/Logisim) escribiendo la ruta relativa al archivo
+de imagen dentro del enlace Org-mode preparado.
 \item Suba al aula virtual su archivo \texttt{.org} y el \texttt{.pdf} generado.
 \end{enumerate}
 
 \section{Guía Emacs: \LaTeX{} y mapas de Karnaugh}
-\label{sec:orga946249}
+\label{sec:orgf4b10b6}
 \subsection{Ver las fórmulas dentro de Emacs}
-\label{sec:org4e9ce28}
+\label{sec:org61240bf}
 Ubique el cursor sobre una fórmula y ejecute \texttt{C-c C-x C-l}
 (\texttt{org-latex-preview}) para ver su vista previa sin generar el PDF.
 Ejecute el mismo comando para ocultarla. Para generar el PDF use
 \texttt{M-x org-latex-export-to-pdf}.
 
 \subsection{Símbolos útiles de álgebra de Boole}
-\label{sec:org72a22b7}
+\label{sec:org6a1c484}
 \begin{center}
 \begin{tabular}{lll}
 Operación & Código \LaTeX{} & Resultado\\[0pt]
@@ -97,7 +97,7 @@ AND / OR & \texttt{AB}, \texttt{A+B} & \(AB\), \(A+B\)\\[0pt]
 \end{center}
 
 \subsection{Desarrollos alineados con \texttt{align*}}
-\label{sec:org2a26ac7}
+\label{sec:org978b86a}
 Para alinear los pasos de una reducción respecto del signo \texttt{=} use \texttt{\&=}
 al inicio de cada línea y \texttt{\textbackslash{}\textbackslash{}} al final (excepto la última). Anote a la
 derecha la propiedad con \texttt{\textbackslash{}text\{\}} si lo desea:
@@ -119,7 +119,7 @@ Resultado:
 \end{align*}
 
 \subsection{Dibujar un mapa K con \LaTeX{}}
-\label{sec:org7901487}
+\label{sec:orgce2bf35}
 Esta tarea ya define dos comandos en el encabezado que dibujan mapas
 con las columnas en \textbf{código Gray} (00, 01, 11, 10):
 
@@ -173,9 +173,43 @@ con agrupaciones coloreadas. Añádalo con
 \texttt{karnaugh-map} (consulte la documentación del paquete con \texttt{texdoc karnaugh-map}).
 
 \section{Parte A. Álgebra de Boole}
-\label{sec:orgb653e82}
-\subsection{Ejercicio 1: Compuerta XOR en SOP}
-\label{sec:orge8e8ba0}
+\label{sec:org4876cb5}
+\subsection{Ejercicio 1: Circuitos Digitales}
+\label{sec:orgb991359}
+A partir del circuito combinacional de la Figura \ref{fig:orgc2817ea} obtenga la expresión
+booleana correspondiente y la tabla de verdad
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{../images/tarea-circuitos-combinatorios.png}
+\caption{\label{fig:orgc2817ea}Circuito Combinacional}
+\end{figure}
+
+\textbf{Respuesta (expresión booleana):}
+
+\begin{align*}
+  F(A,B,C) &= \text{???}
+\end{align*}
+
+\textbf{Tabla de verdad:}
+
+\begin{center}
+\begin{tabular}{rrrl}
+A & B & C & F\\[0pt]
+\hline
+0 & 0 & 0 & \\[0pt]
+0 & 0 & 1 & \\[0pt]
+0 & 1 & 0 & \\[0pt]
+0 & 1 & 1 & \\[0pt]
+1 & 0 & 0 & \\[0pt]
+1 & 0 & 1 & \\[0pt]
+1 & 1 & 0 & \\[0pt]
+1 & 1 & 1 & \\[0pt]
+\end{tabular}
+\end{center}
+
+\subsection{Ejercicio 2: Compuerta XOR en SOP}
+\label{sec:org1586db9}
 A partir de la tabla de verdad de la compuerta OR exclusiva de dos
 entradas obtenga la función booleana como suma de productos (SOP,
 min-términos). Complete la tabla y la expresión.
@@ -195,8 +229,8 @@ A & B & \(A \oplus B\)\\[0pt]
 
 $$A \oplus B = ???$$
 
-\subsection{Ejercicio 2: Compuerta XOR en POS}
-\label{sec:org789d16e}
+\subsection{Ejercicio 3: Compuerta XOR en POS}
+\label{sec:org3b4782d}
 Para el ejercicio anterior obtenga la representación como producto de
 sumas (POS, max-términos).
 
@@ -204,8 +238,8 @@ sumas (POS, max-términos).
 
 $$A \oplus B = ???$$
 
-\subsection{Ejercicio 3: Implementación con NAND}
-\label{sec:org1a382ca}
+\subsection{Ejercicio 4: Implementación con NAND}
+\label{sec:org9a7de50}
 ¿Puede representar la XOR usando solamente compuertas NAND? Aplique las
 leyes de De Morgan, recordando que una NAND es una AND negada
 (\(\overline{AB}\)). Desarrolle los pasos hasta obtener una expresión
@@ -226,10 +260,20 @@ leyes de De Morgan, recordando que una NAND es una AND negada
 \item Propiedad \ldots{}
 \end{enumerate}
 
-\textbf{Circuito (captura o descripción):}
+\textbf{Circuito con compuertas NAND:}
 
-\subsection{Ejercicio 4: Simplificación algebraica I y mapa K}
-\label{sec:org266823e}
+Coloque aquí la imagen del circuito: coloque el \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
+
+\subsection{Ejercicio 5: Simplificación algebraica I y mapa K}
+\label{sec:org3f13f32}
 Simplifique \(F = ACD+\bar{A}BCD\).
 
 \textbf{a) Con álgebra de Boole:}
@@ -271,8 +315,40 @@ Grupos formados y término que genera cada uno:
 
 \vspace{1.5cm}
 
-\subsection{Ejercicio 5: Simplificación algebraica II y mapa K}
-\label{sec:org40cad12}
+\textbf{d) Circuito con compuertas AND, OR y NOT.} Dibuje el circuito
+correspondiente a la expresión simplificada:
+
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
+
+\textbf{e) Implementación usando solo compuertas NAND.} Obtenga una expresión
+equivalente que utilice únicamente compuertas NAND:
+
+\begin{align*}
+  F_{\text{NAND}} &=
+\end{align*}
+
+Dibuje el circuito equivalente usando solo compuertas NAND:
+
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
+
+\subsection{Ejercicio 6: Simplificación algebraica II y mapa K}
+\label{sec:org535cbf8}
 Simplifique \(F=ABC+A\bar{B}\,\overline{\bar{A}\bar{C}}\).
 
 \textbf{a) Con álgebra de Boole:}
@@ -315,14 +391,54 @@ Grupos formados y término que genera cada uno:
 \vspace{1.5cm}
 
 \section{Parte B. Tablas de verdad y mapas de Karnaugh}
-\label{sec:orgcbd1e57}
-\subsection{Ejercicio 6: SOP desde tabla de verdad}
-\label{sec:org57fa48d}
-A partir de la tabla de verdad de tres variables obtenga la
+\label{sec:orgd63b5d9}
+\subsection{Ejercicio 7: Tablas de verdad en SOP y POS}
+\label{sec:org6f19b11}
+Obtenga la tabla de verdad para cada función:
+
+\begin{enumerate}
+\item \(F = (A+\bar{B}+C)(\bar{A}+B+\bar{C})\)
+
+\begin{center}
+\begin{tabular}{rrrl}
+A & B & C & F\\[0pt]
+\hline
+0 & 0 & 0 & \\[0pt]
+0 & 0 & 1 & \\[0pt]
+0 & 1 & 0 & \\[0pt]
+0 & 1 & 1 & \\[0pt]
+1 & 0 & 0 & \\[0pt]
+1 & 0 & 1 & \\[0pt]
+1 & 1 & 0 & \\[0pt]
+1 & 1 & 1 & \\[0pt]
+\end{tabular}
+\end{center}
+
+\item \(F = AB+\bar{A}\bar{B}+A\bar{C}\)
+
+\begin{center}
+\begin{tabular}{rrrl}
+A & B & C & F\\[0pt]
+\hline
+0 & 0 & 0 & \\[0pt]
+0 & 0 & 1 & \\[0pt]
+0 & 1 & 0 & \\[0pt]
+0 & 1 & 1 & \\[0pt]
+1 & 0 & 0 & \\[0pt]
+1 & 0 & 1 & \\[0pt]
+1 & 1 & 0 & \\[0pt]
+1 & 1 & 1 & \\[0pt]
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\subsection{Ejercicio 8: SOP desde tabla de verdad}
+\label{sec:org98b4be8}
+A partir de la tabla de verdad del Cuadro \ref{tab:org5e0ca1d} de tres variables obtenga la
 representación en SOP.
 
 \begin{table}[htbp]
-\caption{\label{tab:org1e03ec0}Ejercicio de tres variables}
+\caption{\label{tab:org5e0ca1d}Ejercicio 8}
 \centering
 \begin{tabular}{rrrr}
 A & B & C & F\\[0pt]
@@ -345,12 +461,12 @@ A & B & C & F\\[0pt]
            &=
 \end{align*}
 
-\subsection{Ejercicio 7: Simplificación con mapa de Karnaugh}
-\label{sec:org49ffa02}
+\subsection{Ejercicio 9: Simplificación con mapa de Karnaugh}
+\label{sec:org257612e}
 Usando mapas de Karnaugh simplifique la función de la tabla del
-Ejercicio 6 y dibuje el circuito resultante.
+Ejercicio 8 y dibuje el circuito resultante.
 
-Escriba los min-términos de \(F\) (Ej. 6) dentro de las llaves:
+Escriba los min-términos de \(F\) (Ej. 8) dentro de las llaves:
 
 \kmapthree{}
 
@@ -365,15 +481,45 @@ Grupos formados:
   F_{\text{simplificada}} &=
 \end{align*}
 
-\textbf{Circuito:}
+\textbf{Circuito de la expresión simplificada:}
 
-\subsection{Ejercicio 8: Karnaugh y simulación}
-\label{sec:org0e8cae6}
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
+
+Obtenga una expresión equivalente para implementar la función usando
+solo compuertas NAND:
+
+\begin{align*}
+  F_{\text{NAND}} &=
+\end{align*}
+
+\textbf{Circuito usando solo compuertas NAND:}
+
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
+
+
+\subsection{Ejercicio 10: Karnaugh y simulación}
+\label{sec:orgbe33438}
 Dada la siguiente tabla de verdad, simplifique utilizando un mapa de
 Karnaugh, obtenga el circuito combinacional y simule el resultado.
 
 \begin{table}[htbp]
-\caption{\label{tab:org320d085}Ejercicio 8}
+\caption{\label{tab:org38c065d}Ejercicio 10}
 \centering
 \begin{tabular}{rrrr}
 A & B & C & F\\[0pt]
@@ -406,26 +552,32 @@ Grupos formados:
 
 \textbf{Captura de la simulación:}
 
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
 \begin{verbatim}
-[[file:images/ejercicio8.png]]
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
 \end{verbatim}
 
 \section{Parte C. Sumador binario}
-\label{sec:orgdfe4b0f}
-\subsection{Ejercicio 9: Sumador completo en cascada}
-\label{sec:org336fd1f}
+\label{sec:orgda84611}
+\subsection{Ejercicio 11: Sumador completo en cascada}
+\label{sec:orge299a1e}
 Obtenga un circuito combinacional que realice la suma binaria. Considere
 que el sumador se resuelve integrando en cascada varias etapas que
 suman los dígitos de los sumandos y el acarreo, que inicia en 0.
 Consulte \autocite{stallings2006esp}, páginas PDF 777 a 780 y
-\autocite{stallings2022eng}, páginas 435 a 438.
+\autocite{stallings2022computer}, páginas 435 a 438.
 
 \begin{enumerate}
 \item Complete la tabla de verdad de una etapa (sumador completo).
 
 \begin{center}
 \begin{tabular}{rrrll}
-\(A_i\) & \(B_i\) & \(C_i\) & \(S_i\) & \(C_{i+1}\)\\[0pt]
+\(C_i\) & \(A_i\) & \(B_i\) & \(S_i\) & \(C_{i+1}\)\\[0pt]
 \hline
 0 & 0 & 0 &  & \\[0pt]
 0 & 0 & 1 &  & \\[0pt]
@@ -447,124 +599,172 @@ Consulte \autocite{stallings2006esp}, páginas PDF 777 a 780 y
 
 \item Implemente el circuito en Matlab (o Logisim), simule e inserte la captura.
 
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen
+y remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
 \begin{verbatim}
-   [[file:images/sumador.png]]
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
 \end{verbatim}
 
 \item Extienda el diseño a un sumador de 4 bits en cascada. Dibuje el
 diagrama de bloques.
+
+Coloque aquí la imagen del circuito: escriba el  \emph{path} a la imagen y
+remueva \texttt{\#+begin\_src org} y \texttt{\#+end\_src} para insertar la imagen en el pdf. 
+
+\begin{verbatim}
+#+caption: caption
+#+attr_latex: scale=0.75
+#+label: fig:label
+[[file:]]
+\end{verbatim}
 \end{enumerate}
 
 \section{Parte D. Modelado de un ascensor}
-\label{sec:org5f797b2}
-\subsection{Ejercicio 10: Lógica de control de un ascensor de 10 pisos}
-\label{sec:org2572d94}
-Se desea modelar la lógica combinacional de un ascensor de \textbf{10 pisos}
-(pisos 0 a 9). El sistema recibe:
+\label{sec:orgf305426}
+\subsection{Ejercicio 12: Lógica de control de un ascensor de N pisos}
+\label{sec:orgbf3b8c3}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.9\linewidth]{../images/Edificio-Facultad-Sistemas.jpeg}
+\caption{\label{fig:org7f54ba6}Diagrama del Control de un Ascensor}
+\end{figure}
+El edificio de la facultad de Ingeniería de Sistemas de la Escuela
+Politécnica Nacional dispone de un ascensor para 5 pisos (Figura
+\ref{fig:org7f54ba6}). Diseñe un circuito combinacional en complemento
+a 2 para controlar el movimiento del ascensor en tres estados (subir,
+bajar, detener). Use estas variables:
 
 \begin{itemize}
-\item \(P_{act}\): piso actual (4 bits, \(P_3P_2P_1P_0\), valores 0 a 9).
-\item \(P_{dest}\): piso destino (4 bits, \(D_3D_2D_1D_0\), valores 0 a 9).
+\item \(r_i\): piso actual de la cabina, con \(r_i \in \{1,2,3,4,5\}\).
+\item \(r_j\): piso destino solicitado, con \(r_j \in \{1,2,3,4,5\}\).
+\item \(\Delta = r_j-r_i\): diferencia entre el piso destino y el piso actual.
+\item \(A = (A_{n-1}A_{n-2}\dots A_1A_0)_2\): representación binaria de \(r_j\).
+\item \(B = (B_{n-1}B_{n-2}\dots B_1B_0)_2\): representación binaria de \(r_i\).
+\item \(S = (S_{n-1}S_{n-2}\dots S_1S_0)_2\): resultado de la resta en
+complemento a 2, con ancho \(n\).
 \end{itemize}
 
-y debe generar tres salidas: \textbf{SUBIR}, \textbf{BAJAR} y \textbf{DETENER}.
+El circuito debe controlar los estados \textbf{SUBIR}, \textbf{BAJAR} y \textbf{DETENER} según
+el valor de \(\Delta\) mediante variables booleanas. ¿Puede el bit más
+significativo de \(S\) representar los estados de Subir y Bajar? ¿Cómo
+puedo detectar que \(S=0\)?
 
-\textbf{Idea de diseño.} La diferencia \(\Delta = P_{dest}-P_{act}\) se calcula
-con un sumador y el complemento a 2:
-\[
-\Delta = P_{dest} + \overline{P_{act}} + 1 = P_{dest} + C_2(P_{act}).
-\]
-Como \(\Delta \in [-9,9]\), se requieren \textbf{5 bits} (extensión de signo de
-los operandos a 5 bits). El \textbf{bit de signo} \(\Delta_4\) indica el sentido:
+Desarrolle los siguientes apartados. Muestre el procedimiento
+matemático y dibuje los circuitos solicitados.
 
-\begin{itemize}
-\item \(\Delta_4 = 1\) (negativo): el destino está por debajo, el ascensor \textbf{baja}.
-\item \(\Delta_4 = 0\) y \(\Delta \neq 0\): el destino está por encima, \textbf{sube}.
-\item \(\Delta = 0\): el ascensor ya está en el piso, \textbf{se detiene}.
-\end{itemize}
+\subsection{Casos extremos y cantidad de bits}
+\label{sec:orgb88aa3c}
+\begin{enumerate}
+\item Determine los valores mínimo y máximo posibles de \(\Delta\) e indique
+qué valores de \(r_i\) y \(r_j\) producen cada caso.
+\item Determine cuántos bits, \(m\), se requieren para codificar los pisos
+1 a 5.
+\item Use el rango de complemento a 2 con \(n\) bits,
+\([-2^{n-1},\,2^{n-1}-1]\), para plantear las desigualdades que debe
+cumplir \(n\). Despeje \(n\) de ambas desigualdades y elija un ancho que
+represente todo el intervalo de \(\Delta\) sin desbordamiento.
+\end{enumerate}
 
-\subsubsection{10.1 Representación}
-\label{sec:org456e05d}
-Complete la tabla con la representación en 5 bits (complemento a 2) de
-\(-P_{act}\) y de \(\Delta\).
+\begin{align*}
+  \Delta_{\min} &= r_j-r_i = \quad-\quad = \quad
+    \quad (r_j=\quad,\;r_i=\quad) \\
+  \Delta_{\max} &= r_j-r_i = \quad-\quad = \quad
+    \quad (r_j=\quad,\;r_i=\quad) \\
+  \Delta &\in [\quad,\quad] \\
+  \text{número de bits }m\text{ para codificar cada piso} &= \\
+  -2^{n-1} &\leq \Delta_{\min} \\
+  \Delta_{\max} &\leq 2^{n-1}-1 \\
+  n &\geq \quad \\
+  n &= \quad
+\end{align*}
+
+\subsection{Resta mediante complemento a 2}
+\label{sec:orgf60a915}
+La resta se implementa en el ancho de resultado \(n\) como una suma en
+complemento a 2:
+
+
+\begin{equation}
+  \label{eq:resta-complemento-dos}
+  \Delta = A-B = A+(-B)=A+C_2(B)=A+\overline{B}+1
+\end{equation}
+
+\subsection{Lógica de control}
+\label{sec:org7a7cb71}
+Complete la tabla de verdad usando los valores decimales con signo de
+\(\Delta\) y su representación en complemento a 2, \(S\). En las columnas
+de salida escriba 1 cuando se cumpla la condición indicada y 0 en caso
+contrario: \textbf{DETENER} cuando \(\Delta=0\), \textbf{BAJAR} cuando \(\Delta<0\) y
+\textbf{SUBIR} cuando \(\Delta>0\). Use el bit de signo de \(S\) para distinguir
+la dirección y determine la condición necesaria para distinguir
+\(\Delta=0\) de \(\Delta>0\).
 
 \begin{center}
-\begin{tabular}{rrllll}
-\(P_{act}\) & \(P_{dest}\) & \(C_2(P_{act})\) (5 bits) & \(\Delta\) (5 bits) & \(\Delta_4\) & Acción\\[0pt]
+\begin{tabular}{rrrrr}
+\(\Delta\) (decimal) & \(S=(S_{n-1}\dots S_1S_0)_2\) & DETENER & BAJAR & SUBIR\\[0pt]
 \hline
-3 & 7 &  &  &  & \\[0pt]
-8 & 2 &  &  &  & \\[0pt]
-5 & 5 &  &  &  & \\[0pt]
-0 & 9 &  &  &  & \\[0pt]
-9 & 0 &  &  &  & \\[0pt]
+0 & 00\ldots{}0 & 1 & 0 & X\\[0pt]
+1 & 00\ldots{}1 & 0 & 0 & 1\\[0pt]
+2 & 00..10 & 0 & 0 & 1\\[0pt]
+3 &  &  &  & \\[0pt]
+4 &  &  &  & \\[0pt]
+-4 &  &  &  & \\[0pt]
+-3 &  &  &  & \\[0pt]
+-2 &  &  &  & \\[0pt]
+-1 & 11\ldots{}1 & 0 & 1 & 0\\[0pt]
 \end{tabular}
 \end{center}
 
-\subsubsection{10.2 Complemento a 2 y sumador}
-\label{sec:org248029a}
-Dibuje el diagrama de bloques del circuito que calcula \(\Delta\):
-inversores sobre \(P_{act}\), sumador de 5 bits en cascada (Ejercicio 9) y
-acarreo de entrada \(C_0=1\).
-
-\subsubsection{10.3 Detector de cero y salidas}
-\label{sec:org9723b55}
-Obtenga las expresiones de las salidas en función de los bits de
-\(\Delta\) (\(\Delta_4\ldots\Delta_0\)).
+A partir de la tabla, obtenga las expresiones booleanas de las tres
+salidas en función de los bits de \(S\) y simplifíquelas al máximo.
 
 \begin{align*}
-  \text{CERO}    &= \\
-  \text{BAJAR}   &= \\
-  \text{SUBIR}   &= \\
-  \text{DETENER} &=
+  \text{DETENER}(S) &= \\
+  \text{BAJAR}(S) &= \\
+  \text{SUBIR}(S) &=
 \end{align*}
 
-\subsubsection{10.4 Circuito completo}
-\label{sec:org0226364}
-Dibuje el circuito combinacional completo (complemento a 2, sumador,
-detector de cero y salidas) y simule al menos los cinco casos de la
-tabla de 10.1. Inserte la captura.
+\subsection{Implementación y verificación}
+\label{sec:org53879b5}
+Implemente el restador en complemento a 2 reutilizando el sumador
+completo diseñado en el Ejercicio 11; no es necesario volver a diseñar
+ese bloque. Conecte las entradas según la ecuación \ref{eq:resta-complemento-dos}
+y añada la lógica de control obtenida en \ref{sec:org7a7cb71}. Simule el circuito y
+compruebe que sus salidas coincidan con la tabla de verdad.
 
-\subsubsection{10.5 Análisis}
-\label{sec:org45c2269}
-a) ¿Por qué es insuficiente usar solo 4 bits para \(\Delta\)? Dé un
-   ejemplo con pisos concretos.
+\textbf{Imagen del circuito implementado:} Escriba la ruta relativa de la
+imagen y quite los delimitadores del bloque de código para insertarla
+en el PDF. La captura ha de mostrar un caso de prueba y sus salidas.
 
-\textbf{Respuesta:}
+\begin{verbatim}
+#+caption: Restador en complemento a 2 y lógica de control del ascensor
+#+attr_latex: :width 0.9\linewidth
+#+name: fig:restador-control-ascensor
+[[file:]]
+\end{verbatim}
 
-\vspace{1.5cm}
-
-b) Las combinaciones con valores 10 a 15 no son válidas. Proponga cómo
-   tratarlas (condiciones \emph{don't care} o señal de error) y su efecto en
-   la simplificación.
-
-\textbf{Respuesta:}
-
-\vspace{1.5cm}
-
-c) ¿Qué elementos secuenciales harían falta para que el ascensor
-   \emph{memorice} las solicitudes y el piso actual?
-
-\textbf{Respuesta:}
-
-\vspace{1.5cm}
 
 \section{Rúbrica de evaluación}
-\label{sec:orgde0b760}
+\label{sec:org243e20b}
 \begin{center}
 \begin{tabular}{lr}
 Criterio & Puntaje máximo\\[0pt]
 \hline
-Parte A: Álgebra de Boole y mapas K (Ej. 1-5) & 30\\[0pt]
-Parte B: Tablas de verdad y Karnaugh (Ej. 6-8) & 20\\[0pt]
-Parte C: Sumador binario (Ej. 9) & 15\\[0pt]
-Parte D: Ascensor (Ej. 10) & 30\\[0pt]
+Parte A: Álgebra de Boole y mapas K (Ej. 1-6) & 30\\[0pt]
+Parte B: Tablas de verdad y Karnaugh (Ej. 7-10) & 20\\[0pt]
+Parte C: Sumador binario (Ej. 11) & 15\\[0pt]
+Parte D: Ascensor (Ej. 12) & 30\\[0pt]
 Presentación, uso de Org-mode/\LaTeX{} y PDF & 5\\[0pt]
 TOTAL & 100\\[0pt]
 \end{tabular}
 \end{center}
 
 \section{Verificación de Entregables [0\%]:}
-\label{sec:org97c0854}
+\label{sec:org28200a3}
 \begin{itemize}
 \item[{$\square$}] Todos los ejercicios resueltos y justificados en \LaTeX{}
 \item[{$\square$}] Propiedades del álgebra de Boole listadas en cada simplificación
@@ -575,12 +775,12 @@ TOTAL & 100\\[0pt]
 \end{itemize}
 
 \subsection{Problemas con la Tarea/logísticos:}
-\label{sec:org2db2d0f}
+\label{sec:org28b7bb9}
 \begin{itemize}
 \item Ejercicio \(X_1\) no pudo completarse debido a
 \end{itemize}
 
 \section{Referencias}
-\label{sec:orgbd05b6e}
+\label{sec:orgb3773f1}
 \printbibliography
 \end{document}
