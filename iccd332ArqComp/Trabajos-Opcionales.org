@@ -1,0 +1,108 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Trabajos Opcionales
+#+date: 2026-11-16
+#+author: Lenin G. Falconí
+#+email: lenin.falconi@epn.edu.ec
+#+language: es
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 29.3 (Org mode 9.6.15)
+#+cite_export: biblatex
+
+#+latex_class: article
+#+latex_compiler: pdflatex
+
+#+latex_header: \usepackage{fancyhdr}
+#+latex_header: \usepackage[top=25mm, left=25mm, right=25mm]{geometry}
+#+latex_header: \usepackage{longtable}
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \fancyhead[R]{}
+#+latex_header: \setlength\headheight{43.0pt}
+
+#+LATEX_HEADER: \usepackage[T1]{fontenc}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+#+LATEX_HEADER: \usepackage[backend=biber,style=ieee]{biblatex}
+
+
+#+bibliography: ./bibliography/bibliography.bib
+
+#+begin_export latex
+\fancyhead[C]{\includegraphics[scale=0.05]{./images/logoEpn.jpg}\\
+ESCUELA POLITÉCNICA NACIONAL\\FACULTAD DE INGENIERÍA DE SISTEMAS\\
+ARQUITECTURA DE COMPUTADORES}
+\thispagestyle{fancy}
+#+end_export
+
+* Objetivo
+Desarrollar uno de los trabajos opcionales listados a continuación y
+presentarlo en clase en un máximo de 10 minutos. La presentación debe
+incluir:
+
+- *Explicación conceptual* del tema elegido.
+- *Demostración del concepto* (programa, simulación o desarrollo
+  matemático en vivo).
+
+Este trabajo se evaluará como un puntaje *adicional para participación*.
+
+* Instrucciones
+1. Elija /un/ trabajo de la lista de opciones.
+2. Prepare una exposición de máximo 10 minutos: primero la
+   explicación conceptual y luego la demostración.
+3. Se valora especialmente la /formulación matemática/ que usted
+   realice del problema: definición de variables, deducción de
+   expresiones y justificación de cada paso. 
+4. Puede apoyarse en Emacs Org-mode, LaTeX, Python, Matlab/Logisim o
+   la herramienta que prefiera para la demostración.
+5. Anticipar al profesor su participación indicando el tema a
+   desarrollar con un mínimo de 72 horas antes de la clase.
+
+* Opciones de trabajos
+** 1. Programa de conversión de Decimal a IEEE 754 de 32 bits
+Implementar un programa que convierta un número decimal a su
+representación en punto flotante IEEE 754 de precisión simple (32
+bits): signo, exponente con sesgo 127 y mantisa normalizada. Presente
+la formulación matemática de la conversión:
+
+$$x = (-1)^s \times 1.f \times 2^{e-127}$$
+
+y muestre la demostración con al menos un número normal y un caso
+especial (cero, infinito, NaN o desnormalizado).
+
+** 2. Algoritmo de multiplicación binaria en complemento a 2
+Exponer el algoritmo de multiplicación de números binarios con signo
+en complemento a 2 (desplazamientos y sumas; opcionalmente el
+algoritmo de Booth). Deduzca la formulación matemática que justifica
+el algoritmo y demuéstrelo con un ejemplo numérico paso a paso. Puede
+consultar los libros de Stallings [cite:@stallings2006esp; @stallings2022computer].
+
+** 3. Algoritmo de división binaria en complemento a 2
+Exponer el algoritmo de división de números binarios con signo en
+complemento a 2. Deduzca la formulación matemática (relación
+dividendo, divisor, cociente y residuo, con la condición sobre el
+signo del residuo) y demuéstrelo con un ejemplo numérico paso a
+paso. Puede consultar los libros de Stallings [cite:@stallings2006esp; @stallings2022computer].
+
+
+** 4. Problema desafío: modelo del ascensor (Ejercicio 12)
+Resolver el [[https://github.com/LeninGF/EPN-Lectures/blob/main/iccd332ArqComp/Tareas/Tarea-CircuitosDigitalesCombinatorios.org][Ejercicio 12 de la Tarea de Circuitos Digitales
+Combinatorios]]: diseño del circuito combinacional en complemento a 2
+que controla el movimiento de un ascensor de 5 pisos (subir, bajar,
+detener). Presente la deducción matemática completa: rango de
+$\Delta = r_j - r_i$, número de bits necesarios $n$, y las
+funciones booleanas de control a partir del bit de signo y la
+detección de $S = 0$.
+
+** 5. Lógica difusa: concepto y ejemplo
+Presentar el concepto de lógica difusa (conjuntos difusos, grados de
+pertenencia, variables lingüísticas) y su proceso de inferencia
+(fuzzificación, reglas, agregación y defuzzificación) con un ejemplo
+desarrollado en clase. Como recurso de apoyo puede consultar el
+video y la documentación de [[https://la.mathworks.com/help/fuzzy/fuzzy-inference-process.html][Fuzzy Inference Process - MATLAB &
+Simulink]] de MathWorks.
+
+#+print_bibliography: 
