@@ -105,4 +105,10 @@ desarrollado en clase. Como recurso de apoyo puede consultar el
 video y la documentación de [[https://la.mathworks.com/help/fuzzy/fuzzy-inference-process.html][Fuzzy Inference Process - MATLAB &
 Simulink]] de MathWorks.
 
+** 6. Obtención de representación en Productos de Sumas (POS, MaxTerms) a partir de Suma de Productos (SOP, MimTerms).
+Presenta una demostración matemática que permita convertir una función
+booleana en SOP a su equivalente en POS. Presenta el desarrollo en
+clase.
 #+print_bibliography: 
+
+
